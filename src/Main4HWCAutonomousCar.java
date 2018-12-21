@@ -1,5 +1,5 @@
-import com.autonomouscar.view.BienvenueAxivIt;
-import com.autonomouscar.view.MenuAxivIt;
+import com.autonomouscar.view.Bienvenue4HWC;
+import com.autonomouscar.view.Menu4HWC;
 
 public class Main4HWCAutonomousCar {
 
@@ -8,11 +8,11 @@ public class Main4HWCAutonomousCar {
 
 		// System.out.println(Integer.valueOf("4").intValue());
 
-		BienvenueAxivIt fenBienvenue = new BienvenueAxivIt(); // Première
-																// fenêtre
+		Bienvenue4HWC fenBienvenue = new Bienvenue4HWC(); // Première
+															// fenêtre
 
-		BienvenueAxivIt.voixBienvenueAxivIt(); // Voix de bienvenue première
-												// fenêtre
+		Bienvenue4HWC.voixBienvenue4HWC(); // Voix de bienvenue première
+											// fenêtre
 
 		try {
 			Thread.sleep(8000);
@@ -22,10 +22,10 @@ public class Main4HWCAutonomousCar {
 
 		fenBienvenue.setVisible(false); // Fermeture de la première fenêtre
 
-		new MenuAxivIt(); // Affichage deuxième fenêtre de
-							// menu
+		new Menu4HWC(); // Affichage deuxième fenêtre de
+						// menu
 
-		// MenuAxivIt.voixMenuAxivIt();
+		// Menu4HWC.voixMenu4HWC();
 
 	}
 

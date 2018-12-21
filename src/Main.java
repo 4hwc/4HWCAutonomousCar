@@ -5,16 +5,16 @@ import com.autonomouscar.model.AutonomousCar;
 
 public class Main {
 
-	// TEST POUR VOIR SI LES TONDEUSES SONT CORRECTES
+	// TEST POUR VOIR SI LES VEHICULES SONT CORRECTES
 
-	static void voirLesTondeuses(ArrayList<AutonomousCar> liste) {
-		System.out.println("Nombre de tondeuses pour tondre le gazon :" + liste.size());
+	static void voirLesVehicules(ArrayList<AutonomousCar> liste) {
+		System.out.println("Nombre de véhicules pour parcourir la surface :" + liste.size());
 
 		for (int l = 0; l < liste.size(); l++) {
 
-			System.out.println("TONDEUSE N° " + (l + 1) + "--> " + liste.get(l).getXCoinDroit() + " "
-					+ liste.get(l).getYCoinDroit() + " " + liste.get(l).getXTondeuseInitiale() + " "
-					+ liste.get(l).getYTondeuseInitiale() + " " + liste.get(l).getOrientationTondeuseInitiale() + " "
+			System.out.println("VEHICULE N° " + (l + 1) + "--> " + liste.get(l).getXCoinDroit() + " "
+					+ liste.get(l).getYCoinDroit() + " " + liste.get(l).getXInitiale() + " "
+					+ liste.get(l).getYInitiale() + " " + liste.get(l).getOrientationInitiale() + " "
 					+ liste.get(l).getInstructions());
 
 		}
@@ -27,13 +27,13 @@ public class Main {
 
 		while (choixQuitter == false) {
 			System.out.println(
-					"Bonjour, je m'appelle AXIV et je vais vous aider à tondre le gazon :). Je vous prie de faire votre choix");
+					"Bonjour, je m'appelle 4HWC et je vais vous aider à parcourir la surface :). Je vous prie de faire votre choix");
 
 			System.out.println("1 : Utilisation des données préenregistrées");
 
 			System.out.println("2 : Saisie des données");
 
-			System.out.println("3 : Utilisation de l'intelligence artificielle d'AXIV");
+			System.out.println("3 : Utilisation de l'intelligence artificielle 4HWC");
 
 			System.out.println("0 : Fin :) !");
 
@@ -55,37 +55,37 @@ public class Main {
 
 			case 1:
 
-				AutonomousCar.deplacementDeToutesLesTondeuses(AutonomousCar.recupFichierBase());
+				AutonomousCar.deplacementDeTousLesVehicules(AutonomousCar.recupFichierBase());
 
 				break;
 
 			case 2:
 
-				String nombreDeTondeuses;
+				String nombreDeVehiules;
 
-				ArrayList<AutonomousCar> tondeusesPourGazon = new ArrayList<AutonomousCar>();
+				ArrayList<AutonomousCar> vehicules = new ArrayList<AutonomousCar>();
 
 				// Vérification nombre de tondeuses
 
 				do {
-					System.out.println("Entrez le nombre de tondeuses pour tondre le gazon");
+					System.out.println("Entrez le nombre de véhicules pour parcourir la surface");
 
-					nombreDeTondeuses = sc.nextLine();
+					nombreDeVehiules = sc.nextLine();
 
-				} while (AutonomousCar.validationNombreDeTondeusesString(nombreDeTondeuses) == false);
+				} while (AutonomousCar.validationNombreDeVehiculesString(nombreDeVehiules) == false);
 
-				for (int i = 0; i < Integer.parseInt(nombreDeTondeuses.trim()); i++)
+				for (int i = 0; i < Integer.parseInt(nombreDeVehiules.trim()); i++)
 
 				{
-					System.out.println("**** TONDEUSE N° " + (i + 1) + " ****");
+					System.out.println("**** VEHICULE N° " + (i + 1) + " ****");
 
-					String xCoinDroit, yCoinDroit, xTondeuseInitiale, yTondeuseInitiale;
+					String xCoinDroit, yCoinDroit, xInitiale, yInitiale;
 
 					do
 
 					{
 						System.out.println(
-								"Entrez la position du coin supérieur droit de la pelouse. S'il vous plaît , les valeurs sont comprises entre 0 et 5 ");
+								"Entrez la position du coin supérieur droit de la surface. S'il vous plaît , les valeurs sont comprises entre 0 et 5 ");
 
 						System.out.println("Position suivant l'axe des abscisses");
 
@@ -95,28 +95,27 @@ public class Main {
 
 						yCoinDroit = sc.nextLine();
 
-						System.out.println("Entrez la position de la tondeuse sur la pelouse.");
+						System.out.println("Entrez la position du véhicule sur la surface.");
 
 						System.out.println("Position suivant l'axe des abscisses");
 
-						xTondeuseInitiale = sc.nextLine();
+						xInitiale = sc.nextLine();
 
 						System.out.println("Position suivant l'axe des ordonnées");
 
-						yTondeuseInitiale = sc.nextLine();
+						yInitiale = sc.nextLine();
 
-					} while (AutonomousCar.validationPositionsString(xCoinDroit, yCoinDroit, xTondeuseInitiale,
-							yTondeuseInitiale) == false);
+					} while (AutonomousCar.validationPositionsString(xCoinDroit, yCoinDroit, xInitiale,
+							yInitiale) == false);
 
-					String orientationTondeuseInitiale;
+					String orientationInitiale;
 
 					do {
 						System.out.println("Entrez son orientation : N ou E ou W ou S ");
 
-						orientationTondeuseInitiale = sc.nextLine();
+						orientationInitiale = sc.nextLine();
 
-					} while (AutonomousCar
-							.validationOrientationTondeuseInitiale(orientationTondeuseInitiale.toUpperCase()) == false);
+					} while (AutonomousCar.validationOrientationInitiale(orientationInitiale.toUpperCase()) == false);
 
 					String instructions;
 
@@ -130,20 +129,20 @@ public class Main {
 
 					// J'ajoute les données à ma liste de tondeuses
 
-					tondeusesPourGazon.add(new AutonomousCar(Integer.parseInt(xCoinDroit.trim()),
-							Integer.parseInt(yCoinDroit.trim()), Integer.parseInt(xTondeuseInitiale.trim()),
-							Integer.parseInt(yTondeuseInitiale.trim()),
-							orientationTondeuseInitiale.toUpperCase().trim(), instructions.toUpperCase().trim()));
+					vehicules.add(
+							new AutonomousCar(Integer.parseInt(xCoinDroit.trim()), Integer.parseInt(yCoinDroit.trim()),
+									Integer.parseInt(xInitiale.trim()), Integer.parseInt(yInitiale.trim()),
+									orientationInitiale.toUpperCase().trim(), instructions.toUpperCase().trim()));
 
 				}
 
-				AutonomousCar.deplacementDeToutesLesTondeuses(tondeusesPourGazon);
+				AutonomousCar.deplacementDeTousLesVehicules(vehicules);
 
 				break;
 
 			case 3:
 
-				AutonomousCar.deplacementDeToutesLesTondeuses(AutonomousCar.getTondeusesAXIV());
+				AutonomousCar.deplacementDeTousLesVehicules(AutonomousCar.getVehicules4HWC());
 
 				break;
 

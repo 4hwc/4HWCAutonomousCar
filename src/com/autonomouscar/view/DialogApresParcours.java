@@ -1,4 +1,5 @@
 package com.autonomouscar.view;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -18,7 +19,7 @@ import com.autonomouscar.model.AutonomousCar;
 
 public class DialogApresParcours extends JDialog {
 
-	private DialogApresParcoursPanneauAxivIt container = new DialogApresParcoursPanneauAxivIt();
+	private DialogApresParcoursPanneau4HWC container = new DialogApresParcoursPanneau4HWC();
 
 	private Font policeCalibriLight = new Font("Calibri Light", Font.BOLD, 30);
 
@@ -30,7 +31,7 @@ public class DialogApresParcours extends JDialog {
 
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
-	public DialogApresParcours(JFrame parent, String title, boolean modal, AutonomousCar tondeuse)
+	public DialogApresParcours(JFrame parent, String title, boolean modal, AutonomousCar vehicule)
 
 	{
 		super(parent, title, modal);
@@ -43,7 +44,7 @@ public class DialogApresParcours extends JDialog {
 
 		//////////////////////////////////////////////////////////////////
 
-		container.add(affichageFinale(tondeuse));
+		container.add(affichageFinale(vehicule));
 
 		this.setContentPane(container);
 
@@ -52,7 +53,7 @@ public class DialogApresParcours extends JDialog {
 		/////////////////////////////////////////////////////////////////
 	}
 
-	private JPanel affichageFinale(AutonomousCar tondeuse)
+	private JPanel affichageFinale(AutonomousCar vehicule)
 
 	{
 
@@ -103,7 +104,7 @@ public class DialogApresParcours extends JDialog {
 
 		// X TF
 
-		JLabel jlXTF = new JLabel("X finale : " + tondeuse.getXTondeuseFinale());
+		JLabel jlXTF = new JLabel("X finale : " + vehicule.getXFinale());
 
 		jlXTF.setPreferredSize(new Dimension(330, 40));
 
@@ -165,7 +166,7 @@ public class DialogApresParcours extends JDialog {
 
 		// Y TF
 
-		JLabel jlYTF = new JLabel("Y Finale : " + tondeuse.getYTondeuseFinale());
+		JLabel jlYTF = new JLabel("Y Finale : " + vehicule.getYFinale());
 
 		jlYTF.setPreferredSize(new Dimension(330, 40));
 
@@ -219,7 +220,7 @@ public class DialogApresParcours extends JDialog {
 
 		// Orientation finale
 
-		JLabel jlOF = new JLabel("Orientation finale : " + tondeuse.getOrientationTondeuseFinale());
+		JLabel jlOF = new JLabel("Orientation finale : " + vehicule.getOrientationFinale());
 
 		jlOF.setPreferredSize(new Dimension(330, 40));
 
@@ -280,7 +281,7 @@ public class DialogApresParcours extends JDialog {
 
 		// CHRONO
 
-		JLabel jlChrono = new JLabel(tondeuse.getChronoFinale() + " ns");
+		JLabel jlChrono = new JLabel(vehicule.getChronoFinale() + " ns");
 
 		jlChrono.setPreferredSize(new Dimension(330, 40));
 

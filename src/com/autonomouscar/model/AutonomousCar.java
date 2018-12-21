@@ -21,63 +21,63 @@ public class AutonomousCar {
 
 	// Positions initiales
 
-	protected int xTondeuseInitiale;
+	protected int xInitiale;
 
-	protected int yTondeuseInitiale;
+	protected int yInitiale;
 
-	protected String orientationTondeuseInitiale;
+	protected String orientationInitiale;
 
 	protected String instructions;
 
 	// Positions actuelles
 
-	protected int xTondeuseActuelle;
+	protected int xActuelle;
 
-	protected int yTondeuseActuelle;
+	protected int yActuelle;
 
-	protected String orientationTondeuseActuelle;
+	protected String orientationActuelle;
 
 	// Positions finales à atteindre
 
-	protected int xTondeuseFinale;
+	protected int xFinale;
 
-	protected int yTondeuseFinale;
+	protected int yFinale;
 
-	protected String orientationTondeuseFinale;
+	protected String orientationFinale;
 
-	// Chrono du temps mis pour tondre le gazon par la tondeuse en ms
+	// Chrono du temps mis pour parcourir la surface par la voiture en ms
 
 	protected long chronoFinale;
 
-	public AutonomousCar(int xCoinDroit, int yCoinDroit, int xTondeuseInitiale, int yTondeuseInitiale,
-			String orientationTondeuseInitiale, String instructions) {
+	public AutonomousCar(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale, String orientationInitiale,
+			String instructions) {
 
 		this.xCoinDroit = xCoinDroit;
 
 		this.yCoinDroit = yCoinDroit;
 
-		this.xTondeuseInitiale = xTondeuseInitiale;
+		this.xInitiale = xInitiale;
 
-		this.yTondeuseInitiale = yTondeuseInitiale;
+		this.yInitiale = yInitiale;
 
-		this.orientationTondeuseInitiale = orientationTondeuseInitiale;
+		this.orientationInitiale = orientationInitiale;
 
 		this.instructions = instructions;
 
 		// Au départ la position et l'orientation actuelles sont identiques aux
 		// données initiales
 
-		this.xTondeuseActuelle = this.xTondeuseInitiale;
+		this.xActuelle = this.xInitiale;
 
-		this.yTondeuseActuelle = this.yTondeuseInitiale;
+		this.yActuelle = this.yInitiale;
 
-		this.orientationTondeuseActuelle = this.orientationTondeuseInitiale;
+		this.orientationActuelle = this.orientationInitiale;
 
 	}
 
-	// Validation de nombre de tondeuses
+	// Validation de nombre de véhicules
 
-	static boolean validationNombreDeTondeuses(int nombre) {
+	static boolean validationNombreDeVehicules(int nombre) {
 		boolean validation = false;
 
 		if (nombre >= 1) {
@@ -91,9 +91,9 @@ public class AutonomousCar {
 		return validation;
 	}
 
-	// Validation de nombre de tondeuses String
+	// Validation de nombre de véhicules String
 
-	public static boolean validationNombreDeTondeusesString(String nbre) {
+	public static boolean validationNombreDeVehiculesString(String nbre) {
 		boolean validation = false;
 
 		int entier = 0;
@@ -217,40 +217,39 @@ public class AutonomousCar {
 
 	// Setters et getters initiaux
 
-	public void setXTondeuseInitiale(int xTondeuseInitiale) {
-		this.xTondeuseInitiale = xTondeuseInitiale;
+	public void setXInitiale(int xInitiale) {
+		this.xInitiale = xInitiale;
 	}
 
-	public int getXTondeuseInitiale() {
-		return xTondeuseInitiale;
+	public int getXInitiale() {
+		return xInitiale;
 	}
 
-	public void setYTondeuseInitiale(int yTondeuseInitiale) {
-		this.yTondeuseInitiale = yTondeuseInitiale;
+	public void setYInitiale(int yInitiale) {
+		this.yInitiale = yInitiale;
 	}
 
-	public int getYTondeuseInitiale() {
-		return yTondeuseInitiale;
+	public int getYInitiale() {
+		return yInitiale;
 	}
 
 	// Validation Positions entrées : int
 
-	static boolean validationPositions(int xCoinDroit, int yCoinDroit, int xTondeuseInitiale, int yTondeuseInitiale) {
+	static boolean validationPositions(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale) {
 
 		boolean validation = false;
 
 		if (xCoinDroit >= 0 && xCoinDroit <= 5 && yCoinDroit >= 0 && yCoinDroit <= 5) {
-			if (xTondeuseInitiale >= 0 && xTondeuseInitiale <= xCoinDroit && yTondeuseInitiale >= 0
-					&& yTondeuseInitiale <= yCoinDroit) {
+			if (xInitiale >= 0 && xInitiale <= xCoinDroit && yInitiale >= 0 && yInitiale <= yCoinDroit) {
 				validation = true;
 
-				System.out.println(" La tondeuse est bien positionnée sur la pelouse");
+				System.out.println(" Le véhicule est bien positionné sur la surface");
 			} else {
-				System.out.println(" Position incorrecte de la tondeuse");
+				System.out.println(" Position incorrecte du véhicule");
 			}
 		} else {
 			System.out.println(
-					" Position incorrecte du coin supérieur droit de la pelouse, entrez des valeurs comprises entre 0 et 5");
+					" Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5");
 		}
 
 		return validation;
@@ -260,36 +259,36 @@ public class AutonomousCar {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xTondeuseInitiale,
-			String yTondeuseInitiale) {
+	public static boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale,
+			String yInitiale) {
 
 		boolean validation = false;
 
-		int xCoinDroitInt = 0, yCoinDroitInt = 0, xTondeuseInitialeInt = 0, yTondeuseInitialeInt = 0;
+		int xCoinDroitInt = 0, yCoinDroitInt = 0, xInitialeInt = 0, yInitialeInt = 0;
 
-		if (AutonomousCar.isNombre(xCoinDroit) && AutonomousCar.isNombre(yCoinDroit) && AutonomousCar.isNombre(xTondeuseInitiale)
-				&& AutonomousCar.isNombre(yTondeuseInitiale)) {
+		if (AutonomousCar.isNombre(xCoinDroit) && AutonomousCar.isNombre(yCoinDroit)
+				&& AutonomousCar.isNombre(xInitiale) && AutonomousCar.isNombre(yInitiale)) {
 
 			xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());
 
 			yCoinDroitInt = Integer.parseInt(yCoinDroit.trim());
 
-			xTondeuseInitialeInt = Integer.parseInt(xTondeuseInitiale.trim());
+			xInitialeInt = Integer.parseInt(xInitiale.trim());
 
-			yTondeuseInitialeInt = Integer.parseInt(yTondeuseInitiale.trim());
+			yInitialeInt = Integer.parseInt(yInitiale.trim());
 
 			if (xCoinDroitInt >= 0 && xCoinDroitInt <= 5 && yCoinDroitInt >= 0 && yCoinDroitInt <= 5) {
-				if (xTondeuseInitialeInt >= 0 && xTondeuseInitialeInt <= xCoinDroitInt && yTondeuseInitialeInt >= 0
-						&& yTondeuseInitialeInt <= yCoinDroitInt) {
+				if (xInitialeInt >= 0 && xInitialeInt <= xCoinDroitInt && yInitialeInt >= 0
+						&& yInitialeInt <= yCoinDroitInt) {
 					validation = true;
 
-					System.out.println(" La tondeuse est bien positionnée sur la pelouse");
+					System.out.println(" Le véhicule est bien positionné sur la surface");
 				} else {
-					System.out.println(" Position incorrecte de la tondeuse");
+					System.out.println(" Position incorrecte du véhicule");
 				}
 			} else {
 				System.out.println(
-						" Position incorrecte du coin supérieur droit de la pelouse, entrez des valeurs comprises entre 0 et 5");
+						" Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5");
 			}
 
 		} else {
@@ -302,27 +301,26 @@ public class AutonomousCar {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void setOrientationTondeuseInitiale(String orientationTondeuseInitiale) {
-		this.orientationTondeuseInitiale = orientationTondeuseInitiale;
+	public void setOrientationInitiale(String orientationInitiale) {
+		this.orientationInitiale = orientationInitiale;
 	}
 
-	public String getOrientationTondeuseInitiale() {
-		return orientationTondeuseInitiale;
+	public String getOrientationInitiale() {
+		return orientationInitiale;
 	}
 
 	// Vérification orientation
 
-	public static boolean validationOrientationTondeuseInitiale(String orientationTondeuseInitiale) {
+	public static boolean validationOrientationInitiale(String orientationInitiale) {
 		boolean validation = false;
 
-		if (orientationTondeuseInitiale != null) {
-			String orientationTondeuseInitialeTrim = orientationTondeuseInitiale.trim();
+		if (orientationInitiale != null) {
+			String orientationInitialeTrim = orientationInitiale.trim();
 
-			if (orientationTondeuseInitialeTrim.length() != 0) {
-				if (orientationTondeuseInitialeTrim.length() == 1) {
-					if (orientationTondeuseInitialeTrim.equals("N") || orientationTondeuseInitialeTrim.equals("E")
-							|| orientationTondeuseInitialeTrim.equals("W")
-							|| orientationTondeuseInitialeTrim.equals("S")) {
+			if (orientationInitialeTrim.length() != 0) {
+				if (orientationInitialeTrim.length() == 1) {
+					if (orientationInitialeTrim.equals("N") || orientationInitialeTrim.equals("E")
+							|| orientationInitialeTrim.equals("W") || orientationInitialeTrim.equals("S")) {
 
 						validation = true;
 
@@ -443,58 +441,58 @@ public class AutonomousCar {
 
 	// Setters et getters actuels
 
-	public void setXTondeuseActuelle(int xTondeuseActuelle) {
-		this.xTondeuseActuelle = xTondeuseActuelle;
+	public void setXActuelle(int xActuelle) {
+		this.xActuelle = xActuelle;
 	}
 
-	public int getXTondeuseActuelle() {
-		return xTondeuseActuelle;
+	public int getXActuelle() {
+		return xActuelle;
 	}
 
-	public void setYTondeuseActuelle(int yTondeuseActuelle) {
-		this.yTondeuseActuelle = yTondeuseActuelle;
+	public void setYActuelle(int yActuelle) {
+		this.yActuelle = yActuelle;
 	}
 
-	public int getYTondeuseActuelle() {
-		return yTondeuseActuelle;
+	public int getYActuelle() {
+		return yActuelle;
 	}
 
-	public void setOrientationTondeuseActuelle(String orientationTondeuseActuelle) {
-		this.orientationTondeuseActuelle = orientationTondeuseActuelle;
+	public void setOrientationActuelle(String orientationActuelle) {
+		this.orientationActuelle = orientationActuelle;
 	}
 
-	public String getOrientationTondeuseActuelle() {
-		return orientationTondeuseActuelle;
+	public String getOrientationActuelle() {
+		return orientationActuelle;
 	}
 
 	// Setters et getters finaux
 
-	public void setXTondeuseFinale(int xTondeuseFinale) {
-		this.xTondeuseFinale = xTondeuseFinale;
+	public void setXFinale(int xFinale) {
+		this.xFinale = xFinale;
 	}
 
-	public int getXTondeuseFinale() {
-		return xTondeuseFinale;
+	public int getXFinale() {
+		return xFinale;
 	}
 
-	public void setYTondeuseFinale(int yTondeuseFinale) {
-		this.yTondeuseFinale = yTondeuseFinale;
+	public void setYFinale(int yFinale) {
+		this.yFinale = yFinale;
 	}
 
-	public int getYTondeuseFinale() {
-		return yTondeuseFinale;
+	public int getYFinale() {
+		return yFinale;
 	}
 
-	public void setOrientationTondeuseFinale(String orientationTondeuseFinale) {
-		this.orientationTondeuseFinale = orientationTondeuseFinale;
+	public void setOrientationFinale(String orientationFinale) {
+		this.orientationFinale = orientationFinale;
 	}
 
-	public String getOrientationTondeuseFinale() {
-		return orientationTondeuseFinale;
+	public String getOrientationFinale() {
+		return orientationFinale;
 	}
 
-	// Setter et getter du Chrono du temps mis pour tondre le gazon par la
-	// tondeuse
+	// Setter et getter du Chrono du temps mis pour parcourir par la
+	// voiture
 
 	public void setChronoFinale(long chronoFinale) {
 		this.chronoFinale = chronoFinale;
@@ -594,9 +592,9 @@ public class AutonomousCar {
 					 * for (int h = 0; h < listeInitiale.size(); h++) {
 					 * System.out.println(listeInitiale.get(h).xCoinDroit + "" +
 					 * listeInitiale.get(h).yCoinDroit + "" +
-					 * listeInitiale.get(h).xTondeuseInitiale + "" +
-					 * listeInitiale.get(h).yTondeuseInitiale + "" +
-					 * listeInitiale.get(h).orientationTondeuseInitiale + "" +
+					 * listeInitiale.get(h).xInitiale + "" +
+					 * listeInitiale.get(h).yInitiale + "" +
+					 * listeInitiale.get(h).orientationInitiale + "" +
 					 * listeInitiale.get(h).instructions); }
 					 */
 
@@ -625,11 +623,11 @@ public class AutonomousCar {
 
 	}
 
-	// Intelligence Artificielle AXIV à l'oeuvre
+	// Intelligence Artificielle 4HWC à l'oeuvre
 
-	// Nombre de tondeuses
+	// Nombre de véhicules
 
-	static int getNombreDeTondeusesAXIV() {
+	static int getNombreDeVehicules4HWC() {
 		Random randomNumbers = new Random();
 
 		int n = randomNumbers.nextInt(20) + 1; // 1 to 20
@@ -637,31 +635,30 @@ public class AutonomousCar {
 		return n; // 1 to 20
 	}
 
-	// XCoinDroitAXIV
+	// XCoinDroit4HWC
 
-	static int getXCoinDroitAXIV() {
+	static int getXCoinDroit4HWC() {
 		Random randomNumbers = new Random();
 
 		return randomNumbers.nextInt(6); // 0 to 5
 	}
 
-	// YCoinDroitAXIV
+	// YCoinDroit4HWC
 
-	static int getYCoinDroitAXIV() {
+	static int getYCoinDroit4HWC() {
 
 		Random randomNumbers = new Random();
 
 		return randomNumbers.nextInt(6); // 0 to 5
 	}
 
-	// XTondeuseInitialeAXIV
+	// XInitiale4HWC
 
-	static int getXTondeuseInitialeAXIV(int x) // X --> xCoinDroitAXIV
+	static int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
 	{
 
 		/*
-		 * 0<=x<=5 et 0<=XTondeuseInitialeAXIV<=x donc si x=0 alors
-		 * XTondeuseInitialeAXIV=0
+		 * 0<=x<=5 et 0<=XInitiale4HWC<=x donc si x=0 alors XInitiale4HWC=0
 		 */
 
 		int n = 1; // Initialisation toute bête
@@ -678,14 +675,13 @@ public class AutonomousCar {
 
 	}
 
-	// YTondeuseInitialeAXIV
+	// YInitiale4HWC
 
-	static int getYTondeuseInitialeAXIV(int y) // Y --> yCoinDroitAXIV
+	static int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
 	{
 
 		/*
-		 * 0<=y<=5 et 0<=YTondeuseInitialeAXIV<=y donc si y=0 alors
-		 * YTondeuseInitialeAXIV=0
+		 * 0<=y<=5 et 0<=YInitiale4HWC<=y donc si y=0 alors YInitiale4HWC=0
 		 */
 
 		int n = 1; // Initialisation toute bête
@@ -702,9 +698,9 @@ public class AutonomousCar {
 
 	}
 
-	// OrientationAXIV
+	// Orientation4HWC
 
-	static String getOrientationTondeuseInitialeAXIV() {
+	static String getOrientationInitiale4HWC() {
 		String tabOrientations[] = { "N", "E", "W", "S" };
 
 		Random randomNumbers = new Random();
@@ -713,76 +709,76 @@ public class AutonomousCar {
 
 	}
 
-	// InstructionsAXIV
+	// Instructions4HWC
 
-	static String getInstructionsAXIV() {
+	static String getInstructions4HWC() {
 		String tabInstructions[] = { "D", "G", "A" };
 
 		Random randomNumbers = new Random();
 
 		int tailleInstructions = randomNumbers.nextInt(50) + 1; // 1 to 50
 
-		String instructionsAXIV = "";
+		String instructions4HWC = "";
 
 		Random randomNumbers2 = new Random();
 
 		for (int t = 0; t < tailleInstructions; t++) {
-			instructionsAXIV = instructionsAXIV + tabInstructions[randomNumbers2.nextInt(tabInstructions.length)];
+			instructions4HWC = instructions4HWC + tabInstructions[randomNumbers2.nextInt(tabInstructions.length)];
 		}
 
-		return instructionsAXIV;
+		return instructions4HWC;
 
 	}
 
-	// Génération Automatique AXIV
+	// Génération Automatique 4HWC
 
-	public static ArrayList<AutonomousCar> getTondeusesAXIV() {
+	public static ArrayList<AutonomousCar> getVehicules4HWC() {
 		ArrayList<AutonomousCar> liste = new ArrayList<AutonomousCar>();
 
-		for (int i = 0; i < AutonomousCar.getNombreDeTondeusesAXIV(); i++) {
+		for (int i = 0; i < AutonomousCar.getNombreDeVehicules4HWC(); i++) {
 
-			int xCoinDroitAXIV = AutonomousCar.getXCoinDroitAXIV();
+			int xCoinDroit4HWC = AutonomousCar.getXCoinDroit4HWC();
 
-			int yCoinDroitAXIV = AutonomousCar.getYCoinDroitAXIV();
+			int yCoinDroit4HWC = AutonomousCar.getYCoinDroit4HWC();
 
-			int xTondeuseInitialeAXIV = AutonomousCar.getXTondeuseInitialeAXIV(xCoinDroitAXIV);
+			int xInitiale4HWC = AutonomousCar.getXInitiale4HWC(xCoinDroit4HWC);
 
-			int yTondeuseInitialeAXIV = AutonomousCar.getYTondeuseInitialeAXIV(yCoinDroitAXIV);
+			int yInitiale4HWC = AutonomousCar.getYInitiale4HWC(yCoinDroit4HWC);
 
-			String orientationAXIV = AutonomousCar.getOrientationTondeuseInitialeAXIV();
+			String orientation4HWC = AutonomousCar.getOrientationInitiale4HWC();
 
-			String instructionsAXIV = AutonomousCar.getInstructionsAXIV();
+			String instructions4HWC = AutonomousCar.getInstructions4HWC();
 
-			liste.add(new AutonomousCar(xCoinDroitAXIV, yCoinDroitAXIV, xTondeuseInitialeAXIV, yTondeuseInitialeAXIV,
-					orientationAXIV, instructionsAXIV));
+			liste.add(new AutonomousCar(xCoinDroit4HWC, yCoinDroit4HWC, xInitiale4HWC, yInitiale4HWC, orientation4HWC,
+					instructions4HWC));
 
 		}
 
 		return liste;
 	}
 
-	// Déplacement sur le gazon de plusieurs tondeuses
+	// Déplacement sur la surface de plusieurs véhicules
 
-	public static void deplacementDeToutesLesTondeuses(ArrayList<AutonomousCar> liste) {
+	public static void deplacementDeTousLesVehicules(ArrayList<AutonomousCar> liste) {
 
-		System.out.println("NOMBRE DE TONDEUSES DEPLOYEES :" + liste.size());
+		System.out.println("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
-		SpeechAxiv.repete("NOMBRE DE TONDEUSES DEPLOYEES :" + liste.size());
+		SpeechAxiv.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
 		for (int c = 0; c < liste.size(); c++) {
-			tondreLeGazon(liste.get(c));
+			parcourirLaSurface(liste.get(c));
 		}
 	}
 
-	// Déplacement sur le gazon d'une tondeuse (mode console)
+	// Déplacement sur la surface d'un véhicule (mode console)
 
-	private static void tondreLeGazon(AutonomousCar tondeuseEnDeplacement)
+	private static void parcourirLaSurface(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
 		// Chrono chrono = new Chrono();
 
-		String instructionsASuivre = tondeuseEnDeplacement.getInstructions();
+		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
 
 		// Lancement du chronometre
 
@@ -796,11 +792,11 @@ public class AutonomousCar {
 																				// to
 																				// String
 
-			String orientationActuelle = tondeuseEnDeplacement.getOrientationTondeuseActuelle();
+			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();
 
-			int xActuelle = tondeuseEnDeplacement.getXTondeuseActuelle();
+			int xActuelle = vehiculeEnDeplacement.getXActuelle();
 
-			int yActuelle = tondeuseEnDeplacement.getYTondeuseActuelle();
+			int yActuelle = vehiculeEnDeplacement.getYActuelle();
 
 			// Tourner à droite
 
@@ -811,19 +807,19 @@ public class AutonomousCar {
 			{
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 				}
 			}
 
@@ -834,25 +830,25 @@ public class AutonomousCar {
 			if (instructionActuelle.equals("G")) {
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 				}
 			}
 
 			// Avancer
 
-			// Se rassurer que la future position est dans la pelouse
+			// Se rassurer que la future position est dans la surface
 			// Si oui Avancer
 			// Sinon, pas de mouvement, orientation conservée puis traiter
 			// instruction suivante(indice suivant)
@@ -863,9 +859,9 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle + 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -875,9 +871,9 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle + 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -887,9 +883,9 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle - 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -899,9 +895,9 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle - 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -914,44 +910,43 @@ public class AutonomousCar {
 
 		Chronometre.stopChrono();
 
-		tondeuseEnDeplacement.setChronoFinale(Chronometre.getChrono());
+		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());
 
 		// Communication de la position et de l'orientation finale
 
-		tondeuseEnDeplacement.setXTondeuseFinale(tondeuseEnDeplacement.getXTondeuseActuelle());
+		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());
 
-		tondeuseEnDeplacement.setYTondeuseFinale(tondeuseEnDeplacement.getYTondeuseActuelle());
+		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());
 
-		tondeuseEnDeplacement.setOrientationTondeuseFinale(tondeuseEnDeplacement.getOrientationTondeuseActuelle());
+		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
 
-		System.out.println("CHRONO : " + tondeuseEnDeplacement.getChronoFinale() + " nanosecondes");
+		System.out.println("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
 
 		System.out.println("INIT");
 
-		System.out.println("POSITION XCOIN DROIT : " + tondeuseEnDeplacement.getXCoinDroit() + " / "
-				+ "POSITION YCOIN DROIT : " + tondeuseEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
-				+ tondeuseEnDeplacement.getXTondeuseInitiale() + " / " + "POSITION YINIT : "
-				+ tondeuseEnDeplacement.getYTondeuseInitiale() + " / " + "O INIT : "
-				+ tondeuseEnDeplacement.getOrientationTondeuseInitiale());
+		System.out.println("POSITION XCOIN DROIT : " + vehiculeEnDeplacement.getXCoinDroit() + " / "
+				+ "POSITION YCOIN DROIT : " + vehiculeEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
+				+ vehiculeEnDeplacement.getXInitiale() + " / " + "POSITION YINIT : "
+				+ vehiculeEnDeplacement.getYInitiale() + " / " + "O INIT : "
+				+ vehiculeEnDeplacement.getOrientationInitiale());
 
-		System.out.println("INSTRUCTIONS :" + tondeuseEnDeplacement.getInstructions());
+		System.out.println("INSTRUCTIONS :" + vehiculeEnDeplacement.getInstructions());
 
 		System.out.println("FIN");
 
-		System.out.println("POSITION X FINALE : " + tondeuseEnDeplacement.getXTondeuseFinale()
-				+ " / POSITION Y FINALE : " + tondeuseEnDeplacement.getYTondeuseFinale() + " / O FINALE : "
-				+ tondeuseEnDeplacement.getOrientationTondeuseFinale());
+		System.out.println("POSITION X FINALE : " + vehiculeEnDeplacement.getXFinale() + " / POSITION Y FINALE : "
+				+ vehiculeEnDeplacement.getYFinale() + " / O FINALE : " + vehiculeEnDeplacement.getOrientationFinale());
 	}
 
-	// Déplacement sur le gazon d'une tondeuse (mode graphique)
+	// Déplacement sur la surface d'un véhicule (mode graphique)
 
-	public static void tondreLeGazonGraphique(AutonomousCar tondeuseEnDeplacement)
+	public static void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
 		// Chrono chrono = new Chrono();
 
-		String instructionsASuivre = tondeuseEnDeplacement.getInstructions();
+		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
 
 		// Lancement du chronometre
 
@@ -965,11 +960,11 @@ public class AutonomousCar {
 																				// to
 																				// String
 
-			String orientationActuelle = tondeuseEnDeplacement.getOrientationTondeuseActuelle();
+			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();
 
-			int xActuelle = tondeuseEnDeplacement.getXTondeuseActuelle();
+			int xActuelle = vehiculeEnDeplacement.getXActuelle();
 
-			int yActuelle = tondeuseEnDeplacement.getYTondeuseActuelle();
+			int yActuelle = vehiculeEnDeplacement.getYActuelle();
 
 			// Tourner à droite
 
@@ -980,19 +975,19 @@ public class AutonomousCar {
 			{
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 				}
 			}
 
@@ -1003,25 +998,25 @@ public class AutonomousCar {
 			if (instructionActuelle.equals("G")) {
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 				}
 			}
 
 			// Avancer
 
-			// Se rassurer que la future position est dans la pelouse
+			// Se rassurer que la future position est dans la surface
 			// Si oui Avancer
 			// Sinon, pas de mouvement, orientation conservée puis traiter
 			// instruction suivante(indice suivant)
@@ -1032,9 +1027,9 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle + 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1044,9 +1039,9 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle + 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1056,9 +1051,9 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle - 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1068,9 +1063,9 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle - 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1083,53 +1078,52 @@ public class AutonomousCar {
 
 		Chronometre.stopChrono();
 
-		tondeuseEnDeplacement.setChronoFinale(Chronometre.getChrono());
+		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());
 
 		// Communication de la position et de l'orientation finale
 
-		tondeuseEnDeplacement.setXTondeuseFinale(tondeuseEnDeplacement.getXTondeuseActuelle());
+		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());
 
-		tondeuseEnDeplacement.setYTondeuseFinale(tondeuseEnDeplacement.getYTondeuseActuelle());
+		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());
 
-		tondeuseEnDeplacement.setOrientationTondeuseFinale(tondeuseEnDeplacement.getOrientationTondeuseActuelle());
+		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
 
-		System.out.println("CHRONO : " + tondeuseEnDeplacement.getChronoFinale() + " nanosecondes");
+		System.out.println("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
 
 		System.out.println("INIT");
 
-		System.out.println("POSITION XCOIN DROIT : " + tondeuseEnDeplacement.getXCoinDroit() + " / "
-				+ "POSITION YCOIN DROIT : " + tondeuseEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
-				+ tondeuseEnDeplacement.getXTondeuseInitiale() + " / " + "POSITION YINIT : "
-				+ tondeuseEnDeplacement.getYTondeuseInitiale() + " / " + "O INIT : "
-				+ tondeuseEnDeplacement.getOrientationTondeuseInitiale());
+		System.out.println("POSITION XCOIN DROIT : " + vehiculeEnDeplacement.getXCoinDroit() + " / "
+				+ "POSITION YCOIN DROIT : " + vehiculeEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
+				+ vehiculeEnDeplacement.getXInitiale() + " / " + "POSITION YINIT : "
+				+ vehiculeEnDeplacement.getYInitiale() + " / " + "O INIT : "
+				+ vehiculeEnDeplacement.getOrientationInitiale());
 
-		System.out.println("INSTRUCTIONS :" + tondeuseEnDeplacement.getInstructions());
+		System.out.println("INSTRUCTIONS :" + vehiculeEnDeplacement.getInstructions());
 
 		System.out.println("FIN");
 
-		System.out.println("POSITION X FINALE : " + tondeuseEnDeplacement.getXTondeuseFinale()
-				+ " / POSITION Y FINALE : " + tondeuseEnDeplacement.getYTondeuseFinale() + " / O FINALE : "
-				+ tondeuseEnDeplacement.getOrientationTondeuseFinale());
+		System.out.println("POSITION X FINALE : " + vehiculeEnDeplacement.getXFinale() + " / POSITION Y FINALE : "
+				+ vehiculeEnDeplacement.getYFinale() + " / O FINALE : " + vehiculeEnDeplacement.getOrientationFinale());
 	}
 
 	// Enregistrement des paramètres actuels
 
-	public static ArrayList<AutonomousCar> enregistrementParametresActuels(AutonomousCar tondeuseEnDeplacement)
+	public static ArrayList<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
 		// A chaque mise à jour des paramètres, j'ajoute à mon ArrayList
 
-		ArrayList<AutonomousCar> tondeuseAvecParametresDifferents = new ArrayList<AutonomousCar>();
+		ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = new ArrayList<AutonomousCar>();
 
 		// Enregistrement des paramètres initiaux de la tondeuse
 
-		tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-				tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseInitiale(),
-				tondeuseEnDeplacement.getYTondeuseInitiale(), tondeuseEnDeplacement.getOrientationTondeuseInitiale(),
-				tondeuseEnDeplacement.getInstructions()));
+		vehiculeAvecParametresDifferents
+				.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),
+						vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),
+						vehiculeEnDeplacement.getOrientationInitiale(), vehiculeEnDeplacement.getInstructions()));
 
-		String instructionsASuivre = tondeuseEnDeplacement.getInstructions();
+		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
 
 		for (int i = 0; i < instructionsASuivre.length(); i++) // Suivre les
 																// instructions
@@ -1139,11 +1133,11 @@ public class AutonomousCar {
 																				// to
 																				// String
 
-			String orientationActuelle = tondeuseEnDeplacement.getOrientationTondeuseActuelle();
+			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();
 
-			int xActuelle = tondeuseEnDeplacement.getXTondeuseActuelle();
+			int xActuelle = vehiculeEnDeplacement.getXActuelle();
 
-			int yActuelle = tondeuseEnDeplacement.getYTondeuseActuelle();
+			int yActuelle = vehiculeEnDeplacement.getYActuelle();
 
 			// Tourner à droite
 
@@ -1154,39 +1148,35 @@ public class AutonomousCar {
 			{
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "E",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "E", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "S",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "S", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "N",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "N", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "W",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "W", vehiculeEnDeplacement.getInstructions()));
 				}
 			}
 
@@ -1197,45 +1187,41 @@ public class AutonomousCar {
 			if (instructionActuelle.equals("G")) {
 
 				if (orientationActuelle.equals("N")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("W");
+					vehiculeEnDeplacement.setOrientationActuelle("W");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "W",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "W", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("E")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("N");
+					vehiculeEnDeplacement.setOrientationActuelle("N");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "N",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "N", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("W")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("S");
+					vehiculeEnDeplacement.setOrientationActuelle("S");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "S",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "S", vehiculeEnDeplacement.getInstructions()));
 				}
 
 				if (orientationActuelle.equals("S")) {
-					tondeuseEnDeplacement.setOrientationTondeuseActuelle("E");
+					vehiculeEnDeplacement.setOrientationActuelle("E");
 
-					tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-							tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-							tondeuseEnDeplacement.getYTondeuseActuelle(), "E",
-							tondeuseEnDeplacement.getInstructions()));
+					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+							vehiculeEnDeplacement.getYActuelle(), "E", vehiculeEnDeplacement.getInstructions()));
 				}
 			}
 
 			// Avancer
 
-			// Se rassurer que la future position est dans la pelouse
+			// Se rassurer que la future position est dans la surface
 			// Si oui Avancer
 			// Sinon, pas de mouvement, orientation conservée puis traiter
 			// instruction suivante(indice suivant)
@@ -1246,14 +1232,14 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle + 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 
-						tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-								tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-								yActuelleFuture, tondeuseEnDeplacement.getOrientationTondeuseActuelle(),
-								tondeuseEnDeplacement.getInstructions()));
+						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),
+								vehiculeEnDeplacement.getInstructions()));
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1263,15 +1249,14 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle + 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 
-						tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-								tondeuseEnDeplacement.getYCoinDroit(), xActuelleFuture,
-								tondeuseEnDeplacement.getYTondeuseActuelle(),
-								tondeuseEnDeplacement.getOrientationTondeuseActuelle(),
-								tondeuseEnDeplacement.getInstructions()));
+						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,
+								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),
+								vehiculeEnDeplacement.getInstructions()));
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1281,15 +1266,14 @@ public class AutonomousCar {
 				{
 					int xActuelleFuture = xActuelle - 1;
 
-					if (0 <= xActuelleFuture && xActuelleFuture <= tondeuseEnDeplacement.getXCoinDroit())// Avancer
+					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setXTondeuseActuelle(xActuelleFuture);
+						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
 
-						tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-								tondeuseEnDeplacement.getYCoinDroit(), xActuelleFuture,
-								tondeuseEnDeplacement.getYTondeuseActuelle(),
-								tondeuseEnDeplacement.getOrientationTondeuseActuelle(),
-								tondeuseEnDeplacement.getInstructions()));
+						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,
+								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),
+								vehiculeEnDeplacement.getInstructions()));
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1299,14 +1283,14 @@ public class AutonomousCar {
 				{
 					int yActuelleFuture = yActuelle - 1;
 
-					if (0 <= yActuelleFuture && yActuelleFuture <= tondeuseEnDeplacement.getYCoinDroit())// Avancer
+					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
 					{
-						tondeuseEnDeplacement.setYTondeuseActuelle(yActuelleFuture);
+						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
 
-						tondeuseAvecParametresDifferents.add(new AutonomousCar(tondeuseEnDeplacement.getXCoinDroit(),
-								tondeuseEnDeplacement.getYCoinDroit(), tondeuseEnDeplacement.getXTondeuseActuelle(),
-								yActuelleFuture, tondeuseEnDeplacement.getOrientationTondeuseActuelle(),
-								tondeuseEnDeplacement.getInstructions()));
+						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),
+								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),
+								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),
+								vehiculeEnDeplacement.getInstructions()));
 					} else {
 						continue; // Passage à la commande suivante
 					}
@@ -1315,7 +1299,7 @@ public class AutonomousCar {
 
 		} // for
 
-		return tondeuseAvecParametresDifferents;
+		return vehiculeAvecParametresDifferents;
 	}
 
 }

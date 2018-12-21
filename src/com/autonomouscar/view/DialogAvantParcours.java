@@ -19,7 +19,7 @@ import com.autonomouscar.model.AutonomousCar;
 
 public class DialogAvantParcours extends JDialog {
 
-	private DialogAvantParcoursPanneauAxivIt container = new DialogAvantParcoursPanneauAxivIt();
+	private DialogAvantParcoursPanneau4HWC container = new DialogAvantParcoursPanneau4HWC();
 
 	private Font policeCalibriLight = new Font("Calibri Light", Font.BOLD, 30);
 
@@ -31,7 +31,7 @@ public class DialogAvantParcours extends JDialog {
 
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
-	public DialogAvantParcours(JFrame parent, String title, boolean modal, AutonomousCar tondeuse)
+	public DialogAvantParcours(JFrame parent, String title, boolean modal, AutonomousCar vehicule)
 
 	{
 		super(parent, title, modal);
@@ -44,7 +44,7 @@ public class DialogAvantParcours extends JDialog {
 
 		//////////////////////////////////////////////////////////////////
 
-		container.add(affichageInitiale(tondeuse));
+		container.add(affichageInitiale(vehicule));
 
 		this.setContentPane(container);
 
@@ -53,7 +53,7 @@ public class DialogAvantParcours extends JDialog {
 		/////////////////////////////////////////////////////////////////
 	}
 
-	private JPanel affichageInitiale(AutonomousCar tondeuse)
+	private JPanel affichageInitiale(AutonomousCar vehicule)
 
 	{
 
@@ -104,7 +104,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// X CD
 
-		JLabel jlXCD = new JLabel("X Coin Droit : " + tondeuse.getXCoinDroit());
+		JLabel jlXCD = new JLabel("X Coin Droit : " + vehicule.getXCoinDroit());
 
 		jlXCD.setPreferredSize(new Dimension(330, 40));
 
@@ -166,7 +166,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// Y CD
 
-		JLabel jlYCD = new JLabel("Y Coin Droit : " + tondeuse.getYCoinDroit());
+		JLabel jlYCD = new JLabel("Y Coin Droit : " + vehicule.getYCoinDroit());
 
 		jlYCD.setPreferredSize(new Dimension(330, 40));
 
@@ -220,7 +220,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// X TONDEUSE
 
-		JLabel jlXTI = new JLabel("X Initiale : " + tondeuse.getXTondeuseInitiale());
+		JLabel jlXTI = new JLabel("X Initiale : " + vehicule.getXInitiale());
 
 		jlXTI.setPreferredSize(new Dimension(330, 40));
 
@@ -281,7 +281,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// Y TONDEUSE
 
-		JLabel jlYTI = new JLabel("Y Initiale : " + tondeuse.getYTondeuseInitiale());
+		JLabel jlYTI = new JLabel("Y Initiale : " + vehicule.getYInitiale());
 
 		jlYTI.setPreferredSize(new Dimension(330, 40));
 
@@ -345,7 +345,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// ORIENTATION
 
-		JLabel jlOI = new JLabel("Orientation Initiale : " + tondeuse.getOrientationTondeuseInitiale());
+		JLabel jlOI = new JLabel("Orientation Initiale : " + vehicule.getOrientationInitiale());
 
 		jlOI.setPreferredSize(new Dimension(990, 40));
 
@@ -361,7 +361,7 @@ public class DialogAvantParcours extends JDialog {
 
 		// INSTRUCTIONS
 
-		JLabel jlInstructions = new JLabel(tondeuse.getInstructions());
+		JLabel jlInstructions = new JLabel(vehicule.getInstructions());
 
 		jlInstructions.setPreferredSize(new Dimension(990, 40));
 
