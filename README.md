@@ -26,9 +26,9 @@ Les 4 données suivantes sont nécessaires avant tout déplacement :
 
 2) la position initiale du véhicule
 
-3) l’orientation initiale
+3) l’orientation initiale (N (North) E (East)  W (West) S (South))
 
-4) les instructions à suivre
+4) les instructions à suivre ( combinaison de 3 lettres A (Avancer) ; G (Tourner à Gauche) et D(Tourner à Droite))
 
 Le logiciel présente 3 options au choix:
 
