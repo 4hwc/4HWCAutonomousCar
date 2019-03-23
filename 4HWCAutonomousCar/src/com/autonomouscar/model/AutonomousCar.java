@@ -523,7 +523,7 @@ public class AutonomousCar {
 				try {
 					fis = new FileInputStream(f);
 
-					byte[] buf = new byte[1024];
+					byte[] buf = new byte[2048];
 
 					int count = 0;
 
@@ -536,6 +536,9 @@ public class AutonomousCar {
 
 							if (buf[i] != '\n') {
 								ligne = ligne + (char) buf[i];
+
+								if (i == n - 1) // enregistrement dernière ligne
+									lignes.add(ligne);
 							}
 
 							if (buf[i] == '\n') {
@@ -547,10 +550,8 @@ public class AutonomousCar {
 
 								ligne = "";
 								/*
-								 * Compter le nombre de retour à la ligne
-								 * Sachant que le nombre de lignes se trouve en
-								 * ajoutant 1 au nombre final de retour à la
-								 * ligne
+								 * Compter le nombre de retour à la ligne Sachant que le nombre de lignes se
+								 * trouve en ajoutant 1 au nombre final de retour à la ligne
 								 */
 							}
 
@@ -591,8 +592,7 @@ public class AutonomousCar {
 					/*
 					 * for (int h = 0; h < listeInitiale.size(); h++) {
 					 * System.out.println(listeInitiale.get(h).xCoinDroit + "" +
-					 * listeInitiale.get(h).yCoinDroit + "" +
-					 * listeInitiale.get(h).xInitiale + "" +
+					 * listeInitiale.get(h).yCoinDroit + "" + listeInitiale.get(h).xInitiale + "" +
 					 * listeInitiale.get(h).yInitiale + "" +
 					 * listeInitiale.get(h).orientationInitiale + "" +
 					 * listeInitiale.get(h).instructions); }
