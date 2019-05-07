@@ -18,8 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import com.autonomouscar.controller.Chronometre;
 import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.utils.Chronometre;
 
 public class DeplacementVehicules extends JFrame {
 

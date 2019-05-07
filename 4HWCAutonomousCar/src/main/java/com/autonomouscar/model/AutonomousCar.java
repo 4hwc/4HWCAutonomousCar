@@ -8,8 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.autonomouscar.controller.Chronometre;
-import com.autonomouscar.controller.SpeechAxiv;
+import com.autonomouscar.utils.Chronometre;
+import com.autonomouscar.utils.Speech;
 
 public class AutonomousCar {
 
@@ -763,7 +763,7 @@ public class AutonomousCar {
 
 		System.out.println("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
-		SpeechAxiv.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
+		Speech.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
 		for (int c = 0; c < liste.size(); c++) {
 			parcourirLaSurface(liste.get(c));

@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.autonomouscar</groupId>
+  <artifactId>4HWCAutonomousCar</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>4HWC Autonomous Car</name>
+  <packaging>jar</packaging>
+  <url>https://4hwc4hwc.wixsite.com/4hwc</url>
+  <dependencies>
+  	<dependency> 
+	    <groupId>SI_VOX</groupId>
+	    <artifactId>SI_VOX</artifactId>
+	    <scope>system</scope>
+	    <version>1</version>
+	    <systemPath>${basedir}\lib\SI_VOX.jar</systemPath>
+    </dependency>
+  </dependencies>
+  
+  <developers>
+  	<developer>
+  		<email>jupsfan@gmail.com</email>
+		<name>Fan Jups</name>
+		<url>https://github.com/FanJups</url>
+		<id>FanJups</id>
+  	</developer>
+  </developers>
+  
+</project>

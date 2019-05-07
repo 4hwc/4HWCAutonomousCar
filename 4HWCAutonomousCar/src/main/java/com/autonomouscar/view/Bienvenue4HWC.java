@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
-import com.autonomouscar.controller.SpeechAxiv;
+import com.autonomouscar.utils.Speech;
 
 public class Bienvenue4HWC extends JFrame {
 
@@ -77,7 +77,7 @@ public class Bienvenue4HWC extends JFrame {
 	}
 
 	public static void voixBienvenue4HWC() {
-		SpeechAxiv.repete("Salut je suis l'intelligence artificielle 4 H W C du prototype voiture autonome !");
+		Speech.repete("Salut je suis l'intelligence artificielle 4 H W C du prototype voiture autonome !");
 	}
 
 }
