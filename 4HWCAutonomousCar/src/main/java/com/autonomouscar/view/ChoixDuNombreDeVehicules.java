@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.service.AutonomousCarService;
 
 public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
@@ -343,7 +343,7 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
 		if (arg0.getSource() == boutonConfirmer) {
 
-			validation = AutonomousCar.validationNombreDeVehiculesString(jtfNbre.getText());
+			validation = AutonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
 
 			if (validation == true) {
 

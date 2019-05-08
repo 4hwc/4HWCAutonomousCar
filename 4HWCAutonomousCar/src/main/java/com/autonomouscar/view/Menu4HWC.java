@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.service.AutonomousCarService;
 
 public class Menu4HWC extends JFrame implements ActionListener {
 
@@ -353,7 +353,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 			this.setVisible(false);
 
-			ChargementDeplacementVehicules.listeVehicules = AutonomousCar.recupFichierBase();
+			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.recupFichierBase();
 
 			ChargementDeplacementVehicules.origine = "défaut";
 
@@ -375,7 +375,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 			this.setVisible(false);
 
-			ChargementDeplacementVehicules.listeVehicules = AutonomousCar.getVehicules4HWC();
+			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.getVehicules4HWC();
 
 			ChargementDeplacementVehicules.origine = "IA";
 

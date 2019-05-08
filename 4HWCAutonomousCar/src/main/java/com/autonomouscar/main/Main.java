@@ -1,8 +1,10 @@
 package com.autonomouscar.main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.service.AutonomousCarService;
 
 public class Main {
 
@@ -56,7 +58,7 @@ public class Main {
 
 			case 1:
 
-				AutonomousCar.deplacementDeTousLesVehicules(AutonomousCar.recupFichierBase());
+				AutonomousCarService.deplacementDeTousLesVehicules(AutonomousCarService.recupFichierBase());
 
 				break;
 
@@ -73,7 +75,7 @@ public class Main {
 
 					nombreDeVehiules = sc.nextLine();
 
-				} while (AutonomousCar.validationNombreDeVehiculesString(nombreDeVehiules) == false);
+				} while (AutonomousCarService.validationNombreDeVehiculesString(nombreDeVehiules) == false);
 
 				for (int i = 0; i < Integer.parseInt(nombreDeVehiules.trim()); i++)
 
@@ -106,7 +108,7 @@ public class Main {
 
 						yInitiale = sc.nextLine();
 
-					} while (AutonomousCar.validationPositionsString(xCoinDroit, yCoinDroit, xInitiale,
+					} while (AutonomousCarService.validationPositionsString(xCoinDroit, yCoinDroit, xInitiale,
 							yInitiale) == false);
 
 					String orientationInitiale;
@@ -116,7 +118,8 @@ public class Main {
 
 						orientationInitiale = sc.nextLine();
 
-					} while (AutonomousCar.validationOrientationInitiale(orientationInitiale.toUpperCase()) == false);
+					} while (AutonomousCarService
+							.validationOrientationInitiale(orientationInitiale.toUpperCase()) == false);
 
 					String instructions;
 
@@ -126,7 +129,7 @@ public class Main {
 
 						instructions = sc.nextLine();
 
-					} while (AutonomousCar.validationInstructions(instructions.toUpperCase()) == false);
+					} while (AutonomousCarService.validationInstructions(instructions.toUpperCase()) == false);
 
 					// J'ajoute les données à ma liste de tondeuses
 
@@ -137,13 +140,13 @@ public class Main {
 
 				}
 
-				AutonomousCar.deplacementDeTousLesVehicules(vehicules);
+				AutonomousCarService.deplacementDeTousLesVehicules(vehicules);
 
 				break;
 
 			case 3:
 
-				AutonomousCar.deplacementDeTousLesVehicules(AutonomousCar.getVehicules4HWC());
+				AutonomousCarService.deplacementDeTousLesVehicules(AutonomousCarService.getVehicules4HWC());
 
 				break;
 

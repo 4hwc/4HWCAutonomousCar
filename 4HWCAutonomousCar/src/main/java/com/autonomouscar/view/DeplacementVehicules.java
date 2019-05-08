@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.service.AutonomousCarService;
 import com.autonomouscar.utils.Chronometre;
 
 public class DeplacementVehicules extends JFrame {
@@ -118,7 +119,7 @@ public class DeplacementVehicules extends JFrame {
 
 			// Je récupère le véhicule et ses différentes positions
 
-			ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = AutonomousCar
+			ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = AutonomousCarService
 					.enregistrementParametresActuels(vehicule);
 
 			// J'affiche le véhicule à différentes positions : Xactuelle;
@@ -140,8 +141,7 @@ public class DeplacementVehicules extends JFrame {
 				setDimensionsBitume(xCD, yCD, bitume);
 
 				/*
-				 * Boucle pour Création de surfaces rectangulaires pour la
-				 * surface
+				 * Boucle pour Création de surfaces rectangulaires pour la surface
 				 */
 
 				// Positionnement de la case de départ du composant
@@ -308,8 +308,8 @@ public class DeplacementVehicules extends JFrame {
 
 	/*
 	 * Mon repère est différent de celui de l'ordi donc il est important de
-	 * convertir. On a le même axe des abscisses mais les axes des ordonnées ont
-	 * des sens opposés.
+	 * convertir. On a le même axe des abscisses mais les axes des ordonnées ont des
+	 * sens opposés.
 	 * 
 	 * L'axe y de l'ordi est descendant, le mien est ascendant
 	 * 

@@ -24,6 +24,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import com.autonomouscar.model.AutonomousCar;
+import com.autonomouscar.service.AutonomousCarService;
 
 public class FormulaireVehicules extends JFrame implements ActionListener {
 
@@ -708,12 +709,14 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 		if (arg0.getSource() == boutonConfirmer)
 
 		{
-			validationPositions = AutonomousCar.validationPositionsString(jtfXCoinDroit.getText(),
+			validationPositions = AutonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
 					jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());
 
-			validationOrientation = AutonomousCar.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());
+			validationOrientation = AutonomousCarService
+					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());
 
-			validationInstructions = AutonomousCar.validationInstructions(jtfInstructions.getText().toUpperCase());
+			validationInstructions = AutonomousCarService
+					.validationInstructions(jtfInstructions.getText().toUpperCase());
 
 			if (validationPositions == true)
 
