@@ -4,39 +4,39 @@ public class AutonomousCar {
 
 	// Coins droits
 
-	protected int xCoinDroit;
+	private int xCoinDroit;
 
-	protected int yCoinDroit;
+	private int yCoinDroit;
 
 	// Positions initiales
 
-	protected int xInitiale;
+	private int xInitiale;
 
-	protected int yInitiale;
+	private int yInitiale;
 
-	protected String orientationInitiale;
+	private String orientationInitiale;
 
-	protected String instructions;
+	private String instructions;
 
 	// Positions actuelles
 
-	protected int xActuelle;
+	private int xActuelle;
 
-	protected int yActuelle;
+	private int yActuelle;
 
-	protected String orientationActuelle;
+	private String orientationActuelle;
 
 	// Positions finales à atteindre
 
-	protected int xFinale;
+	private int xFinale;
 
-	protected int yFinale;
+	private int yFinale;
 
-	protected String orientationFinale;
+	private String orientationFinale;
 
 	// Chrono du temps mis pour parcourir la surface par la voiture en ms
 
-	protected long chronoFinale;
+	private long chronoFinale;
 
 	public AutonomousCar(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale, String orientationInitiale,
 			String instructions) {
