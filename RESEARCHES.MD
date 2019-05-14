@@ -23,3 +23,5 @@ https://www.archunit.org/userguide/html/000_Index.html
 https://www.google.com/search?q=how+to+add+travis+ci+to+github+repo&oq=how+to+add+travis+&aqs=chrome.1.69i57j0l5.26666j0j7&sourceid=chrome&ie=UTF-8
 
 https://docs.travis-ci.com/user/tutorial/
+
+https://docs.travis-ci.com/
