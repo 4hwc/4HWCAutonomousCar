@@ -17,3 +17,9 @@ https://www.google.com/search?q=archunit-junit4+maven&oq=archunit-junit4+maven&a
 https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit4
 
 https://www.archunit.org/userguide/html/000_Index.html
+
+## how to add travis ci to github repo
+
+https://www.google.com/search?q=how+to+add+travis+ci+to+github+repo&oq=how+to+add+travis+&aqs=chrome.1.69i57j0l5.26666j0j7&sourceid=chrome&ie=UTF-8
+
+https://docs.travis-ci.com/user/tutorial/
