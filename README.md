@@ -1,7 +1,5 @@
 # 4HWCAutonomousCar
 
-## Explications du projet AutonomousCar
-
 A long terme, le but c'est de mettre sur pied, un véhicule se déplaçant de manière autonome dans une ville par exemple.
 
 Pour l'instant, un logiciel a été mis sur pied.
