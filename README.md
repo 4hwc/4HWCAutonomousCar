@@ -1,39 +1,34 @@
 # 4HWCAutonomousCar
 
-A long terme, le but c'est de mettre sur pied, un véhicule se déplaçant de manière autonome dans une ville par exemple.
+The goal is to set up a vehicle moving autonomously.
 
-Pour l'instant, un logiciel a été mis sur pied.
+To achieve that goal, we are developing a simulation software : **Prototype of Autonomous Vehicle**
 
-Des améliorations sont à venir.
+Visualize in real time on a screen the movement of a vehicle from its initial position to its final position according to the instructions provided and its orientation at each moment on a rectangular surface. Throughout the process, an artificial intelligence (voice) improves the user experience.
 
-Prototype  de Véhicule Autonome
+The following  data are needed before moving:
 
-Visualiser en temps réel sur un écran le déplacement d’un véhicule de sa position initiale à sa position finale en fonction des instructions fournies et de son orientation à chaque instant sur une surface rectangulaire. Tout au long du processus, une intelligence artificielle sous forme vocale améliore l’expérience utilisateur.
+1) surface dimensions
 
-Les 4 données suivantes sont nécessaires avant tout déplacement :
+2) vehicle's initial position
 
-1) les dimensions de la surface
+3) initial orientation (N (North) E (East) W (West) S (South))
 
-2) la position initiale du véhicule
+4) instructions to follow (combination of 3 letters A (Move Forward); G (Turn Left) and D (Turn Right))
 
-3) l’orientation initiale (N (North) E (East)  W (West) S (South))
+**NOTE :** French translations -> A (Avancer) G (Gauche) D(Droite)
 
-4) les instructions à suivre ( combinaison de 3 lettres A (Avancer) ; G (Tourner à Gauche) et D(Tourner à Droite))
+The software has 3 options to choose from:
 
-Le logiciel présente 3 options au choix:
+1) View the movements of 2 vehicles whose initial parameters are previously defined in a file.
 
-1) Visualiser les déplacements de 2 véhicules dont les paramètres initiaux sont au préalable définis dans un fichier.
+2) The number of vehicles and the initial parameters are defined by a user.
 
-2) Le nombre de véhicules et les paramètres initiaux sont définis par un utilisateur.
+3) Artificial intelligence automatically generates the number of vehicles and the initial parameters.
 
-3) L’intelligence artificielle génère automatiquement le nombre de véhicules et les paramètres initiaux.
+At the end, each vehicle must display its final position and orientation.
 
-A la fin du parcours, chaque véhicule doit afficher sa position et son orientation finales.
-
-Voici des captures d'écran du projet ---> https://drive.google.com/open?id=1wbKSHlvNHx9uD-yMiw7ZG2IrK9dOw3QC
-
-
-
+Screenshots : 
 
 ![image 1](Screenshots/car1.JPG)
 
