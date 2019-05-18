@@ -31,3 +31,13 @@ https://docs.travis-ci.com/
 https://www.google.com/search?q=how+to+switch+widows+in+java+swing&oq=how+to+switch+widows+in+java+swing&aqs=chrome..69i57.17103j0j7&sourceid=chrome&ie=UTF-8
 
 https://stackoverflow.com/questions/5124547/switching-between-windows-in-java-applcation
+
+## how to create an exe java application using maven
+
+https://www.google.com/search?ei=1YfgXLLaJ62NlwTZrICoBQ&q=how+to+create+an+exe+java+application+using+maven&oq=how+to+create+an+exe+java+application+using+maven&gs_l=psy-ab.3...40261.41266..47533...0.0..0.183.855.2j5......0....1..gws-wiz.......0i71j35i304i39.1dC67qlt7zI
+
+https://stackoverflow.com/questions/30298273/need-help-configuring-maven-pom-to-build-exe-file
+
+https://www.genuinecoder.com/convert-java-jar-to-exe/
+
+https://www.hascode.com/2012/08/creating-a-windows-executable-from-a-jar-using-maven/
