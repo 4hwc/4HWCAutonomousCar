@@ -56,3 +56,19 @@ https://wadeawalker.wordpress.com/2010/10/24/tutorial-creating-native-binary-exe
 first look at this one below
 
 https://howtodoinjava.com/maven/create-windows-exe-file-for-java-application/
+
+## how to create an installation process for a software made with java
+
+https://www.google.com/search?q=how+to+create+an+installation+process+for+a+software+made+with+java&oq=how+to+create+an+installation+process+for+a+software+made+with+java&aqs=chrome..69i57.53320j0j7&sourceid=chrome&ie=UTF-8
+
+Create a installer to your Java Applications
+
+https://youtu.be/XITTQGD8V1s
+
+https://stackoverflow.com/questions/14685149/creating-an-installer-for-java-desktop-application
+
+https://www.advancedinstaller.com/user-guide/tutorial-java.html
+
+https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/self-contained-packaging.html
+
+https://www.ej-technologies.com/products/install4j/overview.html
