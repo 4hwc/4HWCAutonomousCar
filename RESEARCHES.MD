@@ -41,3 +41,11 @@ https://stackoverflow.com/questions/30298273/need-help-configuring-maven-pom-to-
 https://www.genuinecoder.com/convert-java-jar-to-exe/
 
 https://www.hascode.com/2012/08/creating-a-windows-executable-from-a-jar-using-maven/
+
+## how to create an executable java application for every platform
+
+https://www.google.com/search?q=how+to+create+an+executable+java+application+for+every+platform&oq=how+to+create+an+executable+java+application+for+every+platform&aqs=chrome..69i57.48114j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/54372647/create-a-java-standalone-executable-application-to-run-on-different-platforms-wi
+
+http://launch4j.sourceforge.net/
