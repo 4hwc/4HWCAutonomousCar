@@ -49,3 +49,10 @@ https://www.google.com/search?q=how+to+create+an+executable+java+application+for
 https://stackoverflow.com/questions/54372647/create-a-java-standalone-executable-application-to-run-on-different-platforms-wi
 
 http://launch4j.sourceforge.net/
+
+
+https://wadeawalker.wordpress.com/2010/10/24/tutorial-creating-native-binary-executables-for-multi-platform-java-apps-with-opengl-and-eclipse-rcp/
+
+first look at this one below
+
+https://howtodoinjava.com/maven/create-windows-exe-file-for-java-application/
