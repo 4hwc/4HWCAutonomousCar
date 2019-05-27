@@ -2,7 +2,7 @@
 
 The goal is to set up a vehicle moving autonomously.
 
-To achieve that goal, we are developing a simulation software : **Prototype of Autonomous Vehicle**
+To achieve that goal, we are developing a simulation software: **Prototype of Autonomous Vehicle**
 
 Visualize in real time on a screen the movement of a vehicle from its initial position to its final position according to the instructions provided and its orientation at each moment on a rectangular surface. Throughout the process, an artificial intelligence (voice) improves the user experience.
 
