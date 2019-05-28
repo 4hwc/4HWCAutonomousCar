@@ -72,3 +72,7 @@ https://www.advancedinstaller.com/user-guide/tutorial-java.html
 https://docs.oracle.com/javase/8/docs/technotes/guides/deploy/self-contained-packaging.html
 
 https://www.ej-technologies.com/products/install4j/overview.html
+
+## SI VOX
+
+http://www.roboteek.fr/2013/12/15/synthese-vocale-francaise-en-java/
