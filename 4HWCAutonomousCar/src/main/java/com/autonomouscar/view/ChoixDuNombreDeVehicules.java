@@ -349,7 +349,7 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
 				nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
 
-				this.setVisible(false);
+				this.dispose();
 
 				new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
 																// 1er

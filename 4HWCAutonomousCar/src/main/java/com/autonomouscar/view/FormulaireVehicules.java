@@ -758,7 +758,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 							// Changement de fenêtres
 
-							this.setVisible(false);
+							this.dispose();
 
 							ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;
 

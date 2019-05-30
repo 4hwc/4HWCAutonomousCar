@@ -291,7 +291,7 @@ public class DeplacementVehicules extends JFrame {
 
 		}
 
-		this.setVisible(false);
+		this.dispose();
 
 		new Menu4HWC();
 
