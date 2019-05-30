@@ -174,9 +174,9 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 	}
 
-	private synchronized void redirection() {
+	private void redirection() {
 
-		this.setVisible(false);
+		this.dispose();
 
 		new DeplacementVehicules();
 

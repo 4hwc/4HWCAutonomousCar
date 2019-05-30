@@ -1,4 +1,5 @@
 package com.autonomouscar.main;
+
 import com.autonomouscar.view.Bienvenue4HWC;
 import com.autonomouscar.view.Menu4HWC;
 
@@ -21,7 +22,7 @@ public class Main4HWCAutonomousCar {
 			e.printStackTrace();
 		}
 
-		fenBienvenue.setVisible(false); // Fermeture de la première fenêtre
+		fenBienvenue.dispose(); // Fermeture de la première fenêtre
 
 		new Menu4HWC(); // Affichage deuxième fenêtre de
 						// menu

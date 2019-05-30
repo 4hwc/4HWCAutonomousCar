@@ -351,7 +351,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 			// Changement de fenêtre
 
-			this.setVisible(false);
+			this.dispose();
 
 			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.recupFichierBase();
 
@@ -363,7 +363,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 		if (arg0.getSource() == boutonParametres) {
 
-			this.setVisible(false);
+			this.dispose();
 
 			new ChoixDuNombreDeVehicules();
 
@@ -373,7 +373,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 			// Changement de fenêtre
 
-			this.setVisible(false);
+			this.dispose();
 
 			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.getVehicules4HWC();
 
