@@ -82,3 +82,5 @@ http://www.roboteek.fr/2013/12/15/synthese-vocale-francaise-en-java/
 https://www.google.com/search?q=force+cleaning+goal+maven&oq=force+cleaning+goal+maven&aqs=chrome..69i57j69i64.27182j0j7&sourceid=chrome&ie=UTF-8
 
 https://stackoverflow.com/questions/3624446/force-maven-clean
+
+http://maven.apache.org/plugins/maven-clean-plugin/usage.html
