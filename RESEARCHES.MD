@@ -76,3 +76,9 @@ https://www.ej-technologies.com/products/install4j/overview.html
 ## SI VOX
 
 http://www.roboteek.fr/2013/12/15/synthese-vocale-francaise-en-java/
+
+## force cleaning goal maven
+
+https://www.google.com/search?q=force+cleaning+goal+maven&oq=force+cleaning+goal+maven&aqs=chrome..69i57j69i64.27182j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/3624446/force-maven-clean
