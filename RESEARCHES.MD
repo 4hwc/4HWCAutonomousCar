@@ -98,3 +98,5 @@ https://www.google.com/search?q=%3CjdkPreference%3EpreferJre%3C%2FjdkPreference%
 https://github.com/lukaszlenart/launch4j-demo/blob/master/pom.xml
 
 http://launch4j.sourceforge.net/docs.html
+
+https://blog.crafties.fr/2015/03/19/distribuer-son-application-java-sur-windows-grace-a-maven/
