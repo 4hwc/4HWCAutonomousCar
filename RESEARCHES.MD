@@ -156,6 +156,10 @@ https://www.google.com/search?q=basic+.travis.yml+file+for+java+application&oq=b
 
 https://docs.travis-ci.com/user/languages/java/
 
+https://stackoverflow.com/questions/33267878/example-of-travis-ci-yml-file-for-java
+
+https://github.com/joaomlneto/travis-ci-tutorial-java
+
 
 
 
