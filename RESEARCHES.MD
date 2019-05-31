@@ -128,6 +128,8 @@ https://www.google.com/search?q=maven-assembly-plugin&oq=maven-assembly-plugin&a
 
 http://maven.apache.org/plugins/maven-assembly-plugin/
 
+https://examples.javacodegeeks.com/enterprise-java/maven/maven-assembly-plugin-example/
+
 
 
 
