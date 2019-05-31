@@ -100,3 +100,33 @@ https://github.com/lukaszlenart/launch4j-demo/blob/master/pom.xml
 http://launch4j.sourceforge.net/docs.html
 
 https://blog.crafties.fr/2015/03/19/distribuer-son-application-java-sur-windows-grace-a-maven/
+
+## launch4j maven plugin app working well with ide but .exe file doesn't work
+
+https://www.google.com/search?q=launch4j+maven+plugin+app+working+well+with+ide+but+.exe+file+doesn%27t+work&oq=launch4j+maven+plugin++app+working+well+with+ide+but+.exe+file+doesn%27t+work&aqs=chrome..69i57.71561j0j7&sourceid=chrome&ie=UTF-8
+
+
+https://stackoverflow.com/questions/50684262/exe-file-bundeled-by-launch4j-compiles-but-doesnt-seem-to-work
+
+## Execute the generated .jar from command line
+
+https://www.google.com/search?q=Execute+the+generated+.jar+from+command+line&oq=Execute+the+generated+.jar+from+command+line&aqs=chrome..69i57j33l5.4908j0j7&sourceid=chrome&ie=UTF-8
+
+https://askubuntu.com/questions/101746/how-can-i-execute-a-jar-file-from-the-terminal
+
+## aucun attribut manifest principal maven launch4j
+
+https://www.google.com/search?ei=KCrxXOqlKZDCUsLQsbAC&q=aucun+attribut+manifest+principal+maven+launch4j&oq=aucun+attribut+manifest+principal+maven+launch4j&gs_l=psy-ab.3...9965.13662..14166...0.0..0.187.1120.2j7......0....1..gws-wiz.......0i71j0i22i30j33i160j33i21.s-EOuU3oRTQ
+
+https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manifest-attribute
+
+## maven-assembly-plugin
+
+https://www.google.com/search?q=maven-assembly-plugin&oq=maven-assembly-plugin&aqs=chrome..69i57j0l5.5779j0j7&sourceid=chrome&ie=UTF-8
+
+http://maven.apache.org/plugins/maven-assembly-plugin/
+
+
+
+
+
