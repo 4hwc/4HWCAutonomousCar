@@ -150,6 +150,12 @@ https://www.google.com/search?q=read+text+file+with+inputstream+java&oq=read+.tx
 
 http://tutorials.jenkov.com/java-io/inputstream.html
 
+## basic .travis.yml file for java application
+
+https://www.google.com/search?q=basic+.travis.yml+file+for+java+application&oq=basic+.travis.yml+file+for+java+application&aqs=chrome..69i57j33.31140j0j4&sourceid=chrome&ie=UTF-8
+
+https://docs.travis-ci.com/user/languages/java/
+
 
 
 
