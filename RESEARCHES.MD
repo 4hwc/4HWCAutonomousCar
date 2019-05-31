@@ -84,3 +84,17 @@ https://www.google.com/search?q=force+cleaning+goal+maven&oq=force+cleaning+goal
 https://stackoverflow.com/questions/3624446/force-maven-clean
 
 http://maven.apache.org/plugins/maven-clean-plugin/usage.html
+
+## <downloadUrl>http://java.com/download</downloadUrl> launch4j maven
+
+https://www.google.com/search?q=%3CdownloadUrl%3Ehttp%3A%2F%2Fjava.com%2Fdownload%3C%2FdownloadUrl%3E+launch4j+maven&oq=%3CdownloadUrl%3Ehttp%3A%2F%2Fjava.com%2Fdownload%3C%2FdownloadUrl%3E+launch4j+maven&aqs=chrome..69i57.8252j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/41258019/launch4j-redirect-to-download-java-version
+
+## <jdkPreference>preferJre</jdkPreference> launch4j maven plugin
+
+https://www.google.com/search?q=%3CjdkPreference%3EpreferJre%3C%2FjdkPreference%3E+launch4j+maven+plugin&oq=%3CjdkPreference%3EpreferJre%3C%2FjdkPreference%3E+launch4j+maven+plugin&aqs=chrome..69i57.23500j0j7&sourceid=chrome&ie=UTF-8
+
+https://github.com/lukaszlenart/launch4j-demo/blob/master/pom.xml
+
+http://launch4j.sourceforge.net/docs.html
