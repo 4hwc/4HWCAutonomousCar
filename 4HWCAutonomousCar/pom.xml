@@ -64,6 +64,8 @@
 				</executions>
 			</plugin>
 			
+			<!--  
+			
 			<plugin>
 			
 					<groupId>org.apache.maven.plugins</groupId>
@@ -89,11 +91,13 @@
 			
 			</plugin>
 			
+			-->
+			
 			<plugin>
 			
 				<groupId>com.akathist.maven.plugins.launch4j</groupId>
 	            <artifactId>launch4j-maven-plugin</artifactId>
-	            <version>1.7.25</version>
+	            <version>1.5.1</version>
 	            <executions>
 	                <execution>
 	                    <id>l4j-gui</id>
@@ -105,14 +109,14 @@
 	                        <headerType>gui</headerType>
 	                        <jar>${project.build.directory}/${artifactId}-${version}.jar</jar>
 	                        <outfile>${project.build.directory}/4hwcautonomouscar.exe</outfile>
-	                        <downloadUrl>https://github.com/4hwc/4HWCAutonomousCar</downloadUrl>
+	                        <downloadUrl>http://java.com/download</downloadUrl>
 	                        <classPath>
 	                            <mainClass>com.autonomouscar.main.Main4HWCAutonomousCar</mainClass>
 	                            <preCp>anything</preCp>
 	                        </classPath>
 	                        <icon>application.ico</icon>
 	                        <jre>
-	                            <minVersion>1.8.0</minVersion>
+	                            <minVersion>1.6.0</minVersion>
 	                            <jdkPreference>preferJre</jdkPreference>
 	                        </jre>
 	                        <versionInfo>
@@ -132,6 +136,31 @@
 	            </executions>
 			
 			</plugin>
+			
+			<plugin>
+				    
+				    <groupId>org.apache.maven.plugins</groupId>
+				    <artifactId>maven-assembly-plugin</artifactId>
+				    <executions>
+				      <execution>
+				        <phase>package</phase>
+				        <goals>
+				          <goal>single</goal>
+				        </goals>
+				      </execution>
+				    </executions>
+				    <configuration>
+				      <archive>
+				        <manifest>
+				          <addClasspath>true</addClasspath>
+				          <mainClass>com.autonomouscar.main.Main4HWCAutonomousCar</mainClass>
+				        </manifest>
+				      </archive>
+				      <descriptorRefs>
+				        <descriptorRef>jar-with-dependencies</descriptorRef>
+				      </descriptorRefs>
+				    </configuration>
+  		   </plugin>
             
   	
   	</plugins>

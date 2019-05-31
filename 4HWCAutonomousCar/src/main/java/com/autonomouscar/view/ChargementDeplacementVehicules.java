@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 import com.autonomouscar.model.AutonomousCar;
-import com.autonomouscar.utils.Speech;
 
 public class ChargementDeplacementVehicules extends JFrame {
 
@@ -118,7 +117,9 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 				}
 
-				Speech.repete(speak);
+				// Speech will be improved later
+
+				// Speech.repete(speak);
 
 			}// run
 

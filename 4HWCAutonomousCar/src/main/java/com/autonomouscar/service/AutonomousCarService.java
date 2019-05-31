@@ -1,16 +1,13 @@
 package com.autonomouscar.service;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.utils.Chronometre;
-import com.autonomouscar.utils.Speech;
 
 public class AutonomousCarService {
 
@@ -340,110 +337,104 @@ public class AutonomousCarService {
 
 		ArrayList<String> lignes = new ArrayList<String>();
 
-		URL url = AutonomousCarService.class.getResource("/fichierDeBase");
+		InputStream inputStream = AutonomousCarService.class.getClassLoader().getResourceAsStream("default4HWC.txt");
 
-		File f = new File(url.getFile());
+		if (inputStream != null) {
 
-		FileInputStream fis = null;
+			// Début du traitement
 
-		if (f.exists()) {
-			if (f.isFile()) {
-				// Début du traitement
+			try {
+
+				byte[] buf = new byte[2048];
+
+				int count = 0;
+
+				int n = 0;
+
+				String ligne = "";
+
+				while ((n = inputStream.read(buf)) >= 0) {
+					for (int i = 0; i < n; i++) {
+
+						if (buf[i] != '\n') {
+							ligne = ligne + (char) buf[i];
+
+							if (i == n - 1) // enregistrement dernière ligne
+								lignes.add(ligne);
+						}
+
+						if (buf[i] == '\n') {
+
+							// System.out.println(ligne);
+
+							lignes.add(ligne);
+							count++;
+
+							ligne = "";
+							/*
+							 * Compter le nombre de retour à la ligne Sachant que le nombre de lignes se
+							 * trouve en ajoutant 1 au nombre final de retour à la ligne
+							 */
+						}
+
+					} // for
+
+				} // while
+
+				String ligne0 = lignes.get(0); // 5 5
+
+				String ligne1 = lignes.get(1);// 1 2 N
+
+				String instructions1 = lignes.get(2);// GAGAGAGAA
+
+				String ligne3 = lignes.get(3);// 3 3 E
+
+				String instructions2 = lignes.get(4);// AADAADADDA
+
+				int xCD = Integer.parseInt(ligne0.charAt(0) + "");// 5
+
+				int yCD = Integer.parseInt(ligne0.charAt(2) + "");// 5
+
+				int xT1 = Integer.parseInt(ligne1.charAt(0) + "");// 1
+
+				int yT1 = Integer.parseInt(ligne1.charAt(2) + "");// 2
+
+				String o1 = ligne1.charAt(4) + "";// N
+
+				int xT2 = Integer.parseInt(ligne3.charAt(0) + "");// 3
+
+				int yT2 = Integer.parseInt(ligne3.charAt(2) + "");// 3
+
+				String o2 = ligne3.charAt(4) + "";// E
+
+				listeInitiale.add(new AutonomousCar(xCD, yCD, xT1, yT1, o1, instructions1));
+
+				listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));
+
+				/*
+				 * for (int h = 0; h < listeInitiale.size(); h++) {
+				 * System.out.println(listeInitiale.get(h).xCoinDroit + "" +
+				 * listeInitiale.get(h).yCoinDroit + "" + listeInitiale.get(h).xInitiale + "" +
+				 * listeInitiale.get(h).yInitiale + "" +
+				 * listeInitiale.get(h).orientationInitiale + "" +
+				 * listeInitiale.get(h).instructions); }
+				 */
+
+			} catch (FileNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
 
 				try {
-					fis = new FileInputStream(f);
-
-					byte[] buf = new byte[2048];
-
-					int count = 0;
-
-					int n = 0;
-
-					String ligne = "";
-
-					while ((n = fis.read(buf)) >= 0) {
-						for (int i = 0; i < n; i++) {
-
-							if (buf[i] != '\n') {
-								ligne = ligne + (char) buf[i];
-
-								if (i == n - 1) // enregistrement dernière ligne
-									lignes.add(ligne);
-							}
-
-							if (buf[i] == '\n') {
-
-								// System.out.println(ligne);
-
-								lignes.add(ligne);
-								count++;
-
-								ligne = "";
-								/*
-								 * Compter le nombre de retour à la ligne Sachant que le nombre de lignes se
-								 * trouve en ajoutant 1 au nombre final de retour à la ligne
-								 */
-							}
-
-						} // for
-
-					} // while
-
-					String ligne0 = lignes.get(0); // 5 5
-
-					String ligne1 = lignes.get(1);// 1 2 N
-
-					String instructions1 = lignes.get(2);// GAGAGAGAA
-
-					String ligne3 = lignes.get(3);// 3 3 E
-
-					String instructions2 = lignes.get(4);// AADAADADDA
-
-					int xCD = Integer.parseInt(ligne0.charAt(0) + "");// 5
-
-					int yCD = Integer.parseInt(ligne0.charAt(2) + "");// 5
-
-					int xT1 = Integer.parseInt(ligne1.charAt(0) + "");// 1
-
-					int yT1 = Integer.parseInt(ligne1.charAt(2) + "");// 2
-
-					String o1 = ligne1.charAt(4) + "";// N
-
-					int xT2 = Integer.parseInt(ligne3.charAt(0) + "");// 3
-
-					int yT2 = Integer.parseInt(ligne3.charAt(2) + "");// 3
-
-					String o2 = ligne3.charAt(4) + "";// E
-
-					listeInitiale.add(new AutonomousCar(xCD, yCD, xT1, yT1, o1, instructions1));
-
-					listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));
-
-					/*
-					 * for (int h = 0; h < listeInitiale.size(); h++) {
-					 * System.out.println(listeInitiale.get(h).xCoinDroit + "" +
-					 * listeInitiale.get(h).yCoinDroit + "" + listeInitiale.get(h).xInitiale + "" +
-					 * listeInitiale.get(h).yInitiale + "" +
-					 * listeInitiale.get(h).orientationInitiale + "" +
-					 * listeInitiale.get(h).instructions); }
-					 */
-
-				} catch (FileNotFoundException e) {
-
-					e.printStackTrace();
+					if (inputStream != null)
+						inputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
-				} finally {
-
-					try {
-						if (fis != null)
-							fis.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 				}
-
 			}
+
 		} else {
 
 			System.out.println("Fichier de base introuvable");
@@ -611,7 +602,9 @@ public class AutonomousCarService {
 
 		System.out.println("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
-		Speech.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
+		// Speech will be improved later
+
+		// Speech.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
 		for (int c = 0; c < liste.size(); c++) {
 			parcourirLaSurface(liste.get(c));

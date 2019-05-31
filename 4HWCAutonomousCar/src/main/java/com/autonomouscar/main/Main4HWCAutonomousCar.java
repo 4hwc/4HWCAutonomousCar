@@ -13,6 +13,8 @@ public class Main4HWCAutonomousCar {
 		Bienvenue4HWC fenBienvenue = new Bienvenue4HWC(); // Première
 															// fenêtre
 
+		// Speech will be improved later
+
 		Bienvenue4HWC.voixBienvenue4HWC(); // Voix de bienvenue première
 											// fenêtre
 
