@@ -96,7 +96,7 @@
 	            <version>1.7.25</version>
 	            <executions>
 	                <execution>
-	                    <id>l4j-clui</id>
+	                    <id>l4j-gui</id>
 	                    <phase>package</phase>
 	                    <goals>
 	                        <goal>launch4j</goal>
