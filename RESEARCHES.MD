@@ -120,6 +120,8 @@ https://www.google.com/search?ei=KCrxXOqlKZDCUsLQsbAC&q=aucun+attribut+manifest+
 
 https://stackoverflow.com/questions/9689793/cant-execute-jar-file-no-main-manifest-attribute
 
+https://www.baeldung.com/java-jar-executable-manifest-main-class
+
 ## maven-assembly-plugin
 
 https://www.google.com/search?q=maven-assembly-plugin&oq=maven-assembly-plugin&aqs=chrome..69i57j0l5.5779j0j7&sourceid=chrome&ie=UTF-8
