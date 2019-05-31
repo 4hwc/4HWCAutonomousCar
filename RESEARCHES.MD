@@ -130,6 +130,26 @@ http://maven.apache.org/plugins/maven-assembly-plugin/
 
 https://examples.javacodegeeks.com/enterprise-java/maven/maven-assembly-plugin-example/
 
+## how to get a resource file maven project
+
+https://www.google.com/search?ei=U0nxXMz8BbHksAe00K_4Cg&q=how+to+get+a+resource+file+maven+project&oq=how+to+get+a+ressource+file+maven+&gs_l=psy-ab.1.2.33i22i10i29i30l3.139622.158822..163439...3.0..0.220.5577.1j33j3......0....1..gws-wiz.......0i71j35i39j0i131j0j35i39i19j0i203j0i19j0i22i10i30j0i13i30j0i22i30j0i8i13i30j33i10.UxMdOPhn9fM
+
+https://howtodoinjava.com/java/io/read-file-from-resources-folder/
+
+https://www.mkyong.com/java/java-read-a-file-from-resources-folder/
+
+## .txt file is not found after getting executable jar
+
+https://www.google.com/search?q=.txt+file+is+not+found+after+getting+executable+jar&oq=.txt+file+is+not+found+after+getting+executable+jar&aqs=chrome..69i57j33l2.27395j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/10115837/java-eclipse-txt-file-not-found-when-exported-to-jar
+
+## read text file with inputstream java
+
+https://www.google.com/search?q=read+text+file+with+inputstream+java&oq=read+.txt+file+with+in&aqs=chrome.1.69i57j0l5.16979j0j7&sourceid=chrome&ie=UTF-8
+
+http://tutorials.jenkov.com/java-io/inputstream.html
+
 
 
 
