@@ -28,7 +28,7 @@ The software has 3 options to choose from:
 
 At the end, each vehicle must display its final position and orientation.
 
-Screenshots : 
+Screenshots: 
 
 ![image 1](Screenshots/car1.JPG)
 
