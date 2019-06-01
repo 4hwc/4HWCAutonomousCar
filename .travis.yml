@@ -1,7 +1,5 @@
 language : java
 
-os: windows
-
 jdk:
  - oraclejdk8
 after_success:
