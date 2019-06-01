@@ -26,7 +26,7 @@ https://docs.travis-ci.com/user/tutorial/
 
 https://docs.travis-ci.com/
 
-## how to switch widows in java swing
+## how to switch widows in java swing 
 
 https://www.google.com/search?q=how+to+switch+widows+in+java+swing&oq=how+to+switch+widows+in+java+swing&aqs=chrome..69i57.17103j0j7&sourceid=chrome&ie=UTF-8
 
