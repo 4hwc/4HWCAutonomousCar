@@ -160,6 +160,20 @@ https://stackoverflow.com/questions/33267878/example-of-travis-ci-yml-file-for-j
 
 https://github.com/joaomlneto/travis-ci-tutorial-java
 
+## dependencies.dependency.systemPath' for SI_VOX:SI_VOX:jar should not point at files within the project directory,
+
+https://www.google.com/search?q=dependencies.dependency.systemPath%27+for+SI_VOX%3ASI_VOX%3Ajar+should+not+point+at+files+within+the+project+directory%2C&oq=dependencies.dependency.systemPath%27+for+SI_VOX%3ASI_VOX%3Ajar+should+not+point+at+files+within+the+project+directory%2C&aqs=chrome..69i57.1085j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/32384798/dependencies-should-not-point-at-files-within-the-project-directory
+
+https://stackoverflow.com/questions/4955635/how-to-add-local-jar-files-to-a-maven-project
+
+https://stackoverflow.com/questions/4955635/how-to-add-local-jar-files-to-a-maven-project/36602256#36602256
+
+https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html
+
+https://stackoverflow.com/questions/10935135/maven-and-adding-jars-to-system-scope/31023523
+
 
 
 
