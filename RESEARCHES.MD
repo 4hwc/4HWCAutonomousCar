@@ -10,7 +10,7 @@ https://www.google.com/search?q=how+to+insert+image+into+github+readme&oq=how+to
 
 https://stackoverflow.com/questions/14494747/add-images-to-readme-md-on-github
 
-## archunit-junit4 maven 
+## archunit-junit4 maven
 
 https://www.google.com/search?q=archunit-junit4+maven&oq=archunit-junit4+maven&aqs=chrome..69i57.23076j0j7&sourceid=chrome&ie=UTF-8
 
@@ -18,7 +18,7 @@ https://mvnrepository.com/artifact/com.tngtech.archunit/archunit-junit4
 
 https://www.archunit.org/userguide/html/000_Index.html
 
-## how to add travis ci to github repo 
+## how to add travis ci to github repo
 
 https://www.google.com/search?q=how+to+add+travis+ci+to+github+repo&oq=how+to+add+travis+&aqs=chrome.1.69i57j0l5.26666j0j7&sourceid=chrome&ie=UTF-8
 
@@ -189,6 +189,12 @@ https://www.google.com/search?q=HOW+TO+skip+a+goal+travis+CI+maven+%3F&oq=HOW+TO
 Link below is very interesting
 
 https://www.phillip-kruger.com/post/continuous_integration_to_maven_central/
+
+## launch4j travis CI
+
+https://www.google.com/search?q=launch4j+travis+CI&oq=launch4j+travis+CI&aqs=chrome..69i57j69i60.15821j0j7&sourceid=chrome&ie=UTF-8
+
+https://github.com/travis-ci/travis-ci/issues/5176
 
 
 
