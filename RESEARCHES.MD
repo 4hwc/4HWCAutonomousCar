@@ -1,4 +1,4 @@
-## Executer jar  file 
+## Executer jar  file
 
 https://openclassrooms.com/fr/courses/1132471-creer-une-archive-jar-executable
 
@@ -173,6 +173,24 @@ https://stackoverflow.com/questions/4955635/how-to-add-local-jar-files-to-a-mave
 https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html
 
 https://stackoverflow.com/questions/10935135/maven-and-adding-jars-to-system-scope/31023523
+
+## How to generate .exe file while building with TRAVIS CI
+
+https://www.google.com/search?ei=WJXyXPO6HoiHjLsPzKKO0AE&q=How+to+generate+.exe+file+while+building+with+TRAVIS+CI&oq=How+to+generate+.exe+file+while+building+with+TRAVIS+CI&gs_l=psy-ab.3...283271.294029..295568...0.0..0.215.2087.6j11j1......0....1..gws-wiz.......0i71j33i10.JSHX7Y52Vw0
+
+https://github.com/cnlohr/cnping/issues/32
+
+https://docs.travis-ci.com/user/deployment/releases/#Authenticating-with-an-OAuth-token
+
+## HOW TO skip a goal travis CI maven ?
+
+https://www.google.com/search?q=HOW+TO+skip+a+goal+travis+CI+maven+%3F&oq=HOW+TO+skip+a+goal+travis+CI+maven+%3F&aqs=chrome..69i57.20571j0j7&sourceid=chrome&ie=UTF-8
+
+Link below is very interesting
+
+https://www.phillip-kruger.com/post/continuous_integration_to_maven_central/
+
+
 
 
 
