@@ -1,0 +1,35 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+4HWC Autonomous Car,com.autonomouscar.model,AutonomousCar,124,0,0,0,50,0,27,0,27,0
+4HWC Autonomous Car,com.autonomouscar.view,DialogAvantParcoursPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,PositionOrientationTempsReelPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules.new WindowAdapter() {...},18,0,2,0,6,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehicules.new WindowAdapter() {...},18,0,2,0,6,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DialogApresParcours,856,0,0,0,198,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,Bienvenue4HWC.new Runnable() {...},25,0,2,0,7,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules,117,0,0,0,28,0,3,0,3,0
+4HWC Autonomous Car,com.autonomouscar.view,Menu4HWC,730,0,6,0,183,0,5,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,Panneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DialogAvantParcours,1024,0,0,0,238,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehicules,1560,0,16,0,371,0,12,0,4,0
+4HWC Autonomous Car,com.autonomouscar.view,MenuPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehiculesPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DialogApresParcoursPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},82,0,12,0,17,0,8,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,Bienvenue4HWC,92,0,0,0,23,0,3,0,3,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesSurfaceSens,79,0,8,0,23,0,8,0,4,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehiculesPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new WindowAdapter() {...},18,0,2,0,6,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehicules,641,0,4,0,152,0,4,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesSurface,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,Menu4HWC.new WindowAdapter() {...},18,0,2,0,6,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehicules.new WindowAdapter() {...},18,0,2,0,6,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehiculesPanneau4HWC,26,0,0,0,7,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},33,0,2,0,9,0,3,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},10,0,0,0,3,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules,611,0,12,0,127,0,12,0,6,0
+4HWC Autonomous Car,com.autonomouscar.main,Main,248,0,19,0,60,0,14,0,3,0
+4HWC Autonomous Car,com.autonomouscar.main,Main4HWCAutonomousCar,19,0,0,0,9,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.utils,Chronometre,18,0,0,0,9,0,5,0,5,0
+4HWC Autonomous Car,com.autonomouscar.utils,Speech,3,0,0,0,1,0,1,0,1,0
+4HWC Autonomous Car,com.autonomouscar.service,AutonomousCarService,1814,0,288,0,424,0,165,0,21,0

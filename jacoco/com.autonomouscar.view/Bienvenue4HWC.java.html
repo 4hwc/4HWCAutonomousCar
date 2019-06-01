@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bienvenue4HWC.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">4HWC Autonomous Car</a> &gt; <a href="index.source.html" class="el_package">com.autonomouscar.view</a> &gt; <span class="el_source">Bienvenue4HWC.java</span></div><h1>Bienvenue4HWC.java</h1><pre class="source lang-java linenums">package com.autonomouscar.view;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JProgressBar;
+
+public class Bienvenue4HWC extends JFrame {
+
+<span class="nc" id="L13">	static URL url = Bienvenue4HWC.class.getResource(&quot;/4HWCN.png&quot;);</span>
+
+<span class="nc" id="L15">	static ImageIcon icon4HWC = new ImageIcon(url);</span>
+
+	private Thread t;
+
+	private JProgressBar bar;
+
+<span class="nc" id="L21">	private Panneau4HWC container = new Panneau4HWC();</span>
+
+<span class="nc" id="L23">	public Bienvenue4HWC() {</span>
+<span class="nc" id="L24">		this.setTitle(&quot;4HWC AUTONOMOUS CAR&quot;);</span>
+
+<span class="nc" id="L26">		this.setSize(1000, 600);</span>
+
+<span class="nc" id="L28">		this.setLocationRelativeTo(null);</span>
+
+<span class="nc" id="L30">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
+
+<span class="nc" id="L32">		this.setResizable(false);</span>
+
+<span class="nc" id="L34">		this.setUndecorated(true);</span>
+
+<span class="nc" id="L36">		container.setLayout(new BorderLayout());</span>
+
+<span class="nc" id="L38">		class Traitement implements Runnable {</span>
+
+			public void run() {
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">				for (int val = 0; val &lt;= 500; val++) {</span>
+<span class="nc" id="L43">					bar.setValue(val);</span>
+
+					try {
+<span class="nc" id="L46">						Thread.sleep(25);</span>
+
+<span class="nc" id="L48">					} catch (InterruptedException e) {</span>
+<span class="nc" id="L49">						e.printStackTrace();</span>
+					}
+				} // for
+<span class="nc" id="L52">			}// run</span>
+
+		}// traitement
+
+<span class="nc" id="L56">		t = new Thread(new Traitement());</span>
+
+<span class="nc" id="L58">		bar = new JProgressBar();</span>
+
+<span class="nc" id="L60">		bar.setMaximum(500);</span>
+
+<span class="nc" id="L62">		bar.setMinimum(0);</span>
+
+<span class="nc" id="L64">		bar.setStringPainted(false);</span>
+
+<span class="nc" id="L66">		bar.setForeground(Color.decode(&quot;#148da0&quot;));</span>
+
+<span class="nc" id="L68">		container.add(bar, BorderLayout.SOUTH);</span>
+
+<span class="nc" id="L70">		t.start();</span>
+
+<span class="nc" id="L72">		this.setContentPane(container);</span>
+
+<span class="nc" id="L74">		this.setVisible(true);</span>
+<span class="nc" id="L75">	}</span>
+
+	public static void voixBienvenue4HWC() {
+
+		// Speech will be improved later
+		// Speech.repete(&quot;Salut je suis l'intelligence artificielle 4 H W C du prototype
+		// voiture autonome !&quot;);
+<span class="nc" id="L82">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
