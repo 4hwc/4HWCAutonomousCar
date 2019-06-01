@@ -1,5 +1,8 @@
 # 4HWCAutonomousCar
 
+[![Build Status](https://travis-ci.com/4hwc/4HWCAutonomousCar.svg?branch=master)](https://travis-ci.com/4hwc/4HWCAutonomousCar)
+[![Code Coverage](https://codecov.io/github/4hwc/4HWCAutonomousCar/coverage.svg)](https://codecov.io/gh/4hwc/4HWCAutonomousCar)
+
 The goal is to set up a vehicle moving autonomously.
 
 To achieve that goal, we are developing a simulation software: **Prototype of Autonomous Vehicle**
