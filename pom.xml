@@ -8,6 +8,8 @@
   <packaging>jar</packaging>
   <url>https://4hwc4hwc.wixsite.com/4hwc</url>
   <dependencies>
+  
+  <!--  
   	<dependency> 
 	    <groupId>SI_VOX</groupId>
 	    <artifactId>SI_VOX</artifactId>
@@ -15,6 +17,8 @@
 	    <version>1</version>
 	    <systemPath>${basedir}\lib\SI_VOX.jar</systemPath>
     </dependency>
+    
+   --> 
     
     
     <!-- Arch unit & junit 4 -->
@@ -107,7 +111,7 @@
 	                    </goals>
 	                    <configuration>
 	                        <headerType>gui</headerType>
-	                        <jar>${project.build.directory}/${artifactId}-${version}.jar</jar>
+	                        <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
 	                        <outfile>${project.build.directory}/4hwcautonomouscar.exe</outfile>
 	                        <downloadUrl>http://java.com/download</downloadUrl>
 	                        <classPath>
