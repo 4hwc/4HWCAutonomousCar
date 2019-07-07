@@ -29,9 +29,9 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 	private String speak;
 
-<span class="nc" id="L32">	public ChargementDeplacementVehicules()</span>
+	public ChargementDeplacementVehicules()
 
-	{
+<span class="nc" id="L34">	{</span>
 
 <span class="nc" id="L36">		this.setTitle(&quot;4HWC AUTONOMOUS CAR : Chargement...&quot;);</span>
 
@@ -48,7 +48,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 			public void windowClosing(WindowEvent e) {
 
 <span class="nc" id="L50">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
-<span class="nc" id="L51">						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);</span>
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 <span class="nc bnc" id="L52" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
 <span class="nc" id="L53">					System.exit(0);</span>
 				}
@@ -82,7 +82,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 <span class="nc" id="L83">						speak = &quot;un véhicule déployé par défaut&quot;;</span>
 
-<span class="nc" id="L85">					} else {</span>
+					} else {
 
 <span class="nc" id="L87">						speak = ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployés par défaut&quot;;</span>
 
@@ -95,7 +95,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 <span class="nc" id="L96">						speak = &quot;un véhicule déployé par vous&quot;;</span>
 
-<span class="nc" id="L98">					} else {</span>
+					} else {
 
 <span class="nc" id="L100">						speak = ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par vous&quot;;</span>
 
@@ -109,7 +109,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 <span class="nc" id="L110">						speak = &quot;un véhicule déployé par moi&quot;;</span>
 
-<span class="nc" id="L112">					} else {</span>
+					} else {
 
 <span class="nc" id="L114">						speak = ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par moi&quot;;</span>
 
@@ -144,7 +144,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 <span class="nc" id="L145">					} catch (InterruptedException e) {</span>
 <span class="nc" id="L146">						e.printStackTrace();</span>
-					}
+<span class="nc" id="L147">					}</span>
 				} // for
 
 <span class="nc" id="L150">				pause.start();</span>

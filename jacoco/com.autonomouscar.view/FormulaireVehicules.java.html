@@ -87,7 +87,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 <span class="nc bnc" id="L87" title="All 2 branches missed.">		if (this.nbreDeVehicules == 1) {</span>
 <span class="nc" id="L88">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques du véhicule&quot;);</span>
 
-<span class="nc" id="L90">		} else // this.nbreDeTondeuses &gt;1</span>
+		} else // this.nbreDeTondeuses &gt;1
 		{
 <span class="nc" id="L92">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques des &quot; + this.nbreDeVehicules + &quot; véhicules&quot;);</span>
 		}
@@ -105,7 +105,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 			public void windowClosing(WindowEvent e) {
 
 <span class="nc" id="L107">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
-<span class="nc" id="L108">						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);</span>
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 <span class="nc bnc" id="L109" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
 <span class="nc" id="L110">					System.exit(0);</span>
 				}
@@ -244,7 +244,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 <span class="nc bnc" id="L244" title="All 2 branches missed.">		if (nbreVehicules == 1) {</span>
 <span class="nc" id="L245">			suiviFormulaire = new JLabel(&quot;Véhicule unique&quot;);</span>
 
-<span class="nc" id="L247">		} else {</span>
+		} else {
 
 <span class="nc" id="L249">			suiviFormulaire = new JLabel(&quot;Véhicule N° &quot; + numero + &quot; sur &quot; + nbreVehicules);</span>
 		}
@@ -749,12 +749,12 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 							} else {
 
 <span class="nc" id="L751">								messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
-<span class="nc" id="L752">										+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;</span>
+										+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;
 
 							}
 
 <span class="nc" id="L756">							jopSucces.showMessageDialog(null, messageSucces, titleSucces,</span>
-<span class="nc" id="L757">									JOptionPane.INFORMATION_MESSAGE);</span>
+									JOptionPane.INFORMATION_MESSAGE);
 
 							// Changement de fenêtres
 
@@ -779,7 +779,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 						}
 
-<span class="nc" id="L782">					} else {</span>
+					} else {
 
 						// erreur au niveau des instructions
 
@@ -790,11 +790,11 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 <span class="nc" id="L790">						String titleInstructions = &quot;Instructions erronées&quot;;</span>
 
 <span class="nc" id="L792">						jopInstructions.showMessageDialog(null, messageInstructions, titleInstructions,</span>
-<span class="nc" id="L793">								JOptionPane.ERROR_MESSAGE);</span>
+								JOptionPane.ERROR_MESSAGE);
 
-					}
+<span class="nc" id="L795">					}</span>
 
-<span class="nc" id="L797">				} else {</span>
+				} else {
 
 					// erreur au niveau de l'orientation
 
@@ -805,11 +805,11 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 <span class="nc" id="L805">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
 
 <span class="nc" id="L807">					jopOrientation.showMessageDialog(null, messageOrientation, titleOrientation,</span>
-<span class="nc" id="L808">							JOptionPane.ERROR_MESSAGE);</span>
+							JOptionPane.ERROR_MESSAGE);
 
-				}
+<span class="nc" id="L810">				}</span>
 
-<span class="nc" id="L812">			} else {</span>
+			} else {
 
 				// Au moins une erreur au niveau des positions
 

@@ -30,7 +30,7 @@ import com.autonomouscar.service.AutonomousCarService;
 
 <span class="nc bnc" id="L31" title="All 2 branches missed.">		while (choixQuitter == false) {</span>
 <span class="nc" id="L32">			System.out.println(</span>
-<span class="nc" id="L33">					&quot;Bonjour, je m'appelle 4HWC et je vais vous aider à parcourir la surface :). Je vous prie de faire votre choix&quot;);</span>
+					&quot;Bonjour, je m'appelle 4HWC et je vais vous aider à parcourir la surface :). Je vous prie de faire votre choix&quot;);
 
 <span class="nc" id="L35">			System.out.println(&quot;1 : Utilisation des données préenregistrées&quot;);</span>
 
@@ -88,7 +88,7 @@ import com.autonomouscar.service.AutonomousCarService;
 
 					{
 <span class="nc" id="L90">						System.out.println(</span>
-<span class="nc" id="L91">								&quot;Entrez la position du coin supérieur droit de la surface. S'il vous plaît , les valeurs sont comprises entre 0 et 5 &quot;);</span>
+								&quot;Entrez la position du coin supérieur droit de la surface. S'il vous plaît , les valeurs sont comprises entre 0 et 5 &quot;);
 
 <span class="nc" id="L93">						System.out.println(&quot;Position suivant l'axe des abscisses&quot;);</span>
 
@@ -108,8 +108,8 @@ import com.autonomouscar.service.AutonomousCarService;
 
 <span class="nc" id="L109">						yInitiale = sc.nextLine();</span>
 
-<span class="nc" id="L111">					} while (AutonomousCarService.validationPositionsString(xCoinDroit, yCoinDroit, xInitiale,</span>
-<span class="nc bnc" id="L112" title="All 2 branches missed.">							yInitiale) == false);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">					} while (AutonomousCarService.validationPositionsString(xCoinDroit, yCoinDroit, xInitiale,</span>
+							yInitiale) == false);
 
 					String orientationInitiale;
 
@@ -118,7 +118,7 @@ import com.autonomouscar.service.AutonomousCarService;
 
 <span class="nc" id="L119">						orientationInitiale = sc.nextLine();</span>
 
-					} while (AutonomousCarService
+<span class="nc" id="L121">					} while (AutonomousCarService</span>
 <span class="nc bnc" id="L122" title="All 2 branches missed.">							.validationOrientationInitiale(orientationInitiale.toUpperCase()) == false);</span>
 
 					String instructions;
@@ -156,7 +156,7 @@ import com.autonomouscar.service.AutonomousCarService;
 
 			}
 
-		}
+<span class="nc" id="L159">		}</span>
 
 <span class="nc" id="L161">	}</span>
 

@@ -20,7 +20,7 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L20">			validation = true;</span>
 
 <span class="nc" id="L22">			System.out.println(&quot;Nombre correct&quot;);</span>
-<span class="nc" id="L23">		} else {</span>
+		} else {
 <span class="nc" id="L24">			System.out.println(&quot;Nombre incorrect&quot;);</span>
 		}
 
@@ -47,7 +47,7 @@ import com.autonomouscar.utils.Chronometre;
 
 <span class="nc" id="L48">				validation = true;</span>
 
-<span class="nc" id="L50">			} else {</span>
+			} else {
 
 <span class="nc" id="L52">				System.out.println(&quot;INCORRECT&quot;);</span>
 
@@ -113,7 +113,7 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L113">								validation = true;</span>
 							}
 
-<span class="nc" id="L116">						} else {</span>
+						} else {
 							// Présence d'un intrus
 
 <span class="nc" id="L119">							validation = false;</span>
@@ -148,12 +148,12 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L148">				validation = true;</span>
 
 <span class="nc" id="L150">				System.out.println(&quot; Le véhicule est bien positionné sur la surface&quot;);</span>
-<span class="nc" id="L151">			} else {</span>
+			} else {
 <span class="nc" id="L152">				System.out.println(&quot; Position incorrecte du véhicule&quot;);</span>
 			}
-<span class="nc" id="L154">		} else {</span>
+		} else {
 <span class="nc" id="L155">			System.out.println(</span>
-<span class="nc" id="L156">					&quot; Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5&quot;);</span>
+					&quot; Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5&quot;);
 		}
 
 <span class="nc" id="L159">		return validation;</span>
@@ -176,15 +176,15 @@ import com.autonomouscar.utils.Chronometre;
 
 <span class="nc" id="L177">						System.out.println(&quot;Bravo :)pour la correcte orientation&quot;);</span>
 
-<span class="nc" id="L179">					} else {</span>
+					} else {
 
 <span class="nc" id="L181">						System.out.println(&quot;Veuillez entrer une lettre N , E , W ou S&quot;);</span>
 
 					} // 4e if
-<span class="nc" id="L184">				} else {</span>
+				} else {
 <span class="nc" id="L185">					System.out.println(&quot;Veuillez entrer une lettre N , E , W ou S&quot;);</span>
 				} // 3e if
-<span class="nc" id="L187">			} else {</span>
+			} else {
 <span class="nc" id="L188">				System.out.println(&quot;Veuillez entrer l'orientation&quot;);</span>
 			} // 2e if
 <span class="nc" id="L190">		} else {</span>
@@ -219,20 +219,20 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L219">			yInitialeInt = Integer.parseInt(yInitiale.trim());</span>
 
 <span class="nc bnc" id="L221" title="All 8 branches missed.">			if (xCoinDroitInt &gt;= 0 &amp;&amp; xCoinDroitInt &lt;= 5 &amp;&amp; yCoinDroitInt &gt;= 0 &amp;&amp; yCoinDroitInt &lt;= 5) {</span>
-<span class="nc bnc" id="L222" title="All 6 branches missed.">				if (xInitialeInt &gt;= 0 &amp;&amp; xInitialeInt &lt;= xCoinDroitInt &amp;&amp; yInitialeInt &gt;= 0</span>
-<span class="nc bnc" id="L223" title="All 2 branches missed.">						&amp;&amp; yInitialeInt &lt;= yCoinDroitInt) {</span>
+<span class="nc bnc" id="L222" title="All 8 branches missed.">				if (xInitialeInt &gt;= 0 &amp;&amp; xInitialeInt &lt;= xCoinDroitInt &amp;&amp; yInitialeInt &gt;= 0</span>
+						&amp;&amp; yInitialeInt &lt;= yCoinDroitInt) {
 <span class="nc" id="L224">					validation = true;</span>
 
 <span class="nc" id="L226">					System.out.println(&quot; Le véhicule est bien positionné sur la surface&quot;);</span>
-<span class="nc" id="L227">				} else {</span>
+				} else {
 <span class="nc" id="L228">					System.out.println(&quot; Position incorrecte du véhicule&quot;);</span>
 				}
-<span class="nc" id="L230">			} else {</span>
+			} else {
 <span class="nc" id="L231">				System.out.println(</span>
-<span class="nc" id="L232">						&quot; Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5&quot;);</span>
+						&quot; Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5&quot;);
 			}
 
-<span class="nc" id="L235">		} else {</span>
+		} else {
 <span class="nc" id="L236">			System.out.println(&quot;INCORRECT&quot;);</span>
 		}
 
@@ -302,7 +302,7 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L302">								System.out.println(&quot;Valeur :-&quot; + instructions + &quot;-&quot;);</span>
 							}
 
-<span class="nc" id="L305">						} else {</span>
+						} else {
 							// Présence d'un intrus
 
 <span class="nc" id="L308">							validation = false;</span>
@@ -314,11 +314,11 @@ import com.autonomouscar.utils.Chronometre;
 
 					} // for
 
-				} else {
+<span class="nc" id="L317">				} else {</span>
 					// Rien faire car espace présent
 				}
 
-<span class="nc" id="L321">			} else {</span>
+			} else {
 <span class="nc" id="L322">				System.out.println(&quot;Veuillez entrer des instructions&quot;);</span>
 
 			}
@@ -425,17 +425,17 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L425">				e.printStackTrace();</span>
 <span class="nc" id="L426">			} catch (IOException e) {</span>
 <span class="nc" id="L427">				e.printStackTrace();</span>
-<span class="nc" id="L428">			} finally {</span>
+			} finally {
 
-				try {
+<span class="nc" id="L430">				try {</span>
 <span class="nc bnc" id="L431" title="All 8 branches missed.">					if (inputStream != null)</span>
 <span class="nc" id="L432">						inputStream.close();</span>
 <span class="nc" id="L433">				} catch (IOException e) {</span>
 <span class="nc" id="L434">					e.printStackTrace();</span>
-				}
+<span class="nc" id="L435">				}</span>
 <span class="nc" id="L436">			}</span>
 
-<span class="nc" id="L438">		} else {</span>
+		} else {
 
 <span class="nc" id="L440">			System.out.println(&quot;Fichier de base introuvable&quot;);</span>
 
@@ -494,7 +494,7 @@ import com.autonomouscar.utils.Chronometre;
 
 <span class="nc bnc" id="L495" title="All 2 branches missed.">		if (x == 0) {</span>
 <span class="nc" id="L496">			n = 0;</span>
-<span class="nc" id="L497">		} else {</span>
+		} else {
 <span class="nc" id="L498">			Random randomNumbers = new Random();</span>
 
 <span class="nc" id="L500">			n = randomNumbers.nextInt(x); // 0 to x</span>
@@ -519,7 +519,7 @@ import com.autonomouscar.utils.Chronometre;
 
 <span class="nc bnc" id="L520" title="All 2 branches missed.">		if (y == 0) {</span>
 <span class="nc" id="L521">			n = 0;</span>
-<span class="nc" id="L522">		} else {</span>
+		} else {
 <span class="nc" id="L523">			Random randomNumbers = new Random();</span>
 
 <span class="nc" id="L525">			n = randomNumbers.nextInt(y); // 0 to y</span>
@@ -587,7 +587,7 @@ import com.autonomouscar.utils.Chronometre;
 <span class="nc" id="L587">			String instructions4HWC = AutonomousCarService.getInstructions4HWC();</span>
 
 <span class="nc" id="L589">			liste.add(new AutonomousCar(xCoinDroit4HWC, yCoinDroit4HWC, xInitiale4HWC, yInitiale4HWC, orientation4HWC,</span>
-<span class="nc" id="L590">					instructions4HWC));</span>
+					instructions4HWC));
 
 		}
 
