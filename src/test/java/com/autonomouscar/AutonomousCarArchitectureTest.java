@@ -1,6 +1,6 @@
 package com.autonomouscar;
 
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.fields;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class AutonomousCarArchitectureTest {
 	public void some_architecture_rule() {
 		JavaClasses importedClasses = new ClassFileImporter().importPackages("com.autonomouscar.model");
 
-		ArchRule rule = classes().should().bePublic();
+		ArchRule rule = fields().should().notBePublic();
 
 		rule.check(importedClasses);
 	}
