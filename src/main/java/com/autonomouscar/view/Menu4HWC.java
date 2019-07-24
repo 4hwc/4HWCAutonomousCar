@@ -347,13 +347,15 @@ public class Menu4HWC extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
+
+		AutonomousCarService autonomousCarService = new AutonomousCarService();
 		if (arg0.getSource() == boutonParDefaut) {
 
 			// Changement de fenêtre
 
 			this.dispose();
 
-			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.recupFichierBase();
+			ChargementDeplacementVehicules.listeVehicules = autonomousCarService.recupFichierBase();
 
 			ChargementDeplacementVehicules.origine = "défaut";
 
@@ -375,7 +377,7 @@ public class Menu4HWC extends JFrame implements ActionListener {
 
 			this.dispose();
 
-			ChargementDeplacementVehicules.listeVehicules = AutonomousCarService.getVehicules4HWC();
+			ChargementDeplacementVehicules.listeVehicules = autonomousCarService.getVehicules4HWC();
 
 			ChargementDeplacementVehicules.origine = "IA";
 

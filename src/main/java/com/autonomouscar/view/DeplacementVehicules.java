@@ -42,6 +42,8 @@ public class DeplacementVehicules extends JFrame {
 
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
+	AutonomousCarService autonomousCarService = new AutonomousCarService();
+
 	public DeplacementVehicules() {
 
 		this.setTitle("4HWC AUTONOMOUS CAR : Déplacement des véhicules");
@@ -119,7 +121,7 @@ public class DeplacementVehicules extends JFrame {
 
 			// Je récupère le véhicule et ses différentes positions
 
-			ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = AutonomousCarService
+			ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService
 					.enregistrementParametresActuels(vehicule);
 
 			// J'affiche le véhicule à différentes positions : Xactuelle;

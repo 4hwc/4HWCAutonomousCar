@@ -706,16 +706,17 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0)
 
 	{
+		AutonomousCarService autonomousCarService = new AutonomousCarService();
 		if (arg0.getSource() == boutonConfirmer)
 
 		{
-			validationPositions = AutonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
+			validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
 					jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());
 
-			validationOrientation = AutonomousCarService
+			validationOrientation = autonomousCarService
 					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());
 
-			validationInstructions = AutonomousCarService
+			validationInstructions = autonomousCarService
 					.validationInstructions(jtfInstructions.getText().toUpperCase());
 
 			if (validationPositions == true)

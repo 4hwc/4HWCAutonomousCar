@@ -341,9 +341,11 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 
+		AutonomousCarService autonomousCarService = new AutonomousCarService();
+
 		if (arg0.getSource() == boutonConfirmer) {
 
-			validation = AutonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
+			validation = autonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
 
 			if (validation == true) {
 

@@ -13,7 +13,7 @@ public class AutonomousCarService {
 
 	// Validation de nombre de véhicules
 
-	static boolean validationNombreDeVehicules(int nombre) {
+	private boolean validationNombreDeVehicules(int nombre) {
 		boolean validation = false;
 
 		if (nombre >= 1) {
@@ -31,12 +31,12 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static boolean validationNombreDeVehiculesString(String nbre) {
+	public boolean validationNombreDeVehiculesString(String nbre) {
 		boolean validation = false;
 
 		int entier = 0;
 
-		if (AutonomousCarService.isNombre(nbre) == true) {
+		if (isNombre(nbre) == true) {
 
 			String nbreTrim = nbre.trim();
 
@@ -68,7 +68,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static boolean isNombre(String nbre) {
+	private boolean isNombre(String nbre) {
 
 		boolean presenceEspace = false;
 
@@ -139,7 +139,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static boolean validationPositions(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale) {
+	private boolean validationPositions(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale) {
 
 		boolean validation = false;
 
@@ -161,7 +161,7 @@ public class AutonomousCarService {
 
 	// Vérification orientation
 
-	public static boolean validationOrientationInitiale(String orientationInitiale) {
+	public boolean validationOrientationInitiale(String orientationInitiale) {
 		boolean validation = false;
 
 		if (orientationInitiale != null) {
@@ -200,15 +200,13 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale,
-			String yInitiale) {
+	public boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale) {
 
 		boolean validation = false;
 
 		int xCoinDroitInt = 0, yCoinDroitInt = 0, xInitialeInt = 0, yInitialeInt = 0;
 
-		if (AutonomousCarService.isNombre(xCoinDroit) && AutonomousCarService.isNombre(yCoinDroit)
-				&& AutonomousCarService.isNombre(xInitiale) && AutonomousCarService.isNombre(yInitiale)) {
+		if (isNombre(xCoinDroit) && isNombre(yCoinDroit) && isNombre(xInitiale) && isNombre(yInitiale)) {
 
 			xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());
 
@@ -244,7 +242,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static boolean validationInstructions(String instructions) {
+	public boolean validationInstructions(String instructions) {
 
 		boolean presenceEspace = false; // Je suppose qu'il n y a pas d'espace
 
@@ -331,7 +329,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static ArrayList<AutonomousCar> recupFichierBase() {
+	public ArrayList<AutonomousCar> recupFichierBase() {
 
 		ArrayList<AutonomousCar> listeInitiale = new ArrayList<AutonomousCar>();
 
@@ -450,7 +448,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static int getNombreDeVehicules4HWC() {
+	private int getNombreDeVehicules4HWC() {
 		Random randomNumbers = new Random();
 
 		int n = randomNumbers.nextInt(20) + 1; // 1 to 20
@@ -462,7 +460,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static int getXCoinDroit4HWC() {
+	private int getXCoinDroit4HWC() {
 		Random randomNumbers = new Random();
 
 		return randomNumbers.nextInt(6); // 0 to 5
@@ -472,7 +470,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static int getYCoinDroit4HWC() {
+	private int getYCoinDroit4HWC() {
 
 		Random randomNumbers = new Random();
 
@@ -483,7 +481,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
+	private int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
 	{
 
 		/*
@@ -508,7 +506,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
+	private int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
 	{
 
 		/*
@@ -533,7 +531,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static String getOrientationInitiale4HWC() {
+	private String getOrientationInitiale4HWC() {
 		String tabOrientations[] = { "N", "E", "W", "S" };
 
 		Random randomNumbers = new Random();
@@ -546,7 +544,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	static String getInstructions4HWC() {
+	private String getInstructions4HWC() {
 		String tabInstructions[] = { "D", "G", "A" };
 
 		Random randomNumbers = new Random();
@@ -569,22 +567,24 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static ArrayList<AutonomousCar> getVehicules4HWC() {
-		ArrayList<AutonomousCar> liste = new ArrayList<AutonomousCar>();
+	public ArrayList<AutonomousCar> getVehicules4HWC() {
 
-		for (int i = 0; i < AutonomousCarService.getNombreDeVehicules4HWC(); i++) {
+		AutonomousCarService autonomousCarService = new AutonomousCarService();
+		ArrayList liste = new ArrayList<AutonomousCar>();
 
-			int xCoinDroit4HWC = AutonomousCarService.getXCoinDroit4HWC();
+		for (int i = 0; i < getNombreDeVehicules4HWC(); i++) {
 
-			int yCoinDroit4HWC = AutonomousCarService.getYCoinDroit4HWC();
+			int xCoinDroit4HWC = getXCoinDroit4HWC();
 
-			int xInitiale4HWC = AutonomousCarService.getXInitiale4HWC(xCoinDroit4HWC);
+			int yCoinDroit4HWC = getYCoinDroit4HWC();
 
-			int yInitiale4HWC = AutonomousCarService.getYInitiale4HWC(yCoinDroit4HWC);
+			int xInitiale4HWC = getXInitiale4HWC(xCoinDroit4HWC);
 
-			String orientation4HWC = AutonomousCarService.getOrientationInitiale4HWC();
+			int yInitiale4HWC = getYInitiale4HWC(yCoinDroit4HWC);
 
-			String instructions4HWC = AutonomousCarService.getInstructions4HWC();
+			String orientation4HWC = getOrientationInitiale4HWC();
+
+			String instructions4HWC = getInstructions4HWC();
 
 			liste.add(new AutonomousCar(xCoinDroit4HWC, yCoinDroit4HWC, xInitiale4HWC, yInitiale4HWC, orientation4HWC,
 					instructions4HWC));
@@ -598,7 +598,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static void deplacementDeTousLesVehicules(ArrayList<AutonomousCar> liste) {
+	public void deplacementDeTousLesVehicules(ArrayList<AutonomousCar> liste) {
 
 		System.out.println("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
@@ -615,7 +615,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	private static void parcourirLaSurface(AutonomousCar vehiculeEnDeplacement)
+	private void parcourirLaSurface(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
@@ -785,7 +785,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
+	public void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
@@ -955,7 +955,7 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public static ArrayList<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
+	public ArrayList<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
