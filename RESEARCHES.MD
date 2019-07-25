@@ -196,6 +196,12 @@ https://www.google.com/search?q=launch4j+travis+CI&oq=launch4j+travis+CI&aqs=chr
 
 https://github.com/travis-ci/travis-ci/issues/5176
 
+## isNumber java
+
+https://www.google.com/search?q=isNumber+java&oq=isNumber+java&aqs=chrome..69i57j0l5.18443j0j7&sourceid=chrome&ie=UTF-8
+
+https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
+
 
 
 
