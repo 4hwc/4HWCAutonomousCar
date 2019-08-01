@@ -34,7 +34,7 @@ public class AutonomousCar {
 
 	private String orientationFinale;
 
-	// Chrono du temps mis pour parcourir la surface par la voiture en ms
+	// Chrono du temps mis pour parcourir la surface par la voiture en millisecondes
 
 	private long chronoFinale;
 
