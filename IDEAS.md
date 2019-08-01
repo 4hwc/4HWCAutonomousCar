@@ -4,3 +4,4 @@
 4- Give the destination instead of instructions 
 5- Internationalization
 6- Javadoc
+7- seek a speech java API
