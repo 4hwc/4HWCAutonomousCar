@@ -5,3 +5,4 @@
 5- Internationalization
 6- Javadoc
 7- seek a speech java API
+8- Create a constant NUMBER_INSTRUCTIONS
