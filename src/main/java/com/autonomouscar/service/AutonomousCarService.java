@@ -10,6 +10,10 @@ import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.utils.Chronometre;
 
 public class AutonomousCarService {
+	
+	public static final int NUMBER_OF_INSTRUCTIONS_MAX = 50;
+	
+	public static final int NUMBER_OF_VEHICLES_MAX = 20;
 
 	// Validation de nombre de véhicules
 
@@ -450,10 +454,10 @@ public class AutonomousCarService {
 
 	private int getNombreDeVehicules4HWC() {
 		Random randomNumbers = new Random();
+		
+		int n = randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)
 
-		int n = randomNumbers.nextInt(20) + 1; // 1 to 20
-
-		return n; // 1 to 20
+		return n; // 1 to NUMBER_OF_VEHICLES_MAX
 	}
 
 	// XCoinDroit4HWC
@@ -549,7 +553,7 @@ public class AutonomousCarService {
 
 		Random randomNumbers = new Random();
 
-		int tailleInstructions = randomNumbers.nextInt(50) + 1; // 1 to 50
+		int tailleInstructions = randomNumbers.nextInt(NUMBER_OF_INSTRUCTIONS_MAX) + 1; // 1 to NUMBER_OF_INSTRUCTIONS_MAX (50)
 
 		String instructions4HWC = "";
 
