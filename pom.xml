@@ -55,7 +55,6 @@
 				<version>0.12</version>
 				<configuration>
 					<message>Building site for ${project.name} ${project.version}</message>
-					<server>github</server>
 					
 				</configuration>
 				<executions>
