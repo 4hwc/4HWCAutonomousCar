@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/4hwc/4HWCAutonomousCar.svg?branch=master)](https://travis-ci.com/4hwc/4HWCAutonomousCar)
 [![Code Coverage](https://codecov.io/github/4hwc/4HWCAutonomousCar/coverage.svg)](https://codecov.io/gh/4hwc/4HWCAutonomousCar)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.autonomouscar:4HWCAutonomousCar&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.autonomouscar:4HWCAutonomousCar)
 
 The goal is to set up a vehicle moving autonomously.
 
