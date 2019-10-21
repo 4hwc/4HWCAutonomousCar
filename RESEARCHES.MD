@@ -228,6 +228,12 @@ https://www.google.com/search?q=String.format&oq=String.format&aqs=chrome..69i57
 
 https://dzone.com/articles/java-string-format-examples
 
+## String builder java
+
+https://www.google.com/search?sxsrf=ACYBGNRfLie7XR99mDM3ecJdF8nH0gKXBw%3A1571669806037&ei=LsetXcv4AZOQ8gL7yqXwCw&q=String+builder+java&oq=String+builder+java&gs_l=psy-ab.3..0i10i203l10.3560.10139..10826...0.0..0.761.9332.2-1j6j6j5j2......0....1..gws-wiz.......35i39j0j0i20i263j0i203.eS05As7Q2tU&ved=0ahUKEwjLx_ijzq3lAhUTiFwKHXtlCb4Q4dUDCAs&uact=5
+
+https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+
 
 
 
