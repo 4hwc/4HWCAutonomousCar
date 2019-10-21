@@ -214,6 +214,16 @@ https://www.mkyong.com/logging/log4j2-xml-example/
 
 https://www.mkyong.com/logging/log4j-hello-world-example/
 
+## format specifiers should be used instead of string concatenation
+
+https://www.google.com/search?q=format+specifiers+should+be+used+instead+of+string+concatenation&oq=format+specifiers&aqs=chrome.1.69i57j0l5.31898j0j7&sourceid=chrome&ie=UTF-8
+
+https://kylewbanks.com/blog/java-string-concatenation-vs-stringbuilder-vs-string-format-performance
+
+https://stackoverflow.com/questions/925423/is-it-better-practice-to-use-string-format-over-string-concatenation-in-java
+
+
+
 
 
 
