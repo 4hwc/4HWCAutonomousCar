@@ -202,6 +202,14 @@ https://www.google.com/search?q=isNumber+java&oq=isNumber+java&aqs=chrome..69i57
 
 https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
 
+## Root section log4j2.xml java
+
+https://www.google.com/search?q=%3CRoot%3E+section+log4j2.xml+java&oq=%3CRoot%3E+section+log4j2.xml+java&aqs=chrome..69i57j33.16233j0j7&sourceid=chrome&ie=UTF-8
+
+https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/
+
+https://www.mkyong.com/logging/log4j2-xml-example/
+
 
 
 
