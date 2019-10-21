@@ -210,7 +210,9 @@ https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/
 
 https://www.mkyong.com/logging/log4j2-xml-example/
 
+## log4j hello world example
 
+https://www.mkyong.com/logging/log4j-hello-world-example/
 
 
 
