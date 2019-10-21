@@ -222,6 +222,12 @@ https://kylewbanks.com/blog/java-string-concatenation-vs-stringbuilder-vs-string
 
 https://stackoverflow.com/questions/925423/is-it-better-practice-to-use-string-format-over-string-concatenation-in-java
 
+## String.format
+
+https://www.google.com/search?q=String.format&oq=String.format&aqs=chrome..69i57j0l3j69i61l2.9095j0j7&sourceid=chrome&ie=UTF-8
+
+https://dzone.com/articles/java-string-format-examples
+
 
 
 
