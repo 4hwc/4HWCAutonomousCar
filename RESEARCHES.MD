@@ -234,6 +234,12 @@ https://www.google.com/search?sxsrf=ACYBGNRfLie7XR99mDM3ecJdF8nH0gKXBw%3A1571669
 
 https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
 
+## lambda method with parameter
+
+https://www.google.com/search?q=lambda+method+with+parameter&oq=lambda+method&aqs=chrome.4.69i57j0l5.22786j0j7&sourceid=chrome&ie=UTF-8
+
+https://dzone.com/articles/java-lambda-method-reference
+
 
 
 
