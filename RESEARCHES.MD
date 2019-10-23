@@ -202,6 +202,44 @@ https://www.google.com/search?q=isNumber+java&oq=isNumber+java&aqs=chrome..69i57
 
 https://stackoverflow.com/questions/1102891/how-to-check-if-a-string-is-numeric-in-java
 
+## Root section log4j2.xml java
+
+https://www.google.com/search?q=%3CRoot%3E+section+log4j2.xml+java&oq=%3CRoot%3E+section+log4j2.xml+java&aqs=chrome..69i57j33.16233j0j7&sourceid=chrome&ie=UTF-8
+
+https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/
+
+https://www.mkyong.com/logging/log4j2-xml-example/
+
+## log4j hello world example
+
+https://www.mkyong.com/logging/log4j-hello-world-example/
+
+## format specifiers should be used instead of string concatenation
+
+https://www.google.com/search?q=format+specifiers+should+be+used+instead+of+string+concatenation&oq=format+specifiers&aqs=chrome.1.69i57j0l5.31898j0j7&sourceid=chrome&ie=UTF-8
+
+https://kylewbanks.com/blog/java-string-concatenation-vs-stringbuilder-vs-string-format-performance
+
+https://stackoverflow.com/questions/925423/is-it-better-practice-to-use-string-format-over-string-concatenation-in-java
+
+## String.format
+
+https://www.google.com/search?q=String.format&oq=String.format&aqs=chrome..69i57j0l3j69i61l2.9095j0j7&sourceid=chrome&ie=UTF-8
+
+https://dzone.com/articles/java-string-format-examples
+
+## String builder java
+
+https://www.google.com/search?sxsrf=ACYBGNRfLie7XR99mDM3ecJdF8nH0gKXBw%3A1571669806037&ei=LsetXcv4AZOQ8gL7yqXwCw&q=String+builder+java&oq=String+builder+java&gs_l=psy-ab.3..0i10i203l10.3560.10139..10826...0.0..0.761.9332.2-1j6j6j5j2......0....1..gws-wiz.......35i39j0j0i20i263j0i203.eS05As7Q2tU&ved=0ahUKEwjLx_ijzq3lAhUTiFwKHXtlCb4Q4dUDCAs&uact=5
+
+https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+
+## lambda method with parameter
+
+https://www.google.com/search?q=lambda+method+with+parameter&oq=lambda+method&aqs=chrome.4.69i57j0l5.22786j0j7&sourceid=chrome&ie=UTF-8
+
+https://dzone.com/articles/java-lambda-method-reference
+
 
 
 
