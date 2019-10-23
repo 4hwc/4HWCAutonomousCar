@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+    
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </Console>
+        
+         <File name="LogToFile" fileName="logs/autonomouscar.log">
+	        <PatternLayout>
+	            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%nw</Pattern>
+	        </PatternLayout>
+    	</File>
+        
+        
+    </Appenders>
+    
+    <Loggers>
+    
+    	<Logger name="com.autonomouscar" level="TRACE" >
+            <AppenderRef ref="LogToFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        
+        
+        <AsyncRoot level="DEBUG">
+            <AppenderRef ref="LogToFile"/>
+            <AppenderRef ref="LogToConsole"/>
+        </AsyncRoot>
+    	
+    
+    </Loggers>
+    
+</Configuration>

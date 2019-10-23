@@ -10,6 +10,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,7 +29,7 @@ public class DeplacementVehicules extends JFrame {
 
 	private String origine = "";
 
-	private ArrayList<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
+	private List<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
 
 	private Border whiteBorder = new LineBorder(Color.WHITE, 1);
 
@@ -121,7 +122,7 @@ public class DeplacementVehicules extends JFrame {
 
 			// Je récupère le véhicule et ses différentes positions
 
-			ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService
+			List<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService
 					.enregistrementParametresActuels(vehicule);
 
 			// J'affiche le véhicule à différentes positions : Xactuelle;
