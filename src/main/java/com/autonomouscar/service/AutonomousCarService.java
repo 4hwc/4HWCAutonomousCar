@@ -4,33 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.List;
 import java.util.Random;
 
+import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.utils.Chronometre;
 
 public class AutonomousCarService {
-	
+
 	public static final int NUMBER_OF_INSTRUCTIONS_MAX = 50;
-	
+
 	public static final int NUMBER_OF_VEHICLES_MAX = 20;
 
-	// Validation de nombre de véhicules
-
-	private boolean validationNombreDeVehicules(int nombre) {
-		boolean validation = false;
-
-		if (nombre >= 1) {
-			validation = true;
-
-			System.out.println("Nombre correct");
-		} else {
-			System.out.println("Nombre incorrect");
-		}
-
-		return validation;
-	}
-
+	public static final String INCORRECT = "INCORRECT";
 	// Validation de nombre de véhicules String
 
 	// SERVICE
@@ -53,7 +41,7 @@ public class AutonomousCarService {
 
 			} else {
 
-				System.out.println("INCORRECT");
+				AutonomousCarLog.logger.error(INCORRECT);
 
 			}
 
@@ -61,7 +49,7 @@ public class AutonomousCarService {
 
 			// Ce n'est pas un nombre
 
-			System.out.println("INCORRECT");
+			AutonomousCarLog.logger.error(INCORRECT);
 
 		}
 
@@ -143,26 +131,6 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	private boolean validationPositions(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale) {
-
-		boolean validation = false;
-
-		if (xCoinDroit >= 0 && xCoinDroit <= 5 && yCoinDroit >= 0 && yCoinDroit <= 5) {
-			if (xInitiale >= 0 && xInitiale <= xCoinDroit && yInitiale >= 0 && yInitiale <= yCoinDroit) {
-				validation = true;
-
-				System.out.println(" Le véhicule est bien positionné sur la surface");
-			} else {
-				System.out.println(" Position incorrecte du véhicule");
-			}
-		} else {
-			System.out.println(
-					" Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5");
-		}
-
-		return validation;
-	}
-
 	// Vérification orientation
 
 	public boolean validationOrientationInitiale(String orientationInitiale) {
@@ -178,21 +146,24 @@ public class AutonomousCarService {
 
 						validation = true;
 
-						System.out.println("Bravo :)pour la correcte orientation");
+						AutonomousCarLog.logger.debug("Bravo :)pour la correcte orientation");
 
 					} else {
 
-						System.out.println("Veuillez entrer une lettre N , E , W ou S");
+						AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
 
 					} // 4e if
 				} else {
-					System.out.println("Veuillez entrer une lettre N , E , W ou S");
+
+					AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
 				} // 3e if
 			} else {
-				System.out.println("Veuillez entrer l'orientation");
+
+				AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
 			} // 2e if
 		} else {
-			System.out.println("Veuillez entrer l'orientation");
+
+			AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
 		} // 1er if
 
 		return validation;
@@ -225,17 +196,17 @@ public class AutonomousCarService {
 						&& yInitialeInt <= yCoinDroitInt) {
 					validation = true;
 
-					System.out.println(" Le véhicule est bien positionné sur la surface");
+					AutonomousCarLog.logger.debug(" Le véhicule est bien positionné sur la surface");
 				} else {
-					System.out.println(" Position incorrecte du véhicule");
+					AutonomousCarLog.logger.error(" Position incorrecte du véhicule");
 				}
 			} else {
-				System.out.println(
+				AutonomousCarLog.logger.error(
 						" Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5");
 			}
 
 		} else {
-			System.out.println("INCORRECT");
+			AutonomousCarLog.logger.error(INCORRECT);
 		}
 
 		return validation;
@@ -267,7 +238,8 @@ public class AutonomousCarService {
 					// espace, c'est pas
 					// correct
 					{
-						System.out.println("Les espaces sont interdits dans vos instructions");
+
+						AutonomousCarLog.logger.error("Les espaces sont interdits dans vos instructions");
 
 						presenceEspace = true;
 
@@ -297,11 +269,11 @@ public class AutonomousCarService {
 							compteurLettresCorrectes++;
 
 							if (compteurLettresCorrectes == instructionsTrimMaj.length()) {
-								System.out.println("Les instructions sont correctes, bravo :)");
+								AutonomousCarLog.logger.debug("Les instructions sont correctes, bravo :)");
 
 								validation = true;
 
-								System.out.println("Valeur :-" + instructions + "-");
+								AutonomousCarLog.logger.debug(String.format("Valeur :-%s-", instructions));
 							}
 
 						} else {
@@ -309,7 +281,7 @@ public class AutonomousCarService {
 
 							validation = false;
 
-							System.out.println("Les instructions contiennent uniquement D, G ou A");
+							AutonomousCarLog.logger.error("Les instructions contiennent uniquement D, G ou A");
 
 							break;
 						}
@@ -321,11 +293,11 @@ public class AutonomousCarService {
 				}
 
 			} else {
-				System.out.println("Veuillez entrer des instructions");
+				AutonomousCarLog.logger.error("Veuillez entrer des instructions");
 
 			}
 		} else {
-			System.out.println("Veuillez entrer des instructions");
+			AutonomousCarLog.logger.error("Veuillez entrer des instructions");
 		}
 
 		return validation;
@@ -333,11 +305,11 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public ArrayList<AutonomousCar> recupFichierBase() {
+	public List<AutonomousCar> recupFichierBase() {
 
-		ArrayList<AutonomousCar> listeInitiale = new ArrayList<AutonomousCar>();
+		List<AutonomousCar> listeInitiale = new ArrayList<AutonomousCar>();
 
-		ArrayList<String> lignes = new ArrayList<String>();
+		List<String> lignes = new ArrayList<String>();
 
 		InputStream inputStream = AutonomousCarService.class.getClassLoader().getResourceAsStream("default4HWC.txt");
 
@@ -413,15 +385,6 @@ public class AutonomousCarService {
 
 				listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));
 
-				/*
-				 * for (int h = 0; h < listeInitiale.size(); h++) {
-				 * System.out.println(listeInitiale.get(h).xCoinDroit + "" +
-				 * listeInitiale.get(h).yCoinDroit + "" + listeInitiale.get(h).xInitiale + "" +
-				 * listeInitiale.get(h).yInitiale + "" +
-				 * listeInitiale.get(h).orientationInitiale + "" +
-				 * listeInitiale.get(h).instructions); }
-				 */
-
 			} catch (FileNotFoundException e) {
 
 				e.printStackTrace();
@@ -439,7 +402,7 @@ public class AutonomousCarService {
 
 		} else {
 
-			System.out.println("Fichier de base introuvable");
+			AutonomousCarLog.logger.error("Fichier de base introuvable");
 
 		}
 		return listeInitiale;
@@ -454,10 +417,8 @@ public class AutonomousCarService {
 
 	private int getNombreDeVehicules4HWC() {
 		Random randomNumbers = new Random();
-		
-		int n = randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)
 
-		return n; // 1 to NUMBER_OF_VEHICLES_MAX
+		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)
 	}
 
 	// XCoinDroit4HWC
@@ -553,15 +514,33 @@ public class AutonomousCarService {
 
 		Random randomNumbers = new Random();
 
-		int tailleInstructions = randomNumbers.nextInt(NUMBER_OF_INSTRUCTIONS_MAX) + 1; // 1 to NUMBER_OF_INSTRUCTIONS_MAX (50)
+		int tailleInstructions = randomNumbers.nextInt(NUMBER_OF_INSTRUCTIONS_MAX) + 1; // 1 to
+																						// NUMBER_OF_INSTRUCTIONS_MAX
+																						// (50)
+		/*
+		 * Don't use StringBuilder
+		 * 
+		 * Why ? java.lang.OutOfMemoryError : Java heap space
+		 * 
+		 * StringBuilder instructions4HWC = new StringBuilder();
+		 * 
+		 * Random randomNumbers2 = new Random();
+		 * 
+		 * for (int t = 0; t < tailleInstructions; t++)
+		 * 
+		 * instructions4HWC.append(instructions4HWC.toString())
+		 * .append(tabInstructions[randomNumbers2.nextInt(tabInstructions.length)]);
+		 * 
+		 * return instructions4HWC.toString();
+		 */
 
 		String instructions4HWC = "";
 
 		Random randomNumbers2 = new Random();
 
-		for (int t = 0; t < tailleInstructions; t++) {
+		for (int t = 0; t < tailleInstructions; t++)
+
 			instructions4HWC = instructions4HWC + tabInstructions[randomNumbers2.nextInt(tabInstructions.length)];
-		}
 
 		return instructions4HWC;
 
@@ -571,27 +550,14 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public ArrayList<AutonomousCar> getVehicules4HWC() {
+	public List<AutonomousCar> getVehicules4HWC() {
 
-		AutonomousCarService autonomousCarService = new AutonomousCarService();
-		ArrayList liste = new ArrayList<AutonomousCar>();
+		List<AutonomousCar> liste = new ArrayList<AutonomousCar>();
 
 		for (int i = 0; i < getNombreDeVehicules4HWC(); i++) {
 
-			int xCoinDroit4HWC = getXCoinDroit4HWC();
-
-			int yCoinDroit4HWC = getYCoinDroit4HWC();
-
-			int xInitiale4HWC = getXInitiale4HWC(xCoinDroit4HWC);
-
-			int yInitiale4HWC = getYInitiale4HWC(yCoinDroit4HWC);
-
-			String orientation4HWC = getOrientationInitiale4HWC();
-
-			String instructions4HWC = getInstructions4HWC();
-
-			liste.add(new AutonomousCar(xCoinDroit4HWC, yCoinDroit4HWC, xInitiale4HWC, yInitiale4HWC, orientation4HWC,
-					instructions4HWC));
+			liste.add(new AutonomousCar(getXCoinDroit4HWC(), getYCoinDroit4HWC(), getXInitiale4HWC(getXCoinDroit4HWC()),
+					getYInitiale4HWC(getYCoinDroit4HWC()), getOrientationInitiale4HWC(), getInstructions4HWC()));
 
 		}
 
@@ -602,17 +568,18 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public void deplacementDeTousLesVehicules(ArrayList<AutonomousCar> liste) {
+	public void deplacementDeTousLesVehicules(List<AutonomousCar> liste) {
 
-		System.out.println("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
+		AutonomousCarLog.logger.debug(String.format("NOMBRE DE VEHICULES DEPLOYEES :%d", liste.size()));
 
 		// Speech will be improved later
 
 		// Speech.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
 
-		for (int c = 0; c < liste.size(); c++) {
-			parcourirLaSurface(liste.get(c));
-		}
+		AutonomousCarService autonomousCarService = new AutonomousCarService();
+
+		liste.parallelStream().forEachOrdered(autonomousCarService::parcourirLaSurface);
+
 	}
 
 	// Déplacement sur la surface d'un véhicule (mode console)
@@ -767,22 +734,24 @@ public class AutonomousCarService {
 
 		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
 
-		System.out.println("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
+		AutonomousCarLog.logger.debug("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
 
-		System.out.println("INIT");
+		AutonomousCarLog.logger
+				.debug(String.format("CHRONO : %d nanosecondes", vehiculeEnDeplacement.getChronoFinale()));
 
-		System.out.println("POSITION XCOIN DROIT : " + vehiculeEnDeplacement.getXCoinDroit() + " / "
-				+ "POSITION YCOIN DROIT : " + vehiculeEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
-				+ vehiculeEnDeplacement.getXInitiale() + " / " + "POSITION YINIT : "
-				+ vehiculeEnDeplacement.getYInitiale() + " / " + "O INIT : "
-				+ vehiculeEnDeplacement.getOrientationInitiale());
+		AutonomousCarLog.logger.debug("INIT");
 
-		System.out.println("INSTRUCTIONS :" + vehiculeEnDeplacement.getInstructions());
+		AutonomousCarLog.logger.debug(String.format(
+				"POSITION XCOIN DROIT : %d  / POSITION YCOIN DROIT : %d / POSITION XINIT : %d / POSITION YINIT : %d / O INIT : %s",
+				vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),
+				vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),
+				vehiculeEnDeplacement.getOrientationInitiale()));
 
-		System.out.println("FIN");
+		AutonomousCarLog.logger.debug(String.format(
+				"INSTRUCTIONS :%s %n FIN %n POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s",
+				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),
+				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));
 
-		System.out.println("POSITION X FINALE : " + vehiculeEnDeplacement.getXFinale() + " / POSITION Y FINALE : "
-				+ vehiculeEnDeplacement.getYFinale() + " / O FINALE : " + vehiculeEnDeplacement.getOrientationFinale());
 	}
 
 	// Déplacement sur la surface d'un véhicule (mode graphique)
@@ -792,8 +761,6 @@ public class AutonomousCarService {
 	public void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
 
 	{
-
-		// Chrono chrono = new Chrono();
 
 		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
 
@@ -937,37 +904,36 @@ public class AutonomousCarService {
 
 		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
 
-		System.out.println("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
+		StringBuilder sbuf = new StringBuilder();
+		Formatter fmt = new Formatter(sbuf);
+		fmt.format(
+				"CHRONO :  %d  nanosecondes %n INIT %n POSITION XCOIN DROIT :  %d / POSITION YCOIN DROIT : %d / POSITION XINIT : %d /  POSITION YINIT : %d / POSITION YINIT : %d",
+				vehiculeEnDeplacement.getChronoFinale(), vehiculeEnDeplacement.getXCoinDroit(),
+				vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXInitiale(),
+				vehiculeEnDeplacement.getYInitiale(), vehiculeEnDeplacement.getOrientationInitiale());
 
-		System.out.println("INIT");
+		AutonomousCarLog.logger.debug(sbuf.toString());
 
-		System.out.println("POSITION XCOIN DROIT : " + vehiculeEnDeplacement.getXCoinDroit() + " / "
-				+ "POSITION YCOIN DROIT : " + vehiculeEnDeplacement.getYCoinDroit() + " / " + "POSITION XINIT : "
-				+ vehiculeEnDeplacement.getXInitiale() + " / " + "POSITION YINIT : "
-				+ vehiculeEnDeplacement.getYInitiale() + " / " + "O INIT : "
-				+ vehiculeEnDeplacement.getOrientationInitiale());
+		AutonomousCarLog.logger.debug(String.format(
+				"INSTRUCTIONS :%s %n FIN %n" + " POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s",
+				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),
+				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));
 
-		System.out.println("INSTRUCTIONS :" + vehiculeEnDeplacement.getInstructions());
-
-		System.out.println("FIN");
-
-		System.out.println("POSITION X FINALE : " + vehiculeEnDeplacement.getXFinale() + " / POSITION Y FINALE : "
-				+ vehiculeEnDeplacement.getYFinale() + " / O FINALE : " + vehiculeEnDeplacement.getOrientationFinale());
 	}
 
 	// Enregistrement des paramètres actuels
 
 	// SERVICE
 
-	public ArrayList<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
+	public List<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
 		// A chaque mise à jour des paramètres, j'ajoute à mon ArrayList
 
-		ArrayList<AutonomousCar> vehiculeAvecParametresDifferents = new ArrayList<AutonomousCar>();
+		List<AutonomousCar> vehiculeAvecParametresDifferents = new ArrayList<AutonomousCar>();
 
-		// Enregistrement des paramètres initiaux de la tondeuse
+		// Enregistrement des paramètres initiaux du véhicule
 
 		vehiculeAvecParametresDifferents
 				.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),

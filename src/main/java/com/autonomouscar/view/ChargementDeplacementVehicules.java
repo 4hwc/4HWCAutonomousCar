@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,7 +26,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 	static String origine = "";
 
-	static ArrayList<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
+	static List<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
 
 	private String speak;
 
