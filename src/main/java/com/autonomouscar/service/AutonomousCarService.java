@@ -453,17 +453,7 @@ public class AutonomousCarService {
 		 * 0<=x<=5 et 0<=XInitiale4HWC<=x donc si x=0 alors XInitiale4HWC=0
 		 */
 
-		int n = 1; // Initialisation toute bête
-
-		if (x == 0) {
-			n = 0;
-		} else {
-			Random randomNumbers = new Random();
-
-			n = randomNumbers.nextInt(x); // 0 to x
-		}
-
-		return n;
+		return x == 0 ? 0 : new Random().nextInt(x);
 
 	}
 
@@ -478,17 +468,7 @@ public class AutonomousCarService {
 		 * 0<=y<=5 et 0<=YInitiale4HWC<=y donc si y=0 alors YInitiale4HWC=0
 		 */
 
-		int n = 1; // Initialisation toute bête
-
-		if (y == 0) {
-			n = 0;
-		} else {
-			Random randomNumbers = new Random();
-
-			n = randomNumbers.nextInt(y); // 0 to y
-		}
-
-		return n;
+		return y == 0 ? 0 : new Random().nextInt(y);
 
 	}
 
@@ -556,8 +536,18 @@ public class AutonomousCarService {
 
 		for (int i = 0; i < getNombreDeVehicules4HWC(); i++) {
 
-			liste.add(new AutonomousCar(getXCoinDroit4HWC(), getYCoinDroit4HWC(), getXInitiale4HWC(getXCoinDroit4HWC()),
-					getYInitiale4HWC(getYCoinDroit4HWC()), getOrientationInitiale4HWC(), getInstructions4HWC()));
+			/*
+			 * Initial postions depends on Surface so it's important to save it first. if
+			 * not the values will be wrong.
+			 * 
+			 */
+
+			int xCD = getXCoinDroit4HWC();
+
+			int yCD = getYCoinDroit4HWC();
+
+			liste.add(new AutonomousCar(xCD, yCD, getXInitiale4HWC(xCD), getYInitiale4HWC(yCD),
+					getOrientationInitiale4HWC(), getInstructions4HWC()));
 
 		}
 
@@ -907,7 +897,8 @@ public class AutonomousCarService {
 		StringBuilder sbuf = new StringBuilder();
 		Formatter fmt = new Formatter(sbuf);
 		fmt.format(
-				"CHRONO :  %d  nanosecondes %n INIT %n POSITION XCOIN DROIT :  %d / POSITION YCOIN DROIT : %d / POSITION XINIT : %d /  POSITION YINIT : %d / POSITION YINIT : %d",
+				"CHRONO :  %d  nanosecondes %n INIT %n POSITION XCOIN DROIT :  %d / POSITION YCOIN DROIT : %d "
+						+ "/ POSITION XINIT : %d /  POSITION YINIT : %d / O INIT : %s",
 				vehiculeEnDeplacement.getChronoFinale(), vehiculeEnDeplacement.getXCoinDroit(),
 				vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXInitiale(),
 				vehiculeEnDeplacement.getYInitiale(), vehiculeEnDeplacement.getOrientationInitiale());
