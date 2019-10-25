@@ -425,35 +425,32 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	private int getXCoinDroit4HWC() {
-		Random randomNumbers = new Random();
+	public int getXCoinDroit4HWC() {
 
-		return randomNumbers.nextInt(6); // 0 to 5
+		return new Random().nextInt(6); // 0 to 5
 	}
 
 	// YCoinDroit4HWC
 
 	// SERVICE
 
-	private int getYCoinDroit4HWC() {
+	public int getYCoinDroit4HWC() {
 
-		Random randomNumbers = new Random();
-
-		return randomNumbers.nextInt(6); // 0 to 5
+		return new Random().nextInt(6); // 0 to 5
 	}
 
 	// XInitiale4HWC
 
 	// SERVICE
 
-	private int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
+	public int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
 	{
 
 		/*
 		 * 0<=x<=5 et 0<=XInitiale4HWC<=x donc si x=0 alors XInitiale4HWC=0
 		 */
 
-		return x == 0 ? 0 : new Random().nextInt(x);
+		return new Random().nextInt(x + 1);
 
 	}
 
@@ -461,14 +458,14 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	private int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
+	public int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
 	{
 
 		/*
 		 * 0<=y<=5 et 0<=YInitiale4HWC<=y donc si y=0 alors YInitiale4HWC=0
 		 */
 
-		return y == 0 ? 0 : new Random().nextInt(y);
+		return new Random().nextInt(y + 1);
 
 	}
 

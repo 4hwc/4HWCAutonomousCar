@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import com.autonomouscar.exceptions.AutonomousCarExceptions;
 import com.autonomouscar.service.AutonomousCarService;
 
 public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
@@ -345,27 +346,37 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
 		if (arg0.getSource() == boutonConfirmer) {
 
-			validation = autonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
+			String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
 
-			if (validation == true) {
+			String titleError = "Nombre de tondeuses incorrect";
 
-				nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
+			try {
 
-				this.dispose();
+				validation = autonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
 
-				new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
-																// 1er
-																// formulaire
+				if (validation == true) {
 
-			} else {
+					nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
 
-				JOptionPane jop = new JOptionPane();
+					this.dispose();
 
-				String message = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
+					new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
+																	// 1er
+																	// formulaire
 
-				String title = "Nombre de tondeuses incorrect";
+				} else {
 
-				jop.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+					JOptionPane jop = new JOptionPane();
+
+					jop.showMessageDialog(null, messageError, titleError, JOptionPane.ERROR_MESSAGE);
+
+					throw new AutonomousCarExceptions("S'il vous plaît choisissez un nombre supérieur ou égal à 1");
+
+				}
+
+			} catch (AutonomousCarExceptions e) {
+
+				new AutonomousCarExceptions().setErreur(titleError, e.getMessage());
 
 			}
 
