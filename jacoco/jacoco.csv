@@ -23,13 +23,14 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new WindowAdapter() {...},18,0,2,0,5,0,3,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesSurface,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,Menu4HWC.new WindowAdapter() {...},18,0,2,0,5,0,3,0,2,0
-4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehicules,651,0,4,0,152,0,4,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehicules,665,0,4,0,156,0,4,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehicules.new WindowAdapter() {...},18,0,2,0,5,0,3,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},33,0,2,0,10,0,3,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},10,0,0,0,3,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules,624,0,12,0,127,0,12,0,6,0
 4HWC Autonomous Car,com.autonomouscar,Main,21,0,0,0,10,0,2,0,2,0
+4HWC Autonomous Car,com.autonomouscar.exceptions,AutonomousCarExceptions,27,0,0,0,8,0,4,0,4,0
 4HWC Autonomous Car,com.autonomouscar.main,Main,264,0,19,0,60,0,14,0,3,0
 4HWC Autonomous Car,com.autonomouscar.main,Main4HWCAutonomousCar,21,0,0,0,10,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.utils,Chronometre,18,0,0,0,8,0,5,0,5,0
