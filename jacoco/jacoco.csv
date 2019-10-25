@@ -31,8 +31,6 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules,624,0,12,0,127,0,12,0,6,0
 4HWC Autonomous Car,com.autonomouscar,Main,21,0,0,0,10,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.exceptions,AutonomousCarExceptions,27,0,0,0,8,0,4,0,4,0
-4HWC Autonomous Car,com.autonomouscar.main,Main,264,0,19,0,60,0,14,0,3,0
-4HWC Autonomous Car,com.autonomouscar.main,Main4HWCAutonomousCar,21,0,0,0,10,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.utils,Chronometre,18,0,0,0,8,0,5,0,5,0
 4HWC Autonomous Car,com.autonomouscar.utils,Speech,3,0,0,0,1,0,1,0,1,0
 4HWC Autonomous Car,com.autonomouscar.service,AutonomousCarService,1750,31,264,0,369,5,146,5,14,5
