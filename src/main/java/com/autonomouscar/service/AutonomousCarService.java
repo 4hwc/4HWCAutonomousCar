@@ -421,51 +421,22 @@ public class AutonomousCarService {
 		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)
 	}
 
-	// XCoinDroit4HWC
+	// XYCoinDroit4HWC
 
 	// SERVICE
 
-	public int getXCoinDroit4HWC() {
+	public int getXYCoinDroit4HWC() {
 
 		return new Random().nextInt(6); // 0 to 5
 	}
 
-	// YCoinDroit4HWC
+	// XYInitiale4HWC
 
 	// SERVICE
 
-	public int getYCoinDroit4HWC() {
+	public int getXYInitiale4HWC(int xy) {
 
-		return new Random().nextInt(6); // 0 to 5
-	}
-
-	// XInitiale4HWC
-
-	// SERVICE
-
-	public int getXInitiale4HWC(int x) // X --> xCoinDroit4HWC
-	{
-
-		/*
-		 * 0<=x<=5 et 0<=XInitiale4HWC<=x donc si x=0 alors XInitiale4HWC=0
-		 */
-
-		return new Random().nextInt(x + 1);
-
-	}
-
-	// YInitiale4HWC
-
-	// SERVICE
-
-	public int getYInitiale4HWC(int y) // Y --> yCoinDroit4HWC
-	{
-
-		/*
-		 * 0<=y<=5 et 0<=YInitiale4HWC<=y donc si y=0 alors YInitiale4HWC=0
-		 */
-
-		return new Random().nextInt(y + 1);
+		return new Random().nextInt(xy + 1);
 
 	}
 
@@ -539,11 +510,11 @@ public class AutonomousCarService {
 			 * 
 			 */
 
-			int xCD = getXCoinDroit4HWC();
+			int xCD = getXYCoinDroit4HWC();
 
-			int yCD = getYCoinDroit4HWC();
+			int yCD = getXYCoinDroit4HWC();
 
-			liste.add(new AutonomousCar(xCD, yCD, getXInitiale4HWC(xCD), getYInitiale4HWC(yCD),
+			liste.add(new AutonomousCar(xCD, yCD, getXYInitiale4HWC(xCD), getXYInitiale4HWC(yCD),
 					getOrientationInitiale4HWC(), getInstructions4HWC()));
 
 		}

@@ -12,15 +12,15 @@ public class AutonomousCarServiceTest {
 	public void positionsTest()
 
 	{
-		int xCD = autonomousCarService.getXCoinDroit4HWC();
-		int yCD = autonomousCarService.getYCoinDroit4HWC();
-		int xInit = autonomousCarService.getXInitiale4HWC(xCD);
-		int yInit = autonomousCarService.getYInitiale4HWC(yCD);
+		int xCD = autonomousCarService.getXYCoinDroit4HWC();
+		int yCD = autonomousCarService.getXYCoinDroit4HWC();
+		int xInit = autonomousCarService.getXYInitiale4HWC(xCD);
+		int yInit = autonomousCarService.getXYInitiale4HWC(yCD);
 
 		assertTrue(xCD >= 0 && xCD <= 5);
 		assertTrue(yCD >= 0 && yCD <= 5);
 		assertTrue(xInit >= 0 && xInit <= xCD);
-		assertTrue(yInit >= 0 && yInit <= xCD);
+		assertTrue(yInit >= 0 && yInit <= yCD);
 
 	}
 
