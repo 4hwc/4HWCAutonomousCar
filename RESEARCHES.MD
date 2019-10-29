@@ -240,6 +240,14 @@ https://www.google.com/search?q=lambda+method+with+parameter&oq=lambda+method&aq
 
 https://dzone.com/articles/java-lambda-method-reference
 
+## baeldung java & spring boot logging
+
+https://www.baeldung.com/java-logging-intro
+
+https://www.baeldung.com/spring-boot-logging
+
+
+
 
 
 
