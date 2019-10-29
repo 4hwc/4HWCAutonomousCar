@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -72,7 +73,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 	private boolean validationInstructions;
 
-	static ArrayList<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>(); // Vider
+	static List<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>(); // Vider
 	// après
 	// l'animation
 
@@ -774,7 +775,9 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 							FormulaireVehicules.compteur++;
 
-							this.setVisible(false);
+							// this.setVisible(false);
+
+							this.dispose();
 
 							new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);
 

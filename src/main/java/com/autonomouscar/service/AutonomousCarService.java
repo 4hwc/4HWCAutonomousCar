@@ -146,8 +146,6 @@ public class AutonomousCarService {
 
 						validation = true;
 
-						AutonomousCarLog.logger.debug("Bravo :)pour la correcte orientation");
-
 					} else {
 
 						AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
@@ -196,7 +194,6 @@ public class AutonomousCarService {
 						&& yInitialeInt <= yCoinDroitInt) {
 					validation = true;
 
-					AutonomousCarLog.logger.debug(" Le véhicule est bien positionné sur la surface");
 				} else {
 					AutonomousCarLog.logger.error(" Position incorrecte du véhicule");
 				}
@@ -269,11 +266,9 @@ public class AutonomousCarService {
 							compteurLettresCorrectes++;
 
 							if (compteurLettresCorrectes == instructionsTrimMaj.length()) {
-								AutonomousCarLog.logger.debug("Les instructions sont correctes, bravo :)");
 
 								validation = true;
 
-								AutonomousCarLog.logger.debug(String.format("Valeur :-%s-", instructions));
 							}
 
 						} else {
