@@ -8,6 +8,9 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.utils.Chronometre;
@@ -23,110 +26,25 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public boolean validationNombreDeVehiculesString(String nbre) {
-		boolean validation = false;
+	public void validationNombreDeVehiculesString(String nbre) throws AutonomousCarException {
 
-		int entier = 0;
+		String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
 
-		if (isNombre(nbre) == true) {
-
-			String nbreTrim = nbre.trim();
-
-			entier = Integer.parseInt(nbreTrim);
-
-			if (entier >= 1) {
-				// correct
-
-				validation = true;
+		if (StringUtils.isNumeric(nbre.trim())) {
+			if (Integer.parseInt(nbre.trim()) >= 1) {
 
 			} else {
 
-				AutonomousCarLog.logger.error(INCORRECT);
+				throw new AutonomousCarException(messageError);
 
 			}
 
 		} else {
 
-			// Ce n'est pas un nombre
-
-			AutonomousCarLog.logger.error(INCORRECT);
+			throw new AutonomousCarException(messageError);
 
 		}
 
-		return validation;
-	}
-
-	// Validation d'un nombre
-
-	// SERVICE
-
-	private boolean isNombre(String nbre) {
-
-		boolean presenceEspace = false;
-
-		boolean validation = false;
-
-		if (nbre != null) {
-			String nbreTrim = nbre.trim();
-
-			if (nbreTrim.length() != 0) {
-
-				for (int i = 0; i < nbreTrim.length(); i++) {
-
-					if (nbreTrim.charAt(i) == ' ') {
-
-						presenceEspace = true;
-
-						break;
-					}
-				} // for
-
-				if (presenceEspace == false)
-
-				{
-
-					int compteurChiffresCorrects = 0;
-
-					for (int j = 0; j < nbreTrim.length(); j++) {
-
-						String nbreTrimString = nbreTrim.charAt(j) + "";
-
-						if (nbreTrimString.equals("0") || nbreTrimString.equals("1") || nbreTrimString.equals("2")
-								|| nbreTrimString.equals("3") || nbreTrimString.equals("4")
-								|| nbreTrimString.equals("5") || nbreTrimString.equals("6")
-								|| nbreTrimString.equals("7") || nbreTrimString.equals("8")
-								|| nbreTrimString.equals("9")) {
-							// Correct
-
-							compteurChiffresCorrects++;
-
-							if (compteurChiffresCorrects == nbreTrim.length()) {
-
-								validation = true;
-							}
-
-						} else {
-							// Présence d'un intrus
-
-							validation = false;
-
-							break;
-						}
-
-					} // for
-
-				} else {
-					// Rien faire car espace présent
-				}
-
-			} else {
-
-			}
-		} else {
-
-		}
-
-		return validation;
 	}
 
 	// SERVICE
@@ -173,21 +91,26 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale) {
+	public boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
+			throws AutonomousCarException {
 
 		boolean validation = false;
 
-		int xCoinDroitInt = 0, yCoinDroitInt = 0, xInitialeInt = 0, yInitialeInt = 0;
+		String messageErrorVehicule = "S'il vous plaît choisissez une position correcte du véhicule";
 
-		if (isNombre(xCoinDroit) && isNombre(yCoinDroit) && isNombre(xInitiale) && isNombre(yInitiale)) {
+		String messageErrorCD = "S'il vous plaît choisissez une position correcte du coin Supérieur Droit";
 
-			xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());
+		String titleError = "Position incorrecte sur la surface";
 
-			yCoinDroitInt = Integer.parseInt(yCoinDroit.trim());
+		try {
 
-			xInitialeInt = Integer.parseInt(xInitiale.trim());
+			int xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());
 
-			yInitialeInt = Integer.parseInt(yInitiale.trim());
+			int yCoinDroitInt = Integer.parseInt(yCoinDroit.trim());
+
+			int xInitialeInt = Integer.parseInt(xInitiale.trim());
+
+			int yInitialeInt = Integer.parseInt(yInitiale.trim());
 
 			if (xCoinDroitInt >= 0 && xCoinDroitInt <= 5 && yCoinDroitInt >= 0 && yCoinDroitInt <= 5) {
 				if (xInitialeInt >= 0 && xInitialeInt <= xCoinDroitInt && yInitialeInt >= 0
@@ -195,15 +118,16 @@ public class AutonomousCarService {
 					validation = true;
 
 				} else {
-					AutonomousCarLog.logger.error(" Position incorrecte du véhicule");
+
+					throw new AutonomousCarException(messageErrorVehicule);
 				}
 			} else {
-				AutonomousCarLog.logger.error(
-						" Position incorrecte du coin supérieur droit de la surface, entrez des valeurs comprises entre 0 et 5");
+				throw new AutonomousCarException(messageErrorCD);
+
 			}
 
-		} else {
-			AutonomousCarLog.logger.error(INCORRECT);
+		} catch (AutonomousCarException e) {
+
 		}
 
 		return validation;

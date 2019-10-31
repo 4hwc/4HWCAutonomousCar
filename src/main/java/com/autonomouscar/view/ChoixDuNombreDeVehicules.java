@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-import com.autonomouscar.exceptions.AutonomousCarExceptions;
+import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.service.AutonomousCarService;
 
 public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
@@ -50,6 +52,12 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
 	private boolean validation;
+
+	private String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
+
+	private Map<String, String> erreurs = new HashMap<String, String>();
+
+	private final String TITLE_ERROR = "Nombre de véhicules incorrect";
 
 	static int nombreDeVehicules;
 
@@ -340,47 +348,35 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		AutonomousCarService autonomousCarService = new AutonomousCarService();
-
 		if (arg0.getSource() == boutonConfirmer) {
+			try
 
-			String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
+			{
 
-			String titleError = "Nombre de tondeuses incorrect";
+				new AutonomousCarService().validationNombreDeVehiculesString(jtfNbre.getText());
 
-			try {
+			} catch (AutonomousCarException e) {
 
-				validation = autonomousCarService.validationNombreDeVehiculesString(jtfNbre.getText());
+				erreurs.put(TITLE_ERROR, messageError);
 
-				if (validation == true) {
-
-					nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
-
-					this.dispose();
-
-					new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
-																	// 1er
-																	// formulaire
-
-				} else {
-
-					JOptionPane jop = new JOptionPane();
-
-					jop.showMessageDialog(null, messageError, titleError, JOptionPane.ERROR_MESSAGE);
-
-					throw new AutonomousCarExceptions("S'il vous plaît choisissez un nombre supérieur ou égal à 1");
-
-				}
-
-			} catch (AutonomousCarExceptions e) {
-
-				new AutonomousCarExceptions().setErreur(titleError, e.getMessage());
+				new JOptionPane();
+				JOptionPane.showMessageDialog(null, messageError, TITLE_ERROR, JOptionPane.ERROR_MESSAGE);
 
 			}
 
+			nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
+
+			this.dispose();
+
+			new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
+															// 1er
+															// formulaire
+
 		}
+
 	}
 
 }

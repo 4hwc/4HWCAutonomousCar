@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.service.AutonomousCarService;
 
@@ -711,8 +712,13 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 		if (arg0.getSource() == boutonConfirmer)
 
 		{
-			validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
-					jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());
+			try {
+				validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
+						jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());
+			} catch (AutonomousCarException e) {
+
+				e.printStackTrace();
+			}
 
 			validationOrientation = autonomousCarService
 					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());
@@ -774,8 +780,6 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 							// this.nbreDeVehicules
 
 							FormulaireVehicules.compteur++;
-
-							// this.setVisible(false);
 
 							this.dispose();
 
