@@ -24,48 +24,49 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
+import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.service.AutonomousCarService;
 
 public class FormulaireVehicules extends JFrame implements ActionListener {
 
-<span class="nc" id="L32">	private FormulaireVehiculesPanneau4HWC container = new FormulaireVehiculesPanneau4HWC();</span>
+<span class="nc" id="L33">	private FormulaireVehiculesPanneau4HWC container = new FormulaireVehiculesPanneau4HWC();</span>
 
-<span class="nc" id="L34">	private JTextField jtfInstructions = new JTextField(&quot;Instructions constituées des lettres D; G et A sans espaces&quot;);</span>
+<span class="nc" id="L35">	private JTextField jtfInstructions = new JTextField(&quot;Instructions constituées des lettres D; G et A sans espaces&quot;);</span>
 
-<span class="nc" id="L36">	private JTextField jtfOrientation = new JTextField(&quot;Orientation constituée d'une seule lettre N; E; W et S&quot;);</span>
+<span class="nc" id="L37">	private JTextField jtfOrientation = new JTextField(&quot;Orientation constituée d'une seule lettre N; E; W et S&quot;);</span>
 
-<span class="nc" id="L38">	private JTextField jtfX = new JTextField(&quot;abscisse initiale&quot;);</span>
+<span class="nc" id="L39">	private JTextField jtfX = new JTextField(&quot;abscisse initiale&quot;);</span>
 
-<span class="nc" id="L40">	private JTextField jtfY = new JTextField(&quot;ordonnée initiale&quot;);</span>
+<span class="nc" id="L41">	private JTextField jtfY = new JTextField(&quot;ordonnée initiale&quot;);</span>
 
-<span class="nc" id="L42">	private JTextField jtfXCoinDroit = new JTextField(&quot;abscisse&quot;);</span>
+<span class="nc" id="L43">	private JTextField jtfXCoinDroit = new JTextField(&quot;abscisse&quot;);</span>
 
-<span class="nc" id="L44">	private JTextField jtfYCoinDroit = new JTextField(&quot;ordonnée&quot;);</span>
+<span class="nc" id="L45">	private JTextField jtfYCoinDroit = new JTextField(&quot;ordonnée&quot;);</span>
 
-<span class="nc" id="L46">	private URL url = FormulaireVehicules.class.getResource(&quot;/boutonConfirmerNbreVehicules.png&quot;);</span>
+<span class="nc" id="L47">	private URL url = FormulaireVehicules.class.getResource(&quot;/boutonConfirmerNbreVehicules.png&quot;);</span>
 
-<span class="nc" id="L48">	private ImageIcon imageBoutonConfirmer = new ImageIcon(url);</span>
+<span class="nc" id="L49">	private ImageIcon imageBoutonConfirmer = new ImageIcon(url);</span>
 
-<span class="nc" id="L50">	private JButton boutonConfirmer = new JButton(imageBoutonConfirmer);</span>
+<span class="nc" id="L51">	private JButton boutonConfirmer = new JButton(imageBoutonConfirmer);</span>
 
 	private int nbreDeVehicules;
 
 	private int numeroFormulaire;
 
-<span class="nc" id="L56">	private Font policeCalibriLight = new Font(&quot;Calibri Light&quot;, Font.BOLD, 30);</span>
+<span class="nc" id="L57">	private Font policeCalibriLight = new Font(&quot;Calibri Light&quot;, Font.BOLD, 30);</span>
 
-<span class="nc" id="L58">	private Font policeCalibri = new Font(&quot;Calibri&quot;, Font.BOLD, 30);</span>
+<span class="nc" id="L59">	private Font policeCalibri = new Font(&quot;Calibri&quot;, Font.BOLD, 30);</span>
 
-<span class="nc" id="L60">	private Font policeAgencyFB = new Font(&quot;Agency FB&quot;, Font.BOLD, 30);</span>
+<span class="nc" id="L61">	private Font policeAgencyFB = new Font(&quot;Agency FB&quot;, Font.BOLD, 30);</span>
 
-<span class="nc" id="L62">	private Border whiteBorder = new LineBorder(Color.WHITE, 3);</span>
+<span class="nc" id="L63">	private Border whiteBorder = new LineBorder(Color.WHITE, 3);</span>
 
-<span class="nc" id="L64">	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);</span>
+<span class="nc" id="L65">	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);</span>
 
-<span class="nc" id="L66">	private JLabel positionInitialeDuVehicule = new JLabel(&quot;Position Du Véhicule&quot;);</span>
+<span class="nc" id="L67">	private JLabel positionInitialeDuVehicule = new JLabel(&quot;Position Du Véhicule&quot;);</span>
 
-<span class="nc" id="L68">	private JLabel coinSuperieurDroit = new JLabel(&quot;Coin Supérieur Droit&quot;);</span>
+<span class="nc" id="L69">	private JLabel coinSuperieurDroit = new JLabel(&quot;Coin Supérieur Droit&quot;);</span>
 
 	private boolean validationPositions;
 
@@ -73,60 +74,60 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 	private boolean validationInstructions;
 
-<span class="nc" id="L76">	static List&lt;AutonomousCar&gt; listeVehicules = new ArrayList&lt;AutonomousCar&gt;(); // Vider</span>
+<span class="nc" id="L77">	static List&lt;AutonomousCar&gt; listeVehicules = new ArrayList&lt;AutonomousCar&gt;(); // Vider</span>
 	// après
 	// l'animation
 
-<span class="nc" id="L80">	static int compteur = 1; // Remettre la valeur initiale après l'animation</span>
+<span class="nc" id="L81">	static int compteur = 1; // Remettre la valeur initiale après l'animation</span>
 
-<span class="nc" id="L82">	public FormulaireVehicules(int numeroFormulaire, int nbreDeVehicules) {</span>
+<span class="nc" id="L83">	public FormulaireVehicules(int numeroFormulaire, int nbreDeVehicules) {</span>
 
-<span class="nc" id="L84">		this.nbreDeVehicules = nbreDeVehicules;</span>
+<span class="nc" id="L85">		this.nbreDeVehicules = nbreDeVehicules;</span>
 
-<span class="nc" id="L86">		this.numeroFormulaire = numeroFormulaire;</span>
+<span class="nc" id="L87">		this.numeroFormulaire = numeroFormulaire;</span>
 
-<span class="nc bnc" id="L88" title="All 2 branches missed.">		if (this.nbreDeVehicules == 1) {</span>
-<span class="nc" id="L89">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques du véhicule&quot;);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (this.nbreDeVehicules == 1) {</span>
+<span class="nc" id="L90">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques du véhicule&quot;);</span>
 
 		} else // this.nbreDeTondeuses &gt;1
 		{
-<span class="nc" id="L93">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques des &quot; + this.nbreDeVehicules + &quot; véhicules&quot;);</span>
+<span class="nc" id="L94">			this.setTitle(&quot;4HWC AUTONOMOUS CAR : caractéristiques des &quot; + this.nbreDeVehicules + &quot; véhicules&quot;);</span>
 		}
 
-<span class="nc" id="L96">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
+<span class="nc" id="L97">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
 
-<span class="nc" id="L98">		this.setSize(1000, 600);</span>
+<span class="nc" id="L99">		this.setSize(1000, 600);</span>
 
-<span class="nc" id="L100">		this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L101">		this.setLocationRelativeTo(null);</span>
 
-<span class="nc" id="L102">		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L103">		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
 
-<span class="nc" id="L104">		this.addWindowListener(new java.awt.event.WindowAdapter() {</span>
+<span class="nc" id="L105">		this.addWindowListener(new java.awt.event.WindowAdapter() {</span>
 			@Override
 			public void windowClosing(WindowEvent e) {
 
-<span class="nc" id="L108">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
+<span class="nc" id="L109">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-<span class="nc bnc" id="L110" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
-<span class="nc" id="L111">					System.exit(0);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
+<span class="nc" id="L112">					System.exit(0);</span>
 				}
 
-<span class="nc" id="L114">			}</span>
+<span class="nc" id="L115">			}</span>
 		});
 
-<span class="nc" id="L117">		this.setResizable(false);</span>
+<span class="nc" id="L118">		this.setResizable(false);</span>
 
 		//////////////////////////////////////////////////////////////////
 
-<span class="nc" id="L121">		container.add(formulaire(this.numeroFormulaire, this.nbreDeVehicules));</span>
+<span class="nc" id="L122">		container.add(formulaire(this.numeroFormulaire, this.nbreDeVehicules));</span>
 
-<span class="nc" id="L123">		this.setContentPane(container);</span>
+<span class="nc" id="L124">		this.setContentPane(container);</span>
 
-<span class="nc" id="L125">		this.setVisible(true);</span>
+<span class="nc" id="L126">		this.setVisible(true);</span>
 
 		/////////////////////////////////////////////////////////////////
 
-<span class="nc" id="L129">	}</span>
+<span class="nc" id="L130">	}</span>
 
 	private JPanel formulaire(int numero, int nbreVehicules) {
 		// Découpage de content en 9 cellules , 4 lignes et 3 colonnes :
@@ -136,650 +137,653 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 		// Création des 12 cellules
 
-<span class="nc" id="L139">		JPanel cell1_1 = new JPanel();</span>
-<span class="nc" id="L140">		cell1_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L141">		cell1_1.setOpaque(false);</span>
+<span class="nc" id="L140">		JPanel cell1_1 = new JPanel();</span>
+<span class="nc" id="L141">		cell1_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L142">		cell1_1.setOpaque(false);</span>
 
-<span class="nc" id="L143">		JPanel cell1_2 = new JPanel();</span>
-<span class="nc" id="L144">		cell1_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L145">		cell1_2.setOpaque(false);</span>
+<span class="nc" id="L144">		JPanel cell1_2 = new JPanel();</span>
+<span class="nc" id="L145">		cell1_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L146">		cell1_2.setOpaque(false);</span>
 
-<span class="nc" id="L147">		JPanel cell1_3 = new JPanel();</span>
-<span class="nc" id="L148">		cell1_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L149">		cell1_3.setOpaque(false);</span>
+<span class="nc" id="L148">		JPanel cell1_3 = new JPanel();</span>
+<span class="nc" id="L149">		cell1_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L150">		cell1_3.setOpaque(false);</span>
 
-<span class="nc" id="L151">		JPanel cell1 = new JPanel();</span>
-<span class="nc" id="L152">		cell1.setPreferredSize(new Dimension(330, 150));</span>
-<span class="nc" id="L153">		cell1.setOpaque(false);</span>
+<span class="nc" id="L152">		JPanel cell1 = new JPanel();</span>
+<span class="nc" id="L153">		cell1.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L154">		cell1.setOpaque(false);</span>
 
-<span class="nc" id="L155">		cell1.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L156">		cell1.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L159">		GridBagConstraints gbc1 = new GridBagConstraints();</span>
+<span class="nc" id="L160">		GridBagConstraints gbc1 = new GridBagConstraints();</span>
 
-<span class="nc" id="L161">		gbc1.gridx = 0;</span>
+<span class="nc" id="L162">		gbc1.gridx = 0;</span>
 
-<span class="nc" id="L163">		gbc1.gridy = 0;</span>
+<span class="nc" id="L164">		gbc1.gridy = 0;</span>
 
-<span class="nc" id="L165">		gbc1.gridheight = 1;</span>
+<span class="nc" id="L166">		gbc1.gridheight = 1;</span>
 
-<span class="nc" id="L167">		gbc1.gridwidth = 1;</span>
+<span class="nc" id="L168">		gbc1.gridwidth = 1;</span>
 
-<span class="nc" id="L169">		cell1.add(cell1_1, gbc1);</span>
+<span class="nc" id="L170">		cell1.add(cell1_1, gbc1);</span>
 
-<span class="nc" id="L171">		gbc1.gridy = 1;</span>
+<span class="nc" id="L172">		gbc1.gridy = 1;</span>
 
-<span class="nc" id="L173">		cell1.add(cell1_2, gbc1);</span>
+<span class="nc" id="L174">		cell1.add(cell1_2, gbc1);</span>
 
-<span class="nc" id="L175">		gbc1.gridy = 2;</span>
+<span class="nc" id="L176">		gbc1.gridy = 2;</span>
 
-<span class="nc" id="L177">		cell1.add(cell1_3, gbc1);</span>
+<span class="nc" id="L178">		cell1.add(cell1_3, gbc1);</span>
 
 		// X CD
 
-<span class="nc" id="L181">		jtfXCoinDroit.setPreferredSize(new Dimension(330, 40));</span>
+<span class="nc" id="L182">		jtfXCoinDroit.setPreferredSize(new Dimension(330, 40));</span>
 
-<span class="nc" id="L183">		jtfXCoinDroit.setFocusable(true);</span>
+<span class="nc" id="L184">		jtfXCoinDroit.setFocusable(true);</span>
 
-<span class="nc" id="L185">		jtfXCoinDroit.setFont(policeCalibriLight);</span>
+<span class="nc" id="L186">		jtfXCoinDroit.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L187">		jtfXCoinDroit.setForeground(Color.WHITE);</span>
+<span class="nc" id="L188">		jtfXCoinDroit.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L189">		jtfXCoinDroit.setBorder(whiteBorder);</span>
+<span class="nc" id="L190">		jtfXCoinDroit.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L191">		jtfXCoinDroit.setOpaque(false);</span>
+<span class="nc" id="L192">		jtfXCoinDroit.setOpaque(false);</span>
 
-<span class="nc" id="L193">		cell1_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L194">		cell1_2.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L195">		cell1_2.add(jtfXCoinDroit);</span>
+<span class="nc" id="L196">		cell1_2.add(jtfXCoinDroit);</span>
 
-<span class="nc" id="L197">		JPanel cell2_1 = new JPanel();</span>
-<span class="nc" id="L198">		cell2_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L199">		cell2_1.setOpaque(false);</span>
+<span class="nc" id="L198">		JPanel cell2_1 = new JPanel();</span>
+<span class="nc" id="L199">		cell2_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L200">		cell2_1.setOpaque(false);</span>
 
-<span class="nc" id="L201">		JPanel cell2_2 = new JPanel();</span>
-<span class="nc" id="L202">		cell2_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L203">		cell2_2.setOpaque(false);</span>
+<span class="nc" id="L202">		JPanel cell2_2 = new JPanel();</span>
+<span class="nc" id="L203">		cell2_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L204">		cell2_2.setOpaque(false);</span>
 
-<span class="nc" id="L205">		JPanel cell2_3 = new JPanel();</span>
-<span class="nc" id="L206">		cell2_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L207">		cell2_3.setOpaque(false);</span>
+<span class="nc" id="L206">		JPanel cell2_3 = new JPanel();</span>
+<span class="nc" id="L207">		cell2_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L208">		cell2_3.setOpaque(false);</span>
 
-<span class="nc" id="L209">		JPanel cell2 = new JPanel();</span>
-<span class="nc" id="L210">		cell2.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L210">		JPanel cell2 = new JPanel();</span>
+<span class="nc" id="L211">		cell2.setPreferredSize(new Dimension(330, 150));</span>
 		// cell2.setBackground(Color.WHITE);
 
-<span class="nc" id="L213">		cell2.setOpaque(false);</span>
+<span class="nc" id="L214">		cell2.setOpaque(false);</span>
 
-<span class="nc" id="L215">		cell2.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L216">		cell2.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L219">		GridBagConstraints gbc2 = new GridBagConstraints();</span>
+<span class="nc" id="L220">		GridBagConstraints gbc2 = new GridBagConstraints();</span>
 
-<span class="nc" id="L221">		gbc2.gridx = 0;</span>
+<span class="nc" id="L222">		gbc2.gridx = 0;</span>
 
-<span class="nc" id="L223">		gbc2.gridy = 0;</span>
+<span class="nc" id="L224">		gbc2.gridy = 0;</span>
 
-<span class="nc" id="L225">		gbc2.gridheight = 1;</span>
+<span class="nc" id="L226">		gbc2.gridheight = 1;</span>
 
-<span class="nc" id="L227">		gbc2.gridwidth = 1;</span>
+<span class="nc" id="L228">		gbc2.gridwidth = 1;</span>
 
-<span class="nc" id="L229">		cell2.add(cell2_1, gbc2);</span>
+<span class="nc" id="L230">		cell2.add(cell2_1, gbc2);</span>
 
-<span class="nc" id="L231">		gbc2.gridy = 1;</span>
+<span class="nc" id="L232">		gbc2.gridy = 1;</span>
 
-<span class="nc" id="L233">		cell2.add(cell2_2, gbc2);</span>
+<span class="nc" id="L234">		cell2.add(cell2_2, gbc2);</span>
 
-<span class="nc" id="L235">		gbc2.gridy = 2;</span>
+<span class="nc" id="L236">		gbc2.gridy = 2;</span>
 
-<span class="nc" id="L237">		cell2.add(cell2_3, gbc2);</span>
+<span class="nc" id="L238">		cell2.add(cell2_3, gbc2);</span>
 
-<span class="nc" id="L239">		cell2_1.setLayout(new FlowLayout());</span>
+<span class="nc" id="L240">		cell2_1.setLayout(new FlowLayout());</span>
 
 		// Titre formulaire
 
 		JLabel suiviFormulaire;
 
-<span class="nc bnc" id="L245" title="All 2 branches missed.">		if (nbreVehicules == 1) {</span>
-<span class="nc" id="L246">			suiviFormulaire = new JLabel(&quot;Véhicule unique&quot;);</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">		if (nbreVehicules == 1) {</span>
+<span class="nc" id="L247">			suiviFormulaire = new JLabel(&quot;Véhicule unique&quot;);</span>
 
 		} else {
 
-<span class="nc" id="L250">			suiviFormulaire = new JLabel(&quot;Véhicule N° &quot; + numero + &quot; sur &quot; + nbreVehicules);</span>
+<span class="nc" id="L251">			suiviFormulaire = new JLabel(&quot;Véhicule N° &quot; + numero + &quot; sur &quot; + nbreVehicules);</span>
 		}
 
-<span class="nc" id="L253">		suiviFormulaire.setFont(policeAgencyFB);</span>
+<span class="nc" id="L254">		suiviFormulaire.setFont(policeAgencyFB);</span>
 
-<span class="nc" id="L255">		suiviFormulaire.setForeground(Color.WHITE);</span>
+<span class="nc" id="L256">		suiviFormulaire.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L257">		cell2_1.add(suiviFormulaire);</span>
+<span class="nc" id="L258">		cell2_1.add(suiviFormulaire);</span>
 
 		// CD
 
-<span class="nc" id="L261">		cell2_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L262">		cell2_2.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L263">		coinSuperieurDroit.setFont(policeAgencyFB);</span>
+<span class="nc" id="L264">		coinSuperieurDroit.setFont(policeAgencyFB);</span>
 
-<span class="nc" id="L265">		coinSuperieurDroit.setForeground(Color.WHITE);</span>
+<span class="nc" id="L266">		coinSuperieurDroit.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L267">		cell2_2.add(coinSuperieurDroit);</span>
+<span class="nc" id="L268">		cell2_2.add(coinSuperieurDroit);</span>
 
-<span class="nc" id="L269">		JPanel cell3_1 = new JPanel();</span>
-<span class="nc" id="L270">		cell3_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L271">		cell3_1.setOpaque(false);</span>
+<span class="nc" id="L270">		JPanel cell3_1 = new JPanel();</span>
+<span class="nc" id="L271">		cell3_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L272">		cell3_1.setOpaque(false);</span>
 
-<span class="nc" id="L273">		JPanel cell3_2 = new JPanel();</span>
-<span class="nc" id="L274">		cell3_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L275">		cell3_2.setOpaque(false);</span>
+<span class="nc" id="L274">		JPanel cell3_2 = new JPanel();</span>
+<span class="nc" id="L275">		cell3_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L276">		cell3_2.setOpaque(false);</span>
 
-<span class="nc" id="L277">		JPanel cell3_3 = new JPanel();</span>
-<span class="nc" id="L278">		cell3_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L279">		cell3_3.setOpaque(false);</span>
+<span class="nc" id="L278">		JPanel cell3_3 = new JPanel();</span>
+<span class="nc" id="L279">		cell3_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L280">		cell3_3.setOpaque(false);</span>
 
-<span class="nc" id="L281">		JPanel cell3 = new JPanel();</span>
-<span class="nc" id="L282">		cell3.setPreferredSize(new Dimension(330, 150));</span>
-<span class="nc" id="L283">		cell3.setOpaque(false);</span>
+<span class="nc" id="L282">		JPanel cell3 = new JPanel();</span>
+<span class="nc" id="L283">		cell3.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L284">		cell3.setOpaque(false);</span>
 
-<span class="nc" id="L285">		cell3.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L286">		cell3.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L289">		GridBagConstraints gbc3 = new GridBagConstraints();</span>
+<span class="nc" id="L290">		GridBagConstraints gbc3 = new GridBagConstraints();</span>
 
-<span class="nc" id="L291">		gbc3.gridx = 0;</span>
+<span class="nc" id="L292">		gbc3.gridx = 0;</span>
 
-<span class="nc" id="L293">		gbc3.gridy = 0;</span>
+<span class="nc" id="L294">		gbc3.gridy = 0;</span>
 
-<span class="nc" id="L295">		gbc3.gridheight = 1;</span>
+<span class="nc" id="L296">		gbc3.gridheight = 1;</span>
 
-<span class="nc" id="L297">		gbc3.gridwidth = 1;</span>
+<span class="nc" id="L298">		gbc3.gridwidth = 1;</span>
 
-<span class="nc" id="L299">		cell3.add(cell3_1, gbc3);</span>
+<span class="nc" id="L300">		cell3.add(cell3_1, gbc3);</span>
 
-<span class="nc" id="L301">		gbc3.gridy = 1;</span>
+<span class="nc" id="L302">		gbc3.gridy = 1;</span>
 
-<span class="nc" id="L303">		cell3.add(cell3_2, gbc3);</span>
+<span class="nc" id="L304">		cell3.add(cell3_2, gbc3);</span>
 
-<span class="nc" id="L305">		gbc3.gridy = 2;</span>
+<span class="nc" id="L306">		gbc3.gridy = 2;</span>
 
-<span class="nc" id="L307">		cell3.add(cell3_3, gbc3);</span>
+<span class="nc" id="L308">		cell3.add(cell3_3, gbc3);</span>
 
 		// Y CD
 
-<span class="nc" id="L311">		jtfYCoinDroit.setPreferredSize(new Dimension(330, 40));</span>
+<span class="nc" id="L312">		jtfYCoinDroit.setPreferredSize(new Dimension(330, 40));</span>
 
 		// jtfInstructions.setFocusable(true);
 
-<span class="nc" id="L315">		jtfYCoinDroit.setFont(policeCalibriLight);</span>
+<span class="nc" id="L316">		jtfYCoinDroit.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L317">		jtfYCoinDroit.setForeground(Color.WHITE);</span>
+<span class="nc" id="L318">		jtfYCoinDroit.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L319">		jtfYCoinDroit.setBorder(whiteBorder);</span>
+<span class="nc" id="L320">		jtfYCoinDroit.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L321">		jtfYCoinDroit.setOpaque(false);</span>
+<span class="nc" id="L322">		jtfYCoinDroit.setOpaque(false);</span>
 
-<span class="nc" id="L323">		cell3_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L324">		cell3_2.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L325">		cell3_2.add(jtfYCoinDroit);</span>
+<span class="nc" id="L326">		cell3_2.add(jtfYCoinDroit);</span>
 
-<span class="nc" id="L327">		JPanel cell4_1 = new JPanel();</span>
-<span class="nc" id="L328">		cell4_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L329">		cell4_1.setOpaque(false);</span>
+<span class="nc" id="L328">		JPanel cell4_1 = new JPanel();</span>
+<span class="nc" id="L329">		cell4_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L330">		cell4_1.setOpaque(false);</span>
 
-<span class="nc" id="L331">		JPanel cell4_2 = new JPanel();</span>
-<span class="nc" id="L332">		cell4_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L333">		cell4_2.setOpaque(false);</span>
+<span class="nc" id="L332">		JPanel cell4_2 = new JPanel();</span>
+<span class="nc" id="L333">		cell4_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L334">		cell4_2.setOpaque(false);</span>
 
-<span class="nc" id="L335">		JPanel cell4_3 = new JPanel();</span>
-<span class="nc" id="L336">		cell4_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L337">		cell4_3.setOpaque(false);</span>
+<span class="nc" id="L336">		JPanel cell4_3 = new JPanel();</span>
+<span class="nc" id="L337">		cell4_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L338">		cell4_3.setOpaque(false);</span>
 
-<span class="nc" id="L339">		JPanel cell4 = new JPanel();</span>
-<span class="nc" id="L340">		cell4.setPreferredSize(new Dimension(330, 150));</span>
-<span class="nc" id="L341">		cell4.setOpaque(false);</span>
+<span class="nc" id="L340">		JPanel cell4 = new JPanel();</span>
+<span class="nc" id="L341">		cell4.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L342">		cell4.setOpaque(false);</span>
 
-<span class="nc" id="L343">		cell4.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L344">		cell4.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L347">		GridBagConstraints gbc4 = new GridBagConstraints();</span>
+<span class="nc" id="L348">		GridBagConstraints gbc4 = new GridBagConstraints();</span>
 
-<span class="nc" id="L349">		gbc4.gridx = 0;</span>
+<span class="nc" id="L350">		gbc4.gridx = 0;</span>
 
-<span class="nc" id="L351">		gbc4.gridy = 0;</span>
+<span class="nc" id="L352">		gbc4.gridy = 0;</span>
 
-<span class="nc" id="L353">		gbc4.gridheight = 1;</span>
+<span class="nc" id="L354">		gbc4.gridheight = 1;</span>
 
-<span class="nc" id="L355">		gbc4.gridwidth = 1;</span>
+<span class="nc" id="L356">		gbc4.gridwidth = 1;</span>
 
-<span class="nc" id="L357">		cell4.add(cell4_1, gbc4);</span>
+<span class="nc" id="L358">		cell4.add(cell4_1, gbc4);</span>
 
-<span class="nc" id="L359">		gbc4.gridy = 1;</span>
+<span class="nc" id="L360">		gbc4.gridy = 1;</span>
 
-<span class="nc" id="L361">		cell4.add(cell4_2, gbc4);</span>
+<span class="nc" id="L362">		cell4.add(cell4_2, gbc4);</span>
 
-<span class="nc" id="L363">		gbc4.gridy = 2;</span>
+<span class="nc" id="L364">		gbc4.gridy = 2;</span>
 
-<span class="nc" id="L365">		cell4.add(cell4_3, gbc4);</span>
+<span class="nc" id="L366">		cell4.add(cell4_3, gbc4);</span>
 
 		// X VEHICULE
 
-<span class="nc" id="L369">		jtfX.setPreferredSize(new Dimension(330, 40));</span>
+<span class="nc" id="L370">		jtfX.setPreferredSize(new Dimension(330, 40));</span>
 
 		// jtfInstructions.setFocusable(true);
 
-<span class="nc" id="L373">		jtfX.setFont(policeCalibriLight);</span>
+<span class="nc" id="L374">		jtfX.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L375">		jtfX.setForeground(Color.WHITE);</span>
+<span class="nc" id="L376">		jtfX.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L377">		jtfX.setBorder(whiteBorder);</span>
+<span class="nc" id="L378">		jtfX.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L379">		jtfX.setOpaque(false);</span>
+<span class="nc" id="L380">		jtfX.setOpaque(false);</span>
 
-<span class="nc" id="L381">		cell4_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L382">		cell4_2.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L383">		cell4_2.add(jtfX);</span>
+<span class="nc" id="L384">		cell4_2.add(jtfX);</span>
 
-<span class="nc" id="L385">		JPanel cell5 = new JPanel();</span>
-<span class="nc" id="L386">		cell5.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L386">		JPanel cell5 = new JPanel();</span>
+<span class="nc" id="L387">		cell5.setPreferredSize(new Dimension(330, 150));</span>
 
-<span class="nc" id="L388">		cell5.setOpaque(false);</span>
+<span class="nc" id="L389">		cell5.setOpaque(false);</span>
 
-<span class="nc" id="L390">		cell5.setLayout(new FlowLayout());</span>
+<span class="nc" id="L391">		cell5.setLayout(new FlowLayout());</span>
 
 		// Position Initiale V2HICULE
 
 		// JLabel suiviFormulaire = new JLabel(&quot;Tondeuse N° i sur 4&quot;);
 
-<span class="nc" id="L396">		positionInitialeDuVehicule.setFont(policeAgencyFB);</span>
+<span class="nc" id="L397">		positionInitialeDuVehicule.setFont(policeAgencyFB);</span>
 
-<span class="nc" id="L398">		positionInitialeDuVehicule.setForeground(Color.WHITE);</span>
+<span class="nc" id="L399">		positionInitialeDuVehicule.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L400">		cell5.add(positionInitialeDuVehicule);</span>
+<span class="nc" id="L401">		cell5.add(positionInitialeDuVehicule);</span>
 
-<span class="nc" id="L402">		JPanel cell6_1 = new JPanel();</span>
-<span class="nc" id="L403">		cell6_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L404">		cell6_1.setOpaque(false);</span>
+<span class="nc" id="L403">		JPanel cell6_1 = new JPanel();</span>
+<span class="nc" id="L404">		cell6_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L405">		cell6_1.setOpaque(false);</span>
 
-<span class="nc" id="L406">		JPanel cell6_2 = new JPanel();</span>
-<span class="nc" id="L407">		cell6_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L408">		cell6_2.setOpaque(false);</span>
+<span class="nc" id="L407">		JPanel cell6_2 = new JPanel();</span>
+<span class="nc" id="L408">		cell6_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L409">		cell6_2.setOpaque(false);</span>
 
-<span class="nc" id="L410">		JPanel cell6_3 = new JPanel();</span>
-<span class="nc" id="L411">		cell6_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L412">		cell6_3.setOpaque(false);</span>
+<span class="nc" id="L411">		JPanel cell6_3 = new JPanel();</span>
+<span class="nc" id="L412">		cell6_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L413">		cell6_3.setOpaque(false);</span>
 
-<span class="nc" id="L414">		JPanel cell6 = new JPanel();</span>
-<span class="nc" id="L415">		cell6.setPreferredSize(new Dimension(330, 150));</span>
-<span class="nc" id="L416">		cell6.setOpaque(false);</span>
+<span class="nc" id="L415">		JPanel cell6 = new JPanel();</span>
+<span class="nc" id="L416">		cell6.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L417">		cell6.setOpaque(false);</span>
 
-<span class="nc" id="L418">		cell6.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L419">		cell6.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L422">		GridBagConstraints gbc6 = new GridBagConstraints();</span>
+<span class="nc" id="L423">		GridBagConstraints gbc6 = new GridBagConstraints();</span>
 
-<span class="nc" id="L424">		gbc6.gridx = 0;</span>
+<span class="nc" id="L425">		gbc6.gridx = 0;</span>
 
-<span class="nc" id="L426">		gbc6.gridy = 0;</span>
+<span class="nc" id="L427">		gbc6.gridy = 0;</span>
 
-<span class="nc" id="L428">		gbc6.gridheight = 1;</span>
+<span class="nc" id="L429">		gbc6.gridheight = 1;</span>
 
-<span class="nc" id="L430">		gbc6.gridwidth = 1;</span>
+<span class="nc" id="L431">		gbc6.gridwidth = 1;</span>
 
-<span class="nc" id="L432">		cell6.add(cell6_1, gbc6);</span>
+<span class="nc" id="L433">		cell6.add(cell6_1, gbc6);</span>
 
-<span class="nc" id="L434">		gbc6.gridy = 1;</span>
+<span class="nc" id="L435">		gbc6.gridy = 1;</span>
 
-<span class="nc" id="L436">		cell6.add(cell6_2, gbc6);</span>
+<span class="nc" id="L437">		cell6.add(cell6_2, gbc6);</span>
 
-<span class="nc" id="L438">		gbc6.gridy = 2;</span>
+<span class="nc" id="L439">		gbc6.gridy = 2;</span>
 
-<span class="nc" id="L440">		cell6.add(cell6_3, gbc6);</span>
+<span class="nc" id="L441">		cell6.add(cell6_3, gbc6);</span>
 
 		// Y VEHICULE
 
-<span class="nc" id="L444">		jtfY.setPreferredSize(new Dimension(330, 40));</span>
+<span class="nc" id="L445">		jtfY.setPreferredSize(new Dimension(330, 40));</span>
 
 		// jtfInstructions.setFocusable(true);
 
-<span class="nc" id="L448">		jtfY.setFont(policeCalibriLight);</span>
+<span class="nc" id="L449">		jtfY.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L450">		jtfY.setForeground(Color.WHITE);</span>
+<span class="nc" id="L451">		jtfY.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L452">		jtfY.setBorder(whiteBorder);</span>
+<span class="nc" id="L453">		jtfY.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L454">		jtfY.setOpaque(false);</span>
+<span class="nc" id="L455">		jtfY.setOpaque(false);</span>
 
-<span class="nc" id="L456">		cell6_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L457">		cell6_2.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L458">		cell6_2.add(jtfY);</span>
+<span class="nc" id="L459">		cell6_2.add(jtfY);</span>
 
-<span class="nc" id="L460">		JPanel cell7_1 = new JPanel();</span>
-<span class="nc" id="L461">		cell7_1.setPreferredSize(new Dimension(990, 50));</span>
-<span class="nc" id="L462">		cell7_1.setOpaque(false);</span>
+<span class="nc" id="L461">		JPanel cell7_1 = new JPanel();</span>
+<span class="nc" id="L462">		cell7_1.setPreferredSize(new Dimension(990, 50));</span>
+<span class="nc" id="L463">		cell7_1.setOpaque(false);</span>
 
-<span class="nc" id="L464">		JPanel cell7_2 = new JPanel();</span>
-<span class="nc" id="L465">		cell7_2.setPreferredSize(new Dimension(990, 50));</span>
-<span class="nc" id="L466">		cell7_2.setOpaque(false);</span>
+<span class="nc" id="L465">		JPanel cell7_2 = new JPanel();</span>
+<span class="nc" id="L466">		cell7_2.setPreferredSize(new Dimension(990, 50));</span>
+<span class="nc" id="L467">		cell7_2.setOpaque(false);</span>
 
-<span class="nc" id="L468">		JPanel cell7_3 = new JPanel();</span>
-<span class="nc" id="L469">		cell7_3.setPreferredSize(new Dimension(990, 50));</span>
-<span class="nc" id="L470">		cell7_3.setOpaque(false);</span>
+<span class="nc" id="L469">		JPanel cell7_3 = new JPanel();</span>
+<span class="nc" id="L470">		cell7_3.setPreferredSize(new Dimension(990, 50));</span>
+<span class="nc" id="L471">		cell7_3.setOpaque(false);</span>
 
-<span class="nc" id="L472">		JPanel cell7 = new JPanel();</span>
-<span class="nc" id="L473">		cell7.setPreferredSize(new Dimension(990, 150));</span>
-<span class="nc" id="L474">		cell7.setOpaque(false);</span>
+<span class="nc" id="L473">		JPanel cell7 = new JPanel();</span>
+<span class="nc" id="L474">		cell7.setPreferredSize(new Dimension(990, 150));</span>
+<span class="nc" id="L475">		cell7.setOpaque(false);</span>
 
-<span class="nc" id="L476">		cell7.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L477">		cell7.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L480">		GridBagConstraints gbc7 = new GridBagConstraints();</span>
+<span class="nc" id="L481">		GridBagConstraints gbc7 = new GridBagConstraints();</span>
 
-<span class="nc" id="L482">		gbc7.gridx = 0;</span>
-<span class="nc" id="L483">		gbc7.gridy = 0;</span>
+<span class="nc" id="L483">		gbc7.gridx = 0;</span>
+<span class="nc" id="L484">		gbc7.gridy = 0;</span>
 
-<span class="nc" id="L485">		gbc7.gridheight = 1;</span>
+<span class="nc" id="L486">		gbc7.gridheight = 1;</span>
 
-<span class="nc" id="L487">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L488">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
 
-<span class="nc" id="L489">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
-<span class="nc" id="L490">		cell7.add(cell7_1, gbc7);</span>
+<span class="nc" id="L490">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L491">		cell7.add(cell7_1, gbc7);</span>
 
-<span class="nc" id="L492">		gbc7.gridy = 1;</span>
+<span class="nc" id="L493">		gbc7.gridy = 1;</span>
 
-<span class="nc" id="L494">		gbc7.gridheight = 1;</span>
+<span class="nc" id="L495">		gbc7.gridheight = 1;</span>
 
-<span class="nc" id="L496">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L497">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
 
-<span class="nc" id="L498">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
-<span class="nc" id="L499">		cell7.add(cell7_2, gbc7);</span>
+<span class="nc" id="L499">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L500">		cell7.add(cell7_2, gbc7);</span>
 
-<span class="nc" id="L501">		gbc7.gridy = 2;</span>
+<span class="nc" id="L502">		gbc7.gridy = 2;</span>
 
-<span class="nc" id="L503">		gbc7.gridheight = 1;</span>
+<span class="nc" id="L504">		gbc7.gridheight = 1;</span>
 
-<span class="nc" id="L505">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L506">		gbc7.fill = GridBagConstraints.HORIZONTAL;</span>
 
-<span class="nc" id="L507">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
-<span class="nc" id="L508">		cell7.add(cell7_3, gbc7);</span>
+<span class="nc" id="L508">		gbc7.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L509">		cell7.add(cell7_3, gbc7);</span>
 
 		// ORIENTATION
 
-<span class="nc" id="L512">		jtfOrientation.setPreferredSize(new Dimension(990, 40));</span>
+<span class="nc" id="L513">		jtfOrientation.setPreferredSize(new Dimension(990, 40));</span>
 
 		// jtfInstructions.setFocusable(true);
 
-<span class="nc" id="L516">		jtfOrientation.setFont(policeCalibriLight);</span>
+<span class="nc" id="L517">		jtfOrientation.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L518">		jtfOrientation.setForeground(Color.WHITE);</span>
+<span class="nc" id="L519">		jtfOrientation.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L520">		jtfOrientation.setBorder(whiteBorder);</span>
+<span class="nc" id="L521">		jtfOrientation.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L522">		jtfOrientation.setOpaque(false);</span>
+<span class="nc" id="L523">		jtfOrientation.setOpaque(false);</span>
 
-<span class="nc" id="L524">		cell7_1.setLayout(new FlowLayout());</span>
+<span class="nc" id="L525">		cell7_1.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L526">		cell7_1.add(jtfOrientation);</span>
+<span class="nc" id="L527">		cell7_1.add(jtfOrientation);</span>
 
 		// INSTRUCTIONS
 
-<span class="nc" id="L530">		jtfInstructions.setPreferredSize(new Dimension(990, 40));</span>
+<span class="nc" id="L531">		jtfInstructions.setPreferredSize(new Dimension(990, 40));</span>
 
 		// jtfInstructions.setFocusable(true);
 
-<span class="nc" id="L534">		jtfInstructions.setFont(policeCalibriLight);</span>
+<span class="nc" id="L535">		jtfInstructions.setFont(policeCalibriLight);</span>
 
-<span class="nc" id="L536">		jtfInstructions.setForeground(Color.WHITE);</span>
+<span class="nc" id="L537">		jtfInstructions.setForeground(Color.WHITE);</span>
 
-<span class="nc" id="L538">		jtfInstructions.setBorder(whiteBorder);</span>
+<span class="nc" id="L539">		jtfInstructions.setBorder(whiteBorder);</span>
 
-<span class="nc" id="L540">		jtfInstructions.setOpaque(false);</span>
+<span class="nc" id="L541">		jtfInstructions.setOpaque(false);</span>
 
-<span class="nc" id="L542">		cell7_3.setLayout(new FlowLayout());</span>
+<span class="nc" id="L543">		cell7_3.setLayout(new FlowLayout());</span>
 
-<span class="nc" id="L544">		cell7_3.add(jtfInstructions);</span>
+<span class="nc" id="L545">		cell7_3.add(jtfInstructions);</span>
 
-<span class="nc" id="L546">		JPanel cell8 = new JPanel();</span>
-<span class="nc" id="L547">		cell8.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L547">		JPanel cell8 = new JPanel();</span>
+<span class="nc" id="L548">		cell8.setPreferredSize(new Dimension(330, 150));</span>
 
-<span class="nc" id="L549">		cell8.setOpaque(false);</span>
+<span class="nc" id="L550">		cell8.setOpaque(false);</span>
 
-<span class="nc" id="L551">		JPanel cell9_1 = new JPanel();</span>
-<span class="nc" id="L552">		cell9_1.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L553">		cell9_1.setOpaque(false);</span>
+<span class="nc" id="L552">		JPanel cell9_1 = new JPanel();</span>
+<span class="nc" id="L553">		cell9_1.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L554">		cell9_1.setOpaque(false);</span>
 
-<span class="nc" id="L555">		JPanel cell9_2 = new JPanel();</span>
-<span class="nc" id="L556">		cell9_2.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L557">		cell9_2.setOpaque(false);</span>
+<span class="nc" id="L556">		JPanel cell9_2 = new JPanel();</span>
+<span class="nc" id="L557">		cell9_2.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L558">		cell9_2.setOpaque(false);</span>
 
-<span class="nc" id="L559">		JPanel cell9_3 = new JPanel();</span>
-<span class="nc" id="L560">		cell9_3.setPreferredSize(new Dimension(330, 50));</span>
-<span class="nc" id="L561">		cell9_3.setOpaque(false);</span>
+<span class="nc" id="L560">		JPanel cell9_3 = new JPanel();</span>
+<span class="nc" id="L561">		cell9_3.setPreferredSize(new Dimension(330, 50));</span>
+<span class="nc" id="L562">		cell9_3.setOpaque(false);</span>
 
-<span class="nc" id="L563">		JPanel cell9 = new JPanel();</span>
-<span class="nc" id="L564">		cell9.setPreferredSize(new Dimension(330, 150));</span>
-<span class="nc" id="L565">		cell9.setOpaque(false);</span>
+<span class="nc" id="L564">		JPanel cell9 = new JPanel();</span>
+<span class="nc" id="L565">		cell9.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L566">		cell9.setOpaque(false);</span>
 
-<span class="nc" id="L567">		cell9.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L568">		cell9.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L571">		GridBagConstraints gbc9 = new GridBagConstraints();</span>
+<span class="nc" id="L572">		GridBagConstraints gbc9 = new GridBagConstraints();</span>
 
-<span class="nc" id="L573">		gbc9.gridx = 0;</span>
-<span class="nc" id="L574">		gbc9.gridy = 0;</span>
+<span class="nc" id="L574">		gbc9.gridx = 0;</span>
+<span class="nc" id="L575">		gbc9.gridy = 0;</span>
 
-<span class="nc" id="L576">		gbc9.gridheight = 1;</span>
-<span class="nc" id="L577">		gbc9.gridwidth = 1;</span>
+<span class="nc" id="L577">		gbc9.gridheight = 1;</span>
+<span class="nc" id="L578">		gbc9.gridwidth = 1;</span>
 
-<span class="nc" id="L579">		cell9.add(cell9_1, gbc9);</span>
+<span class="nc" id="L580">		cell9.add(cell9_1, gbc9);</span>
 
-<span class="nc" id="L581">		gbc9.gridy = 1;</span>
-<span class="nc" id="L582">		cell9.add(cell9_2, gbc9);</span>
+<span class="nc" id="L582">		gbc9.gridy = 1;</span>
+<span class="nc" id="L583">		cell9.add(cell9_2, gbc9);</span>
 
-<span class="nc" id="L584">		gbc9.gridy = 2;</span>
-<span class="nc" id="L585">		cell9.add(cell9_3, gbc9);</span>
+<span class="nc" id="L585">		gbc9.gridy = 2;</span>
+<span class="nc" id="L586">		cell9.add(cell9_3, gbc9);</span>
 
-<span class="nc" id="L587">		cell9_2.setLayout(new FlowLayout());</span>
+<span class="nc" id="L588">		cell9_2.setLayout(new FlowLayout());</span>
 
 		// CONFIRMER
 
-<span class="nc" id="L591">		boutonConfirmer.setPreferredSize(new Dimension(220, 50));</span>
+<span class="nc" id="L592">		boutonConfirmer.setPreferredSize(new Dimension(220, 50));</span>
 
-<span class="nc" id="L593">		boutonConfirmer.setCursor(cursor);</span>
+<span class="nc" id="L594">		boutonConfirmer.setCursor(cursor);</span>
 
-<span class="nc" id="L595">		boutonConfirmer.setBorderPainted(true);</span>
+<span class="nc" id="L596">		boutonConfirmer.setBorderPainted(true);</span>
 
-<span class="nc" id="L597">		boutonConfirmer.addActionListener(this);</span>
+<span class="nc" id="L598">		boutonConfirmer.addActionListener(this);</span>
 
-<span class="nc" id="L599">		cell9_2.add(boutonConfirmer);</span>
+<span class="nc" id="L600">		cell9_2.add(boutonConfirmer);</span>
 
-<span class="nc" id="L601">		JPanel cell10 = new JPanel();</span>
-<span class="nc" id="L602">		cell10.setPreferredSize(new Dimension(330, 150));</span>
+<span class="nc" id="L602">		JPanel cell10 = new JPanel();</span>
+<span class="nc" id="L603">		cell10.setPreferredSize(new Dimension(330, 150));</span>
 
-<span class="nc" id="L604">		cell10.setOpaque(false);</span>
+<span class="nc" id="L605">		cell10.setOpaque(false);</span>
 
-<span class="nc" id="L606">		JPanel content = new JPanel();</span>
+<span class="nc" id="L607">		JPanel content = new JPanel();</span>
 
-<span class="nc" id="L608">		content.setPreferredSize(new Dimension(990, 600));</span>
+<span class="nc" id="L609">		content.setPreferredSize(new Dimension(990, 600));</span>
 
-<span class="nc" id="L610">		content.setOpaque(false);</span>
+<span class="nc" id="L611">		content.setOpaque(false);</span>
 
-<span class="nc" id="L612">		content.setLayout(new GridBagLayout());</span>
+<span class="nc" id="L613">		content.setLayout(new GridBagLayout());</span>
 
 		// Objet servant à positionner les composants
 
-<span class="nc" id="L616">		GridBagConstraints gbc = new GridBagConstraints();</span>
+<span class="nc" id="L617">		GridBagConstraints gbc = new GridBagConstraints();</span>
 
 		// Position de la case de départ du composant
 
-<span class="nc" id="L620">		gbc.gridx = 0;</span>
-<span class="nc" id="L621">		gbc.gridy = 0;</span>
+<span class="nc" id="L621">		gbc.gridx = 0;</span>
+<span class="nc" id="L622">		gbc.gridy = 0;</span>
 
 		// Taille en hauteur et largeur
 
-<span class="nc" id="L625">		gbc.gridheight = 1;</span>
-<span class="nc" id="L626">		gbc.gridwidth = 1;</span>
+<span class="nc" id="L626">		gbc.gridheight = 1;</span>
+<span class="nc" id="L627">		gbc.gridwidth = 1;</span>
 
-<span class="nc" id="L628">		content.add(cell1, gbc);</span>
+<span class="nc" id="L629">		content.add(cell1, gbc);</span>
 
-<span class="nc" id="L630">		gbc.gridx = 1;</span>
-<span class="nc" id="L631">		content.add(cell2, gbc);</span>
+<span class="nc" id="L631">		gbc.gridx = 1;</span>
+<span class="nc" id="L632">		content.add(cell2, gbc);</span>
 
 		// Fin de ligne
 
-<span class="nc" id="L635">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L636">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
 
-<span class="nc" id="L637">		gbc.gridx = 2;</span>
-<span class="nc" id="L638">		content.add(cell3, gbc);</span>
+<span class="nc" id="L638">		gbc.gridx = 2;</span>
+<span class="nc" id="L639">		content.add(cell3, gbc);</span>
 
 		// -----------------------
 
 		// ligne suivante 2e ligne
 
-<span class="nc" id="L644">		gbc.gridx = 0;</span>
-<span class="nc" id="L645">		gbc.gridy = 1;</span>
+<span class="nc" id="L645">		gbc.gridx = 0;</span>
+<span class="nc" id="L646">		gbc.gridy = 1;</span>
 
 		// Taille en hauteur et largeur
 
-<span class="nc" id="L649">		gbc.gridheight = 1;</span>
-<span class="nc" id="L650">		gbc.gridwidth = 1;</span>
+<span class="nc" id="L650">		gbc.gridheight = 1;</span>
+<span class="nc" id="L651">		gbc.gridwidth = 1;</span>
 
-<span class="nc" id="L652">		content.add(cell4, gbc);</span>
+<span class="nc" id="L653">		content.add(cell4, gbc);</span>
 
-<span class="nc" id="L654">		gbc.gridx = 1;</span>
-<span class="nc" id="L655">		content.add(cell5, gbc);</span>
+<span class="nc" id="L655">		gbc.gridx = 1;</span>
+<span class="nc" id="L656">		content.add(cell5, gbc);</span>
 
 		// Fin de ligne
 
-<span class="nc" id="L659">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L660">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
 
-<span class="nc" id="L661">		gbc.gridx = 2;</span>
-<span class="nc" id="L662">		content.add(cell6, gbc);</span>
+<span class="nc" id="L662">		gbc.gridx = 2;</span>
+<span class="nc" id="L663">		content.add(cell6, gbc);</span>
 
 		// -----------------------
 
 		// ligne suivante 3e ligne
 
-<span class="nc" id="L668">		gbc.gridx = 0;</span>
-<span class="nc" id="L669">		gbc.gridy = 2;</span>
+<span class="nc" id="L669">		gbc.gridx = 0;</span>
+<span class="nc" id="L670">		gbc.gridy = 2;</span>
 
-<span class="nc" id="L671">		gbc.gridheight = 1;</span>
+<span class="nc" id="L672">		gbc.gridheight = 1;</span>
 
-<span class="nc" id="L673">		gbc.fill = GridBagConstraints.HORIZONTAL;</span>
+<span class="nc" id="L674">		gbc.fill = GridBagConstraints.HORIZONTAL;</span>
 
-<span class="nc" id="L675">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
-<span class="nc" id="L676">		content.add(cell7, gbc);</span>
+<span class="nc" id="L676">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L677">		content.add(cell7, gbc);</span>
 
 		// -----------------------
 
 		// ligne suivante 4e ligne
 
-<span class="nc" id="L682">		gbc.gridx = 0;</span>
-<span class="nc" id="L683">		gbc.gridy = 3;</span>
+<span class="nc" id="L683">		gbc.gridx = 0;</span>
+<span class="nc" id="L684">		gbc.gridy = 3;</span>
 
-<span class="nc" id="L685">		gbc.gridheight = 1;</span>
-<span class="nc" id="L686">		gbc.gridwidth = 1;</span>
+<span class="nc" id="L686">		gbc.gridheight = 1;</span>
+<span class="nc" id="L687">		gbc.gridwidth = 1;</span>
 
-<span class="nc" id="L688">		content.add(cell8, gbc);</span>
+<span class="nc" id="L689">		content.add(cell8, gbc);</span>
 
-<span class="nc" id="L690">		gbc.gridx = 1;</span>
-<span class="nc" id="L691">		content.add(cell9, gbc);</span>
+<span class="nc" id="L691">		gbc.gridx = 1;</span>
+<span class="nc" id="L692">		content.add(cell9, gbc);</span>
 
 		// Fin de ligne
 
-<span class="nc" id="L695">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
+<span class="nc" id="L696">		gbc.gridwidth = GridBagConstraints.REMAINDER;</span>
 
-<span class="nc" id="L697">		gbc.gridx = 2;</span>
-<span class="nc" id="L698">		content.add(cell10, gbc);</span>
+<span class="nc" id="L698">		gbc.gridx = 2;</span>
+<span class="nc" id="L699">		content.add(cell10, gbc);</span>
 
 		// -----------------------
 
 		// FIN
 
-<span class="nc" id="L704">		return content;</span>
+<span class="nc" id="L705">		return content;</span>
 	}
 
 	public void actionPerformed(ActionEvent arg0)
 
 	{
-<span class="nc" id="L710">		AutonomousCarService autonomousCarService = new AutonomousCarService();</span>
-<span class="nc bnc" id="L711" title="All 2 branches missed.">		if (arg0.getSource() == boutonConfirmer)</span>
+<span class="nc" id="L711">		AutonomousCarService autonomousCarService = new AutonomousCarService();</span>
+<span class="nc bnc" id="L712" title="All 2 branches missed.">		if (arg0.getSource() == boutonConfirmer)</span>
 
 		{
-<span class="nc" id="L714">			validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),</span>
-<span class="nc" id="L715">					jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());</span>
+			try {
+<span class="nc" id="L716">				validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),</span>
+<span class="nc" id="L717">						jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());</span>
+<span class="nc" id="L718">			} catch (AutonomousCarException e) {</span>
 
-<span class="nc" id="L717">			validationOrientation = autonomousCarService</span>
-<span class="nc" id="L718">					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());</span>
+<span class="nc" id="L720">				e.printStackTrace();</span>
+<span class="nc" id="L721">			}</span>
 
-<span class="nc" id="L720">			validationInstructions = autonomousCarService</span>
-<span class="nc" id="L721">					.validationInstructions(jtfInstructions.getText().toUpperCase());</span>
+<span class="nc" id="L723">			validationOrientation = autonomousCarService</span>
+<span class="nc" id="L724">					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());</span>
 
-<span class="nc bnc" id="L723" title="All 2 branches missed.">			if (validationPositions == true)</span>
+<span class="nc" id="L726">			validationInstructions = autonomousCarService</span>
+<span class="nc" id="L727">					.validationInstructions(jtfInstructions.getText().toUpperCase());</span>
+
+<span class="nc bnc" id="L729" title="All 2 branches missed.">			if (validationPositions == true)</span>
 
 			{
 
-<span class="nc bnc" id="L727" title="All 2 branches missed.">				if (validationOrientation == true) {</span>
+<span class="nc bnc" id="L733" title="All 2 branches missed.">				if (validationOrientation == true) {</span>
 
-<span class="nc bnc" id="L729" title="All 2 branches missed.">					if (validationInstructions == true) {</span>
+<span class="nc bnc" id="L735" title="All 2 branches missed.">					if (validationInstructions == true) {</span>
 
 						// Tout est correct
 
-<span class="nc" id="L733">						FormulaireVehicules.listeVehicules.add(new AutonomousCar(</span>
-<span class="nc" id="L734">								Integer.parseInt(jtfXCoinDroit.getText().trim()),</span>
-<span class="nc" id="L735">								Integer.parseInt(jtfYCoinDroit.getText().trim()),</span>
-<span class="nc" id="L736">								Integer.parseInt(jtfX.getText().trim()), Integer.parseInt(jtfY.getText().trim()),</span>
-<span class="nc" id="L737">								jtfOrientation.getText().toUpperCase().trim(),</span>
-<span class="nc" id="L738">								jtfInstructions.getText().toUpperCase().trim()));</span>
+<span class="nc" id="L739">						FormulaireVehicules.listeVehicules.add(new AutonomousCar(</span>
+<span class="nc" id="L740">								Integer.parseInt(jtfXCoinDroit.getText().trim()),</span>
+<span class="nc" id="L741">								Integer.parseInt(jtfYCoinDroit.getText().trim()),</span>
+<span class="nc" id="L742">								Integer.parseInt(jtfX.getText().trim()), Integer.parseInt(jtfY.getText().trim()),</span>
+<span class="nc" id="L743">								jtfOrientation.getText().toUpperCase().trim(),</span>
+<span class="nc" id="L744">								jtfInstructions.getText().toUpperCase().trim()));</span>
 
-<span class="nc bnc" id="L740" title="All 2 branches missed.">						if (FormulaireVehicules.compteur == this.nbreDeVehicules) {</span>
+<span class="nc bnc" id="L746" title="All 2 branches missed.">						if (FormulaireVehicules.compteur == this.nbreDeVehicules) {</span>
 							// Tous les formulaires sont remplis correctement
 
-<span class="nc" id="L743">							JOptionPane jopSucces = new JOptionPane();</span>
+<span class="nc" id="L749">							JOptionPane jopSucces = new JOptionPane();</span>
 
-<span class="nc" id="L745">							String titleSucces = &quot;Succès&quot;;</span>
+<span class="nc" id="L751">							String titleSucces = &quot;Succès&quot;;</span>
 
-<span class="nc" id="L747">							String messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;;</span>
+<span class="nc" id="L753">							String messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;;</span>
 
-<span class="nc bnc" id="L749" title="All 2 branches missed.">							if (this.nbreDeVehicules == 1) {</span>
+<span class="nc bnc" id="L755" title="All 2 branches missed.">							if (this.nbreDeVehicules == 1) {</span>
 
 							} else {
 
-<span class="nc" id="L753">								messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
+<span class="nc" id="L759">								messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
 										+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;
 
 							}
 
-<span class="nc" id="L758">							jopSucces.showMessageDialog(null, messageSucces, titleSucces,</span>
+<span class="nc" id="L764">							jopSucces.showMessageDialog(null, messageSucces, titleSucces,</span>
 									JOptionPane.INFORMATION_MESSAGE);
 
 							// Changement de fenêtres
 
-<span class="nc" id="L763">							this.dispose();</span>
+<span class="nc" id="L769">							this.dispose();</span>
 
-<span class="nc" id="L765">							ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
+<span class="nc" id="L771">							ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
 
-<span class="nc" id="L767">							ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
+<span class="nc" id="L773">							ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
 
-<span class="nc" id="L769">							new ChargementDeplacementVehicules();</span>
+<span class="nc" id="L775">							new ChargementDeplacementVehicules();</span>
 
-<span class="nc" id="L771">						} else {</span>
+<span class="nc" id="L777">						} else {</span>
 
 							// FormulaireVehicules.compteur &lt;
 							// this.nbreDeVehicules
 
-<span class="nc" id="L776">							FormulaireVehicules.compteur++;</span>
+<span class="nc" id="L782">							FormulaireVehicules.compteur++;</span>
 
-							// this.setVisible(false);
+<span class="nc" id="L784">							this.dispose();</span>
 
-<span class="nc" id="L780">							this.dispose();</span>
-
-<span class="nc" id="L782">							new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
+<span class="nc" id="L786">							new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
 
 						}
 
@@ -787,37 +791,37 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 						// erreur au niveau des instructions
 
-<span class="nc" id="L790">						JOptionPane jopInstructions = new JOptionPane();</span>
+<span class="nc" id="L794">						JOptionPane jopInstructions = new JOptionPane();</span>
 
-<span class="nc" id="L792">						String messageInstructions = &quot;S'il vous plaît, il faut vérifier les instructions.&quot;;</span>
+<span class="nc" id="L796">						String messageInstructions = &quot;S'il vous plaît, il faut vérifier les instructions.&quot;;</span>
 
-<span class="nc" id="L794">						String titleInstructions = &quot;Instructions erronées&quot;;</span>
+<span class="nc" id="L798">						String titleInstructions = &quot;Instructions erronées&quot;;</span>
 
-<span class="nc" id="L796">						jopInstructions.showMessageDialog(null, messageInstructions, titleInstructions,</span>
+<span class="nc" id="L800">						jopInstructions.showMessageDialog(null, messageInstructions, titleInstructions,</span>
 								JOptionPane.ERROR_MESSAGE);
 
-<span class="nc" id="L799">					}</span>
+<span class="nc" id="L803">					}</span>
 
 				} else {
 
 					// erreur au niveau de l'orientation
 
-<span class="nc" id="L805">					JOptionPane jopOrientation = new JOptionPane();</span>
+<span class="nc" id="L809">					JOptionPane jopOrientation = new JOptionPane();</span>
 
-<span class="nc" id="L807">					String messageOrientation = &quot;S'il vous plaît, il faut vérifier l'orientation.&quot;;</span>
+<span class="nc" id="L811">					String messageOrientation = &quot;S'il vous plaît, il faut vérifier l'orientation.&quot;;</span>
 
-<span class="nc" id="L809">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
+<span class="nc" id="L813">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
 
-<span class="nc" id="L811">					jopOrientation.showMessageDialog(null, messageOrientation, titleOrientation,</span>
+<span class="nc" id="L815">					jopOrientation.showMessageDialog(null, messageOrientation, titleOrientation,</span>
 							JOptionPane.ERROR_MESSAGE);
 
-<span class="nc" id="L814">				}</span>
+<span class="nc" id="L818">				}</span>
 
 			} else {
 
 				// Au moins une erreur au niveau des positions
 
-<span class="nc" id="L820">				JOptionPane jopPositions = new JOptionPane();</span>
+<span class="nc" id="L824">				JOptionPane jopPositions = new JOptionPane();</span>
 
 				// jopPositions.setPreferredSize(new Dimension(500, 300));
 
@@ -827,14 +831,14 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 				// jopPositions.setForeground(Color.WHITE);
 
-<span class="nc" id="L830">				String messagePositions = &quot;S'il vous plaît, il faut vérifier les positions&quot;;</span>
+<span class="nc" id="L834">				String messagePositions = &quot;S'il vous plaît, il faut vérifier les positions&quot;;</span>
 
-<span class="nc" id="L832">				String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
+<span class="nc" id="L836">				String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
 
-<span class="nc" id="L834">				jopPositions.showMessageDialog(null, messagePositions, titlePositions, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L838">				jopPositions.showMessageDialog(null, messagePositions, titlePositions, JOptionPane.ERROR_MESSAGE);</span>
 			}
 		} // if arg0
-<span class="nc" id="L837">	}// actionPerformed</span>
+<span class="nc" id="L841">	}// actionPerformed</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
