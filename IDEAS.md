@@ -6,4 +6,4 @@
 6- Javadoc
 7- seek a speech java API
 8- Create a constant NUMBER_INSTRUCTIONS
-9- Exclude code coverage related to model & utils classes
+9- Exclude code coverage related to model & utils classes from jacoco plugin present in pom.xml
