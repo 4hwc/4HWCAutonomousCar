@@ -246,6 +246,14 @@ https://www.baeldung.com/java-logging-intro
 
 https://www.baeldung.com/spring-boot-logging
 
+## handling exceptions properly on java GUI App
+
+https://www.google.com/search?sxsrf=ACYBGNRixVN7A0keCkDgtew2shJtBTk0SQ%3A1572608465955&ei=0Rm8Xc7yOZmejLsPvIe82Ag&q=handling+exceptions+properly+on+java+GUI+App&oq=handling+exceptions+properly+on+java+GUI+App&gs_l=psy-ab.3..33i160.3161.20320..21241...0.0..0.3132.3132.9-1......0....1..gws-wiz.kXaShKgFWM8&ved=0ahUKEwiOn--H98jlAhUZD2MBHbwDD4sQ4dUDCAs&uact=5
+
+https://stackoverflow.com/questions/18147684/catching-exceptions-in-swing-gui-application
+
+https://dzone.com/articles/exception-handling-in-real-life-applications
+
 
 
 
