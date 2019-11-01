@@ -254,6 +254,12 @@ https://stackoverflow.com/questions/18147684/catching-exceptions-in-swing-gui-ap
 
 https://dzone.com/articles/exception-handling-in-real-life-applications
 
+## handling exceptions properly on java swing App
+
+https://www.google.com/search?q=handling+exceptions+properly+on+java+swing+App&oq=handling+exceptions+properly+on+java+swing+App&aqs=chrome..69i57.7403j0j7&sourceid=chrome&ie=UTF-8
+
+
+
 
 
 
