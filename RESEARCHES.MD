@@ -258,6 +258,8 @@ https://dzone.com/articles/exception-handling-in-real-life-applications
 
 https://www.google.com/search?q=handling+exceptions+properly+on+java+swing+App&oq=handling+exceptions+properly+on+java+swing+App&aqs=chrome..69i57.7403j0j7&sourceid=chrome&ie=UTF-8
 
+https://dzone.com/articles/9-best-practices-to-handle-exceptions-in-java
+
 
 
 
