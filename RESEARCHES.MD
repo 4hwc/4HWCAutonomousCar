@@ -260,6 +260,14 @@ https://www.google.com/search?q=handling+exceptions+properly+on+java+swing+App&o
 
 https://dzone.com/articles/9-best-practices-to-handle-exceptions-in-java
 
+## Generating Javadoc
+
+https://www.google.com/search?q=javadoc+mvn+site&oq=javadoc+mvn+site&aqs=chrome..69i57j0l5.10577j0j7&sourceid=chrome&ie=UTF-8
+
+https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html
+
+https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html
+
 
 
 
