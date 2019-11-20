@@ -44,7 +44,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 <span class="nc" id="L45">	private JTextField jtfYCoinDroit = new JTextField(&quot;ordonnée&quot;);</span>
 
-<span class="nc" id="L47">	private URL url = FormulaireVehicules.class.getResource(&quot;/boutonConfirmerNbreVehicules.png&quot;);</span>
+<span class="nc" id="L47">	private URL url = FormulaireVehicules.class.getResource(&quot;/images/boutonConfirmerNbreVehicules.png&quot;);</span>
 
 <span class="nc" id="L49">	private ImageIcon imageBoutonConfirmer = new ImageIcon(url);</span>
 
@@ -712,133 +712,115 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 <span class="nc bnc" id="L712" title="All 2 branches missed.">		if (arg0.getSource() == boutonConfirmer)</span>
 
 		{
+
 			try {
-<span class="nc" id="L716">				validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),</span>
-<span class="nc" id="L717">						jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());</span>
-<span class="nc" id="L718">			} catch (AutonomousCarException e) {</span>
 
-<span class="nc" id="L720">				e.printStackTrace();</span>
-<span class="nc" id="L721">			}</span>
+<span class="nc" id="L718">				autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(), jtfYCoinDroit.getText(),</span>
+<span class="nc" id="L719">						jtfX.getText(), jtfY.getText());</span>
 
-<span class="nc" id="L723">			validationOrientation = autonomousCarService</span>
-<span class="nc" id="L724">					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());</span>
+<span class="nc" id="L721">				autonomousCarService.validationOrientationInitiale(jtfOrientation.getText());</span>
 
-<span class="nc" id="L726">			validationInstructions = autonomousCarService</span>
-<span class="nc" id="L727">					.validationInstructions(jtfInstructions.getText().toUpperCase());</span>
+<span class="nc" id="L723">				autonomousCarService.validationInstructions(jtfInstructions.getText());</span>
 
-<span class="nc bnc" id="L729" title="All 2 branches missed.">			if (validationPositions == true)</span>
+				// Tout est correct
 
-			{
+<span class="nc" id="L727">				FormulaireVehicules.listeVehicules.add(new AutonomousCar(</span>
+<span class="nc" id="L728">						Integer.parseInt(jtfXCoinDroit.getText().trim()),</span>
+<span class="nc" id="L729">						Integer.parseInt(jtfYCoinDroit.getText().trim()), Integer.parseInt(jtfX.getText().trim()),</span>
+<span class="nc" id="L730">						Integer.parseInt(jtfY.getText().trim()), jtfOrientation.getText().toUpperCase().trim(),</span>
+<span class="nc" id="L731">						jtfInstructions.getText().toUpperCase().trim()));</span>
 
-<span class="nc bnc" id="L733" title="All 2 branches missed.">				if (validationOrientation == true) {</span>
+<span class="nc bnc" id="L733" title="All 2 branches missed.">				if (FormulaireVehicules.compteur == this.nbreDeVehicules) {</span>
+					// Tous les formulaires sont remplis correctement
 
-<span class="nc bnc" id="L735" title="All 2 branches missed.">					if (validationInstructions == true) {</span>
+<span class="nc" id="L736">					String titleSucces = &quot;Succès&quot;;</span>
 
-						// Tout est correct
+<span class="nc" id="L738">					String messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;;</span>
 
-<span class="nc" id="L739">						FormulaireVehicules.listeVehicules.add(new AutonomousCar(</span>
-<span class="nc" id="L740">								Integer.parseInt(jtfXCoinDroit.getText().trim()),</span>
-<span class="nc" id="L741">								Integer.parseInt(jtfYCoinDroit.getText().trim()),</span>
-<span class="nc" id="L742">								Integer.parseInt(jtfX.getText().trim()), Integer.parseInt(jtfY.getText().trim()),</span>
-<span class="nc" id="L743">								jtfOrientation.getText().toUpperCase().trim(),</span>
-<span class="nc" id="L744">								jtfInstructions.getText().toUpperCase().trim()));</span>
-
-<span class="nc bnc" id="L746" title="All 2 branches missed.">						if (FormulaireVehicules.compteur == this.nbreDeVehicules) {</span>
-							// Tous les formulaires sont remplis correctement
-
-<span class="nc" id="L749">							JOptionPane jopSucces = new JOptionPane();</span>
-
-<span class="nc" id="L751">							String titleSucces = &quot;Succès&quot;;</span>
-
-<span class="nc" id="L753">							String messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;;</span>
-
-<span class="nc bnc" id="L755" title="All 2 branches missed.">							if (this.nbreDeVehicules == 1) {</span>
-
-							} else {
-
-<span class="nc" id="L759">								messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
-										+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;
-
-							}
-
-<span class="nc" id="L764">							jopSucces.showMessageDialog(null, messageSucces, titleSucces,</span>
-									JOptionPane.INFORMATION_MESSAGE);
-
-							// Changement de fenêtres
-
-<span class="nc" id="L769">							this.dispose();</span>
-
-<span class="nc" id="L771">							ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
-
-<span class="nc" id="L773">							ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
-
-<span class="nc" id="L775">							new ChargementDeplacementVehicules();</span>
-
-<span class="nc" id="L777">						} else {</span>
-
-							// FormulaireVehicules.compteur &lt;
-							// this.nbreDeVehicules
-
-<span class="nc" id="L782">							FormulaireVehicules.compteur++;</span>
-
-<span class="nc" id="L784">							this.dispose();</span>
-
-<span class="nc" id="L786">							new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
-
-						}
+<span class="nc bnc" id="L740" title="All 2 branches missed.">					if (this.nbreDeVehicules == 1) {</span>
 
 					} else {
 
-						// erreur au niveau des instructions
+<span class="nc" id="L744">						messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
+								+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;
 
-<span class="nc" id="L794">						JOptionPane jopInstructions = new JOptionPane();</span>
+					}
 
-<span class="nc" id="L796">						String messageInstructions = &quot;S'il vous plaît, il faut vérifier les instructions.&quot;;</span>
+<span class="nc" id="L749">					JOptionPane.showMessageDialog(null, messageSucces, titleSucces, JOptionPane.INFORMATION_MESSAGE);</span>
 
-<span class="nc" id="L798">						String titleInstructions = &quot;Instructions erronées&quot;;</span>
+					// Changement de fenêtres
 
-<span class="nc" id="L800">						jopInstructions.showMessageDialog(null, messageInstructions, titleInstructions,</span>
-								JOptionPane.ERROR_MESSAGE);
+<span class="nc" id="L753">					this.dispose();</span>
 
-<span class="nc" id="L803">					}</span>
+<span class="nc" id="L755">					ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
 
-				} else {
+<span class="nc" id="L757">					ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
 
-					// erreur au niveau de l'orientation
+<span class="nc" id="L759">					new ChargementDeplacementVehicules();</span>
 
-<span class="nc" id="L809">					JOptionPane jopOrientation = new JOptionPane();</span>
+<span class="nc" id="L761">				} else {</span>
 
-<span class="nc" id="L811">					String messageOrientation = &quot;S'il vous plaît, il faut vérifier l'orientation.&quot;;</span>
+					// FormulaireVehicules.compteur &lt; this.nbreDeVehicules
 
-<span class="nc" id="L813">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
+<span class="nc" id="L765">					FormulaireVehicules.compteur++;</span>
 
-<span class="nc" id="L815">					jopOrientation.showMessageDialog(null, messageOrientation, titleOrientation,</span>
-							JOptionPane.ERROR_MESSAGE);
+<span class="nc" id="L767">					this.dispose();</span>
 
-<span class="nc" id="L818">				}</span>
+<span class="nc" id="L769">					new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
 
-			} else {
+				}
 
-				// Au moins une erreur au niveau des positions
+<span class="nc" id="L773">			} catch (AutonomousCarException e) {</span>
 
-<span class="nc" id="L824">				JOptionPane jopPositions = new JOptionPane();</span>
+				// Orientation
 
-				// jopPositions.setPreferredSize(new Dimension(500, 300));
+<span class="nc bnc" id="L777" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORNEWS)</span>
+<span class="nc bnc" id="L778" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORO)) {</span>
 
-				// jopPositions.setFont(policeCalibriLight);
+<span class="nc" id="L780">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
 
-				// jopPositions.setBackground(Color.decode(&quot;#148da0&quot;));
+<span class="nc" id="L782">					JOptionPane.showMessageDialog(null, e.getMessage(), titleOrientation, JOptionPane.ERROR_MESSAGE);</span>
 
-				// jopPositions.setForeground(Color.WHITE);
+				}
 
-<span class="nc" id="L834">				String messagePositions = &quot;S'il vous plaît, il faut vérifier les positions&quot;;</span>
+				// positions
 
-<span class="nc" id="L836">				String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
+<span class="nc bnc" id="L788" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORVEHICULE)</span>
+<span class="nc bnc" id="L789" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORCD)</span>
+<span class="nc bnc" id="L790" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORNBRE)) {</span>
 
-<span class="nc" id="L838">				jopPositions.showMessageDialog(null, messagePositions, titlePositions, JOptionPane.ERROR_MESSAGE);</span>
-			}
+					// JOptionPane jopPositions = new JOptionPane();
+
+					// jopPositions.setPreferredSize(new Dimension(500, 300));
+
+					// jopPositions.setFont(policeCalibriLight);
+
+					// jopPositions.setBackground(Color.decode(&quot;#148da0&quot;));
+
+					// jopPositions.setForeground(Color.WHITE);
+
+<span class="nc" id="L802">					String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
+
+<span class="nc" id="L804">					JOptionPane.showMessageDialog(null, e.getMessage(), titlePositions, JOptionPane.ERROR_MESSAGE);</span>
+
+				}
+
+				// Instructions
+
+<span class="nc bnc" id="L810" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORESPACES)</span>
+<span class="nc bnc" id="L811" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORDGA)</span>
+<span class="nc bnc" id="L812" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORI)) {</span>
+
+<span class="nc" id="L814">					String titleInstructions = &quot;Instructions erronées&quot;;</span>
+
+<span class="nc" id="L816">					JOptionPane.showMessageDialog(null, e.getMessage(), titleInstructions, JOptionPane.ERROR_MESSAGE);</span>
+
+				}
+
+<span class="nc" id="L820">			}</span>
+
 		} // if arg0
-<span class="nc" id="L841">	}// actionPerformed</span>
+<span class="nc" id="L823">	}// actionPerformed</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

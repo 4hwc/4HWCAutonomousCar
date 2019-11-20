@@ -34,36 +34,32 @@ public class DeplacementVehiculesSurfaceSens extends JPanel {
 
 <span class="nc" id="L35">			Image img = null;</span>
 
-<span class="nc" id="L37">			URL urlN = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/4HWCN.png&quot;);</span>
-<span class="nc" id="L38">			URL urlE = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/4HWCE.png&quot;);</span>
-<span class="nc" id="L39">			URL urlW = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/4HWCW.png&quot;);</span>
-<span class="nc" id="L40">			URL urlS = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/4HWCS.png&quot;);</span>
+<span class="nc" id="L37">			URL urlN = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/images/4HWCN.png&quot;);</span>
+<span class="nc" id="L38">			URL urlE = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/images/4HWCE.png&quot;);</span>
+<span class="nc" id="L39">			URL urlW = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/images/4HWCW.png&quot;);</span>
+<span class="nc" id="L40">			URL urlS = DeplacementVehiculesSurfaceSens.class.getResource(&quot;/images/4HWCS.png&quot;);</span>
 
-<span class="nc bnc" id="L42" title="All 2 branches missed.">			if (this.sens.equals(&quot;N&quot;)) {</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">			if (this.sens.equals(&quot;N&quot;))</span>
 <span class="nc" id="L43">				img = ImageIO.read(urlN);</span>
-			}
 
-<span class="nc bnc" id="L46" title="All 2 branches missed.">			if (this.sens.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L47">				img = ImageIO.read(urlE);</span>
-			}
+<span class="nc bnc" id="L45" title="All 2 branches missed.">			if (this.sens.equals(&quot;E&quot;))</span>
+<span class="nc" id="L46">				img = ImageIO.read(urlE);</span>
 
-<span class="nc bnc" id="L50" title="All 2 branches missed.">			if (this.sens.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L51">				img = ImageIO.read(urlW);</span>
-			}
+<span class="nc bnc" id="L48" title="All 2 branches missed.">			if (this.sens.equals(&quot;W&quot;))</span>
+<span class="nc" id="L49">				img = ImageIO.read(urlW);</span>
 
-<span class="nc bnc" id="L54" title="All 2 branches missed.">			if (this.sens.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L55">				img = ImageIO.read(urlS);</span>
-			}
+<span class="nc bnc" id="L51" title="All 2 branches missed.">			if (this.sens.equals(&quot;S&quot;))</span>
+<span class="nc" id="L52">				img = ImageIO.read(urlS);</span>
 
 			// g.drawImage(img, 0, 0, this);
 			// Pour une image de fond
-<span class="nc" id="L60">			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);</span>
+<span class="nc" id="L56">			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);</span>
 
-<span class="nc" id="L62">		} catch (IOException e) {</span>
-<span class="nc" id="L63">			e.printStackTrace();</span>
-<span class="nc" id="L64">		}</span>
+<span class="nc" id="L58">		} catch (IOException e) {</span>
+<span class="nc" id="L59">			e.printStackTrace();</span>
+<span class="nc" id="L60">		}</span>
 
-<span class="nc" id="L66">	}</span>
+<span class="nc" id="L62">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

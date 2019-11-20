@@ -1,184 +1,464 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AutonomousCar.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">4HWC Autonomous Car</a> &gt; <a href="index.source.html" class="el_package">com.autonomouscar.model</a> &gt; <span class="el_source">AutonomousCar.java</span></div><h1>AutonomousCar.java</h1><pre class="source lang-java linenums">package com.autonomouscar.model;
 
+/**
+ * &lt;b&gt;AutonomousCar represents an autonomous car&lt;b/&gt;
+ * 
+ * &lt;p&gt;
+ * An autonomous car is defined by the following properties :
+ * &lt;ul&gt;
+ * &lt;li&gt;xCoinDroit @see {@link AutonomousCar#xCoinDroit}&lt;/li&gt;
+ * &lt;li&gt;yCoinDroit @see {@link AutonomousCar#yCoinDroit}&lt;/li&gt;
+ * &lt;li&gt;xInitiale @see {@link AutonomousCar#xInitiale}&lt;/li&gt;
+ * &lt;li&gt;yInitiale @see {@link AutonomousCar#yInitiale}&lt;/li&gt;
+ * &lt;li&gt;orientationInitiale @see {@link AutonomousCar#orientationInitiale}&lt;/li&gt;
+ * &lt;li&gt;instructions @see {@link AutonomousCar#instructions}&lt;/li&gt;
+ * &lt;li&gt;xActuelle @see {@link AutonomousCar#xActuelle}&lt;/li&gt;
+ * &lt;li&gt;yActuelle @see {@link AutonomousCar#yActuelle}&lt;/li&gt;
+ * &lt;li&gt;orientationActuelle @see {@link AutonomousCar#orientationActuelle}&lt;/li&gt;
+ * &lt;li&gt;xFinale @see {@link AutonomousCar#xFinale}&lt;/li&gt;
+ * &lt;li&gt;yFinale @see {@link AutonomousCar#yFinale}&lt;/li&gt;
+ * &lt;li&gt;orientationFinale @see {@link AutonomousCar#orientationFinale}&lt;/li&gt;
+ * &lt;li&gt;chronoFinale @see {@link AutonomousCar#chronoFinale}&lt;/li&gt;
+ * &lt;/ul&gt;
+ * &lt;/p&gt;
+ * 
+ * @author Fanon Jupkwo
+ * 
+ * 
+ */
+
 public class AutonomousCar {
 
 	// Coins droits
 
+	/**
+	 * 
+	 * @see AutonomousCar#setXCoinDroit(int)
+	 * @see AutonomousCar#getXCoinDroit()
+	 */
+
 	private int xCoinDroit;
+
+	/**
+	 * 
+	 * @see AutonomousCar#setYCoinDroit(int)
+	 * @see AutonomousCar#getYCoinDroit()
+	 */
 
 	private int yCoinDroit;
 
 	// Positions initiales
 
+	/**
+	 * 
+	 * @see AutonomousCar#setXInitiale(int)
+	 * @see AutonomousCar#getXInitiale()
+	 */
+
 	private int xInitiale;
+
+	/**
+	 * 
+	 * @see AutonomousCar#setYInitiale(int)
+	 * @see AutonomousCar#getYInitiale()
+	 */
 
 	private int yInitiale;
 
+	/**
+	 * 
+	 * @see AutonomousCar#setOrientationInitiale(String)
+	 * @see AutonomousCar#getOrientationInitiale()
+	 */
+
 	private String orientationInitiale;
+
+	/**
+	 * 
+	 * @see AutonomousCar#setInstructions(String)
+	 * @see AutonomousCar#getInstructions()
+	 */
 
 	private String instructions;
 
 	// Positions actuelles
 
+	/**
+	 * 
+	 * @see AutonomousCar#setXActuelle(int)
+	 * @see AutonomousCar#getXActuelle()
+	 */
+
 	private int xActuelle;
 
+	/**
+	 * 
+	 * @see AutonomousCar#setYActuelle(int)
+	 * @see AutonomousCar#getYActuelle()
+	 */
+
 	private int yActuelle;
+
+	/**
+	 * 
+	 * @see AutonomousCar#setOrientationActuelle(String)
+	 * @see AutonomousCar#getOrientationActuelle()
+	 */
 
 	private String orientationActuelle;
 
 	// Positions finales à atteindre
 
+	/**
+	 * 
+	 * @see AutonomousCar#setXFinale(int)
+	 * @see AutonomousCar#getXFinale()
+	 */
+
 	private int xFinale;
 
+	/**
+	 * 
+	 * @see AutonomousCar#setYFinale(int)
+	 * @see AutonomousCar#getYFinale()
+	 */
+
 	private int yFinale;
+
+	/**
+	 * 
+	 * @see AutonomousCar#setOrientationFinale(String)
+	 * @see AutonomousCar#getOrientationFinale()
+	 */
 
 	private String orientationFinale;
 
 	// Chrono du temps mis pour parcourir la surface par la voiture en millisecondes
 
+	/**
+	 * 
+	 * @see AutonomousCar#setChronoFinale(long)
+	 * @see AutonomousCar#getChronoFinale()
+	 */
+
 	private long chronoFinale;
 
+	/**
+	 * AutonomousCar constructor
+	 * 
+	 * @param xCoinDroit
+	 * @param yCoinDroit
+	 * @param xInitiale
+	 * @param yInitiale
+	 * @param orientationInitiale
+	 * @param instructions
+	 * 
+	 * 
+	 * @see AutonomousCar#xCoinDroit
+	 * @see AutonomousCar#yCoinDroit
+	 * @see AutonomousCar#xInitiale
+	 * @see AutonomousCar#yInitiale
+	 * @see AutonomousCar#orientationInitiale
+	 * @see AutonomousCar#instructions
+	 */
+
 	public AutonomousCar(int xCoinDroit, int yCoinDroit, int xInitiale, int yInitiale, String orientationInitiale,
-<span class="nc" id="L42">			String instructions) {</span>
+<span class="nc" id="L166">			String instructions) {</span>
 
-<span class="nc" id="L44">		this.xCoinDroit = xCoinDroit;</span>
+<span class="nc" id="L168">		this.xCoinDroit = xCoinDroit;</span>
 
-<span class="nc" id="L46">		this.yCoinDroit = yCoinDroit;</span>
+<span class="nc" id="L170">		this.yCoinDroit = yCoinDroit;</span>
 
-<span class="nc" id="L48">		this.xInitiale = xInitiale;</span>
+<span class="nc" id="L172">		this.xInitiale = xInitiale;</span>
 
-<span class="nc" id="L50">		this.yInitiale = yInitiale;</span>
+<span class="nc" id="L174">		this.yInitiale = yInitiale;</span>
 
-<span class="nc" id="L52">		this.orientationInitiale = orientationInitiale;</span>
+<span class="nc" id="L176">		this.orientationInitiale = orientationInitiale;</span>
 
-<span class="nc" id="L54">		this.instructions = instructions;</span>
+<span class="nc" id="L178">		this.instructions = instructions;</span>
 
 		// Au départ la position et l'orientation actuelles sont identiques aux
 		// données initiales
 
-<span class="nc" id="L59">		this.xActuelle = this.xInitiale;</span>
+<span class="nc" id="L183">		this.xActuelle = this.xInitiale;</span>
 
-<span class="nc" id="L61">		this.yActuelle = this.yInitiale;</span>
+<span class="nc" id="L185">		this.yActuelle = this.yInitiale;</span>
 
-<span class="nc" id="L63">		this.orientationActuelle = this.orientationInitiale;</span>
+<span class="nc" id="L187">		this.orientationActuelle = this.orientationInitiale;</span>
 
-<span class="nc" id="L65">	}</span>
+<span class="nc" id="L189">	}</span>
 
 	// Setter et getter Coin droit
 
+	/**
+	 *
+	 * @param xCoinDroit
+	 * 
+	 * @see AutonomousCar#xCoinDroit
+	 */
+
 	public void setXCoinDroit(int xCoinDroit) {
-<span class="nc" id="L70">		this.xCoinDroit = xCoinDroit;</span>
-<span class="nc" id="L71">	}</span>
+<span class="nc" id="L201">		this.xCoinDroit = xCoinDroit;</span>
+<span class="nc" id="L202">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#xCoinDroit}
+	 */
 
 	public int getXCoinDroit() {
-<span class="nc" id="L74">		return xCoinDroit;</span>
+<span class="nc" id="L210">		return xCoinDroit;</span>
 	}
 
+	/**
+	 *
+	 * @param yCoinDroit
+	 * 
+	 * @see AutonomousCar#yCoinDroit
+	 */
+
 	public void setYCoinDroit(int yCoinDroit) {
-<span class="nc" id="L78">		this.yCoinDroit = yCoinDroit;</span>
-<span class="nc" id="L79">	}</span>
+<span class="nc" id="L221">		this.yCoinDroit = yCoinDroit;</span>
+<span class="nc" id="L222">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#yCoinDroit}
+	 */
 
 	public int getYCoinDroit() {
-<span class="nc" id="L82">		return yCoinDroit;</span>
+<span class="nc" id="L230">		return yCoinDroit;</span>
 	}
 
 	// Setters et getters initiaux
 
+	/**
+	 *
+	 * @param xInitiale
+	 * 
+	 * @see AutonomousCar#xInitiale
+	 */
+
 	public void setXInitiale(int xInitiale) {
-<span class="nc" id="L88">		this.xInitiale = xInitiale;</span>
-<span class="nc" id="L89">	}</span>
+<span class="nc" id="L243">		this.xInitiale = xInitiale;</span>
+<span class="nc" id="L244">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#xInitiale}
+	 */
 
 	public int getXInitiale() {
-<span class="nc" id="L92">		return xInitiale;</span>
+<span class="nc" id="L252">		return xInitiale;</span>
 	}
 
+	/**
+	 *
+	 * @param yInitiale
+	 * 
+	 * @see AutonomousCar#yInitiale
+	 */
+
 	public void setYInitiale(int yInitiale) {
-<span class="nc" id="L96">		this.yInitiale = yInitiale;</span>
-<span class="nc" id="L97">	}</span>
+<span class="nc" id="L263">		this.yInitiale = yInitiale;</span>
+<span class="nc" id="L264">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#yInitiale}
+	 */
 
 	public int getYInitiale() {
-<span class="nc" id="L100">		return yInitiale;</span>
+<span class="nc" id="L272">		return yInitiale;</span>
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/**
+	 *
+	 * @param orientationInitiale
+	 * 
+	 * @see AutonomousCar#orientationInitiale
+	 */
+
 	public void setOrientationInitiale(String orientationInitiale) {
-<span class="nc" id="L106">		this.orientationInitiale = orientationInitiale;</span>
-<span class="nc" id="L107">	}</span>
+<span class="nc" id="L285">		this.orientationInitiale = orientationInitiale;</span>
+<span class="nc" id="L286">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#orientationInitiale}
+	 */
 
 	public String getOrientationInitiale() {
-<span class="nc" id="L110">		return orientationInitiale;</span>
+<span class="nc" id="L294">		return orientationInitiale;</span>
 	}
 
+	/**
+	 *
+	 * @param instructions
+	 * 
+	 * @see AutonomousCar#instructions
+	 */
+
 	public void setInstructions(String instructions) {
-<span class="nc" id="L114">		this.instructions = instructions;</span>
-<span class="nc" id="L115">	}</span>
+<span class="nc" id="L305">		this.instructions = instructions;</span>
+<span class="nc" id="L306">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#instructions}
+	 */
 
 	public String getInstructions() {
-<span class="nc" id="L118">		return instructions;</span>
+<span class="nc" id="L314">		return instructions;</span>
 	}
 
 	// Setters et getters actuels
 
+	/**
+	 *
+	 * @param xActuelle
+	 * 
+	 * @see AutonomousCar#xActuelle
+	 */
+
 	public void setXActuelle(int xActuelle) {
-<span class="nc" id="L124">		this.xActuelle = xActuelle;</span>
-<span class="nc" id="L125">	}</span>
+<span class="nc" id="L327">		this.xActuelle = xActuelle;</span>
+<span class="nc" id="L328">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#xActuelle}
+	 */
 
 	public int getXActuelle() {
-<span class="nc" id="L128">		return xActuelle;</span>
+<span class="nc" id="L336">		return xActuelle;</span>
 	}
+
+	/**
+	 *
+	 * @param yActuelle
+	 * 
+	 * @see AutonomousCar#yActuelle
+	 */
 
 	public void setYActuelle(int yActuelle) {
-<span class="nc" id="L132">		this.yActuelle = yActuelle;</span>
-<span class="nc" id="L133">	}</span>
+<span class="nc" id="L347">		this.yActuelle = yActuelle;</span>
+<span class="nc" id="L348">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#yActuelle}
+	 */
 
 	public int getYActuelle() {
-<span class="nc" id="L136">		return yActuelle;</span>
+<span class="nc" id="L356">		return yActuelle;</span>
 	}
 
+	/**
+	 *
+	 * @param orientationActuelle
+	 * 
+	 * @see AutonomousCar#orientationActuelle
+	 */
+
 	public void setOrientationActuelle(String orientationActuelle) {
-<span class="nc" id="L140">		this.orientationActuelle = orientationActuelle;</span>
-<span class="nc" id="L141">	}</span>
+<span class="nc" id="L367">		this.orientationActuelle = orientationActuelle;</span>
+<span class="nc" id="L368">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#orientationActuelle}
+	 */
 
 	public String getOrientationActuelle() {
-<span class="nc" id="L144">		return orientationActuelle;</span>
+<span class="nc" id="L376">		return orientationActuelle;</span>
 	}
 
 	// Setters et getters finaux
 
+	/**
+	 *
+	 * @param xFinale
+	 * 
+	 * @see AutonomousCar#xFinale
+	 */
+
 	public void setXFinale(int xFinale) {
-<span class="nc" id="L150">		this.xFinale = xFinale;</span>
-<span class="nc" id="L151">	}</span>
+<span class="nc" id="L389">		this.xFinale = xFinale;</span>
+<span class="nc" id="L390">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#xFinale}
+	 */
 
 	public int getXFinale() {
-<span class="nc" id="L154">		return xFinale;</span>
+<span class="nc" id="L398">		return xFinale;</span>
 	}
+
+	/**
+	 *
+	 * @param yFinale
+	 * 
+	 * @see AutonomousCar#yFinale
+	 */
 
 	public void setYFinale(int yFinale) {
-<span class="nc" id="L158">		this.yFinale = yFinale;</span>
-<span class="nc" id="L159">	}</span>
+<span class="nc" id="L409">		this.yFinale = yFinale;</span>
+<span class="nc" id="L410">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#yFinale}
+	 */
 
 	public int getYFinale() {
-<span class="nc" id="L162">		return yFinale;</span>
+<span class="nc" id="L418">		return yFinale;</span>
 	}
 
+	/**
+	 *
+	 * @param orientationFinale
+	 * 
+	 * @see AutonomousCar#orientationFinale
+	 */
+
 	public void setOrientationFinale(String orientationFinale) {
-<span class="nc" id="L166">		this.orientationFinale = orientationFinale;</span>
-<span class="nc" id="L167">	}</span>
+<span class="nc" id="L429">		this.orientationFinale = orientationFinale;</span>
+<span class="nc" id="L430">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#orientationFinale}
+	 */
 
 	public String getOrientationFinale() {
-<span class="nc" id="L170">		return orientationFinale;</span>
+<span class="nc" id="L438">		return orientationFinale;</span>
 	}
 
 	// Setter et getter du Chrono du temps mis pour parcourir par la
 	// voiture
 
+	/**
+	 *
+	 * @param chronoFinale
+	 * 
+	 * @see AutonomousCar#chronoFinale
+	 */
+
 	public void setChronoFinale(long chronoFinale) {
-<span class="nc" id="L177">		this.chronoFinale = chronoFinale;</span>
-<span class="nc" id="L178">	}</span>
+<span class="nc" id="L452">		this.chronoFinale = chronoFinale;</span>
+<span class="nc" id="L453">	}</span>
+
+	/**
+	 *
+	 * @return {@link AutonomousCar#chronoFinale}
+	 */
 
 	public long getChronoFinale() {
-<span class="nc" id="L181">		return chronoFinale;</span>
+<span class="nc" id="L461">		return chronoFinale;</span>
 	}
 
 }
