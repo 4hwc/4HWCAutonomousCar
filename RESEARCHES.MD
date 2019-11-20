@@ -268,6 +268,10 @@ https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html
 
 https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html
 
+## Build times out because no output was received
+
+https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received
+
 
 
 
