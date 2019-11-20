@@ -14,7 +14,7 @@ public class DeplacementVehiculesPanneau4HWC extends JPanel {
 
 		try {
 
-			URL url = DeplacementVehiculesPanneau4HWC.class.getResource("/grisDeplacement.png");
+			URL url = DeplacementVehiculesPanneau4HWC.class.getResource("/images/grisDeplacement.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

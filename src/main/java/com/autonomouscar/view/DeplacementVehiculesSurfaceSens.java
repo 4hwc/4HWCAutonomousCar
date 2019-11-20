@@ -34,26 +34,22 @@ public class DeplacementVehiculesSurfaceSens extends JPanel {
 
 			Image img = null;
 
-			URL urlN = DeplacementVehiculesSurfaceSens.class.getResource("/4HWCN.png");
-			URL urlE = DeplacementVehiculesSurfaceSens.class.getResource("/4HWCE.png");
-			URL urlW = DeplacementVehiculesSurfaceSens.class.getResource("/4HWCW.png");
-			URL urlS = DeplacementVehiculesSurfaceSens.class.getResource("/4HWCS.png");
+			URL urlN = DeplacementVehiculesSurfaceSens.class.getResource("/images/4HWCN.png");
+			URL urlE = DeplacementVehiculesSurfaceSens.class.getResource("/images/4HWCE.png");
+			URL urlW = DeplacementVehiculesSurfaceSens.class.getResource("/images/4HWCW.png");
+			URL urlS = DeplacementVehiculesSurfaceSens.class.getResource("/images/4HWCS.png");
 
-			if (this.sens.equals("N")) {
+			if (this.sens.equals("N"))
 				img = ImageIO.read(urlN);
-			}
 
-			if (this.sens.equals("E")) {
+			if (this.sens.equals("E"))
 				img = ImageIO.read(urlE);
-			}
 
-			if (this.sens.equals("W")) {
+			if (this.sens.equals("W"))
 				img = ImageIO.read(urlW);
-			}
 
-			if (this.sens.equals("S")) {
+			if (this.sens.equals("S"))
 				img = ImageIO.read(urlS);
-			}
 
 			// g.drawImage(img, 0, 0, this);
 			// Pour une image de fond

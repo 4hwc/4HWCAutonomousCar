@@ -13,7 +13,7 @@ public class FormulaireVehiculesPanneau4HWC extends JPanel {
 	public void paintComponent(Graphics g) {
 
 		try {
-			URL url = FormulaireVehiculesPanneau4HWC.class.getResource("/4hwcfenetre2.png");
+			URL url = FormulaireVehiculesPanneau4HWC.class.getResource("/images/4hwcfenetre2.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

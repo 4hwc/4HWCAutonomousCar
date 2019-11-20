@@ -14,7 +14,8 @@ public class PositionOrientationTempsReelPanneau4HWC extends JPanel {
 
 		try {
 
-			URL url = PositionOrientationTempsReelPanneau4HWC.class.getResource("/positionOrientation_500_70.png");
+			URL url = PositionOrientationTempsReelPanneau4HWC.class
+					.getResource("/images/positionOrientation_500_70.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

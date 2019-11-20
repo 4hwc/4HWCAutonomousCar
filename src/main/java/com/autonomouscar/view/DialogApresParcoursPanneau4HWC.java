@@ -14,7 +14,7 @@ public class DialogApresParcoursPanneau4HWC extends JPanel {
 
 		try {
 
-			URL url = DialogApresParcoursPanneau4HWC.class.getResource("/bitume_arrivee.png");
+			URL url = DialogApresParcoursPanneau4HWC.class.getResource("/images/bitume_arrivee.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

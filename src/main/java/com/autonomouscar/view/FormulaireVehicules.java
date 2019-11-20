@@ -44,7 +44,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 	private JTextField jtfYCoinDroit = new JTextField("ordonnée");
 
-	private URL url = FormulaireVehicules.class.getResource("/boutonConfirmerNbreVehicules.png");
+	private URL url = FormulaireVehicules.class.getResource("/images/boutonConfirmerNbreVehicules.png");
 
 	private ImageIcon imageBoutonConfirmer = new ImageIcon(url);
 
@@ -712,131 +712,113 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 		if (arg0.getSource() == boutonConfirmer)
 
 		{
+
 			try {
-				validationPositions = autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(),
-						jtfYCoinDroit.getText(), jtfX.getText(), jtfY.getText());
-			} catch (AutonomousCarException e) {
 
-				e.printStackTrace();
-			}
+				autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(), jtfYCoinDroit.getText(),
+						jtfX.getText(), jtfY.getText());
 
-			validationOrientation = autonomousCarService
-					.validationOrientationInitiale(jtfOrientation.getText().toUpperCase());
+				autonomousCarService.validationOrientationInitiale(jtfOrientation.getText());
 
-			validationInstructions = autonomousCarService
-					.validationInstructions(jtfInstructions.getText().toUpperCase());
+				autonomousCarService.validationInstructions(jtfInstructions.getText());
 
-			if (validationPositions == true)
+				// Tout est correct
 
-			{
+				FormulaireVehicules.listeVehicules.add(new AutonomousCar(
+						Integer.parseInt(jtfXCoinDroit.getText().trim()),
+						Integer.parseInt(jtfYCoinDroit.getText().trim()), Integer.parseInt(jtfX.getText().trim()),
+						Integer.parseInt(jtfY.getText().trim()), jtfOrientation.getText().toUpperCase().trim(),
+						jtfInstructions.getText().toUpperCase().trim()));
 
-				if (validationOrientation == true) {
+				if (FormulaireVehicules.compteur == this.nbreDeVehicules) {
+					// Tous les formulaires sont remplis correctement
 
-					if (validationInstructions == true) {
+					String titleSucces = "Succès";
 
-						// Tout est correct
+					String messageSucces = "Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !";
 
-						FormulaireVehicules.listeVehicules.add(new AutonomousCar(
-								Integer.parseInt(jtfXCoinDroit.getText().trim()),
-								Integer.parseInt(jtfYCoinDroit.getText().trim()),
-								Integer.parseInt(jtfX.getText().trim()), Integer.parseInt(jtfY.getText().trim()),
-								jtfOrientation.getText().toUpperCase().trim(),
-								jtfInstructions.getText().toUpperCase().trim()));
-
-						if (FormulaireVehicules.compteur == this.nbreDeVehicules) {
-							// Tous les formulaires sont remplis correctement
-
-							JOptionPane jopSucces = new JOptionPane();
-
-							String titleSucces = "Succès";
-
-							String messageSucces = "Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !";
-
-							if (this.nbreDeVehicules == 1) {
-
-							} else {
-
-								messageSucces = "Bravo vous avez saisi avec succès les caractéristiques des "
-										+ this.nbreDeVehicules + " véhicules :) !";
-
-							}
-
-							jopSucces.showMessageDialog(null, messageSucces, titleSucces,
-									JOptionPane.INFORMATION_MESSAGE);
-
-							// Changement de fenêtres
-
-							this.dispose();
-
-							ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;
-
-							ChargementDeplacementVehicules.origine = "paramètres";
-
-							new ChargementDeplacementVehicules();
-
-						} else {
-
-							// FormulaireVehicules.compteur <
-							// this.nbreDeVehicules
-
-							FormulaireVehicules.compteur++;
-
-							this.dispose();
-
-							new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);
-
-						}
+					if (this.nbreDeVehicules == 1) {
 
 					} else {
 
-						// erreur au niveau des instructions
-
-						JOptionPane jopInstructions = new JOptionPane();
-
-						String messageInstructions = "S'il vous plaît, il faut vérifier les instructions.";
-
-						String titleInstructions = "Instructions erronées";
-
-						jopInstructions.showMessageDialog(null, messageInstructions, titleInstructions,
-								JOptionPane.ERROR_MESSAGE);
+						messageSucces = "Bravo vous avez saisi avec succès les caractéristiques des "
+								+ this.nbreDeVehicules + " véhicules :) !";
 
 					}
 
+					JOptionPane.showMessageDialog(null, messageSucces, titleSucces, JOptionPane.INFORMATION_MESSAGE);
+
+					// Changement de fenêtres
+
+					this.dispose();
+
+					ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;
+
+					ChargementDeplacementVehicules.origine = "paramètres";
+
+					new ChargementDeplacementVehicules();
+
 				} else {
 
-					// erreur au niveau de l'orientation
+					// FormulaireVehicules.compteur < this.nbreDeVehicules
 
-					JOptionPane jopOrientation = new JOptionPane();
+					FormulaireVehicules.compteur++;
 
-					String messageOrientation = "S'il vous plaît, il faut vérifier l'orientation.";
+					this.dispose();
 
-					String titleOrientation = "Orientation erronée";
-
-					jopOrientation.showMessageDialog(null, messageOrientation, titleOrientation,
-							JOptionPane.ERROR_MESSAGE);
+					new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);
 
 				}
 
-			} else {
+			} catch (AutonomousCarException e) {
 
-				// Au moins une erreur au niveau des positions
+				// Orientation
 
-				JOptionPane jopPositions = new JOptionPane();
+				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORNEWS)
+						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORO)) {
 
-				// jopPositions.setPreferredSize(new Dimension(500, 300));
+					String titleOrientation = "Orientation erronée";
 
-				// jopPositions.setFont(policeCalibriLight);
+					JOptionPane.showMessageDialog(null, e.getMessage(), titleOrientation, JOptionPane.ERROR_MESSAGE);
 
-				// jopPositions.setBackground(Color.decode("#148da0"));
+				}
 
-				// jopPositions.setForeground(Color.WHITE);
+				// positions
 
-				String messagePositions = "S'il vous plaît, il faut vérifier les positions";
+				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORVEHICULE)
+						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORCD)
+						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORNBRE)) {
 
-				String titlePositions = "Erreur au niveau des positions";
+					// JOptionPane jopPositions = new JOptionPane();
 
-				jopPositions.showMessageDialog(null, messagePositions, titlePositions, JOptionPane.ERROR_MESSAGE);
+					// jopPositions.setPreferredSize(new Dimension(500, 300));
+
+					// jopPositions.setFont(policeCalibriLight);
+
+					// jopPositions.setBackground(Color.decode("#148da0"));
+
+					// jopPositions.setForeground(Color.WHITE);
+
+					String titlePositions = "Erreur au niveau des positions";
+
+					JOptionPane.showMessageDialog(null, e.getMessage(), titlePositions, JOptionPane.ERROR_MESSAGE);
+
+				}
+
+				// Instructions
+
+				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORESPACES)
+						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORDGA)
+						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORI)) {
+
+					String titleInstructions = "Instructions erronées";
+
+					JOptionPane.showMessageDialog(null, e.getMessage(), titleInstructions, JOptionPane.ERROR_MESSAGE);
+
+				}
+
 			}
+
 		} // if arg0
 	}// actionPerformed
 

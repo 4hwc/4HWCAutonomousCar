@@ -10,7 +10,7 @@ import javax.swing.JProgressBar;
 
 public class Bienvenue4HWC extends JFrame {
 
-	static URL url = Bienvenue4HWC.class.getResource("/4HWCN.png");
+	static URL url = Bienvenue4HWC.class.getResource("/images/4HWCN.png");
 
 	static ImageIcon icon4HWC = new ImageIcon(url);
 

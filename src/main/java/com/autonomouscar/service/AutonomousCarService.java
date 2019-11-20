@@ -8,12 +8,19 @@ import java.util.Formatter;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
 import com.autonomouscar.utils.Chronometre;
+
+/**
+ * 
+ * This class contains all the application's logic
+ * 
+ * test class : @see AutonomousCarServiceTest
+ * 
+ * @author Fanon Jupkwo
+ */
 
 public class AutonomousCarService {
 
@@ -22,16 +29,39 @@ public class AutonomousCarService {
 	public static final int NUMBER_OF_VEHICLES_MAX = 20;
 
 	public static final String INCORRECT = "INCORRECT";
+
+	public static final String MESSAGEERRORNEWS = "Veuillez entrer une lettre N , E , W ou S";
+
+	public static final String MESSAGEERRORO = "Veuillez entrer l'orientation";
+
+	public static final String MESSAGEERRORVEHICULE = "S'il vous plaît choisissez une position correcte du véhicule";
+
+	public static final String MESSAGEERRORCD = "S'il vous plaît choisissez une position correcte du coin Supérieur Droit";
+
+	public static final String MESSAGEERRORNBRE = "S'il vous plaît saisissez des caractères numériques";
+
+	public static final String MESSAGEERRORESPACES = "Les espaces sont interdits dans vos instructions";
+	public static final String MESSAGEERRORDGA = "Les instructions contiennent uniquement D, G ou A";
+	public static final String MESSAGEERRORI = "Veuillez entrer des instructions";
+
 	// Validation de nombre de véhicules String
 
 	// SERVICE
+
+	/**
+	 * @param nbre
+	 * @throws AutonomousCarException if nbre is not a number or if nbre is inferior
+	 *                                than 1
+	 */
 
 	public void validationNombreDeVehiculesString(String nbre) throws AutonomousCarException {
 
 		String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
 
-		if (StringUtils.isNumeric(nbre.trim())) {
-			if (Integer.parseInt(nbre.trim()) >= 1) {
+		try {
+			int number = Integer.parseInt(nbre.trim());
+
+			if (number >= 1) {
 
 			} else {
 
@@ -39,7 +69,7 @@ public class AutonomousCarService {
 
 			}
 
-		} else {
+		} catch (NumberFormatException e) {
 
 			throw new AutonomousCarException(messageError);
 
@@ -51,38 +81,38 @@ public class AutonomousCarService {
 
 	// Vérification orientation
 
-	public boolean validationOrientationInitiale(String orientationInitiale) {
-		boolean validation = false;
+	public void validationOrientationInitiale(String orientationInitiale) throws AutonomousCarException {
 
 		if (orientationInitiale != null) {
-			String orientationInitialeTrim = orientationInitiale.trim();
+			String orientationInitialeTrim = orientationInitiale.trim().toUpperCase();
 
 			if (orientationInitialeTrim.length() != 0) {
 				if (orientationInitialeTrim.length() == 1) {
 					if (orientationInitialeTrim.equals("N") || orientationInitialeTrim.equals("E")
 							|| orientationInitialeTrim.equals("W") || orientationInitialeTrim.equals("S")) {
 
-						validation = true;
-
 					} else {
 
-						AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
+						// AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
+						throw new AutonomousCarException(MESSAGEERRORNEWS);
 
 					} // 4e if
 				} else {
 
-					AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
+					// AutonomousCarLog.logger.error("Veuillez entrer une lettre N , E , W ou S");
+					throw new AutonomousCarException(MESSAGEERRORNEWS);
 				} // 3e if
 			} else {
 
-				AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
+				// AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
+				throw new AutonomousCarException(MESSAGEERRORO);
 			} // 2e if
 		} else {
 
-			AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
+			// AutonomousCarLog.logger.error("Veuillez entrer l'orientation");
+			throw new AutonomousCarException(MESSAGEERRORO);
 		} // 1er if
 
-		return validation;
 	}
 
 	// Validation Positions entrées : string
@@ -91,14 +121,8 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public boolean validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
+	public void validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
 			throws AutonomousCarException {
-
-		boolean validation = false;
-
-		String messageErrorVehicule = "S'il vous plaît choisissez une position correcte du véhicule";
-
-		String messageErrorCD = "S'il vous plaît choisissez une position correcte du coin Supérieur Droit";
 
 		String titleError = "Position incorrecte sur la surface";
 
@@ -115,22 +139,21 @@ public class AutonomousCarService {
 			if (xCoinDroitInt >= 0 && xCoinDroitInt <= 5 && yCoinDroitInt >= 0 && yCoinDroitInt <= 5) {
 				if (xInitialeInt >= 0 && xInitialeInt <= xCoinDroitInt && yInitialeInt >= 0
 						&& yInitialeInt <= yCoinDroitInt) {
-					validation = true;
 
 				} else {
 
-					throw new AutonomousCarException(messageErrorVehicule);
+					throw new AutonomousCarException(MESSAGEERRORVEHICULE);
 				}
 			} else {
-				throw new AutonomousCarException(messageErrorCD);
+				throw new AutonomousCarException(MESSAGEERRORCD);
 
 			}
 
-		} catch (AutonomousCarException e) {
+		} catch (NumberFormatException e) {
+
+			throw new AutonomousCarException(MESSAGEERRORNBRE);
 
 		}
-
-		return validation;
 
 	}
 
@@ -138,11 +161,9 @@ public class AutonomousCarService {
 
 	// SERVICE
 
-	public boolean validationInstructions(String instructions) {
+	public void validationInstructions(String instructions) throws AutonomousCarException {
 
 		boolean presenceEspace = false; // Je suppose qu'il n y a pas d'espace
-
-		boolean validation = false; // Je suppose qu'il y a au moins un problème
 
 		if (instructions != null) {
 			String instructionsTrim = instructions.trim();
@@ -160,66 +181,51 @@ public class AutonomousCarService {
 					// correct
 					{
 
-						AutonomousCarLog.logger.error("Les espaces sont interdits dans vos instructions");
+						throw new AutonomousCarException(MESSAGEERRORESPACES);
 
-						presenceEspace = true;
-
-						break;
 					}
 				} // for
 
-				if (presenceEspace == false)// Pas d'espace
+				String instructionsTrimMaj = instructionsTrim.toUpperCase(); // Je
+																				// convertis
+																				// tout
+																				// à
+																				// majuscule
 
-				{
-					String instructionsTrimMaj = instructionsTrim.toUpperCase(); // Je
-																					// convertis
-																					// tout
-																					// à
-																					// majuscule
+				int compteurLettresCorrectes = 0;
 
-					int compteurLettresCorrectes = 0;
+				for (int j = 0; j < instructionsTrimMaj.length(); j++) {
 
-					for (int j = 0; j < instructionsTrimMaj.length(); j++) {
+					String instructionsTrimMajString = instructionsTrimMaj.charAt(j) + "";
 
-						String instructionsTrimMajString = instructionsTrimMaj.charAt(j) + "";
+					if (instructionsTrimMajString.equals("A") || instructionsTrimMajString.equals("D")
+							|| instructionsTrimMajString.equals("G")) {
+						// Correct
 
-						if (instructionsTrimMajString.equals("A") || instructionsTrimMajString.equals("D")
-								|| instructionsTrimMajString.equals("G")) {
-							// Correct
+						compteurLettresCorrectes++;
 
-							compteurLettresCorrectes++;
+						if (compteurLettresCorrectes == instructionsTrimMaj.length()) {
 
-							if (compteurLettresCorrectes == instructionsTrimMaj.length()) {
-
-								validation = true;
-
-							}
-
-						} else {
-							// Présence d'un intrus
-
-							validation = false;
-
-							AutonomousCarLog.logger.error("Les instructions contiennent uniquement D, G ou A");
-
-							break;
 						}
 
-					} // for
+					} else {
+						// Présence d'un intrus
 
-				} else {
-					// Rien faire car espace présent
-				}
+						throw new AutonomousCarException(MESSAGEERRORDGA);
+
+					}
+
+				} // for
 
 			} else {
-				AutonomousCarLog.logger.error("Veuillez entrer des instructions");
+
+				throw new AutonomousCarException(MESSAGEERRORI);
 
 			}
 		} else {
-			AutonomousCarLog.logger.error("Veuillez entrer des instructions");
+			throw new AutonomousCarException(MESSAGEERRORI);
 		}
 
-		return validation;
 	}
 
 	// SERVICE

@@ -14,7 +14,7 @@ public class MenuPanneau4HWC extends JPanel {
 
 		try {
 
-			URL url = MenuPanneau4HWC.class.getResource("/4hwcAutonomousCarMenu.png");
+			URL url = MenuPanneau4HWC.class.getResource("/images/4hwcAutonomousCarMenu.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

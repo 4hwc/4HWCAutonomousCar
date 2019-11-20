@@ -14,7 +14,7 @@ public class ChoixDuNombreDeVehiculesPanneau4HWC extends JPanel {
 
 		try {
 
-			URL url = ChoixDuNombreDeVehiculesPanneau4HWC.class.getResource("/4hwcfenetre2.png");
+			URL url = ChoixDuNombreDeVehiculesPanneau4HWC.class.getResource("/images/4hwcfenetre2.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);

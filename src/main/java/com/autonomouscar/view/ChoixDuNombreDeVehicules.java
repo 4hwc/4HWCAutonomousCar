@@ -27,11 +27,11 @@ import javax.swing.border.LineBorder;
 import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.service.AutonomousCarService;
 
-public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
+public class ChoixDuNombreDeVehicules extends JFrame {
 
 	private ChoixDuNombreDeVehiculesPanneau4HWC container = new ChoixDuNombreDeVehiculesPanneau4HWC();
 
-	private URL url = ChoixDuNombreDeVehicules.class.getResource("/boutonConfirmerNbreVehicules.png");
+	private URL url = ChoixDuNombreDeVehicules.class.getResource("/images/boutonConfirmerNbreVehicules.png");
 
 	private ImageIcon imageBoutonConfirmer = new ImageIcon(url);
 
@@ -41,25 +41,19 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 
 	private Font police = new Font("Agency FB", Font.BOLD, 30);
 
-	private Font policeArial = new Font("Arial", Font.BOLD, 30);
+	// private Font policeArial = new Font("Arial", Font.BOLD, 30);
 
 	private Font policeCalibriLight = new Font("Calibri Light", Font.BOLD, 30);
 
-	private Font policeCalibri = new Font("Calibri", Font.BOLD, 30);
+	// private Font policeCalibri = new Font("Calibri", Font.BOLD, 30);
 
 	private Border whiteBorder = new LineBorder(Color.WHITE, 3);
 
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 
-	private boolean validation;
+	private Map<String, String> erreurs = new HashMap<>();
 
-	private String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
-
-	private Map<String, String> erreurs = new HashMap<String, String>();
-
-	private final String TITLE_ERROR = "Nombre de véhicules incorrect";
-
-	static int nombreDeVehicules;
+	private final String TITLEERROR = "Nombre de véhicules incorrect";
 
 	public ChoixDuNombreDeVehicules() {
 		this.setTitle("4HWC AUTONOMOUS CAR : Choix du nombre de véhicules");
@@ -114,7 +108,9 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 		// boutonConfirmer.setContentAreaFilled(false);
 		boutonConfirmer.setBorderPainted(true);
 
-		boutonConfirmer.addActionListener(this);
+		TextFieldHandler handler = new TextFieldHandler();
+
+		boutonConfirmer.addActionListener(handler);
 
 		// Découpage de content en 9 cellules , 3 lignes et 3 colonnes :
 		// GridBagLayout
@@ -348,32 +344,36 @@ public class ChoixDuNombreDeVehicules extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	private class TextFieldHandler implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent event) {
 
-		if (arg0.getSource() == boutonConfirmer) {
-			try
+			if (event.getSource() == boutonConfirmer) {
+				try
 
-			{
+				{
 
-				new AutonomousCarService().validationNombreDeVehiculesString(jtfNbre.getText());
+					new AutonomousCarService().validationNombreDeVehiculesString(jtfNbre.getText().trim());
 
-			} catch (AutonomousCarException e) {
+					ChoixDuNombreDeVehicules.this.dispose();
 
-				erreurs.put(TITLE_ERROR, messageError);
+					// Affichage 1er formulaire
 
-				new JOptionPane();
-				JOptionPane.showMessageDialog(null, messageError, TITLE_ERROR, JOptionPane.ERROR_MESSAGE);
+					new FormulaireVehicules(1, Integer.parseInt(jtfNbre.getText().trim()));
+
+				} catch (AutonomousCarException e) {
+
+					// AutonomousCarLog.logger.error(e.getMessage());
+
+					// Pb -> StringUtils blocks Swing GUI App
+
+					erreurs.put(TITLEERROR, e.getMessage());
+
+					JOptionPane.showMessageDialog(null, e.getMessage(), TITLEERROR, JOptionPane.ERROR_MESSAGE);
+
+				}
 
 			}
-
-			nombreDeVehicules = Integer.parseInt(jtfNbre.getText().trim());
-
-			this.dispose();
-
-			new FormulaireVehicules(1, nombreDeVehicules); // Affichage du
-															// 1er
-															// formulaire
 
 		}
 

@@ -14,7 +14,7 @@ public class DeplacementVehiculesSurface extends JPanel {
 
 		try {
 
-			URL url = DeplacementVehiculesSurface.class.getResource("/bitume_720_432.png");
+			URL url = DeplacementVehiculesSurface.class.getResource("/images/bitume_720_432.png");
 
 			Image img = ImageIO.read(url);
 			// g.drawImage(img, 0, 0, this);
