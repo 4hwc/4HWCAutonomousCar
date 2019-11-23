@@ -26,7 +26,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 	static String origine = "";
 
-	static List<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
+	static List<AutonomousCar> listeVehicules = new ArrayList<>();
 
 	private String speak;
 
@@ -77,46 +77,20 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 			public void run() {
 
-				if (ChargementDeplacementVehicules.origine.equals("défaut")) {
+				if (ChargementDeplacementVehicules.origine.equals("défaut"))
 
-					if (ChargementDeplacementVehicules.listeVehicules.size() == 1) {
+					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? "un véhicule déployé par défaut"
+							: ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployés par défaut";
 
-						speak = "un véhicule déployé par défaut";
+				if (ChargementDeplacementVehicules.origine.equals("paramètres"))
 
-					} else {
+					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? "un véhicule déployé par vous"
+							: ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployées par vous";
 
-						speak = ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployés par défaut";
+				if (ChargementDeplacementVehicules.origine.equals("IA"))
 
-					}
-
-				}
-				if (ChargementDeplacementVehicules.origine.equals("paramètres")) {
-
-					if (ChargementDeplacementVehicules.listeVehicules.size() == 1) {
-
-						speak = "un véhicule déployé par vous";
-
-					} else {
-
-						speak = ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployées par vous";
-
-					}
-
-				}
-
-				if (ChargementDeplacementVehicules.origine.equals("IA")) {
-
-					if (ChargementDeplacementVehicules.listeVehicules.size() == 1) {
-
-						speak = "un véhicule déployé par moi";
-
-					} else {
-
-						speak = ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployées par moi";
-
-					}
-
-				}
+					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? "un véhicule déployé par moi"
+							: ChargementDeplacementVehicules.listeVehicules.size() + " véhicules déployées par moi";
 
 				// Speech will be improved later
 

@@ -10,10 +10,10 @@ import org.junit.Test;
 import com.autonomouscar.exceptions.AutonomousCarException;
 
 /**
- * <b>AutonomousCarServiceTest represents the test class of @see
- * AutonomousCarService <b/>
+ * <b>AutonomousCarServiceTest represents the test class of AutonomousCarService
+ * <b/>
  * 
- * 
+ * model class : AutonomousCar
  * 
  * @author Fanon Jupkwo
  * 

@@ -4,51 +4,122 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 import java.util.Random;
 
 import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
-import com.autonomouscar.utils.Chronometre;
 
 /**
  * 
- * This class contains all the application's logic
+ * <b>This class contains the application's logic</b>
  * 
- * test class : @see AutonomousCarServiceTest
+ * test class : AutonomousCarServiceTest
+ * 
+ * model class : AutonomousCar
  * 
  * @author Fanon Jupkwo
  */
 
 public class AutonomousCarService {
 
+	/**
+	 * Constant representing the maximum number of instructions generated randomly
+	 * 
+	 * @see AutonomousCarService#getInstructions4HWC()
+	 */
+
 	public static final int NUMBER_OF_INSTRUCTIONS_MAX = 50;
+
+	/**
+	 * Constant representing the maximum number of cars generated randomly
+	 * 
+	 * @see AutonomousCarService#getNombreDeVehicules4HWC()
+	 */
 
 	public static final int NUMBER_OF_VEHICLES_MAX = 20;
 
-	public static final String INCORRECT = "INCORRECT";
+	/**
+	 * Constant representing an error message related to wrong orientation
+	 * 
+	 * @see AutonomousCarService#validationOrientationInitiale(String)
+	 */
 
 	public static final String MESSAGEERRORNEWS = "Veuillez entrer une lettre N , E , W ou S";
 
+	/**
+	 * Constant representing an error message related to wrong orientation
+	 * 
+	 * @see AutonomousCarService#validationOrientationInitiale(String)
+	 */
+
 	public static final String MESSAGEERRORO = "Veuillez entrer l'orientation";
+
+	/**
+	 * Constant representing an error message related to wrong position on the
+	 * surface
+	 * 
+	 * @see AutonomousCarService#validationPositionsString(String, String, String,
+	 *      String)
+	 */
 
 	public static final String MESSAGEERRORVEHICULE = "S'il vous plaît choisissez une position correcte du véhicule";
 
+	/**
+	 * Constant representing an error message related to wrong dimensions of the
+	 * surface
+	 * 
+	 * @see AutonomousCarService#validationPositionsString(String, String, String,
+	 *      String)
+	 */
+
 	public static final String MESSAGEERRORCD = "S'il vous plaît choisissez une position correcte du coin Supérieur Droit";
+
+	/**
+	 * Constant representing an error message related to wrong number of cars
+	 * 
+	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 */
 
 	public static final String MESSAGEERRORNBRE = "S'il vous plaît saisissez des caractères numériques";
 
+	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
 	public static final String MESSAGEERRORESPACES = "Les espaces sont interdits dans vos instructions";
-	public static final String MESSAGEERRORDGA = "Les instructions contiennent uniquement D, G ou A";
-	public static final String MESSAGEERRORI = "Veuillez entrer des instructions";
-
-	// Validation de nombre de véhicules String
-
-	// SERVICE
 
 	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
+	public static final String MESSAGEERRORDGA = "Les instructions contiennent uniquement D, G ou A";
+
+	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
+	public static final String MESSAGEERRORI = "Veuillez entrer des instructions";
+
+	/**
+	 * Constant representing an error message related to wrong number of cars
+	 * 
+	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 */
+
+	public static final String MESSAGEERRORNUMBEROFCARS = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
+
+	/**
+	 * 
+	 * Verifies if the number of cars is correct
+	 * 
 	 * @param nbre
 	 * @throws AutonomousCarException if nbre is not a number or if nbre is inferior
 	 *                                than 1
@@ -56,30 +127,32 @@ public class AutonomousCarService {
 
 	public void validationNombreDeVehiculesString(String nbre) throws AutonomousCarException {
 
-		String messageError = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
-
 		try {
 			int number = Integer.parseInt(nbre.trim());
 
 			if (number >= 1) {
 
-			} else {
+			}
 
-				throw new AutonomousCarException(messageError);
-
+			else {
+				throw new AutonomousCarException(MESSAGEERRORNUMBEROFCARS);
 			}
 
 		} catch (NumberFormatException e) {
 
-			throw new AutonomousCarException(messageError);
+			throw new AutonomousCarException(MESSAGEERRORNUMBEROFCARS);
 
 		}
 
 	}
 
-	// SERVICE
-
-	// Vérification orientation
+	/**
+	 * 
+	 * Verifies if the orientation is correct
+	 * 
+	 * @param orientationInitiale
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationOrientationInitiale(String orientationInitiale) throws AutonomousCarException {
 
@@ -115,16 +188,19 @@ public class AutonomousCarService {
 
 	}
 
-	// Validation Positions entrées : string
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	// SERVICE
+	/**
+	 * 
+	 * Verifies if car's position and surface dimensions are correct
+	 * 
+	 * @param xCoinDroit
+	 * @param yCoinDroit
+	 * @param orientationInitiale
+	 * @param orientationInitiale
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
 			throws AutonomousCarException {
-
-		String titleError = "Position incorrecte sur la surface";
 
 		try {
 
@@ -157,13 +233,15 @@ public class AutonomousCarService {
 
 	}
 
-	// Vérification instructions
-
-	// SERVICE
+	/**
+	 * 
+	 * Verifies if instructions are correct
+	 * 
+	 * @param instructions
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationInstructions(String instructions) throws AutonomousCarException {
-
-		boolean presenceEspace = false; // Je suppose qu'il n y a pas d'espace
 
 		if (instructions != null) {
 			String instructionsTrim = instructions.trim();
@@ -228,11 +306,14 @@ public class AutonomousCarService {
 
 	}
 
-	// SERVICE
+	/**
+	 * Reads Cars Data from a file
+	 * 
+	 */
 
 	public List<AutonomousCar> recupFichierBase() {
 
-		List<AutonomousCar> listeInitiale = new ArrayList<AutonomousCar>();
+		List<AutonomousCar> listeInitiale = new ArrayList<>();
 
 		List<String> lignes = new ArrayList<String>();
 
@@ -334,30 +415,49 @@ public class AutonomousCarService {
 
 	}
 
-	// Intelligence Artificielle 4HWC à l'oeuvre
-
-	// Nombre de véhicules
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number of cars from 1 to
+	 * {@value AutonomousCarService#NUMBER_OF_VEHICLES_MAX}
+	 * 
+	 * @see AutonomousCarService#NUMBER_OF_VEHICLES_MAX
+	 * 
+	 * @return Returns the number of cars generated randomly
+	 * 
+	 */
 
 	private int getNombreDeVehicules4HWC() {
 		Random randomNumbers = new Random();
 
-		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)
+		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1;
 	}
 
-	// XYCoinDroit4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number from 0 to 5 representing
+	 * {@link AutonomousCar#getXCoinDroit()} and
+	 * {@link AutonomousCar#getYCoinDroit()}
+	 * 
+	 * 
+	 * @return Returns a number from 0 to 5
+	 * 
+	 */
 
 	public int getXYCoinDroit4HWC() {
 
-		return new Random().nextInt(6); // 0 to 5
+		return new Random().nextInt(6);
 	}
 
-	// XYInitiale4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number from 1 to
+	 * {@link AutonomousCarService#getXYCoinDroit4HWC()} representing
+	 * {@link AutonomousCar#getXInitiale()} and {@link AutonomousCar#getYInitiale()}
+	 * 
+	 * 
+	 * @param xy representing {@link AutonomousCarService#getXYCoinDroit4HWC()}
+	 * 
+	 * 
+	 * @return Returns a number from 0 to 5
+	 * 
+	 */
 
 	public int getXYInitiale4HWC(int xy) {
 
@@ -365,9 +465,14 @@ public class AutonomousCarService {
 
 	}
 
-	// Orientation4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate an initial orientation amongst N,E,W,S
+	 * representing {@link AutonomousCar#getOrientationInitiale()}
+	 * 
+	 * 
+	 * @return Returns a value amongst N,E,W,S
+	 * 
+	 */
 
 	private String getOrientationInitiale4HWC() {
 		String tabOrientations[] = { "N", "E", "W", "S" };
@@ -378,9 +483,14 @@ public class AutonomousCarService {
 
 	}
 
-	// Instructions4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate instructions defined by D,G or A representing
+	 * {@link AutonomousCar#getInstructions()}
+	 * 
+	 * 
+	 * @return Returns a String defined by D,G or A
+	 * 
+	 */
 
 	private String getInstructions4HWC() {
 		String tabInstructions[] = { "D", "G", "A" };
@@ -419,9 +529,23 @@ public class AutonomousCarService {
 
 	}
 
-	// Génération Automatique 4HWC
-
-	// SERVICE
+	/**
+	 * <p>
+	 * Generates a list of Autonomous Cars using those methods:
+	 * <ul>
+	 * <li>AutonomousCarService{@link #getNombreDeVehicules4HWC()}</li>
+	 * <li>AutonomousCarService{@link #getXYCoinDroit4HWC()}</li>
+	 * <li>AutonomousCarService{@link #getXYInitiale4HWC(int)}</li>
+	 * <li>AutonomousCarService{@link #getOrientationInitiale4HWC()}</li>
+	 * <li>AutonomousCarService{@link #getInstructions4HWC()}</li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * 
+	 * 
+	 * @return Returns List<AutonomousCar> generated randomly
+	 * 
+	 */
 
 	public List<AutonomousCar> getVehicules4HWC() {
 
@@ -447,369 +571,25 @@ public class AutonomousCarService {
 		return liste;
 	}
 
-	// Déplacement sur la surface de plusieurs véhicules
-
-	// SERVICE
-
-	public void deplacementDeTousLesVehicules(List<AutonomousCar> liste) {
-
-		AutonomousCarLog.logger.debug(String.format("NOMBRE DE VEHICULES DEPLOYEES :%d", liste.size()));
-
-		// Speech will be improved later
-
-		// Speech.repete("NOMBRE DE VEHICULES DEPLOYEES :" + liste.size());
-
-		AutonomousCarService autonomousCarService = new AutonomousCarService();
-
-		liste.parallelStream().forEachOrdered(autonomousCarService::parcourirLaSurface);
-
-	}
-
-	// Déplacement sur la surface d'un véhicule (mode console)
-
-	// SERVICE
-
-	private void parcourirLaSurface(AutonomousCar vehiculeEnDeplacement)
-
-	{
-
-		// Chrono chrono = new Chrono();
-
-		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
-
-		// Lancement du chronometre
-
-		Chronometre.goChrono();
-
-		for (int i = 0; i < instructionsASuivre.length(); i++) // Suivre les
-																// instructions
-
-		{
-			String instructionActuelle = instructionsASuivre.charAt(i) + ""; // char
-																				// to
-																				// String
-
-			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();
-
-			int xActuelle = vehiculeEnDeplacement.getXActuelle();
-
-			int yActuelle = vehiculeEnDeplacement.getYActuelle();
-
-			// Tourner à droite
-
-			// Modification de l'orientation
-
-			if (instructionActuelle.equals("D"))
-
-			{
-
-				if (orientationActuelle.equals("N")) {
-					vehiculeEnDeplacement.setOrientationActuelle("E");
-				}
-
-				if (orientationActuelle.equals("E")) {
-					vehiculeEnDeplacement.setOrientationActuelle("S");
-				}
-
-				if (orientationActuelle.equals("W")) {
-					vehiculeEnDeplacement.setOrientationActuelle("N");
-				}
-
-				if (orientationActuelle.equals("S")) {
-					vehiculeEnDeplacement.setOrientationActuelle("W");
-				}
-			}
-
-			// Tourner à gauche
-
-			// Modification de l'orientation
-
-			if (instructionActuelle.equals("G")) {
-
-				if (orientationActuelle.equals("N")) {
-					vehiculeEnDeplacement.setOrientationActuelle("W");
-				}
-
-				if (orientationActuelle.equals("E")) {
-					vehiculeEnDeplacement.setOrientationActuelle("N");
-				}
-
-				if (orientationActuelle.equals("W")) {
-					vehiculeEnDeplacement.setOrientationActuelle("S");
-				}
-
-				if (orientationActuelle.equals("S")) {
-					vehiculeEnDeplacement.setOrientationActuelle("E");
-				}
-			}
-
-			// Avancer
-
-			// Se rassurer que la future position est dans la surface
-			// Si oui Avancer
-			// Sinon, pas de mouvement, orientation conservée puis traiter
-			// instruction suivante(indice suivant)
-			// Ne pas modifier l'orientation
-
-			if (instructionActuelle.equals("A")) {
-				if (orientationActuelle.equals("N"))// y+1
-				{
-					int yActuelleFuture = yActuelle + 1;
-
-					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("E"))// x+1
-				{
-					int xActuelleFuture = xActuelle + 1;
-
-					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("W"))// x-1
-				{
-					int xActuelleFuture = xActuelle - 1;
-
-					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("S"))// y-1
-				{
-					int yActuelleFuture = yActuelle - 1;
-
-					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-			}
-
-		} // for
-
-		// Stop chrono
-
-		Chronometre.stopChrono();
-
-		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());
-
-		// Communication de la position et de l'orientation finale
-
-		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());
-
-		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());
-
-		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
-
-		AutonomousCarLog.logger.debug("CHRONO : " + vehiculeEnDeplacement.getChronoFinale() + " nanosecondes");
-
-		AutonomousCarLog.logger
-				.debug(String.format("CHRONO : %d nanosecondes", vehiculeEnDeplacement.getChronoFinale()));
-
-		AutonomousCarLog.logger.debug("INIT");
-
-		AutonomousCarLog.logger.debug(String.format(
-				"POSITION XCOIN DROIT : %d  / POSITION YCOIN DROIT : %d / POSITION XINIT : %d / POSITION YINIT : %d / O INIT : %s",
-				vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),
-				vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),
-				vehiculeEnDeplacement.getOrientationInitiale()));
-
-		AutonomousCarLog.logger.debug(String.format(
-				"INSTRUCTIONS :%s %n FIN %n POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s",
-				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),
-				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));
-
-	}
-
-	// Déplacement sur la surface d'un véhicule (mode graphique)
-
-	// SERVICE
-
-	public void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
-
-	{
-
-		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();
-
-		// Lancement du chronometre
-
-		Chronometre.goChrono();
-
-		for (int i = 0; i < instructionsASuivre.length(); i++) // Suivre les
-																// instructions
-
-		{
-			String instructionActuelle = instructionsASuivre.charAt(i) + ""; // char
-																				// to
-																				// String
-
-			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();
-
-			int xActuelle = vehiculeEnDeplacement.getXActuelle();
-
-			int yActuelle = vehiculeEnDeplacement.getYActuelle();
-
-			// Tourner à droite
-
-			// Modification de l'orientation
-
-			if (instructionActuelle.equals("D"))
-
-			{
-
-				if (orientationActuelle.equals("N")) {
-					vehiculeEnDeplacement.setOrientationActuelle("E");
-				}
-
-				if (orientationActuelle.equals("E")) {
-					vehiculeEnDeplacement.setOrientationActuelle("S");
-				}
-
-				if (orientationActuelle.equals("W")) {
-					vehiculeEnDeplacement.setOrientationActuelle("N");
-				}
-
-				if (orientationActuelle.equals("S")) {
-					vehiculeEnDeplacement.setOrientationActuelle("W");
-				}
-			}
-
-			// Tourner à gauche
-
-			// Modification de l'orientation
-
-			if (instructionActuelle.equals("G")) {
-
-				if (orientationActuelle.equals("N")) {
-					vehiculeEnDeplacement.setOrientationActuelle("W");
-				}
-
-				if (orientationActuelle.equals("E")) {
-					vehiculeEnDeplacement.setOrientationActuelle("N");
-				}
-
-				if (orientationActuelle.equals("W")) {
-					vehiculeEnDeplacement.setOrientationActuelle("S");
-				}
-
-				if (orientationActuelle.equals("S")) {
-					vehiculeEnDeplacement.setOrientationActuelle("E");
-				}
-			}
-
-			// Avancer
-
-			// Se rassurer que la future position est dans la surface
-			// Si oui Avancer
-			// Sinon, pas de mouvement, orientation conservée puis traiter
-			// instruction suivante(indice suivant)
-			// Ne pas modifier l'orientation
-
-			if (instructionActuelle.equals("A")) {
-				if (orientationActuelle.equals("N"))// y+1
-				{
-					int yActuelleFuture = yActuelle + 1;
-
-					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("E"))// x+1
-				{
-					int xActuelleFuture = xActuelle + 1;
-
-					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("W"))// x-1
-				{
-					int xActuelleFuture = xActuelle - 1;
-
-					if (0 <= xActuelleFuture && xActuelleFuture <= vehiculeEnDeplacement.getXCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-				if (orientationActuelle.equals("S"))// y-1
-				{
-					int yActuelleFuture = yActuelle - 1;
-
-					if (0 <= yActuelleFuture && yActuelleFuture <= vehiculeEnDeplacement.getYCoinDroit())// Avancer
-					{
-						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-			}
-
-		} // for
-
-		// Stop chrono
-
-		Chronometre.stopChrono();
-
-		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());
-
-		// Communication de la position et de l'orientation finale
-
-		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());
-
-		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());
-
-		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());
-
-		StringBuilder sbuf = new StringBuilder();
-		Formatter fmt = new Formatter(sbuf);
-		fmt.format(
-				"CHRONO :  %d  nanosecondes %n INIT %n POSITION XCOIN DROIT :  %d / POSITION YCOIN DROIT : %d "
-						+ "/ POSITION XINIT : %d /  POSITION YINIT : %d / O INIT : %s",
-				vehiculeEnDeplacement.getChronoFinale(), vehiculeEnDeplacement.getXCoinDroit(),
-				vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXInitiale(),
-				vehiculeEnDeplacement.getYInitiale(), vehiculeEnDeplacement.getOrientationInitiale());
-
-		AutonomousCarLog.logger.debug(sbuf.toString());
-
-		AutonomousCarLog.logger.debug(String.format(
-				"INSTRUCTIONS :%s %n FIN %n" + " POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s",
-				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),
-				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));
-
-	}
-
-	// Enregistrement des paramètres actuels
-
-	// SERVICE
-
-	public List<AutonomousCar> enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
+	/**
+	 * @param vehiculeEnDeplacement
+	 * 
+	 *                              Generate a list of Autonomous Cars representing
+	 *                              the states of vehiculeEnDeplacement.
+	 * 
+	 *                              Each AutonomousCar present in the list
+	 *                              represents a state of the main car
+	 *                              vehiculeEnDeplacement.
+	 * 
+	 *                              The states of vehiculeEnDeplacement are
+	 *                              recorded.
+	 * 
+	 * 
+	 * 
+	 * @return List<AutonomousCar>
+	 */
+
+	public List<AutonomousCar> autonomousCarStates(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
@@ -993,7 +773,7 @@ public class AutonomousCarService {
 								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),
 								vehiculeEnDeplacement.getInstructions()));
 					} else {
-						continue; // Passage à la commande suivante
+						continue; // Passage à l'instruction suivante
 					}
 				}
 			}

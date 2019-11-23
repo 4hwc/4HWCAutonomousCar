@@ -735,16 +735,10 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 					String titleSucces = "Succès";
 
-					String messageSucces = "Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !";
-
-					if (this.nbreDeVehicules == 1) {
-
-					} else {
-
-						messageSucces = "Bravo vous avez saisi avec succès les caractéristiques des "
-								+ this.nbreDeVehicules + " véhicules :) !";
-
-					}
+					String messageSucces = this.nbreDeVehicules == 1
+							? "Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !"
+							: "Bravo vous avez saisi avec succès les caractéristiques des " + this.nbreDeVehicules
+									+ " véhicules :) !";
 
 					JOptionPane.showMessageDialog(null, messageSucces, titleSucces, JOptionPane.INFORMATION_MESSAGE);
 

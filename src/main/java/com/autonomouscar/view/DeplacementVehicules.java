@@ -29,7 +29,7 @@ public class DeplacementVehicules extends JFrame {
 
 	private String origine = "";
 
-	private List<AutonomousCar> listeVehicules = new ArrayList<AutonomousCar>();
+	private List<AutonomousCar> listeVehicules = new ArrayList<>();
 
 	private Border whiteBorder = new LineBorder(Color.WHITE, 1);
 
@@ -42,6 +42,8 @@ public class DeplacementVehicules extends JFrame {
 	private Font policeAgencyFB = new Font("Agency FB", Font.BOLD, 30);
 
 	private Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+
+	public static final int ATTENTE = 1500;
 
 	AutonomousCarService autonomousCarService = new AutonomousCarService();
 
@@ -122,8 +124,7 @@ public class DeplacementVehicules extends JFrame {
 
 			// Je récupère le véhicule et ses différentes positions
 
-			List<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService
-					.enregistrementParametresActuels(vehicule);
+			List<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService.autonomousCarStates(vehicule);
 
 			// J'affiche le véhicule à différentes positions : Xactuelle;
 			// Yactuelle et Oactuelle
@@ -224,7 +225,7 @@ public class DeplacementVehicules extends JFrame {
 				// d'orientation
 
 				try {
-					Thread.sleep(3000);
+					Thread.sleep(ATTENTE);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
