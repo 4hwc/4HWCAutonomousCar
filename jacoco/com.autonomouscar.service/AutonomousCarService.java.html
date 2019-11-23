@@ -4,51 +4,122 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 import java.util.Random;
 
 import com.autonomouscar.exceptions.AutonomousCarException;
 import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
-import com.autonomouscar.utils.Chronometre;
 
 /**
  * 
- * This class contains all the application's logic
+ * &lt;b&gt;This class contains the application's logic&lt;/b&gt;
  * 
- * test class : @see AutonomousCarServiceTest
+ * test class : AutonomousCarServiceTest
+ * 
+ * model class : AutonomousCar
  * 
  * @author Fanon Jupkwo
  */
 
 <span class="fc" id="L25">public class AutonomousCarService {</span>
 
+	/**
+	 * Constant representing the maximum number of instructions generated randomly
+	 * 
+	 * @see AutonomousCarService#getInstructions4HWC()
+	 */
+
 	public static final int NUMBER_OF_INSTRUCTIONS_MAX = 50;
+
+	/**
+	 * Constant representing the maximum number of cars generated randomly
+	 * 
+	 * @see AutonomousCarService#getNombreDeVehicules4HWC()
+	 */
 
 	public static final int NUMBER_OF_VEHICLES_MAX = 20;
 
-	public static final String INCORRECT = &quot;INCORRECT&quot;;
+	/**
+	 * Constant representing an error message related to wrong orientation
+	 * 
+	 * @see AutonomousCarService#validationOrientationInitiale(String)
+	 */
 
 	public static final String MESSAGEERRORNEWS = &quot;Veuillez entrer une lettre N , E , W ou S&quot;;
 
+	/**
+	 * Constant representing an error message related to wrong orientation
+	 * 
+	 * @see AutonomousCarService#validationOrientationInitiale(String)
+	 */
+
 	public static final String MESSAGEERRORO = &quot;Veuillez entrer l'orientation&quot;;
+
+	/**
+	 * Constant representing an error message related to wrong position on the
+	 * surface
+	 * 
+	 * @see AutonomousCarService#validationPositionsString(String, String, String,
+	 *      String)
+	 */
 
 	public static final String MESSAGEERRORVEHICULE = &quot;S'il vous plaît choisissez une position correcte du véhicule&quot;;
 
+	/**
+	 * Constant representing an error message related to wrong dimensions of the
+	 * surface
+	 * 
+	 * @see AutonomousCarService#validationPositionsString(String, String, String,
+	 *      String)
+	 */
+
 	public static final String MESSAGEERRORCD = &quot;S'il vous plaît choisissez une position correcte du coin Supérieur Droit&quot;;
+
+	/**
+	 * Constant representing an error message related to wrong number of cars
+	 * 
+	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 */
 
 	public static final String MESSAGEERRORNBRE = &quot;S'il vous plaît saisissez des caractères numériques&quot;;
 
+	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
 	public static final String MESSAGEERRORESPACES = &quot;Les espaces sont interdits dans vos instructions&quot;;
-	public static final String MESSAGEERRORDGA = &quot;Les instructions contiennent uniquement D, G ou A&quot;;
-	public static final String MESSAGEERRORI = &quot;Veuillez entrer des instructions&quot;;
-
-	// Validation de nombre de véhicules String
-
-	// SERVICE
 
 	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
+	public static final String MESSAGEERRORDGA = &quot;Les instructions contiennent uniquement D, G ou A&quot;;
+
+	/**
+	 * Constant representing an error message related to wrong instructions
+	 * 
+	 * @see AutonomousCarService#validationInstructions(String)
+	 */
+
+	public static final String MESSAGEERRORI = &quot;Veuillez entrer des instructions&quot;;
+
+	/**
+	 * Constant representing an error message related to wrong number of cars
+	 * 
+	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 */
+
+	public static final String MESSAGEERRORNUMBEROFCARS = &quot;S'il vous plaît choisissez un nombre supérieur ou égal à 1&quot;;
+
+	/**
+	 * 
+	 * Verifies if the number of cars is correct
+	 * 
 	 * @param nbre
 	 * @throws AutonomousCarException if nbre is not a number or if nbre is inferior
 	 *                                than 1
@@ -56,220 +127,230 @@ import com.autonomouscar.utils.Chronometre;
 
 	public void validationNombreDeVehiculesString(String nbre) throws AutonomousCarException {
 
-<span class="fc" id="L59">		String messageError = &quot;S'il vous plaît choisissez un nombre supérieur ou égal à 1&quot;;</span>
-
 		try {
-<span class="fc" id="L62">			int number = Integer.parseInt(nbre.trim());</span>
+<span class="fc" id="L131">			int number = Integer.parseInt(nbre.trim());</span>
 
-<span class="fc bfc" id="L64" title="All 2 branches covered.">			if (number &gt;= 1) {</span>
-
-			} else {
-
-<span class="fc" id="L68">				throw new AutonomousCarException(messageError);</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">			if (number &gt;= 1) {</span>
 
 			}
 
-<span class="fc" id="L72">		} catch (NumberFormatException e) {</span>
+			else {
+<span class="fc" id="L138">				throw new AutonomousCarException(MESSAGEERRORNUMBEROFCARS);</span>
+			}
 
-<span class="fc" id="L74">			throw new AutonomousCarException(messageError);</span>
+<span class="fc" id="L141">		} catch (NumberFormatException e) {</span>
 
-<span class="fc" id="L76">		}</span>
+<span class="fc" id="L143">			throw new AutonomousCarException(MESSAGEERRORNUMBEROFCARS);</span>
 
-<span class="fc" id="L78">	}</span>
+<span class="fc" id="L145">		}</span>
 
-	// SERVICE
+<span class="fc" id="L147">	}</span>
 
-	// Vérification orientation
+	/**
+	 * 
+	 * Verifies if the orientation is correct
+	 * 
+	 * @param orientationInitiale
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationOrientationInitiale(String orientationInitiale) throws AutonomousCarException {
 
-<span class="pc bpc" id="L86" title="1 of 2 branches missed.">		if (orientationInitiale != null) {</span>
-<span class="fc" id="L87">			String orientationInitialeTrim = orientationInitiale.trim().toUpperCase();</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">		if (orientationInitiale != null) {</span>
+<span class="fc" id="L160">			String orientationInitialeTrim = orientationInitiale.trim().toUpperCase();</span>
 
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">			if (orientationInitialeTrim.length() != 0) {</span>
-<span class="fc bfc" id="L90" title="All 2 branches covered.">				if (orientationInitialeTrim.length() == 1) {</span>
-<span class="fc bfc" id="L91" title="All 4 branches covered.">					if (orientationInitialeTrim.equals(&quot;N&quot;) || orientationInitialeTrim.equals(&quot;E&quot;)</span>
-<span class="fc bfc" id="L92" title="All 4 branches covered.">							|| orientationInitialeTrim.equals(&quot;W&quot;) || orientationInitialeTrim.equals(&quot;S&quot;)) {</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">			if (orientationInitialeTrim.length() != 0) {</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">				if (orientationInitialeTrim.length() == 1) {</span>
+<span class="fc bfc" id="L164" title="All 4 branches covered.">					if (orientationInitialeTrim.equals(&quot;N&quot;) || orientationInitialeTrim.equals(&quot;E&quot;)</span>
+<span class="fc bfc" id="L165" title="All 4 branches covered.">							|| orientationInitialeTrim.equals(&quot;W&quot;) || orientationInitialeTrim.equals(&quot;S&quot;)) {</span>
 
 					} else {
 
 						// AutonomousCarLog.logger.error(&quot;Veuillez entrer une lettre N , E , W ou S&quot;);
-<span class="fc" id="L97">						throw new AutonomousCarException(MESSAGEERRORNEWS);</span>
+<span class="fc" id="L170">						throw new AutonomousCarException(MESSAGEERRORNEWS);</span>
 
 					} // 4e if
 				} else {
 
 					// AutonomousCarLog.logger.error(&quot;Veuillez entrer une lettre N , E , W ou S&quot;);
-<span class="fc" id="L103">					throw new AutonomousCarException(MESSAGEERRORNEWS);</span>
+<span class="fc" id="L176">					throw new AutonomousCarException(MESSAGEERRORNEWS);</span>
 				} // 3e if
 			} else {
 
 				// AutonomousCarLog.logger.error(&quot;Veuillez entrer l'orientation&quot;);
-<span class="nc" id="L108">				throw new AutonomousCarException(MESSAGEERRORO);</span>
+<span class="nc" id="L181">				throw new AutonomousCarException(MESSAGEERRORO);</span>
 			} // 2e if
-<span class="fc" id="L110">		} else {</span>
+<span class="fc" id="L183">		} else {</span>
 
 			// AutonomousCarLog.logger.error(&quot;Veuillez entrer l'orientation&quot;);
-<span class="nc" id="L113">			throw new AutonomousCarException(MESSAGEERRORO);</span>
+<span class="nc" id="L186">			throw new AutonomousCarException(MESSAGEERRORO);</span>
 		} // 1er if
 
-<span class="fc" id="L116">	}</span>
+<span class="fc" id="L189">	}</span>
 
-	// Validation Positions entrées : string
-
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	// SERVICE
+	/**
+	 * 
+	 * Verifies if car's position and surface dimensions are correct
+	 * 
+	 * @param xCoinDroit
+	 * @param yCoinDroit
+	 * @param orientationInitiale
+	 * @param orientationInitiale
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
 			throws AutonomousCarException {
 
-<span class="fc" id="L127">		String titleError = &quot;Position incorrecte sur la surface&quot;;</span>
-
 		try {
 
-<span class="fc" id="L131">			int xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());</span>
+<span class="fc" id="L207">			int xCoinDroitInt = Integer.parseInt(xCoinDroit.trim());</span>
 
-<span class="fc" id="L133">			int yCoinDroitInt = Integer.parseInt(yCoinDroit.trim());</span>
+<span class="fc" id="L209">			int yCoinDroitInt = Integer.parseInt(yCoinDroit.trim());</span>
 
-<span class="fc" id="L135">			int xInitialeInt = Integer.parseInt(xInitiale.trim());</span>
+<span class="fc" id="L211">			int xInitialeInt = Integer.parseInt(xInitiale.trim());</span>
 
-<span class="fc" id="L137">			int yInitialeInt = Integer.parseInt(yInitiale.trim());</span>
+<span class="fc" id="L213">			int yInitialeInt = Integer.parseInt(yInitiale.trim());</span>
 
-<span class="pc bpc" id="L139" title="3 of 8 branches missed.">			if (xCoinDroitInt &gt;= 0 &amp;&amp; xCoinDroitInt &lt;= 5 &amp;&amp; yCoinDroitInt &gt;= 0 &amp;&amp; yCoinDroitInt &lt;= 5) {</span>
-<span class="pc bpc" id="L140" title="3 of 8 branches missed.">				if (xInitialeInt &gt;= 0 &amp;&amp; xInitialeInt &lt;= xCoinDroitInt &amp;&amp; yInitialeInt &gt;= 0</span>
+<span class="pc bpc" id="L215" title="3 of 8 branches missed.">			if (xCoinDroitInt &gt;= 0 &amp;&amp; xCoinDroitInt &lt;= 5 &amp;&amp; yCoinDroitInt &gt;= 0 &amp;&amp; yCoinDroitInt &lt;= 5) {</span>
+<span class="pc bpc" id="L216" title="3 of 8 branches missed.">				if (xInitialeInt &gt;= 0 &amp;&amp; xInitialeInt &lt;= xCoinDroitInt &amp;&amp; yInitialeInt &gt;= 0</span>
 						&amp;&amp; yInitialeInt &lt;= yCoinDroitInt) {
 
 				} else {
 
-<span class="fc" id="L145">					throw new AutonomousCarException(MESSAGEERRORVEHICULE);</span>
+<span class="fc" id="L221">					throw new AutonomousCarException(MESSAGEERRORVEHICULE);</span>
 				}
 			} else {
-<span class="fc" id="L148">				throw new AutonomousCarException(MESSAGEERRORCD);</span>
+<span class="fc" id="L224">				throw new AutonomousCarException(MESSAGEERRORCD);</span>
 
 			}
 
-<span class="fc" id="L152">		} catch (NumberFormatException e) {</span>
+<span class="fc" id="L228">		} catch (NumberFormatException e) {</span>
 
-<span class="fc" id="L154">			throw new AutonomousCarException(MESSAGEERRORNBRE);</span>
+<span class="fc" id="L230">			throw new AutonomousCarException(MESSAGEERRORNBRE);</span>
 
-<span class="fc" id="L156">		}</span>
+<span class="fc" id="L232">		}</span>
 
-<span class="fc" id="L158">	}</span>
+<span class="fc" id="L234">	}</span>
 
-	// Vérification instructions
-
-	// SERVICE
+	/**
+	 * 
+	 * Verifies if instructions are correct
+	 * 
+	 * @param instructions
+	 * @throws AutonomousCarException
+	 */
 
 	public void validationInstructions(String instructions) throws AutonomousCarException {
 
-<span class="fc" id="L166">		boolean presenceEspace = false; // Je suppose qu'il n y a pas d'espace</span>
+<span class="pc bpc" id="L246" title="1 of 2 branches missed.">		if (instructions != null) {</span>
+<span class="fc" id="L247">			String instructionsTrim = instructions.trim();</span>
 
-<span class="pc bpc" id="L168" title="1 of 2 branches missed.">		if (instructions != null) {</span>
-<span class="fc" id="L169">			String instructionsTrim = instructions.trim();</span>
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">			if (instructionsTrim.length() != 0) {</span>
 
-<span class="pc bpc" id="L171" title="1 of 2 branches missed.">			if (instructionsTrim.length() != 0) {</span>
-
-<span class="fc bfc" id="L173" title="All 2 branches covered.">				for (int i = 0; i &lt; instructionsTrim.length(); i++) { // Boucle</span>
+<span class="fc bfc" id="L251" title="All 2 branches covered.">				for (int i = 0; i &lt; instructionsTrim.length(); i++) { // Boucle</span>
 																		// pour
 																		// rechercher
 																		// l'espace
 
-<span class="fc bfc" id="L178" title="All 2 branches covered.">					if (instructionsTrim.charAt(i) == ' ') // Dès que je trouve</span>
+<span class="fc bfc" id="L256" title="All 2 branches covered.">					if (instructionsTrim.charAt(i) == ' ') // Dès que je trouve</span>
 															// un
 					// espace, c'est pas
 					// correct
 					{
 
-<span class="fc" id="L184">						throw new AutonomousCarException(MESSAGEERRORESPACES);</span>
+<span class="fc" id="L262">						throw new AutonomousCarException(MESSAGEERRORESPACES);</span>
 
 					}
 				} // for
 
-<span class="fc" id="L189">				String instructionsTrimMaj = instructionsTrim.toUpperCase(); // Je</span>
+<span class="fc" id="L267">				String instructionsTrimMaj = instructionsTrim.toUpperCase(); // Je</span>
 																				// convertis
 																				// tout
 																				// à
 																				// majuscule
 
-<span class="fc" id="L195">				int compteurLettresCorrectes = 0;</span>
+<span class="fc" id="L273">				int compteurLettresCorrectes = 0;</span>
 
-<span class="fc bfc" id="L197" title="All 2 branches covered.">				for (int j = 0; j &lt; instructionsTrimMaj.length(); j++) {</span>
+<span class="fc bfc" id="L275" title="All 2 branches covered.">				for (int j = 0; j &lt; instructionsTrimMaj.length(); j++) {</span>
 
-<span class="fc" id="L199">					String instructionsTrimMajString = instructionsTrimMaj.charAt(j) + &quot;&quot;;</span>
+<span class="fc" id="L277">					String instructionsTrimMajString = instructionsTrimMaj.charAt(j) + &quot;&quot;;</span>
 
-<span class="fc bfc" id="L201" title="All 4 branches covered.">					if (instructionsTrimMajString.equals(&quot;A&quot;) || instructionsTrimMajString.equals(&quot;D&quot;)</span>
-<span class="pc bpc" id="L202" title="1 of 2 branches missed.">							|| instructionsTrimMajString.equals(&quot;G&quot;)) {</span>
+<span class="fc bfc" id="L279" title="All 4 branches covered.">					if (instructionsTrimMajString.equals(&quot;A&quot;) || instructionsTrimMajString.equals(&quot;D&quot;)</span>
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">							|| instructionsTrimMajString.equals(&quot;G&quot;)) {</span>
 						// Correct
 
-<span class="fc" id="L205">						compteurLettresCorrectes++;</span>
+<span class="fc" id="L283">						compteurLettresCorrectes++;</span>
 
-<span class="fc bfc" id="L207" title="All 2 branches covered.">						if (compteurLettresCorrectes == instructionsTrimMaj.length()) {</span>
+<span class="fc bfc" id="L285" title="All 2 branches covered.">						if (compteurLettresCorrectes == instructionsTrimMaj.length()) {</span>
 
 						}
 
 					} else {
 						// Présence d'un intrus
 
-<span class="nc" id="L214">						throw new AutonomousCarException(MESSAGEERRORDGA);</span>
+<span class="nc" id="L292">						throw new AutonomousCarException(MESSAGEERRORDGA);</span>
 
 					}
 
 				} // for
 
-<span class="fc" id="L220">			} else {</span>
+<span class="fc" id="L298">			} else {</span>
 
-<span class="nc" id="L222">				throw new AutonomousCarException(MESSAGEERRORI);</span>
+<span class="nc" id="L300">				throw new AutonomousCarException(MESSAGEERRORI);</span>
 
 			}
-<span class="fc" id="L225">		} else {</span>
-<span class="nc" id="L226">			throw new AutonomousCarException(MESSAGEERRORI);</span>
+<span class="fc" id="L303">		} else {</span>
+<span class="nc" id="L304">			throw new AutonomousCarException(MESSAGEERRORI);</span>
 		}
 
-<span class="fc" id="L229">	}</span>
+<span class="fc" id="L307">	}</span>
 
-	// SERVICE
+	/**
+	 * Reads Cars Data from a file
+	 * 
+	 */
 
 	public List&lt;AutonomousCar&gt; recupFichierBase() {
 
-<span class="nc" id="L235">		List&lt;AutonomousCar&gt; listeInitiale = new ArrayList&lt;AutonomousCar&gt;();</span>
+<span class="nc" id="L316">		List&lt;AutonomousCar&gt; listeInitiale = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L237">		List&lt;String&gt; lignes = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L318">		List&lt;String&gt; lignes = new ArrayList&lt;String&gt;();</span>
 
-<span class="nc" id="L239">		InputStream inputStream = AutonomousCarService.class.getClassLoader().getResourceAsStream(&quot;default4HWC.txt&quot;);</span>
+<span class="nc" id="L320">		InputStream inputStream = AutonomousCarService.class.getClassLoader().getResourceAsStream(&quot;default4HWC.txt&quot;);</span>
 
-<span class="nc bnc" id="L241" title="All 2 branches missed.">		if (inputStream != null) {</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">		if (inputStream != null) {</span>
 
 			// Début du traitement
 
 			try {
 
-<span class="nc" id="L247">				byte[] buf = new byte[2048];</span>
+<span class="nc" id="L328">				byte[] buf = new byte[2048];</span>
 
-<span class="nc" id="L249">				int count = 0;</span>
+<span class="nc" id="L330">				int count = 0;</span>
 
-<span class="nc" id="L251">				int n = 0;</span>
+<span class="nc" id="L332">				int n = 0;</span>
 
-<span class="nc" id="L253">				String ligne = &quot;&quot;;</span>
+<span class="nc" id="L334">				String ligne = &quot;&quot;;</span>
 
-<span class="nc bnc" id="L255" title="All 2 branches missed.">				while ((n = inputStream.read(buf)) &gt;= 0) {</span>
-<span class="nc bnc" id="L256" title="All 2 branches missed.">					for (int i = 0; i &lt; n; i++) {</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">				while ((n = inputStream.read(buf)) &gt;= 0) {</span>
+<span class="nc bnc" id="L337" title="All 2 branches missed.">					for (int i = 0; i &lt; n; i++) {</span>
 
-<span class="nc bnc" id="L258" title="All 2 branches missed.">						if (buf[i] != '\n') {</span>
-<span class="nc" id="L259">							ligne = ligne + (char) buf[i];</span>
+<span class="nc bnc" id="L339" title="All 2 branches missed.">						if (buf[i] != '\n') {</span>
+<span class="nc" id="L340">							ligne = ligne + (char) buf[i];</span>
 
-<span class="nc bnc" id="L261" title="All 2 branches missed.">							if (i == n - 1) // enregistrement dernière ligne</span>
-<span class="nc" id="L262">								lignes.add(ligne);</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">							if (i == n - 1) // enregistrement dernière ligne</span>
+<span class="nc" id="L343">								lignes.add(ligne);</span>
 						}
 
-<span class="nc bnc" id="L265" title="All 2 branches missed.">						if (buf[i] == '\n') {</span>
+<span class="nc bnc" id="L346" title="All 2 branches missed.">						if (buf[i] == '\n') {</span>
 
 							// System.out.println(ligne);
 
-<span class="nc" id="L269">							lignes.add(ligne);</span>
-<span class="nc" id="L270">							count++;</span>
+<span class="nc" id="L350">							lignes.add(ligne);</span>
+<span class="nc" id="L351">							count++;</span>
 
-<span class="nc" id="L272">							ligne = &quot;&quot;;</span>
+<span class="nc" id="L353">							ligne = &quot;&quot;;</span>
 							/*
 							 * Compter le nombre de retour à la ligne Sachant que le nombre de lignes se
 							 * trouve en ajoutant 1 au nombre final de retour à la ligne
@@ -280,114 +361,143 @@ import com.autonomouscar.utils.Chronometre;
 
 				} // while
 
-<span class="nc" id="L283">				String ligne0 = lignes.get(0); // 5 5</span>
+<span class="nc" id="L364">				String ligne0 = lignes.get(0); // 5 5</span>
 
-<span class="nc" id="L285">				String ligne1 = lignes.get(1);// 1 2 N</span>
+<span class="nc" id="L366">				String ligne1 = lignes.get(1);// 1 2 N</span>
 
-<span class="nc" id="L287">				String instructions1 = lignes.get(2);// GAGAGAGAA</span>
+<span class="nc" id="L368">				String instructions1 = lignes.get(2);// GAGAGAGAA</span>
 
-<span class="nc" id="L289">				String ligne3 = lignes.get(3);// 3 3 E</span>
+<span class="nc" id="L370">				String ligne3 = lignes.get(3);// 3 3 E</span>
 
-<span class="nc" id="L291">				String instructions2 = lignes.get(4);// AADAADADDA</span>
+<span class="nc" id="L372">				String instructions2 = lignes.get(4);// AADAADADDA</span>
 
-<span class="nc" id="L293">				int xCD = Integer.parseInt(ligne0.charAt(0) + &quot;&quot;);// 5</span>
+<span class="nc" id="L374">				int xCD = Integer.parseInt(ligne0.charAt(0) + &quot;&quot;);// 5</span>
 
-<span class="nc" id="L295">				int yCD = Integer.parseInt(ligne0.charAt(2) + &quot;&quot;);// 5</span>
+<span class="nc" id="L376">				int yCD = Integer.parseInt(ligne0.charAt(2) + &quot;&quot;);// 5</span>
 
-<span class="nc" id="L297">				int xT1 = Integer.parseInt(ligne1.charAt(0) + &quot;&quot;);// 1</span>
+<span class="nc" id="L378">				int xT1 = Integer.parseInt(ligne1.charAt(0) + &quot;&quot;);// 1</span>
 
-<span class="nc" id="L299">				int yT1 = Integer.parseInt(ligne1.charAt(2) + &quot;&quot;);// 2</span>
+<span class="nc" id="L380">				int yT1 = Integer.parseInt(ligne1.charAt(2) + &quot;&quot;);// 2</span>
 
-<span class="nc" id="L301">				String o1 = ligne1.charAt(4) + &quot;&quot;;// N</span>
+<span class="nc" id="L382">				String o1 = ligne1.charAt(4) + &quot;&quot;;// N</span>
 
-<span class="nc" id="L303">				int xT2 = Integer.parseInt(ligne3.charAt(0) + &quot;&quot;);// 3</span>
+<span class="nc" id="L384">				int xT2 = Integer.parseInt(ligne3.charAt(0) + &quot;&quot;);// 3</span>
 
-<span class="nc" id="L305">				int yT2 = Integer.parseInt(ligne3.charAt(2) + &quot;&quot;);// 3</span>
+<span class="nc" id="L386">				int yT2 = Integer.parseInt(ligne3.charAt(2) + &quot;&quot;);// 3</span>
 
-<span class="nc" id="L307">				String o2 = ligne3.charAt(4) + &quot;&quot;;// E</span>
+<span class="nc" id="L388">				String o2 = ligne3.charAt(4) + &quot;&quot;;// E</span>
 
-<span class="nc" id="L309">				listeInitiale.add(new AutonomousCar(xCD, yCD, xT1, yT1, o1, instructions1));</span>
+<span class="nc" id="L390">				listeInitiale.add(new AutonomousCar(xCD, yCD, xT1, yT1, o1, instructions1));</span>
 
-<span class="nc" id="L311">				listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));</span>
+<span class="nc" id="L392">				listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));</span>
 
-<span class="nc" id="L313">			} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L394">			} catch (FileNotFoundException e) {</span>
 
-<span class="nc" id="L315">				e.printStackTrace();</span>
-<span class="nc" id="L316">			} catch (IOException e) {</span>
-<span class="nc" id="L317">				e.printStackTrace();</span>
+<span class="nc" id="L396">				e.printStackTrace();</span>
+<span class="nc" id="L397">			} catch (IOException e) {</span>
+<span class="nc" id="L398">				e.printStackTrace();</span>
 			} finally {
 
-<span class="nc" id="L320">				try {</span>
-<span class="nc bnc" id="L321" title="All 8 branches missed.">					if (inputStream != null)</span>
-<span class="nc" id="L322">						inputStream.close();</span>
-<span class="nc" id="L323">				} catch (IOException e) {</span>
-<span class="nc" id="L324">					e.printStackTrace();</span>
-<span class="nc" id="L325">				}</span>
-<span class="nc" id="L326">			}</span>
+<span class="nc" id="L401">				try {</span>
+<span class="nc bnc" id="L402" title="All 8 branches missed.">					if (inputStream != null)</span>
+<span class="nc" id="L403">						inputStream.close();</span>
+<span class="nc" id="L404">				} catch (IOException e) {</span>
+<span class="nc" id="L405">					e.printStackTrace();</span>
+<span class="nc" id="L406">				}</span>
+<span class="nc" id="L407">			}</span>
 
 		} else {
 
-<span class="nc" id="L330">			AutonomousCarLog.logger.error(&quot;Fichier de base introuvable&quot;);</span>
+<span class="nc" id="L411">			AutonomousCarLog.logger.error(&quot;Fichier de base introuvable&quot;);</span>
 
 		}
-<span class="nc" id="L333">		return listeInitiale;</span>
+<span class="nc" id="L414">		return listeInitiale;</span>
 
 	}
 
-	// Intelligence Artificielle 4HWC à l'oeuvre
-
-	// Nombre de véhicules
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number of cars from 1 to
+	 * {@value AutonomousCarService#NUMBER_OF_VEHICLES_MAX}
+	 * 
+	 * @see AutonomousCarService#NUMBER_OF_VEHICLES_MAX
+	 * 
+	 * @return Returns the number of cars generated randomly
+	 * 
+	 */
 
 	private int getNombreDeVehicules4HWC() {
-<span class="nc" id="L344">		Random randomNumbers = new Random();</span>
+<span class="nc" id="L429">		Random randomNumbers = new Random();</span>
 
-<span class="nc" id="L346">		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1; // 1 to NUMBER_OF_VEHICLES_MAX (20)</span>
+<span class="nc" id="L431">		return randomNumbers.nextInt(NUMBER_OF_VEHICLES_MAX) + 1;</span>
 	}
 
-	// XYCoinDroit4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number from 0 to 5 representing
+	 * {@link AutonomousCar#getXCoinDroit()} and
+	 * {@link AutonomousCar#getYCoinDroit()}
+	 * 
+	 * 
+	 * @return Returns a number from 0 to 5
+	 * 
+	 */
 
 	public int getXYCoinDroit4HWC() {
 
-<span class="fc" id="L355">		return new Random().nextInt(6); // 0 to 5</span>
+<span class="fc" id="L446">		return new Random().nextInt(6);</span>
 	}
 
-	// XYInitiale4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate a number from 1 to
+	 * {@link AutonomousCarService#getXYCoinDroit4HWC()} representing
+	 * {@link AutonomousCar#getXInitiale()} and {@link AutonomousCar#getYInitiale()}
+	 * 
+	 * 
+	 * @param xy representing {@link AutonomousCarService#getXYCoinDroit4HWC()}
+	 * 
+	 * 
+	 * @return Returns a number from 0 to 5
+	 * 
+	 */
 
 	public int getXYInitiale4HWC(int xy) {
 
-<span class="fc" id="L364">		return new Random().nextInt(xy + 1);</span>
+<span class="fc" id="L464">		return new Random().nextInt(xy + 1);</span>
 
 	}
 
-	// Orientation4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate an initial orientation amongst N,E,W,S
+	 * representing {@link AutonomousCar#getOrientationInitiale()}
+	 * 
+	 * 
+	 * @return Returns a value amongst N,E,W,S
+	 * 
+	 */
 
 	private String getOrientationInitiale4HWC() {
-<span class="nc" id="L373">		String tabOrientations[] = { &quot;N&quot;, &quot;E&quot;, &quot;W&quot;, &quot;S&quot; };</span>
+<span class="nc" id="L478">		String tabOrientations[] = { &quot;N&quot;, &quot;E&quot;, &quot;W&quot;, &quot;S&quot; };</span>
 
-<span class="nc" id="L375">		Random randomNumbers = new Random();</span>
+<span class="nc" id="L480">		Random randomNumbers = new Random();</span>
 
-<span class="nc" id="L377">		return tabOrientations[randomNumbers.nextInt(tabOrientations.length)];</span>
+<span class="nc" id="L482">		return tabOrientations[randomNumbers.nextInt(tabOrientations.length)];</span>
 
 	}
 
-	// Instructions4HWC
-
-	// SERVICE
+	/**
+	 * Using Random class to generate instructions defined by D,G or A representing
+	 * {@link AutonomousCar#getInstructions()}
+	 * 
+	 * 
+	 * @return Returns a String defined by D,G or A
+	 * 
+	 */
 
 	private String getInstructions4HWC() {
-<span class="nc" id="L386">		String tabInstructions[] = { &quot;D&quot;, &quot;G&quot;, &quot;A&quot; };</span>
+<span class="nc" id="L496">		String tabInstructions[] = { &quot;D&quot;, &quot;G&quot;, &quot;A&quot; };</span>
 
-<span class="nc" id="L388">		Random randomNumbers = new Random();</span>
+<span class="nc" id="L498">		Random randomNumbers = new Random();</span>
 
-<span class="nc" id="L390">		int tailleInstructions = randomNumbers.nextInt(NUMBER_OF_INSTRUCTIONS_MAX) + 1; // 1 to</span>
+<span class="nc" id="L500">		int tailleInstructions = randomNumbers.nextInt(NUMBER_OF_INSTRUCTIONS_MAX) + 1; // 1 to</span>
 																						// NUMBER_OF_INSTRUCTIONS_MAX
 																						// (50)
 		/*
@@ -407,27 +517,41 @@ import com.autonomouscar.utils.Chronometre;
 		 * return instructions4HWC.toString();
 		 */
 
-<span class="nc" id="L410">		String instructions4HWC = &quot;&quot;;</span>
+<span class="nc" id="L520">		String instructions4HWC = &quot;&quot;;</span>
 
-<span class="nc" id="L412">		Random randomNumbers2 = new Random();</span>
+<span class="nc" id="L522">		Random randomNumbers2 = new Random();</span>
 
-<span class="nc bnc" id="L414" title="All 2 branches missed.">		for (int t = 0; t &lt; tailleInstructions; t++)</span>
+<span class="nc bnc" id="L524" title="All 2 branches missed.">		for (int t = 0; t &lt; tailleInstructions; t++)</span>
 
-<span class="nc" id="L416">			instructions4HWC = instructions4HWC + tabInstructions[randomNumbers2.nextInt(tabInstructions.length)];</span>
+<span class="nc" id="L526">			instructions4HWC = instructions4HWC + tabInstructions[randomNumbers2.nextInt(tabInstructions.length)];</span>
 
-<span class="nc" id="L418">		return instructions4HWC;</span>
+<span class="nc" id="L528">		return instructions4HWC;</span>
 
 	}
 
-	// Génération Automatique 4HWC
-
-	// SERVICE
+	/**
+	 * &lt;p&gt;
+	 * Generates a list of Autonomous Cars using those methods:
+	 * &lt;ul&gt;
+	 * &lt;li&gt;AutonomousCarService{@link #getNombreDeVehicules4HWC()}&lt;/li&gt;
+	 * &lt;li&gt;AutonomousCarService{@link #getXYCoinDroit4HWC()}&lt;/li&gt;
+	 * &lt;li&gt;AutonomousCarService{@link #getXYInitiale4HWC(int)}&lt;/li&gt;
+	 * &lt;li&gt;AutonomousCarService{@link #getOrientationInitiale4HWC()}&lt;/li&gt;
+	 * &lt;li&gt;AutonomousCarService{@link #getInstructions4HWC()}&lt;/li&gt;
+	 * &lt;/ul&gt;
+	 * &lt;/p&gt;
+	 * 
+	 * 
+	 * 
+	 * @return Returns List&lt;AutonomousCar&gt; generated randomly
+	 * 
+	 */
 
 	public List&lt;AutonomousCar&gt; getVehicules4HWC() {
 
-<span class="nc" id="L428">		List&lt;AutonomousCar&gt; liste = new ArrayList&lt;AutonomousCar&gt;();</span>
+<span class="nc" id="L552">		List&lt;AutonomousCar&gt; liste = new ArrayList&lt;AutonomousCar&gt;();</span>
 
-<span class="nc bnc" id="L430" title="All 2 branches missed.">		for (int i = 0; i &lt; getNombreDeVehicules4HWC(); i++) {</span>
+<span class="nc bnc" id="L554" title="All 2 branches missed.">		for (int i = 0; i &lt; getNombreDeVehicules4HWC(); i++) {</span>
 
 			/*
 			 * Initial postions depends on Surface so it's important to save it first. if
@@ -435,449 +559,105 @@ import com.autonomouscar.utils.Chronometre;
 			 * 
 			 */
 
-<span class="nc" id="L438">			int xCD = getXYCoinDroit4HWC();</span>
+<span class="nc" id="L562">			int xCD = getXYCoinDroit4HWC();</span>
 
-<span class="nc" id="L440">			int yCD = getXYCoinDroit4HWC();</span>
+<span class="nc" id="L564">			int yCD = getXYCoinDroit4HWC();</span>
 
-<span class="nc" id="L442">			liste.add(new AutonomousCar(xCD, yCD, getXYInitiale4HWC(xCD), getXYInitiale4HWC(yCD),</span>
-<span class="nc" id="L443">					getOrientationInitiale4HWC(), getInstructions4HWC()));</span>
+<span class="nc" id="L566">			liste.add(new AutonomousCar(xCD, yCD, getXYInitiale4HWC(xCD), getXYInitiale4HWC(yCD),</span>
+<span class="nc" id="L567">					getOrientationInitiale4HWC(), getInstructions4HWC()));</span>
 
 		}
 
-<span class="nc" id="L447">		return liste;</span>
+<span class="nc" id="L571">		return liste;</span>
 	}
 
-	// Déplacement sur la surface de plusieurs véhicules
-
-	// SERVICE
-
-	public void deplacementDeTousLesVehicules(List&lt;AutonomousCar&gt; liste) {
-
-<span class="nc" id="L456">		AutonomousCarLog.logger.debug(String.format(&quot;NOMBRE DE VEHICULES DEPLOYEES :%d&quot;, liste.size()));</span>
-
-		// Speech will be improved later
-
-		// Speech.repete(&quot;NOMBRE DE VEHICULES DEPLOYEES :&quot; + liste.size());
-
-<span class="nc" id="L462">		AutonomousCarService autonomousCarService = new AutonomousCarService();</span>
-
-<span class="nc" id="L464">		liste.parallelStream().forEachOrdered(autonomousCarService::parcourirLaSurface);</span>
-
-<span class="nc" id="L466">	}</span>
-
-	// Déplacement sur la surface d'un véhicule (mode console)
-
-	// SERVICE
-
-	private void parcourirLaSurface(AutonomousCar vehiculeEnDeplacement)
-
-	{
-
-		// Chrono chrono = new Chrono();
-
-<span class="nc" id="L478">		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();</span>
-
-		// Lancement du chronometre
-
-<span class="nc" id="L482">		Chronometre.goChrono();</span>
-
-<span class="nc bnc" id="L484" title="All 2 branches missed.">		for (int i = 0; i &lt; instructionsASuivre.length(); i++) // Suivre les</span>
-																// instructions
-
-		{
-<span class="nc" id="L488">			String instructionActuelle = instructionsASuivre.charAt(i) + &quot;&quot;; // char</span>
-																				// to
-																				// String
-
-<span class="nc" id="L492">			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();</span>
-
-<span class="nc" id="L494">			int xActuelle = vehiculeEnDeplacement.getXActuelle();</span>
-
-<span class="nc" id="L496">			int yActuelle = vehiculeEnDeplacement.getYActuelle();</span>
-
-			// Tourner à droite
-
-			// Modification de l'orientation
-
-<span class="nc bnc" id="L502" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;D&quot;))</span>
-
-			{
-
-<span class="nc bnc" id="L506" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L507">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
-				}
-
-<span class="nc bnc" id="L510" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L511">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
-				}
-
-<span class="nc bnc" id="L514" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L515">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
-				}
-
-<span class="nc bnc" id="L518" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L519">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
-				}
-			}
-
-			// Tourner à gauche
-
-			// Modification de l'orientation
-
-<span class="nc bnc" id="L527" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;G&quot;)) {</span>
-
-<span class="nc bnc" id="L529" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L530">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
-				}
-
-<span class="nc bnc" id="L533" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L534">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
-				}
-
-<span class="nc bnc" id="L537" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L538">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
-				}
-
-<span class="nc bnc" id="L541" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L542">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
-				}
-			}
-
-			// Avancer
-
-			// Se rassurer que la future position est dans la surface
-			// Si oui Avancer
-			// Sinon, pas de mouvement, orientation conservée puis traiter
-			// instruction suivante(indice suivant)
-			// Ne pas modifier l'orientation
-
-<span class="nc bnc" id="L554" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;A&quot;)) {</span>
-<span class="nc bnc" id="L555" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;))// y+1</span>
-				{
-<span class="nc" id="L557">					int yActuelleFuture = yActuelle + 1;</span>
-
-<span class="nc bnc" id="L559" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L561">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L567" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;))// x+1</span>
-				{
-<span class="nc" id="L569">					int xActuelleFuture = xActuelle + 1;</span>
-
-<span class="nc bnc" id="L571" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L573">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L579" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;))// x-1</span>
-				{
-<span class="nc" id="L581">					int xActuelleFuture = xActuelle - 1;</span>
-
-<span class="nc bnc" id="L583" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L585">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L591" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;))// y-1</span>
-				{
-<span class="nc" id="L593">					int yActuelleFuture = yActuelle - 1;</span>
-
-<span class="nc bnc" id="L595" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L597">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-			}
-
-		} // for
-
-		// Stop chrono
-
-<span class="nc" id="L608">		Chronometre.stopChrono();</span>
-
-<span class="nc" id="L610">		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());</span>
-
-		// Communication de la position et de l'orientation finale
-
-<span class="nc" id="L614">		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());</span>
-
-<span class="nc" id="L616">		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());</span>
-
-<span class="nc" id="L618">		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());</span>
-
-<span class="nc" id="L620">		AutonomousCarLog.logger.debug(&quot;CHRONO : &quot; + vehiculeEnDeplacement.getChronoFinale() + &quot; nanosecondes&quot;);</span>
-
-<span class="nc" id="L622">		AutonomousCarLog.logger</span>
-<span class="nc" id="L623">				.debug(String.format(&quot;CHRONO : %d nanosecondes&quot;, vehiculeEnDeplacement.getChronoFinale()));</span>
-
-<span class="nc" id="L625">		AutonomousCarLog.logger.debug(&quot;INIT&quot;);</span>
-
-<span class="nc" id="L627">		AutonomousCarLog.logger.debug(String.format(</span>
-				&quot;POSITION XCOIN DROIT : %d  / POSITION YCOIN DROIT : %d / POSITION XINIT : %d / POSITION YINIT : %d / O INIT : %s&quot;,
-<span class="nc" id="L629">				vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),</span>
-<span class="nc" id="L630">				vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),</span>
-<span class="nc" id="L631">				vehiculeEnDeplacement.getOrientationInitiale()));</span>
-
-<span class="nc" id="L633">		AutonomousCarLog.logger.debug(String.format(</span>
-				&quot;INSTRUCTIONS :%s %n FIN %n POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s&quot;,
-<span class="nc" id="L635">				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),</span>
-<span class="nc" id="L636">				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));</span>
-
-<span class="nc" id="L638">	}</span>
-
-	// Déplacement sur la surface d'un véhicule (mode graphique)
-
-	// SERVICE
-
-	public void parcourirLaSurfaceGraphique(AutonomousCar vehiculeEnDeplacement)
-
-	{
-
-<span class="nc" id="L648">		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();</span>
-
-		// Lancement du chronometre
-
-<span class="nc" id="L652">		Chronometre.goChrono();</span>
-
-<span class="nc bnc" id="L654" title="All 2 branches missed.">		for (int i = 0; i &lt; instructionsASuivre.length(); i++) // Suivre les</span>
-																// instructions
-
-		{
-<span class="nc" id="L658">			String instructionActuelle = instructionsASuivre.charAt(i) + &quot;&quot;; // char</span>
-																				// to
-																				// String
-
-<span class="nc" id="L662">			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();</span>
-
-<span class="nc" id="L664">			int xActuelle = vehiculeEnDeplacement.getXActuelle();</span>
-
-<span class="nc" id="L666">			int yActuelle = vehiculeEnDeplacement.getYActuelle();</span>
-
-			// Tourner à droite
-
-			// Modification de l'orientation
-
-<span class="nc bnc" id="L672" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;D&quot;))</span>
-
-			{
-
-<span class="nc bnc" id="L676" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L677">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
-				}
-
-<span class="nc bnc" id="L680" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L681">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
-				}
-
-<span class="nc bnc" id="L684" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L685">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
-				}
-
-<span class="nc bnc" id="L688" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L689">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
-				}
-			}
-
-			// Tourner à gauche
-
-			// Modification de l'orientation
-
-<span class="nc bnc" id="L697" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;G&quot;)) {</span>
-
-<span class="nc bnc" id="L699" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L700">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
-				}
-
-<span class="nc bnc" id="L703" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L704">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
-				}
-
-<span class="nc bnc" id="L707" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L708">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
-				}
-
-<span class="nc bnc" id="L711" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L712">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
-				}
-			}
-
-			// Avancer
-
-			// Se rassurer que la future position est dans la surface
-			// Si oui Avancer
-			// Sinon, pas de mouvement, orientation conservée puis traiter
-			// instruction suivante(indice suivant)
-			// Ne pas modifier l'orientation
-
-<span class="nc bnc" id="L724" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;A&quot;)) {</span>
-<span class="nc bnc" id="L725" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;))// y+1</span>
-				{
-<span class="nc" id="L727">					int yActuelleFuture = yActuelle + 1;</span>
-
-<span class="nc bnc" id="L729" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L731">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L737" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;))// x+1</span>
-				{
-<span class="nc" id="L739">					int xActuelleFuture = xActuelle + 1;</span>
-
-<span class="nc bnc" id="L741" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L743">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L749" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;))// x-1</span>
-				{
-<span class="nc" id="L751">					int xActuelleFuture = xActuelle - 1;</span>
-
-<span class="nc bnc" id="L753" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L755">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-
-<span class="nc bnc" id="L761" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;))// y-1</span>
-				{
-<span class="nc" id="L763">					int yActuelleFuture = yActuelle - 1;</span>
-
-<span class="nc bnc" id="L765" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
-					{
-<span class="nc" id="L767">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
-					} else {
-						continue; // Passage à la commande suivante
-					}
-				}
-			}
-
-		} // for
-
-		// Stop chrono
-
-<span class="nc" id="L778">		Chronometre.stopChrono();</span>
-
-<span class="nc" id="L780">		vehiculeEnDeplacement.setChronoFinale(Chronometre.getChrono());</span>
-
-		// Communication de la position et de l'orientation finale
-
-<span class="nc" id="L784">		vehiculeEnDeplacement.setXFinale(vehiculeEnDeplacement.getXActuelle());</span>
-
-<span class="nc" id="L786">		vehiculeEnDeplacement.setYFinale(vehiculeEnDeplacement.getYActuelle());</span>
-
-<span class="nc" id="L788">		vehiculeEnDeplacement.setOrientationFinale(vehiculeEnDeplacement.getOrientationActuelle());</span>
-
-<span class="nc" id="L790">		StringBuilder sbuf = new StringBuilder();</span>
-<span class="nc" id="L791">		Formatter fmt = new Formatter(sbuf);</span>
-<span class="nc" id="L792">		fmt.format(</span>
-				&quot;CHRONO :  %d  nanosecondes %n INIT %n POSITION XCOIN DROIT :  %d / POSITION YCOIN DROIT : %d &quot;
-						+ &quot;/ POSITION XINIT : %d /  POSITION YINIT : %d / O INIT : %s&quot;,
-<span class="nc" id="L795">				vehiculeEnDeplacement.getChronoFinale(), vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L796">				vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXInitiale(),</span>
-<span class="nc" id="L797">				vehiculeEnDeplacement.getYInitiale(), vehiculeEnDeplacement.getOrientationInitiale());</span>
-
-<span class="nc" id="L799">		AutonomousCarLog.logger.debug(sbuf.toString());</span>
-
-<span class="nc" id="L801">		AutonomousCarLog.logger.debug(String.format(</span>
-				&quot;INSTRUCTIONS :%s %n FIN %n&quot; + &quot; POSITION X FINALE : %d / POSITION Y FINALE : %d / O FINALE : %s&quot;,
-<span class="nc" id="L803">				vehiculeEnDeplacement.getInstructions(), vehiculeEnDeplacement.getXFinale(),</span>
-<span class="nc" id="L804">				vehiculeEnDeplacement.getYFinale(), vehiculeEnDeplacement.getOrientationFinale()));</span>
-
-<span class="nc" id="L806">	}</span>
-
-	// Enregistrement des paramètres actuels
-
-	// SERVICE
-
-	public List&lt;AutonomousCar&gt; enregistrementParametresActuels(AutonomousCar vehiculeEnDeplacement)
+	/**
+	 * @param vehiculeEnDeplacement
+	 * 
+	 *                              Generate a list of Autonomous Cars representing
+	 *                              the states of vehiculeEnDeplacement.
+	 * 
+	 *                              Each AutonomousCar present in the list
+	 *                              represents a state of the main car
+	 *                              vehiculeEnDeplacement.
+	 * 
+	 *                              The states of vehiculeEnDeplacement are
+	 *                              recorded.
+	 * 
+	 * 
+	 * 
+	 * @return List&lt;AutonomousCar&gt;
+	 */
+
+	public List&lt;AutonomousCar&gt; autonomousCarStates(AutonomousCar vehiculeEnDeplacement)
 
 	{
 
 		// A chaque mise à jour des paramètres, j'ajoute à mon ArrayList
 
-<span class="nc" id="L818">		List&lt;AutonomousCar&gt; vehiculeAvecParametresDifferents = new ArrayList&lt;AutonomousCar&gt;();</span>
+<span class="nc" id="L598">		List&lt;AutonomousCar&gt; vehiculeAvecParametresDifferents = new ArrayList&lt;AutonomousCar&gt;();</span>
 
 		// Enregistrement des paramètres initiaux du véhicule
 
-<span class="nc" id="L822">		vehiculeAvecParametresDifferents</span>
-<span class="nc" id="L823">				.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),</span>
-<span class="nc" id="L824">						vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),</span>
-<span class="nc" id="L825">						vehiculeEnDeplacement.getOrientationInitiale(), vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L602">		vehiculeAvecParametresDifferents</span>
+<span class="nc" id="L603">				.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(), vehiculeEnDeplacement.getYCoinDroit(),</span>
+<span class="nc" id="L604">						vehiculeEnDeplacement.getXInitiale(), vehiculeEnDeplacement.getYInitiale(),</span>
+<span class="nc" id="L605">						vehiculeEnDeplacement.getOrientationInitiale(), vehiculeEnDeplacement.getInstructions()));</span>
 
-<span class="nc" id="L827">		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();</span>
+<span class="nc" id="L607">		String instructionsASuivre = vehiculeEnDeplacement.getInstructions();</span>
 
-<span class="nc bnc" id="L829" title="All 2 branches missed.">		for (int i = 0; i &lt; instructionsASuivre.length(); i++) // Suivre les</span>
+<span class="nc bnc" id="L609" title="All 2 branches missed.">		for (int i = 0; i &lt; instructionsASuivre.length(); i++) // Suivre les</span>
 																// instructions
 
 		{
-<span class="nc" id="L833">			String instructionActuelle = instructionsASuivre.charAt(i) + &quot;&quot;; // char</span>
+<span class="nc" id="L613">			String instructionActuelle = instructionsASuivre.charAt(i) + &quot;&quot;; // char</span>
 																				// to
 																				// String
 
-<span class="nc" id="L837">			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();</span>
+<span class="nc" id="L617">			String orientationActuelle = vehiculeEnDeplacement.getOrientationActuelle();</span>
 
-<span class="nc" id="L839">			int xActuelle = vehiculeEnDeplacement.getXActuelle();</span>
+<span class="nc" id="L619">			int xActuelle = vehiculeEnDeplacement.getXActuelle();</span>
 
-<span class="nc" id="L841">			int yActuelle = vehiculeEnDeplacement.getYActuelle();</span>
+<span class="nc" id="L621">			int yActuelle = vehiculeEnDeplacement.getYActuelle();</span>
 
 			// Tourner à droite
 
 			// Modification de l'orientation
 
-<span class="nc bnc" id="L847" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;D&quot;))</span>
+<span class="nc bnc" id="L627" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;D&quot;))</span>
 
 			{
 
-<span class="nc bnc" id="L851" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L852">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
+<span class="nc bnc" id="L631" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
+<span class="nc" id="L632">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
 
-<span class="nc" id="L854">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L855">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L856">							vehiculeEnDeplacement.getYActuelle(), &quot;E&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L634">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L635">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L636">							vehiculeEnDeplacement.getYActuelle(), &quot;E&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L859" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L860">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
+<span class="nc bnc" id="L639" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
+<span class="nc" id="L640">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
 
-<span class="nc" id="L862">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L863">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L864">							vehiculeEnDeplacement.getYActuelle(), &quot;S&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L642">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L643">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L644">							vehiculeEnDeplacement.getYActuelle(), &quot;S&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L867" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L868">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
+<span class="nc bnc" id="L647" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
+<span class="nc" id="L648">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
 
-<span class="nc" id="L870">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L871">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L872">							vehiculeEnDeplacement.getYActuelle(), &quot;N&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L650">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L651">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L652">							vehiculeEnDeplacement.getYActuelle(), &quot;N&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L875" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L876">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
+<span class="nc bnc" id="L655" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
+<span class="nc" id="L656">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
 
-<span class="nc" id="L878">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L879">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L880">							vehiculeEnDeplacement.getYActuelle(), &quot;W&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L658">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L659">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L660">							vehiculeEnDeplacement.getYActuelle(), &quot;W&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 			}
 
@@ -885,38 +665,38 @@ import com.autonomouscar.utils.Chronometre;
 
 			// Modification de l'orientation
 
-<span class="nc bnc" id="L888" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;G&quot;)) {</span>
+<span class="nc bnc" id="L668" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;G&quot;)) {</span>
 
-<span class="nc bnc" id="L890" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
-<span class="nc" id="L891">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
+<span class="nc bnc" id="L670" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;)) {</span>
+<span class="nc" id="L671">					vehiculeEnDeplacement.setOrientationActuelle(&quot;W&quot;);</span>
 
-<span class="nc" id="L893">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L894">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L895">							vehiculeEnDeplacement.getYActuelle(), &quot;W&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L673">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L674">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L675">							vehiculeEnDeplacement.getYActuelle(), &quot;W&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L898" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
-<span class="nc" id="L899">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
+<span class="nc bnc" id="L678" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;)) {</span>
+<span class="nc" id="L679">					vehiculeEnDeplacement.setOrientationActuelle(&quot;N&quot;);</span>
 
-<span class="nc" id="L901">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L902">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L903">							vehiculeEnDeplacement.getYActuelle(), &quot;N&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L681">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L682">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L683">							vehiculeEnDeplacement.getYActuelle(), &quot;N&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L906" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
-<span class="nc" id="L907">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
+<span class="nc bnc" id="L686" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;)) {</span>
+<span class="nc" id="L687">					vehiculeEnDeplacement.setOrientationActuelle(&quot;S&quot;);</span>
 
-<span class="nc" id="L909">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L910">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L911">							vehiculeEnDeplacement.getYActuelle(), &quot;S&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L689">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L690">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L691">							vehiculeEnDeplacement.getYActuelle(), &quot;S&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 
-<span class="nc bnc" id="L914" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
-<span class="nc" id="L915">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
+<span class="nc bnc" id="L694" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;)) {</span>
+<span class="nc" id="L695">					vehiculeEnDeplacement.setOrientationActuelle(&quot;E&quot;);</span>
 
-<span class="nc" id="L917">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L918">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L919">							vehiculeEnDeplacement.getYActuelle(), &quot;E&quot;, vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L697">					vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L698">							vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L699">							vehiculeEnDeplacement.getYActuelle(), &quot;E&quot;, vehiculeEnDeplacement.getInstructions()));</span>
 				}
 			}
 
@@ -928,79 +708,79 @@ import com.autonomouscar.utils.Chronometre;
 			// instruction suivante(indice suivant)
 			// Ne pas modifier l'orientation
 
-<span class="nc bnc" id="L931" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;A&quot;)) {</span>
-<span class="nc bnc" id="L932" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;))// y+1</span>
+<span class="nc bnc" id="L711" title="All 2 branches missed.">			if (instructionActuelle.equals(&quot;A&quot;)) {</span>
+<span class="nc bnc" id="L712" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;N&quot;))// y+1</span>
 				{
-<span class="nc" id="L934">					int yActuelleFuture = yActuelle + 1;</span>
+<span class="nc" id="L714">					int yActuelleFuture = yActuelle + 1;</span>
 
-<span class="nc bnc" id="L936" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
+<span class="nc bnc" id="L716" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
 					{
-<span class="nc" id="L938">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
+<span class="nc" id="L718">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
 
-<span class="nc" id="L940">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L941">								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L942">								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),</span>
-<span class="nc" id="L943">								vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L720">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L721">								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L722">								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),</span>
+<span class="nc" id="L723">								vehiculeEnDeplacement.getInstructions()));</span>
 					} else {
 						continue; // Passage à la commande suivante
 					}
 				}
 
-<span class="nc bnc" id="L949" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;))// x+1</span>
+<span class="nc bnc" id="L729" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;E&quot;))// x+1</span>
 				{
-<span class="nc" id="L951">					int xActuelleFuture = xActuelle + 1;</span>
+<span class="nc" id="L731">					int xActuelleFuture = xActuelle + 1;</span>
 
-<span class="nc bnc" id="L953" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
+<span class="nc bnc" id="L733" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
 					{
-<span class="nc" id="L955">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
+<span class="nc" id="L735">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
 
-<span class="nc" id="L957">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L958">								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,</span>
-<span class="nc" id="L959">								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),</span>
-<span class="nc" id="L960">								vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L737">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L738">								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,</span>
+<span class="nc" id="L739">								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),</span>
+<span class="nc" id="L740">								vehiculeEnDeplacement.getInstructions()));</span>
 					} else {
 						continue; // Passage à la commande suivante
 					}
 				}
 
-<span class="nc bnc" id="L966" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;))// x-1</span>
+<span class="nc bnc" id="L746" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;W&quot;))// x-1</span>
 				{
-<span class="nc" id="L968">					int xActuelleFuture = xActuelle - 1;</span>
+<span class="nc" id="L748">					int xActuelleFuture = xActuelle - 1;</span>
 
-<span class="nc bnc" id="L970" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
+<span class="nc bnc" id="L750" title="All 4 branches missed.">					if (0 &lt;= xActuelleFuture &amp;&amp; xActuelleFuture &lt;= vehiculeEnDeplacement.getXCoinDroit())// Avancer</span>
 					{
-<span class="nc" id="L972">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
+<span class="nc" id="L752">						vehiculeEnDeplacement.setXActuelle(xActuelleFuture);</span>
 
-<span class="nc" id="L974">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L975">								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,</span>
-<span class="nc" id="L976">								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),</span>
-<span class="nc" id="L977">								vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L754">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L755">								vehiculeEnDeplacement.getYCoinDroit(), xActuelleFuture,</span>
+<span class="nc" id="L756">								vehiculeEnDeplacement.getYActuelle(), vehiculeEnDeplacement.getOrientationActuelle(),</span>
+<span class="nc" id="L757">								vehiculeEnDeplacement.getInstructions()));</span>
 					} else {
 						continue; // Passage à la commande suivante
 					}
 				}
 
-<span class="nc bnc" id="L983" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;))// y-1</span>
+<span class="nc bnc" id="L763" title="All 2 branches missed.">				if (orientationActuelle.equals(&quot;S&quot;))// y-1</span>
 				{
-<span class="nc" id="L985">					int yActuelleFuture = yActuelle - 1;</span>
+<span class="nc" id="L765">					int yActuelleFuture = yActuelle - 1;</span>
 
-<span class="nc bnc" id="L987" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
+<span class="nc bnc" id="L767" title="All 4 branches missed.">					if (0 &lt;= yActuelleFuture &amp;&amp; yActuelleFuture &lt;= vehiculeEnDeplacement.getYCoinDroit())// Avancer</span>
 					{
-<span class="nc" id="L989">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
+<span class="nc" id="L769">						vehiculeEnDeplacement.setYActuelle(yActuelleFuture);</span>
 
-<span class="nc" id="L991">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
-<span class="nc" id="L992">								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
-<span class="nc" id="L993">								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),</span>
-<span class="nc" id="L994">								vehiculeEnDeplacement.getInstructions()));</span>
+<span class="nc" id="L771">						vehiculeAvecParametresDifferents.add(new AutonomousCar(vehiculeEnDeplacement.getXCoinDroit(),</span>
+<span class="nc" id="L772">								vehiculeEnDeplacement.getYCoinDroit(), vehiculeEnDeplacement.getXActuelle(),</span>
+<span class="nc" id="L773">								yActuelleFuture, vehiculeEnDeplacement.getOrientationActuelle(),</span>
+<span class="nc" id="L774">								vehiculeEnDeplacement.getInstructions()));</span>
 					} else {
-						continue; // Passage à la commande suivante
+						continue; // Passage à l'instruction suivante
 					}
 				}
 			}
 
 		} // for
 
-<span class="nc" id="L1003">		return vehiculeAvecParametresDifferents;</span>
+<span class="nc" id="L783">		return vehiculeAvecParametresDifferents;</span>
 	}
 
 }

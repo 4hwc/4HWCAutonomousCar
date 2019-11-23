@@ -735,59 +735,53 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 <span class="nc" id="L736">					String titleSucces = &quot;Succès&quot;;</span>
 
-<span class="nc" id="L738">					String messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;;</span>
+<span class="nc bnc" id="L738" title="All 2 branches missed.">					String messageSucces = this.nbreDeVehicules == 1</span>
+							? &quot;Bravo vous avez saisi avec succès les caractéristiques du véhicule :) !&quot;
+							: &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot; + this.nbreDeVehicules
+									+ &quot; véhicules :) !&quot;;
 
-<span class="nc bnc" id="L740" title="All 2 branches missed.">					if (this.nbreDeVehicules == 1) {</span>
-
-					} else {
-
-<span class="nc" id="L744">						messageSucces = &quot;Bravo vous avez saisi avec succès les caractéristiques des &quot;</span>
-								+ this.nbreDeVehicules + &quot; véhicules :) !&quot;;
-
-					}
-
-<span class="nc" id="L749">					JOptionPane.showMessageDialog(null, messageSucces, titleSucces, JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L743">					JOptionPane.showMessageDialog(null, messageSucces, titleSucces, JOptionPane.INFORMATION_MESSAGE);</span>
 
 					// Changement de fenêtres
 
-<span class="nc" id="L753">					this.dispose();</span>
+<span class="nc" id="L747">					this.dispose();</span>
 
-<span class="nc" id="L755">					ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
+<span class="nc" id="L749">					ChargementDeplacementVehicules.listeVehicules = FormulaireVehicules.listeVehicules;</span>
 
-<span class="nc" id="L757">					ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
+<span class="nc" id="L751">					ChargementDeplacementVehicules.origine = &quot;paramètres&quot;;</span>
 
-<span class="nc" id="L759">					new ChargementDeplacementVehicules();</span>
+<span class="nc" id="L753">					new ChargementDeplacementVehicules();</span>
 
-<span class="nc" id="L761">				} else {</span>
+<span class="nc" id="L755">				} else {</span>
 
 					// FormulaireVehicules.compteur &lt; this.nbreDeVehicules
 
-<span class="nc" id="L765">					FormulaireVehicules.compteur++;</span>
+<span class="nc" id="L759">					FormulaireVehicules.compteur++;</span>
 
-<span class="nc" id="L767">					this.dispose();</span>
+<span class="nc" id="L761">					this.dispose();</span>
 
-<span class="nc" id="L769">					new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
+<span class="nc" id="L763">					new FormulaireVehicules(FormulaireVehicules.compteur, this.nbreDeVehicules);</span>
 
 				}
 
-<span class="nc" id="L773">			} catch (AutonomousCarException e) {</span>
+<span class="nc" id="L767">			} catch (AutonomousCarException e) {</span>
 
 				// Orientation
 
-<span class="nc bnc" id="L777" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORNEWS)</span>
-<span class="nc bnc" id="L778" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORO)) {</span>
+<span class="nc bnc" id="L771" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORNEWS)</span>
+<span class="nc bnc" id="L772" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORO)) {</span>
 
-<span class="nc" id="L780">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
+<span class="nc" id="L774">					String titleOrientation = &quot;Orientation erronée&quot;;</span>
 
-<span class="nc" id="L782">					JOptionPane.showMessageDialog(null, e.getMessage(), titleOrientation, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L776">					JOptionPane.showMessageDialog(null, e.getMessage(), titleOrientation, JOptionPane.ERROR_MESSAGE);</span>
 
 				}
 
 				// positions
 
-<span class="nc bnc" id="L788" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORVEHICULE)</span>
-<span class="nc bnc" id="L789" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORCD)</span>
-<span class="nc bnc" id="L790" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORNBRE)) {</span>
+<span class="nc bnc" id="L782" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORVEHICULE)</span>
+<span class="nc bnc" id="L783" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORCD)</span>
+<span class="nc bnc" id="L784" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORNBRE)) {</span>
 
 					// JOptionPane jopPositions = new JOptionPane();
 
@@ -799,28 +793,28 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 					// jopPositions.setForeground(Color.WHITE);
 
-<span class="nc" id="L802">					String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
+<span class="nc" id="L796">					String titlePositions = &quot;Erreur au niveau des positions&quot;;</span>
 
-<span class="nc" id="L804">					JOptionPane.showMessageDialog(null, e.getMessage(), titlePositions, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L798">					JOptionPane.showMessageDialog(null, e.getMessage(), titlePositions, JOptionPane.ERROR_MESSAGE);</span>
 
 				}
 
 				// Instructions
 
-<span class="nc bnc" id="L810" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORESPACES)</span>
-<span class="nc bnc" id="L811" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORDGA)</span>
-<span class="nc bnc" id="L812" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORI)) {</span>
+<span class="nc bnc" id="L804" title="All 2 branches missed.">				if (e.getMessage().equals(AutonomousCarService.MESSAGEERRORESPACES)</span>
+<span class="nc bnc" id="L805" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORDGA)</span>
+<span class="nc bnc" id="L806" title="All 2 branches missed.">						|| e.getMessage().equals(AutonomousCarService.MESSAGEERRORI)) {</span>
 
-<span class="nc" id="L814">					String titleInstructions = &quot;Instructions erronées&quot;;</span>
+<span class="nc" id="L808">					String titleInstructions = &quot;Instructions erronées&quot;;</span>
 
-<span class="nc" id="L816">					JOptionPane.showMessageDialog(null, e.getMessage(), titleInstructions, JOptionPane.ERROR_MESSAGE);</span>
+<span class="nc" id="L810">					JOptionPane.showMessageDialog(null, e.getMessage(), titleInstructions, JOptionPane.ERROR_MESSAGE);</span>
 
 				}
 
-<span class="nc" id="L820">			}</span>
+<span class="nc" id="L814">			}</span>
 
 		} // if arg0
-<span class="nc" id="L823">	}// actionPerformed</span>
+<span class="nc" id="L817">	}// actionPerformed</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -11,12 +11,12 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 4HWC Autonomous Car,com.autonomouscar.view,Menu4HWC,742,0,6,0,184,0,5,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,Panneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,DialogAvantParcours,1029,0,0,0,238,0,2,0,2,0
-4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehicules,1577,0,26,0,360,0,17,0,4,0
+4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehicules,1576,0,26,0,358,0,17,0,4,0
 4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehicules.TextFieldHandler,52,0,2,0,10,0,3,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,MenuPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,DialogApresParcoursPanneau4HWC,26,0,0,0,8,0,2,0,2,0
-4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},88,0,12,0,14,0,8,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},76,0,12,0,11,0,8,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,Bienvenue4HWC,92,0,0,0,23,0,3,0,3,0
 4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesSurfaceSens,79,0,8,0,24,0,8,0,4,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0
@@ -29,9 +29,9 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 4HWC Autonomous Car,com.autonomouscar.view,FormulaireVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},33,0,2,0,10,0,3,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},10,0,0,0,3,0,2,0,2,0
-4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules,624,0,12,0,127,0,12,0,6,0
+4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehicules,624,0,12,0,126,0,12,0,6,0
 4HWC Autonomous Car,com.autonomouscar,Main,21,0,0,0,10,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.exceptions,AutonomousCarException,0,9,0,0,0,3,0,1,0,1
 4HWC Autonomous Car,com.autonomouscar.utils,Chronometre,18,0,0,0,8,0,5,0,5,0
 4HWC Autonomous Car,com.autonomouscar.utils,Speech,3,0,0,0,1,0,1,0,1,0
-4HWC Autonomous Car,com.autonomouscar.service,AutonomousCarService,1401,212,179,39,279,52,104,21,9,7
+4HWC Autonomous Car,com.autonomouscar.service,AutonomousCarService,825,206,83,39,158,49,53,21,6,7
