@@ -16,7 +16,7 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 4HWC Autonomous Car,com.autonomouscar.view,MenuPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,ChoixDuNombreDeVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,DialogApresParcoursPanneau4HWC,26,0,0,0,8,0,2,0,2,0
-4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},76,0,12,0,11,0,8,0,2,0
+4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehicules.new Runnable() {...},69,0,12,0,12,0,8,0,2,0
 4HWC Autonomous Car,com.autonomouscar.view,Bienvenue4HWC,92,0,0,0,23,0,3,0,3,0
 4HWC Autonomous Car,com.autonomouscar.view,DeplacementVehiculesSurfaceSens,79,0,8,0,24,0,8,0,4,0
 4HWC Autonomous Car,com.autonomouscar.view,ChargementDeplacementVehiculesPanneau4HWC,26,0,0,0,8,0,2,0,2,0

@@ -28,135 +28,134 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 <span class="nc" id="L29">	static List&lt;AutonomousCar&gt; listeVehicules = new ArrayList&lt;&gt;();</span>
 
-	private String speak;
-
 	public ChargementDeplacementVehicules()
 
-<span class="nc" id="L35">	{</span>
+<span class="nc" id="L33">	{</span>
 
-<span class="nc" id="L37">		this.setTitle(&quot;4HWC AUTONOMOUS CAR : Chargement...&quot;);</span>
+<span class="nc" id="L35">		this.setTitle(&quot;4HWC AUTONOMOUS CAR : Chargement...&quot;);</span>
 
-<span class="nc" id="L39">		this.setSize(1000, 600);</span>
+<span class="nc" id="L37">		this.setSize(1000, 600);</span>
 
-<span class="nc" id="L41">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
+<span class="nc" id="L39">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
 
-<span class="nc" id="L43">		this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L41">		this.setLocationRelativeTo(null);</span>
 
-<span class="nc" id="L45">		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L43">		this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);</span>
 
-<span class="nc" id="L47">		this.addWindowListener(new java.awt.event.WindowAdapter() {</span>
+<span class="nc" id="L45">		this.addWindowListener(new java.awt.event.WindowAdapter() {</span>
 			@Override
 			public void windowClosing(WindowEvent e) {
 
-<span class="nc" id="L51">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
+<span class="nc" id="L49">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-<span class="nc bnc" id="L53" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
-<span class="nc" id="L54">					System.exit(0);</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
+<span class="nc" id="L52">					System.exit(0);</span>
 				}
 
-<span class="nc" id="L57">			}</span>
+<span class="nc" id="L55">			}</span>
 		});
 
-<span class="nc" id="L60">		this.setResizable(false);</span>
+<span class="nc" id="L58">		this.setResizable(false);</span>
 
-<span class="nc" id="L62">		container.setLayout(new BorderLayout());</span>
+<span class="nc" id="L60">		container.setLayout(new BorderLayout());</span>
 
-<span class="nc" id="L64">		class TraitementRedirection implements Runnable {</span>
+<span class="nc" id="L62">		class TraitementRedirection implements Runnable {</span>
 
 			public void run() {
 
-<span class="nc" id="L68">				redirection();</span>
+<span class="nc" id="L66">				redirection();</span>
 
-<span class="nc" id="L70">			}</span>
+<span class="nc" id="L68">			}</span>
 
 		}
 
-<span class="nc" id="L74">		pause = new Thread(new TraitementRedirection());</span>
+<span class="nc" id="L72">		pause = new Thread(new TraitementRedirection());</span>
 
-<span class="nc" id="L76">		class TraitementSpeak implements Runnable {</span>
+<span class="nc" id="L74">		class TraitementSpeak implements Runnable {</span>
 
 			public void run() {
 
-<span class="nc bnc" id="L80" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;défaut&quot;))</span>
+<span class="nc" id="L78">				String speak = &quot;&quot;;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;défaut&quot;))</span>
 
-<span class="nc bnc" id="L82" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par défaut&quot;</span>
-<span class="nc" id="L83">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployés par défaut&quot;;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par défaut&quot;</span>
+<span class="nc" id="L82">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployés par défaut&quot;;</span>
 
-<span class="nc bnc" id="L85" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;paramètres&quot;))</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;paramètres&quot;))</span>
 
-<span class="nc bnc" id="L87" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par vous&quot;</span>
-<span class="nc" id="L88">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par vous&quot;;</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par vous&quot;</span>
+<span class="nc" id="L87">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par vous&quot;;</span>
 
-<span class="nc bnc" id="L90" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;IA&quot;))</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">				if (ChargementDeplacementVehicules.origine.equals(&quot;IA&quot;))</span>
 
-<span class="nc bnc" id="L92" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par moi&quot;</span>
-<span class="nc" id="L93">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par moi&quot;;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? &quot;un véhicule déployé par moi&quot;</span>
+<span class="nc" id="L92">							: ChargementDeplacementVehicules.listeVehicules.size() + &quot; véhicules déployées par moi&quot;;</span>
 
 				// Speech will be improved later
 
 				// Speech.repete(speak);
 
-<span class="nc" id="L99">			}// run</span>
+<span class="nc" id="L98">			}// run</span>
 
 		}
 
-<span class="nc" id="L103">		tSpeak = new Thread(new TraitementSpeak());</span>
+<span class="nc" id="L102">		tSpeak = new Thread(new TraitementSpeak());</span>
 
-<span class="nc" id="L105">		class Traitement implements Runnable {</span>
+<span class="nc" id="L104">		class Traitement implements Runnable {</span>
 
 			public void run() {
 
 				// tSpeak.setPriority(Thread.MAX_PRIORITY);
 
-<span class="nc" id="L111">				tSpeak.start();</span>
+<span class="nc" id="L110">				tSpeak.start();</span>
 
-<span class="nc bnc" id="L113" title="All 2 branches missed.">				for (int val = 0; val &lt;= 500; val++) {</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">				for (int val = 0; val &lt;= 500; val++) {</span>
 
-<span class="nc" id="L115">					bar.setValue(val);</span>
+<span class="nc" id="L114">					bar.setValue(val);</span>
 
 					try {
-<span class="nc" id="L118">						Thread.sleep(25);</span>
+<span class="nc" id="L117">						Thread.sleep(25);</span>
 
-<span class="nc" id="L120">					} catch (InterruptedException e) {</span>
-<span class="nc" id="L121">						e.printStackTrace();</span>
-<span class="nc" id="L122">					}</span>
+<span class="nc" id="L119">					} catch (InterruptedException e) {</span>
+<span class="nc" id="L120">						e.printStackTrace();</span>
+<span class="nc" id="L121">					}</span>
 				} // for
 
-<span class="nc" id="L125">				pause.start();</span>
+<span class="nc" id="L124">				pause.start();</span>
 
-<span class="nc" id="L127">			}// run</span>
+<span class="nc" id="L126">			}// run</span>
 
 		}// traitement
 
-<span class="nc" id="L131">		t = new Thread(new Traitement());</span>
+<span class="nc" id="L130">		t = new Thread(new Traitement());</span>
 
-<span class="nc" id="L133">		bar = new JProgressBar();</span>
+<span class="nc" id="L132">		bar = new JProgressBar();</span>
 
-<span class="nc" id="L135">		bar.setMaximum(500);</span>
+<span class="nc" id="L134">		bar.setMaximum(500);</span>
 
-<span class="nc" id="L137">		bar.setMinimum(0);</span>
+<span class="nc" id="L136">		bar.setMinimum(0);</span>
 
-<span class="nc" id="L139">		bar.setStringPainted(false);</span>
+<span class="nc" id="L138">		bar.setStringPainted(false);</span>
 
-<span class="nc" id="L141">		bar.setForeground(Color.decode(&quot;#148da0&quot;));</span>
+<span class="nc" id="L140">		bar.setForeground(Color.decode(&quot;#148da0&quot;));</span>
 
-<span class="nc" id="L143">		container.add(bar, BorderLayout.SOUTH);</span>
+<span class="nc" id="L142">		container.add(bar, BorderLayout.SOUTH);</span>
 
-<span class="nc" id="L145">		t.start();</span>
+<span class="nc" id="L144">		t.start();</span>
 
-<span class="nc" id="L147">		this.setContentPane(container);</span>
+<span class="nc" id="L146">		this.setContentPane(container);</span>
 
-<span class="nc" id="L149">		this.setVisible(true);</span>
+<span class="nc" id="L148">		this.setVisible(true);</span>
 
-<span class="nc" id="L151">	}</span>
+<span class="nc" id="L150">	}</span>
 
 	private void redirection() {
 
-<span class="nc" id="L155">		this.dispose();</span>
+<span class="nc" id="L154">		this.dispose();</span>
 
-<span class="nc" id="L157">		new DeplacementVehicules();</span>
+<span class="nc" id="L156">		new DeplacementVehicules();</span>
 
-<span class="nc" id="L159">	}</span>
+<span class="nc" id="L158">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
