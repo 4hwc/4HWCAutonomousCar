@@ -10,22 +10,23 @@ import javax.swing.JPanel;
 
 <span class="nc" id="L11">public class ChargementDeplacementVehiculesPanneau4HWC extends JPanel {</span>
 
+	@Override
 	public void paintComponent(Graphics g) {
 
 		try {
 
-<span class="nc" id="L17">			URL url = ChargementDeplacementVehiculesPanneau4HWC.class.getResource(&quot;/images/prechargement_bitume.png&quot;);</span>
+<span class="nc" id="L18">			URL url = ChargementDeplacementVehiculesPanneau4HWC.class.getResource(&quot;/images/prechargement_bitume.png&quot;);</span>
 
-<span class="nc" id="L19">			Image img = ImageIO.read(url);</span>
+<span class="nc" id="L20">			Image img = ImageIO.read(url);</span>
 			// g.drawImage(img, 0, 0, this);
 			// Pour une image de fond
-<span class="nc" id="L22">			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);</span>
+<span class="nc" id="L23">			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);</span>
 
-<span class="nc" id="L24">		} catch (IOException e) {</span>
-<span class="nc" id="L25">			e.printStackTrace();</span>
-<span class="nc" id="L26">		}</span>
+<span class="nc" id="L25">		} catch (IOException e) {</span>
+<span class="nc" id="L26">			e.printStackTrace();</span>
+<span class="nc" id="L27">		}</span>
 
-<span class="nc" id="L28">	}</span>
+<span class="nc" id="L29">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

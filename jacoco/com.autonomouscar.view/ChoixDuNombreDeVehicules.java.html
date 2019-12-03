@@ -64,15 +64,15 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 
 <span class="nc" id="L65">		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());</span>
 
-<span class="nc" id="L67">		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);</span>
+<span class="nc" id="L67">		this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);</span>
 
 <span class="nc" id="L69">		this.addWindowListener(new java.awt.event.WindowAdapter() {</span>
 			@Override
 			public void windowClosing(WindowEvent e) {
 
-<span class="nc" id="L73">				int Answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
+<span class="nc" id="L73">				int answer = JOptionPane.showConfirmDialog(null, &quot;Etes vous sûr(e) de quitter ?&quot;, &quot;Quitter&quot;,</span>
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-<span class="nc bnc" id="L75" title="All 2 branches missed.">				if (Answer == JOptionPane.YES_OPTION) {</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">				if (answer == JOptionPane.YES_OPTION) {</span>
 <span class="nc" id="L76">					System.exit(0);</span>
 				}
 
@@ -353,7 +353,7 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 
 				{
 
-<span class="nc" id="L356">					new AutonomousCarService().validationNombreDeVehiculesString(jtfNbre.getText().trim());</span>
+<span class="nc" id="L356">					new AutonomousCarService().validationNombreDeVehicules(jtfNbre.getText().trim());</span>
 
 <span class="nc" id="L358">					ChoixDuNombreDeVehicules.this.dispose();</span>
 
