@@ -125,7 +125,7 @@ public class AutonomousCarService {
 	 *                                than 1
 	 */
 
-	public void validationNombreDeVehiculesString(String nbre) throws AutonomousCarException {
+	public void validationNombreDeVehicules(String nbre) throws AutonomousCarException {
 
 		try {
 			int number = Integer.parseInt(nbre.trim());

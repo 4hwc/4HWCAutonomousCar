@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 public class ChargementDeplacementVehiculesPanneau4HWC extends JPanel {
 
+	@Override
 	public void paintComponent(Graphics g) {
 
 		try {

@@ -227,7 +227,7 @@ public class DeplacementVehicules extends JFrame {
 				try {
 					Thread.sleep(ATTENTE);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 

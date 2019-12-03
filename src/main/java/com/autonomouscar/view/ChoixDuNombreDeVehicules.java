@@ -64,15 +64,15 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 
 		this.setIconImage(Bienvenue4HWC.icon4HWC.getImage());
 
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 
-				int Answer = JOptionPane.showConfirmDialog(null, "Etes vous sûr(e) de quitter ?", "Quitter",
+				int answer = JOptionPane.showConfirmDialog(null, "Etes vous sûr(e) de quitter ?", "Quitter",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				if (Answer == JOptionPane.YES_OPTION) {
+				if (answer == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
 
@@ -353,7 +353,7 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 
 				{
 
-					new AutonomousCarService().validationNombreDeVehiculesString(jtfNbre.getText().trim());
+					new AutonomousCarService().validationNombreDeVehicules(jtfNbre.getText().trim());
 
 					ChoixDuNombreDeVehicules.this.dispose();
 

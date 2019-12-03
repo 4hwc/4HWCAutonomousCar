@@ -47,47 +47,47 @@ public class AutonomousCarServiceTest {
 
 	}
 
-	// TESTS -> validationNombreDeVehiculesString(String nbre)
+	// TESTS -> validationNombreDeVehicules(String nbre)
 
 	/**
-	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 * @see AutonomousCarService#validationNombreDeVehicules(String)
 	 * 
 	 */
 
 	@Test
-	public void shouldNotThrowAnyViolationValidationNombreDeVehiculesString()
+	public void shouldNotThrowAnyViolationValidationNombreDeVehicules()
 
 	{
 
-		assertThatCode(() -> autonomousCarService.validationNombreDeVehiculesString("1")).doesNotThrowAnyException();
+		assertThatCode(() -> autonomousCarService.validationNombreDeVehicules("1")).doesNotThrowAnyException();
 
-		assertThatCode(() -> autonomousCarService.validationNombreDeVehiculesString(" 1 ")).doesNotThrowAnyException();
+		assertThatCode(() -> autonomousCarService.validationNombreDeVehicules(" 1 ")).doesNotThrowAnyException();
 
 	}
 
 	/**
-	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 * @see AutonomousCarService#validationNombreDeVehicules(String)
 	 * 
 	 */
 
 	@Test(expected = AutonomousCarException.class)
-	public void shouldThrowViolationsValidationNombreDeVehiculesString1() throws AutonomousCarException {
+	public void shouldThrowViolationsValidationNombreDeVehicules1() throws AutonomousCarException {
 
-		autonomousCarService.validationNombreDeVehiculesString("1 0");
+		autonomousCarService.validationNombreDeVehicules("1 0");
 
 	}
 
 	/**
-	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 * @see AutonomousCarService#validationNombreDeVehicules(String)
 	 * 
 	 */
 
 	@Test
-	public void shouldThrowViolationsValidationNombreDeVehiculesString2() {
+	public void shouldThrowViolationsValidationNombreDeVehicules2() {
 
 		Throwable validationExceptionThrown = catchThrowable(() -> {
 
-			autonomousCarService.validationNombreDeVehiculesString("1*");
+			autonomousCarService.validationNombreDeVehicules("1*");
 
 		});
 
@@ -96,14 +96,14 @@ public class AutonomousCarServiceTest {
 	}
 
 	/**
-	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
+	 * @see AutonomousCarService#validationNombreDeVehicules(String)
 	 * 
 	 */
 
 	@Test(expected = AutonomousCarException.class)
-	public void shouldThrowViolationsValidationNombreDeVehiculesString3() throws AutonomousCarException {
+	public void shouldThrowViolationsValidationNombreDeVehicules3() throws AutonomousCarException {
 
-		autonomousCarService.validationNombreDeVehiculesString("0");
+		autonomousCarService.validationNombreDeVehicules("0");
 
 	}
 
