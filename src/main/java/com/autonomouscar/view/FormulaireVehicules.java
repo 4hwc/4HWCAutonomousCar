@@ -715,7 +715,7 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 
 			try {
 
-				autonomousCarService.validationPositionsString(jtfXCoinDroit.getText(), jtfYCoinDroit.getText(),
+				autonomousCarService.validationPositions(jtfXCoinDroit.getText(), jtfYCoinDroit.getText(),
 						jtfX.getText(), jtfY.getText());
 
 				autonomousCarService.validationOrientationInitiale(jtfOrientation.getText());

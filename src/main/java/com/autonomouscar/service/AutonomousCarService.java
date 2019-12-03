@@ -199,7 +199,7 @@ public class AutonomousCarService {
 	 * @throws AutonomousCarException
 	 */
 
-	public void validationPositionsString(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
+	public void validationPositions(String xCoinDroit, String yCoinDroit, String xInitiale, String yInitiale)
 			throws AutonomousCarException {
 
 		try {

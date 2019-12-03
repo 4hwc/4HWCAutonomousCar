@@ -107,56 +107,52 @@ public class AutonomousCarServiceTest {
 
 	}
 
-	// TEST -> validationPositionsString(String xCoinDroit, String yCoinDroit,
+	// TEST -> validationPositions(String xCoinDroit, String yCoinDroit,
 	// String xInitiale, String yInitiale)
 
 	/**
-	 * @see AutonomousCarService#validationPositionsString(String, String, String,
-	 *      String)
+	 * @see AutonomousCarService#validationPositions(String, String, String, String)
 	 * 
 	 */
 
 	@Test
-	public void shouldNotThrowAnyViolationValidationPositionsString()
+	public void shouldNotThrowAnyViolationValidationPositions()
 
 	{
 
-		assertThatCode(() -> autonomousCarService.validationPositionsString("5 ", " 4 ", "3", "    2"))
+		assertThatCode(() -> autonomousCarService.validationPositions("5 ", " 4 ", "3", "    2"))
 				.doesNotThrowAnyException();
 
-		assertThatCode(() -> autonomousCarService.validationPositionsString("5 ", "5", "5", " 5"))
-				.doesNotThrowAnyException();
+		assertThatCode(() -> autonomousCarService.validationPositions("5 ", "5", "5", " 5")).doesNotThrowAnyException();
 
-		assertThatCode(() -> autonomousCarService.validationPositionsString("0 ", " 0 ", "0", " 0"))
+		assertThatCode(() -> autonomousCarService.validationPositions("0 ", " 0 ", "0", " 0"))
 				.doesNotThrowAnyException();
 
 	}
 
 	/**
-	 * @see AutonomousCarService#validationPositionsString(String, String, String,
-	 *      String)
+	 * @see AutonomousCarService#validationPositions(String, String, String, String)
 	 * 
 	 */
 
 	@Test(expected = AutonomousCarException.class)
 	public void shouldThrowViolationsValidationPositionsString1() throws AutonomousCarException {
 
-		autonomousCarService.validationPositionsString("6 ", " 0 ", "0", " 0");
+		autonomousCarService.validationPositions("6 ", " 0 ", "0", " 0");
 
 	}
 
 	/**
-	 * @see AutonomousCarService#validationPositionsString(String, String, String,
-	 *      String)
+	 * @see AutonomousCarService#validationPositions(String, String, String, String)
 	 * 
 	 */
 
 	@Test
-	public void shouldThrowViolationsValidationPositionsString2() {
+	public void shouldThrowViolationsValidationPositions2() {
 
 		Throwable validationExceptionThrown1 = catchThrowable(() -> {
 
-			autonomousCarService.validationPositionsString("4 0", " 0 ", "0", " 0");
+			autonomousCarService.validationPositions("4 0", " 0 ", "0", " 0");
 
 		});
 
@@ -164,7 +160,7 @@ public class AutonomousCarServiceTest {
 
 		Throwable validationExceptionThrown2 = catchThrowable(() -> {
 
-			autonomousCarService.validationPositionsString("NUMBER", " 0 ", "0", " 0");
+			autonomousCarService.validationPositions("NUMBER", " 0 ", "0", " 0");
 
 		});
 
@@ -173,15 +169,14 @@ public class AutonomousCarServiceTest {
 	}
 
 	/**
-	 * @see AutonomousCarService#validationPositionsString(String, String, String,
-	 *      String)
+	 * @see AutonomousCarService#validationPositions(String, String, String, String)
 	 * 
 	 */
 
 	@Test(expected = AutonomousCarException.class)
-	public void shouldThrowViolationsValidationPositionsString3() throws AutonomousCarException {
+	public void shouldThrowViolationsValidationPositions3() throws AutonomousCarException {
 
-		autonomousCarService.validationPositionsString("4 ", " 0 ", "5", " 0");
+		autonomousCarService.validationPositions("4 ", " 0 ", "5", " 0");
 
 	}
 
