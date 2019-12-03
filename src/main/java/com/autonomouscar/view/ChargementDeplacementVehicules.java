@@ -28,8 +28,6 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 	static List<AutonomousCar> listeVehicules = new ArrayList<>();
 
-	private String speak;
-
 	public ChargementDeplacementVehicules()
 
 	{
@@ -42,7 +40,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 		this.setLocationRelativeTo(null);
 
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
@@ -77,6 +75,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 			public void run() {
 
+				String speak = "";
 				if (ChargementDeplacementVehicules.origine.equals("défaut"))
 
 					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? "un véhicule déployé par défaut"
