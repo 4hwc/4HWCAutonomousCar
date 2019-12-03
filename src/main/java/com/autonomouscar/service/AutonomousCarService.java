@@ -15,9 +15,10 @@ import com.autonomouscar.model.AutonomousCar;
  * 
  * <b>This class contains the application's logic</b>
  * 
- * test class : AutonomousCarServiceTest
  * 
- * model class : AutonomousCar
+ * @see AutonomousCarServiceTest
+ * 
+ * @see AutonomousCar
  * 
  * @author Fanon Jupkwo
  */
