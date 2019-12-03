@@ -7,4 +7,8 @@ public class AutonomousCarLog {
 
 	public static final Logger logger = LoggerFactory.getLogger(AutonomousCarLog.class);
 
+	private AutonomousCarLog() {
+
+	}
+
 }
