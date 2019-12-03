@@ -1,6 +1,5 @@
 package com.autonomouscar.service;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -392,10 +391,8 @@ public class AutonomousCarService {
 
 				listeInitiale.add(new AutonomousCar(xCD, yCD, xT2, yT2, o2, instructions2));
 
-			} catch (FileNotFoundException e) {
-
-				e.printStackTrace();
 			} catch (IOException e) {
+
 				e.printStackTrace();
 			} finally {
 
@@ -596,7 +593,7 @@ public class AutonomousCarService {
 
 		// A chaque mise à jour des paramètres, j'ajoute à mon ArrayList
 
-		List<AutonomousCar> vehiculeAvecParametresDifferents = new ArrayList<AutonomousCar>();
+		List<AutonomousCar> vehiculeAvecParametresDifferents = new ArrayList<>();
 
 		// Enregistrement des paramètres initiaux du véhicule
 
