@@ -25,6 +25,8 @@ public class ChargementDeplacementVehicules extends JFrame {
 	private ChargementDeplacementVehiculesPanneau4HWC container = new ChargementDeplacementVehiculesPanneau4HWC();
 
 	static String origine = "";
+	
+	private String speak = "";
 
 	static List<AutonomousCar> listeVehicules = new ArrayList<>();
 
@@ -75,7 +77,7 @@ public class ChargementDeplacementVehicules extends JFrame {
 
 			public void run() {
 
-				String speak = "";
+				
 				if (ChargementDeplacementVehicules.origine.equals("défaut"))
 
 					speak = ChargementDeplacementVehicules.listeVehicules.size() == 1 ? "un véhicule déployé par défaut"
