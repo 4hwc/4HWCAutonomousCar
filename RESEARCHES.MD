@@ -286,6 +286,10 @@ https://stackoverflow.com/questions/91179/automated-tests-for-java-swing-guis
 
 https://www.oreilly.com/library/view/java-extreme-programming/0596003870/ch04s17.html
 
+## Automated GUI tests for Swing Apps
+
+
+https://www.javaworld.com/article/2073056/automate-gui-tests-for-swing-applications.amp.html
 
 
 
