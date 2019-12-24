@@ -2,3 +2,4 @@ coverage:
   ignore:
     - "src/main/java/com/autonomouscar/model/"
     - "src/main/java/com/autonomouscar/utils/"
+    - "src/main/java/com/autonomouscar/logs/"
