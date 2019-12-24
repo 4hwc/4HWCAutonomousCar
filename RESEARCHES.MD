@@ -291,5 +291,9 @@ https://www.oreilly.com/library/view/java-extreme-programming/0596003870/ch04s17
 
 https://www.javaworld.com/article/2073056/automate-gui-tests-for-swing-applications.amp.html
 
+## how to implement MVC to Swing Java App
 
+https://www.google.com/search?q=how+to+implement+MVC+to+Swing+Java+App&oq=how+to+implement+MVC+to+Swing+Java+App&aqs=chrome..69i57j33.52072j0j7&client=ms-android-transsion-tecno-rev1&sourceid=chrome-mobile&ie=UTF-8#sbfbu=1&pi=how%20to%20implement%20MVC%20to%20Swing%20Java%20App
+
+https://medium.com/@ssaurel/learn-to-make-a-mvc-application-with-swing-and-java-8-3cd24cf7cb10
 
