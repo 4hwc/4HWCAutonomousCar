@@ -282,7 +282,9 @@ https://sqa.stackexchange.com/questions/18554/open-source-tools-for-automation-o
 
 https://stackoverflow.com/questions/91179/automated-tests-for-java-swing-guis
 
+## Testing Swing code
 
+https://www.oreilly.com/library/view/java-extreme-programming/0596003870/ch04s17.html
 
 
 
