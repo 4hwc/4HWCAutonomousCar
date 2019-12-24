@@ -272,8 +272,11 @@ https://maven.apache.org/plugins/maven-javadoc-plugin/usage.html
 
 https://docs.travis-ci.com/user/common-build-problems/#build-times-out-because-no-output-was-received
 
+## java swing testing
 
+https://www.google.com/search?q=java+swing+testing&oq=java+swing+tes&aqs=chrome.1.69i57j0l3.17137j0j7&client=ms-android-transsion-tecno-rev1&sourceid=chrome-mobile&ie=UTF-8
 
+https://sqa.stackexchange.com/questions/18554/open-source-tools-for-automation-of-java-gui-application-testing
 
 
 
