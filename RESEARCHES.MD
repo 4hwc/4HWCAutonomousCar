@@ -278,7 +278,9 @@ https://www.google.com/search?q=java+swing+testing&oq=java+swing+tes&aqs=chrome.
 
 https://sqa.stackexchange.com/questions/18554/open-source-tools-for-automation-of-java-gui-application-testing
 
+## Automated Tests for Swing
 
+https://stackoverflow.com/questions/91179/automated-tests-for-java-swing-guis
 
 
 
