@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.autonomouscar.view;
 
 import java.awt.Color;
@@ -79,6 +82,8 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 	// l'animation
 
 	static int compteur = 1; // Remettre la valeur initiale après l'animation
+
+	private AutonomousCarService autonomousCarService = AutonomousCarService.getInstance();
 
 	public FormulaireVehicules(int numeroFormulaire, int nbreDeVehicules) {
 
@@ -705,10 +710,11 @@ public class FormulaireVehicules extends JFrame implements ActionListener {
 		return content;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent arg0)
 
 	{
-		AutonomousCarService autonomousCarService = new AutonomousCarService();
+
 		if (arg0.getSource() == boutonConfirmer)
 
 		{

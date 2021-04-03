@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.autonomouscar.view;
 
 import java.awt.BorderLayout;
@@ -54,6 +57,8 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 	private Map<String, String> erreurs = new HashMap<>();
 
 	private final String TITLEERROR = "Nombre de véhicules incorrect";
+
+	private AutonomousCarService autonomousCarService = AutonomousCarService.getInstance();
 
 	public ChoixDuNombreDeVehicules() {
 		this.setTitle("4HWC AUTONOMOUS CAR : Choix du nombre de véhicules");
@@ -353,7 +358,7 @@ public class ChoixDuNombreDeVehicules extends JFrame {
 
 				{
 
-					new AutonomousCarService().validationNombreDeVehicules(jtfNbre.getText().trim());
+					autonomousCarService.validationNombreDeVehicules(jtfNbre.getText().trim());
 
 					ChoixDuNombreDeVehicules.this.dispose();
 

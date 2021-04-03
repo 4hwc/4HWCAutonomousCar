@@ -1,3 +1,6 @@
+/*
+ *
+ */
 package com.autonomouscar.service;
 
 import java.io.IOException;
@@ -11,14 +14,14 @@ import com.autonomouscar.logs.AutonomousCarLog;
 import com.autonomouscar.model.AutonomousCar;
 
 /**
- * 
+ *
  * <b>This class contains the application's logic</b>
- * 
- * 
+ *
+ *
  * @see AutonomousCarServiceTest
- * 
+ *
  * @see AutonomousCar
- * 
+ *
  * @author Fanon Jupkwo
  */
 
@@ -26,7 +29,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing the maximum number of instructions generated randomly
-	 * 
+	 *
 	 * @see AutonomousCarService#getInstructions4HWC()
 	 */
 
@@ -34,7 +37,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing the maximum number of cars generated randomly
-	 * 
+	 *
 	 * @see AutonomousCarService#getNombreDeVehicules4HWC()
 	 */
 
@@ -42,7 +45,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong orientation
-	 * 
+	 *
 	 * @see AutonomousCarService#validationOrientationInitiale(String)
 	 */
 
@@ -50,7 +53,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong orientation
-	 * 
+	 *
 	 * @see AutonomousCarService#validationOrientationInitiale(String)
 	 */
 
@@ -59,7 +62,7 @@ public class AutonomousCarService {
 	/**
 	 * Constant representing an error message related to wrong position on the
 	 * surface
-	 * 
+	 *
 	 * @see AutonomousCarService#validationPositionsString(String, String, String,
 	 *      String)
 	 */
@@ -69,7 +72,7 @@ public class AutonomousCarService {
 	/**
 	 * Constant representing an error message related to wrong dimensions of the
 	 * surface
-	 * 
+	 *
 	 * @see AutonomousCarService#validationPositionsString(String, String, String,
 	 *      String)
 	 */
@@ -78,7 +81,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong number of cars
-	 * 
+	 *
 	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
 	 */
 
@@ -86,7 +89,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong instructions
-	 * 
+	 *
 	 * @see AutonomousCarService#validationInstructions(String)
 	 */
 
@@ -94,7 +97,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong instructions
-	 * 
+	 *
 	 * @see AutonomousCarService#validationInstructions(String)
 	 */
 
@@ -102,7 +105,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong instructions
-	 * 
+	 *
 	 * @see AutonomousCarService#validationInstructions(String)
 	 */
 
@@ -110,16 +113,25 @@ public class AutonomousCarService {
 
 	/**
 	 * Constant representing an error message related to wrong number of cars
-	 * 
+	 *
 	 * @see AutonomousCarService#validationNombreDeVehiculesString(String)
 	 */
 
 	public static final String MESSAGEERRORNUMBEROFCARS = "S'il vous plaît choisissez un nombre supérieur ou égal à 1";
 
+	private static final AutonomousCarService autonomousCarService = new AutonomousCarService();
+
+	public static AutonomousCarService getInstance() {
+		return autonomousCarService;
+	}
+
+	private AutonomousCarService() {
+	}
+
 	/**
-	 * 
+	 *
 	 * Verifies if the number of cars is correct
-	 * 
+	 *
 	 * @param nbre
 	 * @throws AutonomousCarException if nbre is not a number or if nbre is inferior
 	 *                                than 1
@@ -147,9 +159,9 @@ public class AutonomousCarService {
 	}
 
 	/**
-	 * 
+	 *
 	 * Verifies if the orientation is correct
-	 * 
+	 *
 	 * @param orientationInitiale
 	 * @throws AutonomousCarException
 	 */
@@ -189,9 +201,9 @@ public class AutonomousCarService {
 	}
 
 	/**
-	 * 
+	 *
 	 * Verifies if car's position and surface dimensions are correct
-	 * 
+	 *
 	 * @param xCoinDroit
 	 * @param yCoinDroit
 	 * @param orientationInitiale
@@ -234,9 +246,9 @@ public class AutonomousCarService {
 	}
 
 	/**
-	 * 
+	 *
 	 * Verifies if instructions are correct
-	 * 
+	 *
 	 * @param instructions
 	 * @throws AutonomousCarException
 	 */
@@ -308,7 +320,7 @@ public class AutonomousCarService {
 
 	/**
 	 * Reads Cars Data from a file
-	 * 
+	 *
 	 */
 
 	public List<AutonomousCar> recupFichierBase() {
@@ -416,11 +428,11 @@ public class AutonomousCarService {
 	/**
 	 * Using Random class to generate a number of cars from 1 to
 	 * {@value AutonomousCarService#NUMBER_OF_VEHICLES_MAX}
-	 * 
+	 *
 	 * @see AutonomousCarService#NUMBER_OF_VEHICLES_MAX
-	 * 
+	 *
 	 * @return Returns the number of cars generated randomly
-	 * 
+	 *
 	 */
 
 	private int getNombreDeVehicules4HWC() {
@@ -433,10 +445,10 @@ public class AutonomousCarService {
 	 * Using Random class to generate a number from 0 to 5 representing
 	 * {@link AutonomousCar#getXCoinDroit()} and
 	 * {@link AutonomousCar#getYCoinDroit()}
-	 * 
-	 * 
+	 *
+	 *
 	 * @return Returns a number from 0 to 5
-	 * 
+	 *
 	 */
 
 	public int getXYCoinDroit4HWC() {
@@ -448,13 +460,13 @@ public class AutonomousCarService {
 	 * Using Random class to generate a number from 1 to
 	 * {@link AutonomousCarService#getXYCoinDroit4HWC()} representing
 	 * {@link AutonomousCar#getXInitiale()} and {@link AutonomousCar#getYInitiale()}
-	 * 
-	 * 
+	 *
+	 *
 	 * @param xy representing {@link AutonomousCarService#getXYCoinDroit4HWC()}
-	 * 
-	 * 
+	 *
+	 *
 	 * @return Returns a number from 0 to 5
-	 * 
+	 *
 	 */
 
 	public int getXYInitiale4HWC(int xy) {
@@ -466,10 +478,10 @@ public class AutonomousCarService {
 	/**
 	 * Using Random class to generate an initial orientation amongst N,E,W,S
 	 * representing {@link AutonomousCar#getOrientationInitiale()}
-	 * 
-	 * 
+	 *
+	 *
 	 * @return Returns a value amongst N,E,W,S
-	 * 
+	 *
 	 */
 
 	private String getOrientationInitiale4HWC() {
@@ -484,10 +496,10 @@ public class AutonomousCarService {
 	/**
 	 * Using Random class to generate instructions defined by D,G or A representing
 	 * {@link AutonomousCar#getInstructions()}
-	 * 
-	 * 
+	 *
+	 *
 	 * @return Returns a String defined by D,G or A
-	 * 
+	 *
 	 */
 
 	private String getInstructions4HWC() {
@@ -500,18 +512,18 @@ public class AutonomousCarService {
 																						// (50)
 		/*
 		 * Don't use StringBuilder
-		 * 
+		 *
 		 * Why ? java.lang.OutOfMemoryError : Java heap space
-		 * 
+		 *
 		 * StringBuilder instructions4HWC = new StringBuilder();
-		 * 
+		 *
 		 * Random randomNumbers2 = new Random();
-		 * 
+		 *
 		 * for (int t = 0; t < tailleInstructions; t++)
-		 * 
+		 *
 		 * instructions4HWC.append(instructions4HWC.toString())
 		 * .append(tabInstructions[randomNumbers2.nextInt(tabInstructions.length)]);
-		 * 
+		 *
 		 * return instructions4HWC.toString();
 		 */
 
@@ -538,11 +550,11 @@ public class AutonomousCarService {
 	 * <li>AutonomousCarService{@link #getInstructions4HWC()}</li>
 	 * </ul>
 	 * </p>
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @return Returns List<AutonomousCar> generated randomly
-	 * 
+	 *
 	 */
 
 	public List<AutonomousCar> getVehicules4HWC() {
@@ -554,7 +566,7 @@ public class AutonomousCarService {
 			/*
 			 * Initial postions depends on Surface so it's important to save it first. if
 			 * not the values will be wrong.
-			 * 
+			 *
 			 */
 
 			int xCD = getXYCoinDroit4HWC();
@@ -571,19 +583,19 @@ public class AutonomousCarService {
 
 	/**
 	 * @param vehiculeEnDeplacement
-	 * 
+	 *
 	 *                              Generate a list of Autonomous Cars representing
 	 *                              the states of vehiculeEnDeplacement.
-	 * 
+	 *
 	 *                              Each AutonomousCar present in the list
 	 *                              represents a state of the main car
 	 *                              vehiculeEnDeplacement.
-	 * 
+	 *
 	 *                              The states of vehiculeEnDeplacement are
 	 *                              recorded.
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @return List<AutonomousCar>
 	 */
 

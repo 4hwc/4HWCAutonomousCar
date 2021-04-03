@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.autonomouscar.view;
 
 import java.awt.BorderLayout;
@@ -31,6 +34,8 @@ public class Menu4HWC extends JFrame implements ActionListener {
 	private JButton boutonParametres = new JButton("Paramètres");
 
 	private JButton boutonIA4HWC = new JButton("Intelligence artificielle 4HWC");
+
+	private AutonomousCarService autonomousCarService = AutonomousCarService.getInstance();
 
 	public Menu4HWC() {
 		this.setTitle("4HWC AUTONOMOUS CAR : MENU");
@@ -346,9 +351,9 @@ public class Menu4HWC extends JFrame implements ActionListener {
 		this.setVisible(true);
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
 
-		AutonomousCarService autonomousCarService = new AutonomousCarService();
 		if (arg0.getSource() == boutonParDefaut) {
 
 			// Changement de fenêtre

@@ -166,8 +166,10 @@
 	                        </classPath>
 	                        <icon>application.ico</icon>
 	                        <jre>
-	                            <minVersion>1.6.0</minVersion>
-	                            <jdkPreference>preferJre</jdkPreference>
+	                        
+	                            <!--  minVersion>1.6</minVersion-->
+	                            <!--jdkPreference>preferJre</jdkPreference-->
+	                            <path>${java.home}</path>
 	                        </jre>
 	                        <versionInfo>
 	                            <fileVersion>1.0.0.0</fileVersion>

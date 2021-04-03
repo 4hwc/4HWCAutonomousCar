@@ -1,3 +1,6 @@
+/*
+ *
+ */
 package com.autonomouscar.view;
 
 import java.awt.BorderLayout;
@@ -45,7 +48,7 @@ public class DeplacementVehicules extends JFrame {
 
 	public static final int ATTENTE = 1500;
 
-	AutonomousCarService autonomousCarService = new AutonomousCarService();
+	private AutonomousCarService autonomousCarService = AutonomousCarService.getInstance();
 
 	public DeplacementVehicules() {
 
@@ -94,10 +97,6 @@ public class DeplacementVehicules extends JFrame {
 
 			compteurVehicules++;
 
-			// Lancement du chronometre
-
-			Chronometre.goChrono();
-
 			System.out.println("**************************************************************************");
 
 			System.out.println("Nombre de véhicules déployées : " + this.listeVehicules.size());
@@ -106,7 +105,7 @@ public class DeplacementVehicules extends JFrame {
 
 			// Début du parcours de la boucle d'indice I
 
-			// Je récupère la tondeuse d'indice i
+			// Je récupère le véhicule d'indice i
 
 			AutonomousCar vehicule = this.listeVehicules.get(i);
 
@@ -125,6 +124,10 @@ public class DeplacementVehicules extends JFrame {
 			// Je récupère le véhicule et ses différentes positions
 
 			List<AutonomousCar> vehiculeAvecParametresDifferents = autonomousCarService.autonomousCarStates(vehicule);
+
+			// Lancement du chronometre
+
+			Chronometre.goChrono();
 
 			// J'affiche le véhicule à différentes positions : Xactuelle;
 			// Yactuelle et Oactuelle
@@ -316,9 +319,9 @@ public class DeplacementVehicules extends JFrame {
 	 * Mon repère est différent de celui de l'ordi donc il est important de
 	 * convertir. On a le même axe des abscisses mais les axes des ordonnées ont des
 	 * sens opposés.
-	 * 
+	 *
 	 * L'axe y de l'ordi est descendant, le mien est ascendant
-	 * 
+	 *
 	 * 0<=x<=xCD<=5 0<=y<=yCD<=5
 	 */
 

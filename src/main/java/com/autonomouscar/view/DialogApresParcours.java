@@ -1,3 +1,6 @@
+/*
+ *
+ */
 package com.autonomouscar.view;
 
 import java.awt.Color;
@@ -281,7 +284,7 @@ public class DialogApresParcours extends JDialog {
 
 		// CHRONO
 
-		JLabel jlChrono = new JLabel(vehicule.getChronoFinale() + " ns");
+		JLabel jlChrono = new JLabel(vehicule.getChronoFinale() / 1_000_000_000L + " s");
 
 		jlChrono.setPreferredSize(new Dimension(330, 40));
 

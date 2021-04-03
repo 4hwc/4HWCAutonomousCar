@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.autonomouscar.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,17 +15,17 @@ import com.autonomouscar.exceptions.AutonomousCarException;
 /**
  * <b>AutonomousCarServiceTest represents the test class of AutonomousCarService
  * <b/>
- * 
+ *
  * model class : AutonomousCar
- * 
+ *
  * @author Fanon Jupkwo
- * 
- * 
+ *
+ *
  */
 
 public class AutonomousCarServiceTest {
 
-	AutonomousCarService autonomousCarService = new AutonomousCarService();
+	AutonomousCarService autonomousCarService = AutonomousCarService.getInstance();
 
 	// TESTS -> getXYCoinDroit4HWC(), getXYInitiale4HWC(int)
 
@@ -51,7 +54,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationNombreDeVehicules(String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -67,7 +70,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationNombreDeVehicules(String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -79,7 +82,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationNombreDeVehicules(String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -97,7 +100,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationNombreDeVehicules(String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -112,7 +115,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationPositions(String, String, String, String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -132,7 +135,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationPositions(String, String, String, String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -144,7 +147,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationPositions(String, String, String, String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -170,7 +173,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationPositions(String, String, String, String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -184,7 +187,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationOrientationInitiale(String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -228,7 +231,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationOrientationInitiale(String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -240,7 +243,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationOrientationInitiale(String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -284,7 +287,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationInstructions(String)
-	 * 
+	 *
 	 */
 
 	@Test
@@ -322,7 +325,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationInstructions(String)
-	 * 
+	 *
 	 */
 
 	@Test(expected = AutonomousCarException.class)
@@ -334,7 +337,7 @@ public class AutonomousCarServiceTest {
 
 	/**
 	 * @see AutonomousCarService#validationInstructions(String)
-	 * 
+	 *
 	 */
 
 	@Test
